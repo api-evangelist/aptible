@@ -1,0 +1,104 @@
+generated: '2026-08-06'
+method: derived
+source: mcp/aptible-mcp.yml + openapi/aptible-deploy-openapi-original.yml
+note: >-
+  Every REST operationId below was verified verbatim against
+  openapi/aptible-deploy-openapi-original.yml. The binding for the write tools
+  was read from the aptible-mcp source (models/*.py), which shows that
+  create/delete/scale are expressed as Aptible OPERATIONS (POST
+  /<resource>/{id}/operations with a "type") rather than as REST verbs on the
+  resource — so those rows fan out to two operationIds and are marked
+  accordingly.
+surfaces:
+  openapi:
+    file: openapi/aptible-deploy-openapi-original.yml
+    title: Aptible API v1
+    version: 3.0.3
+    operations: 195
+    gated: false
+  mcp:
+    server: aptible-mcp
+    transport: stdio
+    url: null
+    tools_list: local-only
+    gated: >-
+      tools/list requires running the server locally with a CLI session; the
+      tool set here was read from the published source, not from a live
+      introspection call.
+  mcp_gateway:
+    url: https://mcp-gateway.aptible.com
+    gated: true
+    detail: early access; DNS did not resolve on 2026-08-06, tenant-scoped tool list
+  graphql: null
+crosswalk:
+- {tool: listAccounts, category: environments, rest: [ListAccounts], binding: rest, confidence: high}
+- {tool: getAccount, category: environments, rest: [GetAccountByHandle, GetAccount], binding: rest, confidence: high, note: resolves handle via /find/account then GETs by id}
+- {tool: getAccountsByStack, category: environments, rest: [ListStacks, ListAccountsForStack], binding: rest, confidence: high, note: resolves stack name to id first}
+- {tool: createAccount, category: environments, rest: [CreateAccount], binding: rest, confidence: high}
+- {tool: listApps, category: apps, rest: [ListApps], binding: rest, confidence: high}
+- {tool: getApp, category: apps, rest: [GetAppByHandle, GetApp], binding: rest, confidence: high}
+- {tool: createApp, category: apps, rest: [CreateApp, CreateOperationForApp], binding: rest, confidence: high, note: 'POST /accounts/{account_id}/apps then POST /apps/{app_id}/operations {"type":"deploy"}'}
+- {tool: configureApp, category: apps, rest: [CreateOperationForApp], binding: rest, confidence: high, note: 'POST /apps/{app_id}/operations {"type":"configure"} — not CreateConfigurationForApp'}
+- {tool: deleteApp, category: apps, rest: [CreateOperationForApp], binding: rest, confidence: high, note: 'deprovision is an operation, not DELETE /apps/{id}'}
+- {tool: listAvailableDatabaseTypes, category: databases, rest: [ListDatabaseImages], binding: rest, confidence: high}
+- {tool: listDatabases, category: databases, rest: [ListDatabases], binding: rest, confidence: high}
+- {tool: getDatabase, category: databases, rest: [GetDatabaseByHandle, GetDatabase], binding: rest, confidence: high}
+- {tool: createDatabase, category: databases, rest: [CreateDatabase, CreateOperationForDatabase], binding: rest, confidence: high}
+- {tool: deleteDatabase, category: databases, rest: [CreateOperationForDatabase], binding: rest, confidence: high, note: deprovision operation}
+- {tool: listStacks, category: stacks, rest: [ListStacks], binding: rest, confidence: high}
+- {tool: getStack, category: stacks, rest: [ListStacks], binding: rest, confidence: medium, note: 'by name; the spec exposes GetStack by id only, so the tool filters the list'}
+- {tool: listVhosts, category: endpoints, rest: [ListVhostsForAccount, ListVhostsForApp], binding: rest, confidence: medium, note: no global GET /vhosts collection in the spec}
+- {tool: getVhost, category: endpoints, rest: [GetVhost], binding: rest, confidence: high}
+- {tool: createVhost, category: endpoints, rest: [CreateVhost, CreateOperationForVhost], binding: rest, confidence: high}
+- {tool: deleteVhost, category: endpoints, rest: [CreateOperationForVhost], binding: rest, confidence: high, note: deprovision operation}
+- {tool: listServices, category: services, rest: [ListServicesForApp], binding: rest, confidence: high}
+- {tool: getService, category: services, rest: [ListServicesForApp, GetServiceWithOperationStatus], binding: rest, confidence: high}
+- {tool: scaleService, category: services, rest: [CreateOperationForService], binding: rest, confidence: high, note: 'POST /services/{service_id}/operations {"type":"scale"}'}
+- {tool: listServiceVhosts, category: services, rest: [ListVhostsForService], binding: rest, confidence: high}
+- {tool: getOperationsForApp, category: operations, rest: [ListOperationsForApp], binding: rest, confidence: high}
+- {tool: getOperationsForDatabase, category: operations, rest: [ListOperationsForDatabase], binding: rest, confidence: high}
+- {tool: getOperationsForVhost, category: operations, rest: [ListOperationsForVhost], binding: rest, confidence: high}
+- {tool: getOperationLogs, category: operations, rest: [GetOperationLogs], binding: rest, confidence: high}
+mcp_only:
+- {tool: getProcfileExample, reason: static template returned by the server; no REST operation}
+- {tool: getAptibleYamlExample, reason: static template returned by the server; no REST operation}
+- {tool: getEndpointProvisionExample, reason: static GitHub Action template; no REST operation}
+- {tool: getAppProvisionExample, reason: static GitHub Action template; no REST operation}
+- {tool: getAppDeprovisionExample, reason: static GitHub Action template; no REST operation}
+- {tool: getAppConfigureExample, reason: static GitHub Action template; no REST operation}
+- {tool: getDatabaseProvisionExample, reason: static GitHub Action template; no REST operation}
+- {tool: getDatabaseDeprovisionExample, reason: static GitHub Action template; no REST operation}
+- {tool: getDatabaseRestoreExample, reason: static GitHub Action template; no REST operation}
+- {tool: getBuildDeployExample, reason: static GitHub Action template; no REST operation}
+rest_only:
+- capability: backups and retention
+  operations: [ListBackups, ListBackupsForAccount, ListBackupsForDatabase, GetBackup, ListCopiesForBackup, CreateOperationForBackup, ListOperationsForBackup, CreateBackupRetentionPolicy, ListBackupRetentionPoliciesForAccount, GetBackupRetentionPolicy]
+- capability: certificates and TLS
+  operations: [CreateCertificate, ListCertificatesForAccount, GetCertificate, PatchCertificate, UpdateCertificate, DeleteCertificate, ListAppsForCertificate, ListVhostsForCertificate]
+- capability: LLM Gateway governance
+  operations: [CreateLlmGatewayConfiguration, ListLlmGatewayConfigurations, UpdateLlmGatewayConfiguration, ListLlmKeys, ListLlmKeysForAccount, GetLlmKey, GetLlmKeyUsage, GetLlmKeyRequests, RevokeLlmKey, ListOperationsForLlmKey, CreateOrUpdateLlmPolicy, ListLlmPolicies, ListLlmPoliciesForAccount, GetLlmPolicy, GetLlmPolicyUsage]
+- capability: log and metric drains
+  operations: [CreateLogDrain, ListLogDrainsForAccount, GetLogDrain, PatchLogDrain, UpdateLogDrain, DeleteLogDrain, CreateOperationForLogDrain, ListOperationsForLogDrain, ListContainersForLogDrain, ListEphemeralContainersForLogDrain, CreateMetricDrain, ListMetricDrainsForAccount, GetMetricDrain, CreateOperationForMetricDrain, ListOperationsForMetricDrain, ListContainersForMetricDrain]
+- capability: security and compliance reporting
+  operations: [ListActivityReportsForAccount, GetActivityReport, GetActivityReportDownload, ListIntrustionDetectionReportsForStack, GetIntrustionDetectionReport, GetIntrustionDetectionReportCsvDownload, GetIntrustionDetectionReportPdfDownload, CreateCodeScanResult, ListCodeScanResultsForApp, GetCodeScanResult, DeleteCodeScanResult]
+- capability: permissions and claims
+  operations: [CreatePermission, ListPermissions, ListPermissionsForAccount, GetPermission, DeletePermission, CreateClaim, CreateClaimForAccount, CreateClaimForType]
+- capability: persistent disks and attachments
+  operations: [ListPersistentDisksForAccount, GetPersistentDisk, CreateOperationForPersistentDisk, ListOperationsForPersistentDisk, ListDiskAttachments, ListDiskAttachmentsForAccount, ListDiskAttachmentsForPersistentDisk, ListDiskAttachmentsForService, GetDiskAttachment, CreateOperationForDiskAttachment, ListOperationsForDiskAttachment, ListDisksForAccount, GetDisk]
+- capability: ephemeral SSH sessions and containers
+  operations: [ListEphemeralSessionsForApp, ListEphemeralSessionsForOperation, GetEphemeralSession, CreateOperationForEphemeralSession, ListOperationsForEphemeralSession, ListEphemeralContainersForEphemeralSession, GetEphemeralContainer, CreateSshPortalConnection, ListSshPortalConnectionsForOperation, GetSshPortalConnection]
+- capability: sources, deployments and releases
+  operations: [ListSources, GetSource, ListAppsForSource, ListDeploymentsForSource, ListDeployments, ListDeploymentsForApp, GetDeployment, ListReleasesForService, GetRelease, ListContainersForRelease, ListImagesForApp, GetImage, CreateOperationForImage, ListOperationsForImage]
+- capability: settings and service sizing policies
+  operations: [CreateSettingForApp, CreateSettingForDatabase, CreateSettingForService, CreateSettingForVhost, ListSettingsForApp, ListSettingsForDatabase, ListSettingsForService, ListSettingsForVhost, GetSetting, CreateServiceSizingPolicy, ListServiceSizingPoliciesForAccount, ListServiceSizingPoliciesForService, GetServiceSizingPolicy, UpdateServiceSizingPolicy, DeleteServiceSizingPolicy]
+- capability: network integrations
+  operations: [ListVpcPeersForStack, GetVpcPeer, ListVpnTunnelsForStack, GetVpnTunnel]
+- capability: plans, maintenance and configuration
+  operations: [ListPlans, GetPlan, GetMaintenanceApps, GetMaintenanceDatabases, CreateConfigurationForApp, CreateConfigurationForDatabase, ListConfigurationsForApp, ListConfigurationsForDatabase, GetConfiguration, DeleteConfiguration, GetRoot]
+coverage:
+  tools_named: 38
+  tools_bound_to_rest: 28
+  mcp_only: 10
+  rest_operations_total: 195
+  rest_operations_with_a_tool: 34
+  rest_coverage_percent: 17.4

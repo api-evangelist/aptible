@@ -1,0 +1,69 @@
+generated: '2026-08-06'
+method: searched
+source: https://www.aptible.com/docs/reference/aptible-cli/overview + https://www.aptible.com/docs/llms.txt
+name: aptible
+language: ruby
+version: 0.26.8
+repository: https://github.com/aptible/aptible-cli
+docs: https://www.aptible.com/docs/reference/aptible-cli/overview
+configuration_docs: https://www.aptible.com/docs/reference/aptible-cli/cli-configurations
+backing_api: aptible:deploy
+package: {registry: rubygems, name: aptible-cli, artifact: packages/aptible-packages.yml}
+install:
+- {method: rubygems, command: gem install aptible-cli}
+- {method: homebrew, command: brew install aptible/aptible/aptible-cli, note: Aptible publishes its own Homebrew tap}
+auth:
+  command: aptible login
+  detail: >-
+    Creates a session token against auth.aptible.com and caches it locally; MFA
+    is supported. The aptible-mcp MCP server reuses this cached session rather
+    than taking its own credential.
+  mfa: true
+command_groups:
+- group: session
+  commands: [aptible login, aptible help, aptible version, aptible organizations]
+- group: apps
+  commands: [aptible apps, 'aptible apps:create', 'aptible apps:deprovision', 'aptible apps:rename',
+    'aptible apps:scale', 'aptible apps:settings', aptible deploy, aptible rebuild, aptible restart]
+- group: config
+  commands: [aptible config, 'aptible config:add', 'aptible config:get', 'aptible config:rm',
+    'aptible config:set', 'aptible config:unset']
+- group: databases
+  commands: ['aptible db:create', 'aptible db:list', 'aptible db:clone', 'aptible db:backup',
+    'aptible db:deprovision', 'aptible db:dump', 'aptible db:execute', 'aptible db:modify',
+    'aptible db:reload', 'aptible db:rename', 'aptible db:replicate', 'aptible db:restart',
+    'aptible db:tunnel', 'aptible db:url', 'aptible db:versions']
+- group: backups
+  commands: ['aptible backup:list', 'aptible backup:orphaned', 'aptible backup:purge',
+    'aptible backup:restore', aptible backup_retention_policy, 'aptible backup_retention_policy:set']
+- group: endpoints
+  commands: ['aptible endpoints:list', 'aptible endpoints:https:create', 'aptible endpoints:https:modify',
+    'aptible endpoints:tcp:create', 'aptible endpoints:tcp:modify', 'aptible endpoints:tls:create',
+    'aptible endpoints:tls:modify', 'aptible endpoints:grpc:create', 'aptible endpoints:grpc:modify',
+    'aptible endpoints:database:create', 'aptible endpoints:database:modify', 'aptible endpoints:deprovision',
+    'aptible endpoints:renew']
+- group: services
+  commands: [aptible services, 'aptible services:settings', 'aptible services:autoscaling_policy',
+    'aptible services:autoscaling_policy:set']
+- group: environments
+  commands: ['aptible environment:list', 'aptible environment:rename', 'aptible environment:ca_cert']
+- group: logging and metrics
+  commands: [aptible logs, aptible logs_from_archive, 'aptible log_drain:list', 'aptible log_drain:deprovision',
+    'aptible log_drain:create:https', 'aptible log_drain:create:syslog', 'aptible log_drain:create:datadog',
+    'aptible log_drain:create:elasticsearch', 'aptible log_drain:create:logdna', 'aptible log_drain:create:papertrail',
+    'aptible log_drain:create:solarwinds', 'aptible log_drain:create:sumologic', 'aptible metric_drain:list',
+    'aptible metric_drain:deprovision', 'aptible metric_drain:create:datadog', 'aptible metric_drain:create:influxdb',
+    'aptible metric_drain:create:influxdb:custom', 'aptible metric_drain:create:influxdb:customv2']
+- group: operations
+  commands: ['aptible operation:cancel', 'aptible operation:follow', 'aptible operation:logs']
+- group: maintenance
+  commands: ['aptible maintenance:apps', 'aptible maintenance:dbs']
+- group: access
+  commands: [aptible ssh]
+command_count: 83
+key_flows:
+- {name: deploy an app, commands: [aptible login, 'aptible apps:create', 'aptible config:set', aptible deploy]}
+- {name: open a database tunnel, commands: ['aptible db:tunnel'], note: local port-forward into a managed database}
+- {name: follow an async operation, commands: ['aptible operation:follow', 'aptible operation:logs'],
+   note: the CLI equivalent of polling GetOperation / GetOperationLogs}
+- {name: one-off shell in an ephemeral container, commands: [aptible ssh]}

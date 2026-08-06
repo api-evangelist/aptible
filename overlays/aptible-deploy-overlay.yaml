@@ -1,0 +1,40 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Aptible Deploy API
+  version: 1.0.0
+extends: openapi/aptible-deploy-openapi-original.yml
+x-generated: '2026-08-06'
+x-method: generated
+x-source: openapi/aptible-deploy-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: aptible
+    x-apievangelist-artifacts:
+      authentication: authentication/aptible-authentication.yml
+      conventions: conventions/aptible-conventions.yml
+      errors: errors/aptible-problem-types.yml
+      lifecycle: lifecycle/aptible-lifecycle.yml
+      data_model: data-model/aptible-data-model.yml
+      mcp: mcp/aptible-mcp.yml
+      tool_crosswalk: mcp/aptible-tool-crosswalk.yml
+      skills: skills/_index.yml
+    x-media-type: application/hal+json
+    x-spec-source: https://github.com/aptible/aptible-api-go/blob/main/aptibleapi/api/openapi.yaml
+- target: $.servers
+  update:
+  - url: https://api.aptible.com
+    description: Aptible Deploy API production host (resolved from the spec's {baseUrl} default)
+- target: $.components.schemas.error
+  update:
+    x-error-envelope: true
+    x-envelope-fields: [code, error, message]
+    x-note: >-
+      Aptible returns a flat JSON error envelope, not RFC 9457 problem+json. The
+      same shape is returned live by api.aptible.com for unknown paths.
+- target: $.paths.*.*.parameters[?(@.name=='page')]
+  update:
+    x-pagination-role: page-number
+- target: $.paths.*.*.parameters[?(@.name=='per_page')]
+  update:
+    x-pagination-role: page-size

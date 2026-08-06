@@ -1,0 +1,29 @@
+generated: '2026-08-06'
+method: generated
+source: openapi/aptible-deploy-openapi-original.yml + conventions/aptible-conventions.yml + provider docs
+api: aptible:deploy
+note: >-
+  Every operationId referenced in these skills was grepped against
+  openapi/aptible-deploy-openapi-original.yml before being written. Aptible
+  publishes no AGENTS.md or provider-authored skill files; these are generated.
+skills:
+- file: aptible-deploy-an-app.md
+  name: Deploy an app on Aptible
+  api: openapi/aptible-deploy-openapi-original.yml
+  operations: [GetAccountByHandle, CreateApp, CreateOperationForApp, GetOperation, GetOperationLogs, ListServicesForApp]
+- file: aptible-provision-a-database.md
+  name: Provision and connect to an Aptible database
+  api: openapi/aptible-deploy-openapi-original.yml
+  operations: [ListDatabaseImages, GetAccountByHandle, CreateDatabase, CreateOperationForDatabase, GetOperation, GetDatabaseByHandle, ListDatabaseCredentialsForDatabase]
+- file: aptible-scale-and-observe-a-service.md
+  name: Scale an Aptible service and watch the operation
+  api: openapi/aptible-deploy-openapi-original.yml
+  operations: [GetAppByHandle, ListServicesForApp, CreateOperationForService, GetOperation, ListReleasesForService, ListOperationsForService, ListServiceSizingPoliciesForService]
+- file: aptible-govern-the-llm-gateway.md
+  name: Govern the Aptible LLM Gateway
+  api: openapi/aptible-deploy-openapi-original.yml
+  operations: [CreateLlmGatewayConfiguration, ListLlmGatewayConfigurations, UpdateLlmGatewayConfiguration, CreateOrUpdateLlmPolicy, ListLlmPoliciesForAccount, GetLlmPolicy, GetLlmPolicyUsage, ListLlmKeysForAccount, GetLlmKey, GetLlmKeyUsage, GetLlmKeyRequests, RevokeLlmKey]
+- file: aptible-pull-compliance-evidence.md
+  name: Pull Aptible compliance evidence
+  api: openapi/aptible-deploy-openapi-original.yml
+  operations: [ListStacks, ListAccountsForStack, ListActivityReportsForAccount, GetActivityReport, GetActivityReportDownload, ListIntrustionDetectionReportsForStack, GetIntrustionDetectionReport, GetIntrustionDetectionReportPdfDownload, GetIntrustionDetectionReportCsvDownload, ListCodeScanResultsForApp, GetCodeScanResult]

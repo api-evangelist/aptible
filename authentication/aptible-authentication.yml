@@ -1,0 +1,23 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/aptible-cloud-openapi-original.yml, openapi/aptible-deploy-openapi-original.yml,
+  openapi/aptible-tool-server-openapi-original.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: HTTPBearer
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/aptible-cloud-openapi-original.yml
+  - openapi/aptible-tool-server-openapi-original.yml
+- name: token
+  type: apiKey
+  in: header
+  parameter: Authorization
+  sources:
+  - openapi/aptible-deploy-openapi-original.yml

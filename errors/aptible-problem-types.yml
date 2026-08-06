@@ -1,0 +1,66 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/aptible-deploy-openapi-original.yml + live probe of https://api.aptible.com/openapi.json
+format: custom-json
+rfc9457: false
+media_type: application/hal+json
+envelope:
+  schema: '#/components/schemas/error'
+  required: [code, error, message]
+  fields:
+  - {name: code, type: integer, description: HTTP status code, repeated in the body}
+  - {name: error, type: string, description: machine-readable error slug (e.g. not_found)}
+  - {name: message, type: string, description: human-readable message}
+  observed_example:
+    url: https://api.aptible.com/openapi.json
+    http_status: 404
+    body: '{"code":404,"error":"not_found","message":"Not Found"}'
+    fetched: '2026-08-06'
+coverage:
+  operations_total: 195
+  operations_with_only_a_default_error: 192
+  operations_with_enumerated_4xx: 14
+  note: >-
+    192 of 195 operations declare a single `default` response described as
+    "Error response. Often a 4xx or 5xx status code" and typed as the shared
+    error schema. Only the LLM Gateway family (LlmKeys, LlmPolicies,
+    LlmGatewayConfigurations) enumerates specific status codes. An agent
+    therefore cannot branch on documented status codes for the platform core —
+    it must read the `error` slug out of the envelope at runtime.
+problems:
+- status: 400
+  title: bad request
+  slug_field: error
+  source_operations: [GetLlmKeyUsage, GetLlmPolicyUsage]
+- status: 403
+  title: organization not enrolled
+  remediation: >-
+    The organization is not enrolled in the LLM Gateway. Create an enrolment
+    with CreateLlmGatewayConfiguration before calling LLM Gateway endpoints.
+  source_operations: [CreateOrUpdateLlmPolicy, GetLlmKey, GetLlmKeyRequests, GetLlmKeyUsage,
+    GetLlmPolicy, GetLlmPolicyUsage, ListLlmKeys, ListLlmKeysForAccount, ListLlmPolicies,
+    ListLlmPoliciesForAccount, RevokeLlmKey]
+- status: 404
+  title: not found
+  source_operations: [GetLlmKey, GetLlmKeyRequests, GetLlmKeyUsage, GetLlmPolicy, GetLlmPolicyUsage,
+    RevokeLlmKey]
+- status: 422
+  title: validation error
+  source_operations: [GetLlmKeyRequests]
+- status: 422
+  title: spend_limit cannot be updated on a trial configuration
+  remediation: Upgrade the LLM Gateway configuration off trial before setting a spend limit.
+  source_operations: [UpdateLlmGatewayConfiguration]
+- status: default
+  title: Error response. Often a 4xx or 5xx status code
+  schema: '#/components/schemas/error'
+  source_operations_count: 192
+  note: The catch-all declared by nearly every operation in the spec.
+gaps:
+- >-
+  No published error-code registry. The `error` slug is the only machine-usable
+  discriminator and its vocabulary is not documented anywhere on
+  aptible.com/docs — only `not_found` is observable anonymously.
+- >-
+  No 401/429/5xx responses are enumerated for any core platform operation, even
+  though every operation requires a bearer token.

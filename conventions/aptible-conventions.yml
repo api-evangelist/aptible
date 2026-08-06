@@ -1,0 +1,152 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/aptible-deploy-openapi-original.yml + https://www.aptible.com/docs/llms.txt + live probes of api.aptible.com
+scope: aptible:deploy
+media_type:
+  request: application/json
+  response: application/hal+json
+  hypermedia: HAL
+  note: >-
+    The Deploy API is HAL+JSON. GET https://api.aptible.com/ returns a _links
+    index (accounts, active_plans, apps, databases, database_images,
+    external_aws_accounts, stacks) and every resource embeds _links and, unless
+    suppressed, _embedded resources.
+authentication:
+  style: bearer-token
+  header: Authorization
+  scheme_name: token
+  scheme_type: apiKey
+  issuer: https://auth.aptible.com/tokens
+  applies_to: all 195 operations (global security requirement)
+  detail: >-
+    The OpenAPI models it as an apiKey in the Authorization header rather than
+    http/bearer, but the value is an OAuth-style token minted by
+    auth.aptible.com, whose signing public key is served anonymously at
+    https://auth.aptible.com/.
+  artifact: authentication/aptible-authentication.yml
+pagination:
+  style: page-number
+  params:
+  - {name: page, in: query, type: integer, description: Current page of paginated results}
+  - {name: per_page, in: query, type: integer, description: Number of results to return per page}
+  applies_to_operations: 81
+  response_fields: [current_page, total_count, per_page, _links.next, _links.prev, _embedded]
+  note: Classic page/per_page offset pagination; no cursor surface.
+response_shaping:
+  - name: no_embed
+    in: query
+    type: boolean
+    applies_to_operations: 181
+    description: When true, omits _embedded resources from the response.
+  - name: Prefer
+    in: header
+    type: string
+    enum: [no_sensitive_extras=true]
+    applies_to_operations: 181
+    description: >-
+      RFC 7240 Prefer header. no_sensitive_extras=true omits sensitive fields
+      AND embedded resources — the same effect as no_embed plus redaction. This
+      is Aptible's sparse-fieldset mechanism and the one convention an agent
+      should set by default when it does not need credentials in the payload.
+  - name: with_deleted
+    in: query
+    type: boolean
+    applies_to_operations: 5
+    description: Include soft-deleted records in the collection.
+async_model:
+  style: operations-resource
+  description: >-
+    This is the defining convention of the Aptible API and the one most likely to
+    trip an agent. Mutations that change infrastructure are NOT expressed as REST
+    verbs on the resource. They are expressed by POSTing an Operation to the
+    resource — POST /apps/{app_id}/operations with a body {"type": "deploy"},
+    {"type": "deprovision"}, {"type": "configure"}, {"type": "restart"}; POST
+    /services/{service_id}/operations with {"type": "scale"}; and so on for
+    backups, databases, disks, drains, images, vhosts and ephemeral sessions.
+    The POST returns an Operation immediately; the work is asynchronous.
+  poll: GET /operations/{id} until status is succeeded or failed
+  logs: GET /operations/{operation_id}/logs
+  operation_create_endpoints: 12
+  cancel: PATCH /operations/{id} (UpdateOperation / PatchOperation)
+  agent_rule: >-
+    After any create/scale/deprovision call, poll GetOperation before treating
+    the change as applied. A 200 on the POST means the operation was accepted,
+    not that it finished.
+handle_resolution:
+  description: >-
+    Aptible resources are addressed by integer id in the API but by human handle
+    in the CLI, the dashboard and the MCP tools. Two lookup endpoints exist to
+    bridge that gap.
+  endpoints:
+  - {operationId: GetAccountByHandle, path: /find/account}
+  - {operationId: GetAppByHandle, path: /find/app}
+  - {operationId: GetDatabaseByHandle, path: /find/database}
+  note: >-
+    App, database and service handles are only unique WITHIN an account
+    (environment), so an account handle is required to disambiguate. Stacks have
+    no /find endpoint — resolve a stack name by filtering ListStacks.
+idempotency:
+  supported: false
+  idempotency_key_header: null
+  detail: >-
+    Aptible publishes no idempotency-key contract. There is no Idempotency-Key
+    parameter anywhere in the 195-operation spec and no idempotency section in
+    the docs. The single occurrence of the word in the spec is a 200 response
+    description on CreateLlmGatewayConfiguration ("already enrolled
+    (idempotent)"), i.e. one endpoint that happens to be safe to repeat — not a
+    provider-wide guarantee. Retrying a POST to an operations endpoint will
+    generally enqueue a second operation.
+  agent_rule: >-
+    Do not blind-retry a mutating POST. On a timeout, list the resource's
+    operations (ListOperationsForApp / ListOperationsForDatabase / …) and check
+    whether the operation was already created before retrying.
+error_envelope:
+  format: custom-json
+  rfc9457: false
+  media_type: application/hal+json
+  schema: '#/components/schemas/error'
+  fields:
+  - {name: code, type: integer, description: HTTP status code, required: true}
+  - {name: error, type: string, description: machine-readable error slug, required: true}
+  - {name: message, type: string, description: human-readable message, required: true}
+  example: '{"code":404,"error":"not_found","message":"Not Found"}'
+  spec_coverage: >-
+    192 of 195 operations declare only a `default` error response ("Error
+    response. Often a 4xx or 5xx status code"); only the LLM Gateway family
+    enumerates specific 400/403/404/422 codes.
+  artifact: errors/aptible-problem-types.yml
+rate_limiting:
+  documented: false
+  headers: null
+  detail: >-
+    No published rate-limit policy and no rate-limit response headers documented
+    in the spec or the docs. The responsible-disclosure policy explicitly lists
+    "rate limiting or brute-force issues" as out of scope for reports, which
+    implies limits exist but are not contractually described.
+versioning:
+  scheme: single-version
+  current: v1
+  in_path: false
+  detail: >-
+    The spec is titled "Aptible API v1" but no version segment appears in any
+    path — api.aptible.com serves v1 at the root. Changes are communicated
+    through the changelog rather than through a versioned URL or a version
+    header.
+  artifact: lifecycle/aptible-lifecycle.yml
+request_tracing:
+  request_id_header: null
+  documented: false
+webhooks:
+  supported: false
+  detail: >-
+    Aptible has no webhook or event-callback surface. Outbound telemetry is
+    delivered by Log Drains (syslog, HTTPS, Datadog, Elasticsearch, LogDNA,
+    Papertrail, SolarWinds, Sumo Logic) and Metric Drains (Datadog, InfluxDB),
+    which are configured pushes of container logs and metrics, not
+    resource-lifecycle events. There is therefore no AsyncAPI to harvest.
+cross_links:
+  authentication: authentication/aptible-authentication.yml
+  errors: errors/aptible-problem-types.yml
+  lifecycle: lifecycle/aptible-lifecycle.yml
+  data_model: data-model/aptible-data-model.yml
+  cli: cli/aptible-cli.yml

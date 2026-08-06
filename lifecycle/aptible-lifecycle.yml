@@ -1,0 +1,53 @@
+generated: '2026-08-06'
+method: searched
+source: https://www.aptible.com/changelog, https://status.aptible.com/, https://www.aptible.com/legal/service-level-agreement, openapi/aptible-deploy-openapi-original.yml
+versioning:
+  scheme: single-version
+  current: v1
+  in_path: false
+  in_header: false
+  detail: >-
+    The Deploy API OpenAPI is titled "Aptible API v1" with info.version "v1", but
+    no path carries a version segment — api.aptible.com serves v1 at the root.
+    The Cloud API spec is versioned 0.1.0 and ships as generator input rather than
+    as a public versioned contract.
+  docs: https://www.aptible.com/changelog
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  detail: >-
+    No published API deprecation policy, no RFC 8594 Sunset/Deprecation header
+    support documented, and zero operations marked `deprecated: true` in either
+    OpenAPI. Product-level end-of-life is announced through the changelog and the
+    docs (e.g. deprecated GitHub repositories are flagged in the org), not
+    through a contractual API deprecation window.
+deprecated_operations: []
+sla:
+  url: https://www.aptible.com/legal/service-level-agreement
+  http_status: 200
+  scope: platform SLA (published as a legal policy page)
+support_policy: https://www.aptible.com/legal/support-policy
+status_page:
+  url: https://status.aptible.com/
+  http_status: 200
+maintenance:
+  detail: >-
+    Aptible schedules platform maintenance and exposes the upcoming windows
+    through the API itself.
+  operations: [GetMaintenanceApps, GetMaintenanceDatabases]
+  docs: https://www.aptible.com/docs/core-concepts/architecture/maintenance
+changelog:
+  url: https://www.aptible.com/changelog
+  artifact: changelog/aptible-changelog.yml
+roadmap:
+  url: https://portal.productboard.com/aptible/2-aptible-roadmap-portal/tabs/10-in-progress
+  http_status: 200
+  platform: Productboard portal
+gaps:
+- No API deprecation policy or Sunset/Deprecation header contract.
+- >-
+  The docs' own llms.txt advertises an OpenAPI at
+  https://www.aptible.com/docs/api-reference/openapi.json, which returned 404
+  ("Asset not found") on 2026-08-06 — the published contract lives in the
+  aptible/aptible-api-go repository instead.

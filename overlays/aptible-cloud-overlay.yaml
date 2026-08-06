@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Aptible Cloud API
+  version: 1.0.0
+extends: openapi/aptible-cloud-openapi-original.yml
+x-generated: '2026-08-06'
+x-method: generated
+x-source: openapi/aptible-cloud-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: aptible
+    x-spec-source: https://github.com/aptible/cloud-api-clients/blob/main/clients/go/api/openapi.yaml
+    x-note: >-
+      Published as generator input alongside the Go, Python and Ruby clients in
+      aptible/cloud-api-clients. The document declares a relative server ("/"),
+      so no production host is asserted in the contract itself.
+- target: $.info
+  update:
+    x-apievangelist-gap: >-
+      No top-level security requirement is applied even though an HTTPBearer
+      scheme is declared, and no 4xx responses beyond 422 validation errors are
+      documented.

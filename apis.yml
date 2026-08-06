@@ -1,23 +1,198 @@
 aid: aptible
 name: Aptible
-description: 'Aptible is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Aptible is a Platform as a Service (PaaS) built for teams that have to
+  prove security and compliance, not just ship. It deploys web apps, managed databases
+  (PostgreSQL, MySQL, Redis, Elasticsearch, InfluxDB, RabbitMQ, SFTP) and AI workloads
+  onto isolated, dedicated AWS infrastructure with encryption, host hardening, DDoS
+  protection, managed host intrusion detection and vulnerability scanning enforced
+  by default. Aptible ships HIPAA Business Associate Agreements, HITRUST R2 inheritance,
+  SOC 2, PCI DSS and PIPEDA support alongside a Security & Compliance Dashboard, and
+  more recently an LLM Gateway (400+ models behind one compliant API, with audit logging,
+  spend limits and model access policies) and an MCP Gateway that governs how teams
+  and agents reach MCP servers. The platform is driven by a public HAL+JSON REST API
+  at api.aptible.com, an auth service at auth.aptible.com, a Ruby CLI, a Terraform
+  provider, and generated Go/Ruby/Python client libraries.'
+image: https://framerusercontent.com/assets/sM8ECTApfoCzQMGmPJrKL9qxMFo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/aptible/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-06'
 modified: '2026-08-06'
 tags:
 - Company
-apis: []
+- Platform as a Service
+- Cloud Infrastructure
+- Deployment
+- Managed Databases
+- Security
+- Compliance
+- HIPAA
+- DevOps
+- AI Gateway
+- MCP
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: aptible:deploy
+  name: Aptible Deploy API
+  description: 'The core Aptible platform API. A HAL+JSON REST API covering accounts
+    (environments), apps, databases, backups and retention policies, certificates,
+    configurations, containers, disks, deployments, endpoints (vhosts), ephemeral SSH
+    sessions and containers, images, log drains and metric drains, LLM Gateway configurations,
+    LLM keys and policies, maintenances, operations, permissions, plans, releases,
+    services and service sizing policies, sources, stacks, VPC peers and VPN tunnels.
+    137 paths / 195 operations, every one tagged with a unique operationId. Authentication
+    is a bearer token in the Authorization header, issued by auth.aptible.com.'
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Deployment
+  - Platform as a Service
+  - Managed Databases
+  - Infrastructure
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-deploy-openapi-original.yml
+  - type: Overlay
+    url: overlays/aptible-deploy-overlay.yaml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+- aid: aptible:auth
+  name: Aptible Auth API
+  description: 'The Aptible authentication and identity service at auth.aptible.com.
+    A HAL+JSON API exposing organizations, sessions, tokens, OAuth clients, users,
+    U2F trusted facets and SSH key pre-authorizations, plus the RSA public key used
+    to verify the JWTs it issues. This is where the bearer token consumed by the Deploy
+    API comes from. No OpenAPI is published for this surface; the HAL root is the discovery
+    document.'
+  humanURL: https://www.aptible.com/docs/core-concepts/security-compliance/authentication/password-authentication
+  baseURL: https://auth.aptible.com
+  tags:
+  - Authentication
+  - Identity
+  - OAuth
+  properties:
+  - type: Documentation
+    url: https://www.aptible.com/docs/core-concepts/security-compliance/authentication/password-authentication
+- aid: aptible:cloud
+  name: Aptible Cloud API
+  description: 'The Aptible Cloud API, published as an OpenAPI 3.0.2 document alongside
+    the generated Go, Python and Ruby client libraries in aptible/cloud-api-clients.
+    Covers organizations, environments, assets, connections, operations, actions,
+    worker and utility endpoints — 19 paths / 28 operations, HTTP bearer auth. The
+    published spec declares a relative server URL, so the deployment host is not
+    asserted in the contract.'
+  humanURL: https://github.com/aptible/cloud-api-clients
+  baseURL: https://api.aptible.com
+  tags:
+  - Cloud
+  - Infrastructure
+  - Provisioning
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-cloud-openapi-original.yml
+  - type: Overlay
+    url: overlays/aptible-cloud-overlay.yaml
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+- aid: aptible:tool-server
+  name: Aptible Tool Server API
+  description: 'A small OpenAPI 3.0.0 contract Aptible publishes for an Aptible tool
+    server — list the tools a server exposes and invoke one by tool_id. Bearer token
+    auth. Two operations; it is the contract behind the tool-execution layer that
+    the MCP Gateway governs.'
+  humanURL: https://github.com/aptible/tool-server-openapi-spec
+  baseURL: https://www.aptible.com
+  tags:
+  - Tools
+  - Agents
+  - MCP
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-tool-server-openapi-original.yml
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
 common:
+- type: AgenticAccess
+  url: agentic-access/aptible-agentic-access.yml
+- type: TrustCenter
+  url: security/aptible-trust-center.yml
+- type: DomainSecurity
+  url: security/aptible-domain-security.yml
+- type: Authentication
+  url: authentication/aptible-authentication.yml
 - type: Website
-  url: https://forgeglobal.com/aptible_stock/
+  url: https://www.aptible.com/
+- type: DeveloperPortal
+  url: https://www.aptible.com/docs/getting-started/home
+- type: Documentation
+  url: https://www.aptible.com/docs/getting-started/home
+- type: APIReference
+  url: https://www.aptible.com/docs/reference/aptible-cli/overview
+- type: GettingStarted
+  url: https://www.aptible.com/docs/getting-started/deploy-starter-template/overview
+- type: Support
+  url: https://app.aptible.com/support
+- type: Blog
+  url: https://www.aptible.com/blog
+- type: GitHubOrganization
+  url: https://github.com/aptible
+- type: Roadmap
+  url: https://portal.productboard.com/aptible/2-aptible-roadmap-portal/tabs/10-in-progress
+- type: Pricing
+  url: https://www.aptible.com/pricing
+- type: SignUp
+  url: https://app.aptible.com/signup
+- type: Login
+  url: https://app.aptible.com/login
+- type: TermsOfService
+  url: https://www.aptible.com/legal/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.aptible.com/legal/privacy-statement
+- type: StatusPage
+  url: https://status.aptible.com/
+- type: Compliance
+  url: https://www.aptible.com/docs/core-concepts/security-compliance/overview
+- type: Security
+  url: https://www.aptible.com/legal/responsible-disclosure-policy
+- type: VulnerabilityDisclosure
+  url: security/aptible-vulnerability-disclosure.yml
+- type: ChangeLog
+  url: https://www.aptible.com/changelog
+- type: ChangeLog
+  url: changelog/aptible-changelog.yml
+- type: SLA
+  url: https://www.aptible.com/legal/service-level-agreement
+- type: Packages
+  url: packages/aptible-packages.yml
+- type: SDKs
+  url: packages/aptible-packages.yml
+- type: CLI
+  url: cli/aptible-cli.yml
+- type: MCPServer
+  url: mcp/aptible-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/aptible-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/aptible-llms.txt
+- type: Conventions
+  url: conventions/aptible-conventions.yml
+- type: ErrorCatalog
+  url: errors/aptible-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/aptible-lifecycle.yml
+- type: Conformance
+  url: conformance/aptible-conformance.yml
+- type: DataModel
+  url: data-model/aptible-data-model.yml
+x-enrichment:
+  date: '2026-08-06'
+  status: enriched
+  artifacts_added: 28
+  pass: local-v1

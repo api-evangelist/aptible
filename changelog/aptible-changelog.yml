@@ -1,0 +1,27 @@
+generated: '2026-08-06'
+method: searched
+source: https://www.aptible.com/changelog
+scheme: dated-product-changelog
+versioned: false
+current_version: null
+detail: >-
+  Aptible publishes a dated product changelog on the marketing site. Entries are
+  product/feature announcements, not API versions — there are no semantic version
+  numbers and no breaking-change section. A monthly "Platform Improvements" post
+  rolls up the smaller items. There is no separate API changelog; API surface
+  changes surface here or in the aptible/aptible-api-go regenerated client.
+feed: null
+entries:
+- {date: '2026-08-03', title: 'Platform Improvements: July 2026', kind: rollup}
+- {date: '2026-07-01', title: 'Platform Improvements: June 2026', kind: rollup}
+- {date: '2026-06-03', title: LLM Gateway in Public Beta, kind: feature}
+- {date: '2026-06-01', title: 'Platform Improvements: May 2026', kind: rollup}
+- {date: '2026-05-08', title: Home Dashboard in the Aptible UI is now generally available, kind: feature}
+- {date: '2026-05-04', title: Introducing Endpoint and Image Deployment Settings, kind: feature}
+- {date: '2026-05-01', title: 'Platform Improvements: April 2026', kind: rollup}
+- {date: '2026-04-29', title: 'AI Gateway: LLM request logs and Langfuse integration', kind: feature}
+- {date: '2026-04-14', title: Introducing Point-in-time Recovery for PostgreSQL databases, kind: feature}
+- {date: '2026-03-31', title: 'Platform Improvements: March 2026', kind: rollup}
+- {date: '2026-03-25', title: 'AI Gateway: More granular spend data and request history', kind: feature}
+- {date: '2026-03-17', title: AI Gateway model access policies and cost visibility, kind: feature}
+window: recent 12 entries as of 2026-08-06

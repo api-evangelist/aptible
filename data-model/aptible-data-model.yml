@@ -1,0 +1,868 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/aptible-deploy-openapi-original.yml (HAL _links relations + schema properties)
+scope: aptible:deploy
+identifier_style: integer surrogate ids; no prefixed string ids
+hypermedia: HAL — every entity carries a _links object whose relation names ARE the graph edges, so the
+  entity graph below was read off _links rather than guessed from field names.
+root:
+  endpoint: GET https://api.aptible.com/
+  relations:
+  - accounts
+  - active_plans
+  - apps
+  - databases
+  - database_images
+  - external_aws_accounts
+  - stacks
+  note: The live HAL root advertises active_plans and external_aws_accounts, which are NOT in the published
+    OpenAPI — the runtime index is slightly wider than the contract.
+hierarchy:
+- organization
+- stack
+- account (environment)
+- app | database
+- service
+- vhost (endpoint)
+- container
+notes:
+- 'Operations are a first-class entity, not a side effect: nearly every entity has a has_many operations
+  edge, and mutations are created as operations rather than as verbs on the resource. See conventions/aptible-conventions.yml.'
+- organization, role and user appear only as link targets — they live on auth.aptible.com and have no
+  schema in the Deploy API contract.
+- 'A database backup graph is self-referential: backup has_one copied_from backup and has_many copies
+  backup, modelling cross-region copies.'
+- database has_many dependents database models read replicas.
+entity_count: 33
+entities:
+- entity: account
+  schema: '#/components/schemas/account'
+  field_count: 29
+  key_fields:
+  - id
+  - type
+  - name
+  - handle
+  - onboarding_status
+  - number
+  - activated
+  - syslog_host
+  - syslog_port
+  - bastion_host
+  relationships:
+  - kind: has_many
+    target: activity_report
+    via: activity_reports
+  - kind: has_many
+    target: app
+    via: apps
+  - kind: has_many
+    target: backup
+    via: backups
+  - kind: has_many
+    target: certificate
+    via: certificates
+  - kind: has_many
+    target: database
+    via: databases
+  - kind: has_many
+    target: disk_attachment
+    via: disk_attachments
+  - kind: has_many
+    target: disk
+    via: disks
+  - kind: has_many
+    target: log_drain
+    via: log_drains
+  - kind: has_many
+    target: metric_drain
+    via: metric_drains
+  - kind: has_many
+    target: operation
+    via: operations
+  - kind: has_one
+    target: organization
+    via: organization
+  - kind: has_many
+    target: permission
+    via: permissions
+  - kind: has_many
+    target: service
+    via: services
+  - kind: has_one
+    target: stack
+    via: stack
+  - kind: has_many
+    target: vhost
+    via: vhosts
+- entity: activity_report
+  schema: '#/components/schemas/activity_report'
+  field_count: 6
+  key_fields:
+  - id
+  - created_at
+  - updated_at
+  - starts_at
+  - ends_at
+  - filename
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+- entity: app
+  schema: '#/components/schemas/app'
+  field_count: 7
+  key_fields:
+  - id
+  - handle
+  - git_repo
+  - created_at
+  - updated_at
+  - status
+  - deployment_method
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_many
+    target: code_scan_result
+    via: code_scan_results
+  - kind: has_many
+    target: configuration
+    via: configurations
+  - kind: has_one
+    target: current_configuration
+    via: current_configuration
+  - kind: has_one
+    target: current_deployment
+    via: current_deployment
+  - kind: has_one
+    target: current_image
+    via: current_image
+  - kind: has_one
+    target: current_setting
+    via: current_setting
+  - kind: has_many
+    target: deployment
+    via: deployments
+  - kind: has_many
+    target: ephemeral_session
+    via: ephemeral_sessions
+  - kind: has_many
+    target: image
+    via: images
+  - kind: has_one
+    target: last_code_scan_result
+    via: last_code_scan_result
+  - kind: has_many
+    target: operation
+    via: operations
+  - kind: has_many
+    target: prerelease_command
+    via: prerelease_commands
+  - kind: has_many
+    target: service_definition
+    via: service_definitions
+  - kind: has_many
+    target: service
+    via: services
+  - kind: has_many
+    target: setting
+    via: settings
+  - kind: has_many
+    target: vhost
+    via: vhosts
+- entity: backup
+  schema: '#/components/schemas/backup'
+  field_count: 9
+  key_fields:
+  - id
+  - aws_snapshot_id
+  - aws_region
+  - database_handle
+  - created_at
+  - updated_at
+  - kms_arn
+  - size
+  - manual
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_one
+    target: copied_from
+    via: copied_from
+  - kind: has_many
+    target: backup
+    via: copies
+  - kind: has_one
+    target: database
+    via: database
+  - kind: has_one
+    target: database_image
+    via: database_image
+  - kind: has_many
+    target: operation
+    via: operations
+- entity: backup_retention_policy
+  schema: '#/components/schemas/backup_retention_policy'
+  field_count: 8
+  key_fields:
+  - id
+  - created_at
+  - daily
+  - monthly
+  - yearly
+  - pitr_days
+  - make_copy
+  - keep_final
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+- entity: certificate
+  schema: '#/components/schemas/certificate'
+  field_count: 25
+  key_fields:
+  - id
+  - certificate_body
+  - private_key
+  - common_name
+  - not_before
+  - not_after
+  - issuer_country
+  - issuer_organization
+  - issuer_website
+  - issuer_common_name
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_many
+    target: app
+    via: apps
+  - kind: has_many
+    target: operation
+    via: operations
+  - kind: has_many
+    target: vhost
+    via: vhosts
+- entity: code_scan_result
+  schema: '#/components/schemas/code_scan_result'
+  field_count: 6
+  key_fields:
+  - id
+  - dockerfile_present
+  - procfile_present
+  - aptible_yml_present
+  - created_at
+  - updated_at
+  relationships:
+  - kind: has_one
+    target: app
+    via: app
+  - kind: has_one
+    target: operation
+    via: operation
+- entity: configuration
+  schema: '#/components/schemas/configuration'
+  field_count: 2
+  key_fields:
+  - id
+  - env
+  relationships:
+  - kind: has_one
+    target: resource
+    via: resource
+- entity: container
+  schema: '#/components/schemas/container'
+  field_count: 14
+  key_fields:
+  - id
+  - host
+  - port
+  - status
+  - docker_name
+  - created_at
+  - updated_at
+  - layer
+  - aws_instance_id
+  - instance_class
+  relationships:
+  - kind: has_one
+    target: log_drain
+    via: log_drain
+  - kind: has_one
+    target: metric_drain
+    via: metric_drain
+  - kind: has_one
+    target: release
+    via: release
+  - kind: has_one
+    target: vhost
+    via: vhost
+- entity: database
+  schema: '#/components/schemas/database'
+  field_count: 19
+  key_fields:
+  - id
+  - handle
+  - type
+  - passphrase
+  - connection_url
+  - provisioned
+  - created_at
+  - updated_at
+  - status
+  - docker_repo
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_many
+    target: backup
+    via: backups
+  - kind: has_many
+    target: configuration
+    via: configurations
+  - kind: has_one
+    target: current_configuration
+    via: current_configuration
+  - kind: has_one
+    target: current_setting
+    via: current_setting
+  - kind: has_many
+    target: database_credential
+    via: database_credentials
+  - kind: has_one
+    target: database_image
+    via: database_image
+  - kind: has_many
+    target: database
+    via: dependents
+  - kind: has_one
+    target: disk
+    via: disk
+  - kind: has_one
+    target: initialize_from
+    via: initialize_from
+  - kind: has_many
+    target: operation
+    via: operations
+  - kind: has_one
+    target: service
+    via: service
+  - kind: has_many
+    target: setting
+    via: settings
+- entity: database_credential
+  schema: '#/components/schemas/database_credential'
+  field_count: 6
+  key_fields:
+  - id
+  - created_at
+  - updated_at
+  - connection_url
+  - type
+  - default
+  relationships:
+  - kind: has_one
+    target: database
+    via: database
+  - kind: has_many
+    target: operation
+    via: operations
+- entity: database_image
+  schema: '#/components/schemas/database_image'
+  field_count: 10
+  key_fields:
+  - id
+  - created_at
+  - updated_at
+  - type
+  - version
+  - discoverable
+  - visible
+  - default
+  - description
+  - docker_repo
+  relationships:
+  - kind: has_one
+    target: database
+    via: database
+- entity: deployment
+  schema: '#/components/schemas/deployment'
+  field_count: 19
+  key_fields:
+  - id
+  - status
+  - operation_id
+  - app_id
+  - configuration_id
+  - image_id
+  - source_id
+  - setting_id
+  - docker_image
+  - docker_repository_url
+  relationships:
+  - kind: has_one
+    target: app
+    via: app
+  - kind: has_one
+    target: configuration
+    via: configuration
+  - kind: has_one
+    target: image
+    via: image
+  - kind: has_one
+    target: setting
+    via: setting
+  - kind: has_one
+    target: source
+    via: source
+- entity: disk
+  schema: '#/components/schemas/disk'
+  field_count: 18
+  key_fields:
+  - id
+  - handle
+  - ebs_volume_id
+  - ebs_volume_type
+  - filesystem
+  - passphrase
+  - key_bytes
+  - size
+  - provisioned_iops
+  - host
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_one
+    target: database
+    via: database
+  - kind: has_many
+    target: operation
+    via: operations
+- entity: disk_attachment
+  schema: '#/components/schemas/disk_attachment'
+  field_count: 6
+  key_fields:
+  - id
+  - mount_point
+  - status
+  - created_at
+  - updated_at
+  - deleted_at
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_many
+    target: operation
+    via: operations
+  - kind: has_one
+    target: persistent_disk
+    via: persistent_disk
+  - kind: has_one
+    target: service
+    via: service
+- entity: ephemeral_container
+  schema: '#/components/schemas/ephemeral_container'
+  field_count: 8
+  key_fields:
+  - id
+  - layer
+  - docker_name
+  - interactive
+  - memory_limit
+  - allocation
+  - created_at
+  - updated_at
+  relationships:
+  - kind: has_one
+    target: ephemeral_session
+    via: ephemeral_session
+  - kind: has_one
+    target: log_drain
+    via: log_drain
+- entity: ephemeral_session
+  schema: '#/components/schemas/ephemeral_session'
+  field_count: 6
+  key_fields:
+  - id
+  - aws_instance_id
+  - host
+  - name
+  - created_at
+  - updated_at
+  relationships:
+  - kind: has_one
+    target: app
+    via: app
+  - kind: has_many
+    target: ephemeral_container
+    via: ephemeral_containers
+  - kind: has_one
+    target: operation
+    via: operation
+  - kind: has_many
+    target: operation
+    via: operations
+- entity: image
+  schema: '#/components/schemas/image'
+  field_count: 12
+  key_fields:
+  - id
+  - git_repo
+  - git_ref
+  - docker_repo
+  - docker_ref
+  - dualstack_hint
+  - platform
+  - release
+  - scan
+  - exposed_ports
+  relationships:
+  - kind: has_one
+    target: app
+    via: app
+  - kind: has_many
+    target: operation
+    via: operations
+- entity: intrusion_detection_report
+  schema: '#/components/schemas/intrusion_detection_report'
+  field_count: 5
+  key_fields:
+  - id
+  - created_at
+  - updated_at
+  - starts_at
+  - ends_at
+  relationships:
+  - kind: has_one
+    target: stack
+    via: stack
+- entity: llm_gateway_configuration
+  schema: '#/components/schemas/llm_gateway_configuration'
+  field_count: 8
+  key_fields:
+  - id
+  - organization_id
+  - team_id
+  - trial
+  - spend_limit
+  - models
+  - created_at
+  - updated_at
+  relationships: []
+- entity: log_drain
+  schema: '#/components/schemas/log_drain'
+  field_count: 22
+  key_fields:
+  - id
+  - handle
+  - drain_type
+  - drain_host
+  - drain_port
+  - created_at
+  - updated_at
+  - status
+  - drain_username
+  - drain_password
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_many
+    target: container
+    via: containers
+  - kind: has_one
+    target: database
+    via: database
+  - kind: has_many
+    target: ephemeral_container
+    via: ephemeral_containers
+  - kind: has_many
+    target: operation
+    via: operations
+- entity: metric_drain
+  schema: '#/components/schemas/metric_drain'
+  field_count: 14
+  key_fields:
+  - id
+  - handle
+  - created_at
+  - updated_at
+  - status
+  - drain_type
+  - drain_configuration
+  - aggregator_ca_certificate
+  - aggregator_ca_private_key_blob
+  - aggregator_host
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_many
+    target: container
+    via: containers
+  - kind: has_one
+    target: database
+    via: database
+  - kind: has_many
+    target: operation
+    via: operations
+- entity: operation
+  schema: '#/components/schemas/operation'
+  field_count: 33
+  key_fields:
+  - id
+  - type
+  - status
+  - cancelled
+  - aborted
+  - git_ref
+  - docker_ref
+  - env
+  - container_size
+  - container_count
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_one
+    target: code_scan_result
+    via: code_scan_result
+  - kind: has_one
+    target: destination_account
+    via: destination_account
+  - kind: has_many
+    target: ephemeral_session
+    via: ephemeral_sessions
+  - kind: has_one
+    target: resource
+    via: resource
+  - kind: has_one
+    target: service
+    via: service
+  - kind: has_many
+    target: ssh_portal_connection
+    via: ssh_portal_connections
+  - kind: has_one
+    target: user
+    via: user
+- entity: permission
+  schema: '#/components/schemas/permission'
+  field_count: 2
+  key_fields:
+  - id
+  - scope
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_one
+    target: role
+    via: role
+- entity: persistent_disk
+  schema: '#/components/schemas/persistent_disk'
+  field_count: 16
+  key_fields:
+  - id
+  - handle
+  - status
+  - disk_type
+  - size
+  - provisioned_iops
+  - disk_status
+  - aws_resource_id
+  - kms_arn
+  - modification_progress
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_many
+    target: operation
+    via: operations
+- entity: prerelease_command
+  schema: '#/components/schemas/prerelease_command'
+  field_count: 5
+  key_fields:
+  - id
+  - command
+  - index
+  - created_at
+  - updated_at
+  relationships:
+  - kind: has_one
+    target: app
+    via: app
+- entity: release
+  schema: '#/components/schemas/release'
+  field_count: 5
+  key_fields:
+  - id
+  - docker_repo
+  - docker_ref
+  - created_at
+  - updated_at
+  relationships:
+  - kind: has_many
+    target: container
+    via: containers
+  - kind: has_one
+    target: service
+    via: service
+- entity: service
+  schema: '#/components/schemas/service'
+  field_count: 15
+  key_fields:
+  - id
+  - handle
+  - docker_repo
+  - docker_ref
+  - process_type
+  - command
+  - container_count
+  - created_at
+  - updated_at
+  - container_memory_limit_mb
+  relationships:
+  - kind: has_one
+    target: account
+    via: account
+  - kind: has_one
+    target: app
+    via: app
+  - kind: has_one
+    target: current_release
+    via: current_release
+  - kind: has_one
+    target: current_setting
+    via: current_setting
+  - kind: has_one
+    target: database
+    via: database
+  - kind: has_many
+    target: operation
+    via: operations
+  - kind: has_many
+    target: release
+    via: releases
+  - kind: has_many
+    target: setting
+    via: settings
+  - kind: has_many
+    target: vhost
+    via: vhosts
+- entity: source
+  schema: '#/components/schemas/source'
+  field_count: 4
+  key_fields:
+  - id
+  - qualified_name
+  - display_name
+  - url
+  relationships:
+  - kind: has_many
+    target: app
+    via: apps
+  - kind: has_many
+    target: deployment
+    via: deployments
+  - kind: has_one
+    target: organization
+    via: organization
+- entity: ssh_portal_connection
+  schema: '#/components/schemas/ssh_portal_connection'
+  field_count: 7
+  key_fields:
+  - id
+  - ssh_user
+  - ssh_certificate_body
+  - ssh_port_forward_socket
+  - ssh_pty
+  - created_at
+  - updated_at
+  relationships:
+  - kind: has_one
+    target: operation
+    via: operation
+- entity: stack
+  schema: '#/components/schemas/stack'
+  field_count: 24
+  key_fields:
+  - id
+  - name
+  - version
+  - region
+  - default
+  - public
+  - created_at
+  - updated_at
+  - ssh_host_dsa_public_key
+  - ssh_host_rsa_public_key
+  relationships:
+  - kind: has_many
+    target: account
+    via: accounts
+  - kind: has_many
+    target: intrusion_detection_report
+    via: intrusion_detection_reports
+  - kind: has_one
+    target: organization
+    via: organization
+  - kind: has_many
+    target: vpc_peer
+    via: vpc_peers
+  - kind: has_many
+    target: vpn_tunnel
+    via: vpn_tunnels
+- entity: vhost
+  schema: '#/components/schemas/vhost'
+  field_count: 34
+  key_fields:
+  - id
+  - virtual_domain
+  - type
+  - elastic_load_balancer_name
+  - application_load_balancer_arn
+  - network_load_balancer_arn
+  - security_group_id
+  - external_host
+  - external_http_port
+  - external_https_port
+  relationships:
+  - kind: has_one
+    target: certificate
+    via: certificate
+  - kind: has_one
+    target: current_setting
+    via: current_setting
+  - kind: has_many
+    target: operation
+    via: operations
+  - kind: has_one
+    target: service
+    via: service
+  - kind: has_many
+    target: setting
+    via: settings
+- entity: vpc_peer
+  schema: '#/components/schemas/vpc_peer'
+  field_count: 8
+  key_fields:
+  - id
+  - created_at
+  - updated_at
+  - connection_id
+  - connection_status
+  - peer_account_id
+  - peer_vpc_id
+  - description
+  relationships:
+  - kind: has_one
+    target: stack
+    via: stack

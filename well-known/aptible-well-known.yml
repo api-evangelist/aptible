@@ -1,0 +1,36 @@
+generated: '2026-08-06'
+method: probed
+source: live GET of /.well-known/* on every Aptible host in apis.yml
+result: none
+notes: >-
+  Every /.well-known/ discovery path was probed on the marketing/docs host, the
+  Deploy API host and the Auth host. Nothing is published. api.aptible.com and
+  auth.aptible.com answer with their own HAL+JSON 404 envelope
+  ({"code":404,"error":"not_found","message":"Not Found"}), which confirms the
+  request reached the API and was genuinely not found rather than being swallowed
+  by an SPA catch-all. No security.txt (RFC 9116), no OIDC discovery, no RFC 8414
+  authorization-server metadata, no RFC 9727 api-catalog, no agent card.
+  Aptible's responsible-disclosure program is real but is published as a legal
+  page, not as /.well-known/security.txt — see
+  security/aptible-vulnerability-disclosure.yml.
+hosts:
+- host: https://www.aptible.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://api.aptible.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://auth.aptible.com
+  documents:
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}

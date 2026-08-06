@@ -1,0 +1,72 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/*.yml + https://www.aptible.com/docs/core-concepts/security-compliance/overview + security/aptible-trust-center.yml
+standards:
+- id: openapi-3
+  conforms: true
+  evidence: 'Three published documents: Deploy API 3.0.3 (137 paths / 195 ops), Cloud API 3.0.2 (19 paths / 28 ops), Tool Server 3.0.0 (2 ops).'
+- id: hal
+  conforms: true
+  evidence: api.aptible.com returns Content-Type application/hal+json and every entity schema carries a _links object; the root is a HAL index.
+- id: rfc7240-prefer
+  conforms: true
+  evidence: 'A Prefer header (no_sensitive_extras=true) is declared on 181 operations in the Deploy API spec.'
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Errors use a bespoke {code, error, message} envelope served as application/hal+json, not application/problem+json.'
+- id: oauth2
+  conforms: false
+  evidence: >-
+    No oauth2 securityScheme in any published spec and no RFC 8414 metadata at
+    auth.aptible.com/.well-known/oauth-authorization-server (404). Tokens are
+    issued by POST https://auth.aptible.com/tokens and the signing public key is
+    served at the auth root, which is OAuth-shaped but not an advertised OAuth 2
+    authorization server.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returned 404 on api.aptible.com and auth.aptible.com.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returned 404 on www, api and auth hosts; the disclosure program is published as a legal page instead.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset/Deprecation header contract published; zero deprecated operations in either spec.
+- id: rfc9727-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returned 404.
+- id: a2a-agent-card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json returned 404 on www, api and auth hosts.
+- id: mcp
+  conforms: true
+  evidence: 'First-party MCP server aptible/aptible-mcp (stdio, MIT, 38 tools) plus a hosted MCP Gateway product at mcp-gateway.aptible.com (early access).'
+- id: llmstxt
+  conforms: true
+  evidence: 'https://www.aptible.com/docs/llms.txt returns 200 (52 KB) plus a full llms-full.txt.'
+- id: scim2
+  conforms: true
+  evidence: 'Aptible documents SCIM provisioning: https://www.aptible.com/docs/core-concepts/security-compliance/authentication/scim'
+- id: saml-sso
+  conforms: true
+  evidence: 'SSO documented with per-IdP guides (Auth0, Okta, others): https://www.aptible.com/docs/core-concepts/security-compliance/authentication/sso'
+- id: pagination-page-number
+  conforms: true
+  evidence: page/per_page query parameters on 81 Deploy API operations.
+- id: idempotency-key
+  conforms: false
+  evidence: No Idempotency-Key header or parameter anywhere in 195 operations; no idempotency section in the docs.
+compliance_programs:
+- {id: hipaa, status: supported, detail: 'Business Associate Agreement (BAA) offered; HIPAA compliance guide published.', url: 'https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hipaa'}
+- {id: hitrust, status: certified, detail: 'HITRUST R2 certified; HITRUST inheritance offered to customers.', url: 'https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hitrust'}
+- {id: soc2, status: supported, detail: 'SOC 2 report available via the trust center; streamlined SOC 2 solutions for customers.', url: 'https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/soc2'}
+- {id: pci-dss, status: supported, url: 'https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/pci'}
+- {id: pipeda, status: supported, url: 'https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/pipeda'}
+- {id: gdpr, status: supported, detail: 'Data Processing Addendum published.', url: 'https://www.aptible.com/legal/data-processing-addendum'}
+trust_center:
+  url: https://trust.aptible.com/
+  platform: Conveyor
+  artifact: security/aptible-trust-center.yml
+note: >-
+  Compliance here is unusual in that it is the PRODUCT, not just the posture:
+  Aptible sells compliance-ready infrastructure, so the frameworks above are both
+  what Aptible holds and what it lets customers inherit.
