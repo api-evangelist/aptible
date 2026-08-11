@@ -37,39 +37,15 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 apis:
-- aid: aptible:deploy
-  name: Aptible Deploy API
-  description: 'The core Aptible platform API. A HAL+JSON REST API covering accounts
-    (environments), apps, databases, backups and retention policies, certificates,
-    configurations, containers, disks, deployments, endpoints (vhosts), ephemeral SSH
-    sessions and containers, images, log drains and metric drains, LLM Gateway configurations,
-    LLM keys and policies, maintenances, operations, permissions, plans, releases,
-    services and service sizing policies, sources, stacks, VPC peers and VPN tunnels.
-    137 paths / 195 operations, every one tagged with a unique operationId. Authentication
-    is a bearer token in the Authorization header, issued by auth.aptible.com.'
-  humanURL: https://www.aptible.com/docs/getting-started/home
-  baseURL: https://api.aptible.com
-  tags:
-  - Deployment
-  - Platform as a Service
-  - Managed Databases
-  - Infrastructure
-  properties:
-  - type: OpenAPI
-    url: openapi/aptible-deploy-openapi-original.yml
-  - type: Overlay
-    url: overlays/aptible-deploy-overlay.yaml
-  - type: Documentation
-    url: https://www.aptible.com/docs/getting-started/home
 - aid: aptible:auth
   name: Aptible Auth API
-  description: 'The Aptible authentication and identity service at auth.aptible.com.
-    A HAL+JSON API exposing organizations, sessions, tokens, OAuth clients, users,
-    U2F trusted facets and SSH key pre-authorizations, plus the RSA public key used
-    to verify the JWTs it issues. This is where the bearer token consumed by the Deploy
-    API comes from. No OpenAPI is published for this surface; the HAL root is the discovery
-    document.'
-  humanURL: https://www.aptible.com/docs/core-concepts/security-compliance/authentication/password-authentication
+  description: >-
+    The Aptible authentication and identity service at auth.aptible.com. A HAL+JSON API exposing organizations,
+    sessions, tokens, OAuth clients, users, U2F trusted facets and SSH key pre-authorizations, plus the
+    RSA public key used to verify the JWTs it issues. This is where the bearer token consumed by the Deploy
+    API comes from. No OpenAPI is published for this surface; the HAL root is the discovery document.
+  humanURL: >-
+    https://www.aptible.com/docs/core-concepts/security-compliance/authentication/password-authentication
   baseURL: https://auth.aptible.com
   tags:
   - Authentication
@@ -77,46 +53,821 @@ apis:
   - OAuth
   properties:
   - type: Documentation
-    url: https://www.aptible.com/docs/core-concepts/security-compliance/authentication/password-authentication
-- aid: aptible:cloud
-  name: Aptible Cloud API
-  description: 'The Aptible Cloud API, published as an OpenAPI 3.0.2 document alongside
-    the generated Go, Python and Ruby client libraries in aptible/cloud-api-clients.
-    Covers organizations, environments, assets, connections, operations, actions,
-    worker and utility endpoints — 19 paths / 28 operations, HTTP bearer auth. The
-    published spec declares a relative server URL, so the deployment host is not
-    asserted in the contract.'
-  humanURL: https://github.com/aptible/cloud-api-clients
+    url: >-
+      https://www.aptible.com/docs/core-concepts/security-compliance/authentication/password-authentication
+- aid: aptible:aptible-accounts-api
+  name: Aptible Accounts API
+  description: The Accounts API from Aptible — 4 operation(s) for accounts.
+  humanURL: https://www.aptible.com/docs/getting-started/home
   baseURL: https://api.aptible.com
   tags:
-  - Cloud
-  - Infrastructure
-  - Provisioning
+  - Accounts
   properties:
   - type: OpenAPI
-    url: openapi/aptible-cloud-openapi-original.yml
-  - type: Overlay
-    url: overlays/aptible-cloud-overlay.yaml
+    url: openapi/aptible-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
   - type: SourceCode
     url: https://github.com/aptible/cloud-api-clients
-- aid: aptible:tool-server
-  name: Aptible Tool Server API
-  description: 'A small OpenAPI 3.0.0 contract Aptible publishes for an Aptible tool
-    server — list the tools a server exposes and invoke one by tool_id. Bearer token
-    auth. Two operations; it is the contract behind the tool-execution layer that
-    the MCP Gateway governs.'
-  humanURL: https://github.com/aptible/tool-server-openapi-spec
-  baseURL: https://www.aptible.com
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-actions-api
+  name: Aptible Actions API
+  description: The actions API from Aptible — 2 operation(s) for actions.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
   tags:
-  - Tools
-  - Agents
-  - MCP
+  - actions
   properties:
   - type: OpenAPI
-    url: openapi/aptible-tool-server-openapi-original.yml
+    url: openapi/aptible-actions-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-activityreports-api
+  name: Aptible Activity Reports API
+  description: The ActivityReports API from Aptible — 3 operation(s) for activityreports.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - ActivityReports
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-activityreports-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-apps-api
+  name: Aptible Apps API
+  description: The Apps API from Aptible — 5 operation(s) for apps.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-apps-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-assets-api
+  name: Aptible Assets API
+  description: The assets API from Aptible — 2 operation(s) for assets.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - assets
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-assets-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-backupretentionpolicies-api
+  name: Aptible Backup Retention Policies API
+  description: >-
+    The BackupRetentionPolicies API from Aptible — 2 operation(s) for backupretentionpolicies.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - BackupRetentionPolicies
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-backupretentionpolicies-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-backups-api
+  name: Aptible Backups API
+  description: The Backups API from Aptible — 5 operation(s) for backups.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Backups
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-backups-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-certificates-api
+  name: Aptible Certificates API
+  description: The Certificates API from Aptible — 2 operation(s) for certificates.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Certificates
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-certificates-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-claims-api
+  name: Aptible Claims API
+  description: The Claims API from Aptible — 3 operation(s) for claims.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Claims
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-claims-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-codescanresults-api
+  name: Aptible Code Scan Results API
+  description: The CodeScanResults API from Aptible — 2 operation(s) for codescanresults.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - CodeScanResults
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-codescanresults-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-configurations-api
+  name: Aptible Configurations API
+  description: The Configurations API from Aptible — 3 operation(s) for configurations.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Configurations
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-configurations-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-connections-api
+  name: Aptible Connections API
+  description: The connections API from Aptible — 2 operation(s) for connections.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - connections
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-connections-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-containers-api
+  name: Aptible Containers API
+  description: The Containers API from Aptible — 4 operation(s) for containers.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Containers
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-containers-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-databasecredentials-api
+  name: Aptible Database Credentials API
+  description: The DatabaseCredentials API from Aptible — 2 operation(s) for databasecredentials.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - DatabaseCredentials
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-databasecredentials-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-databases-api
+  name: Aptible Databases API
+  description: The Databases API from Aptible — 5 operation(s) for databases.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Databases
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-databases-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-deployments-api
+  name: Aptible Deployments API
+  description: The Deployments API from Aptible — 3 operation(s) for deployments.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Deployments
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-deployments-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-diskattachments-api
+  name: Aptible Disk Attachments API
+  description: The DiskAttachments API from Aptible — 5 operation(s) for diskattachments.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - DiskAttachments
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-diskattachments-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-disks-api
+  name: Aptible Disks API
+  description: The Disks API from Aptible — 2 operation(s) for disks.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Disks
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-disks-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-environments-api
+  name: Aptible Environments API
+  description: The environments API from Aptible — 5 operation(s) for environments.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - environments
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-environments-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-ephemeralcontainers-api
+  name: Aptible Ephemeral Containers API
+  description: The EphemeralContainers API from Aptible — 3 operation(s) for ephemeralcontainers.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - EphemeralContainers
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-ephemeralcontainers-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-ephemeralsessions-api
+  name: Aptible Ephemeral Sessions API
+  description: The EphemeralSessions API from Aptible — 3 operation(s) for ephemeralsessions.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - EphemeralSessions
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-ephemeralsessions-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-images-api
+  name: Aptible Images API
+  description: The Images API from Aptible — 4 operation(s) for images.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-images-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-intrusiondetectionreports-api
+  name: Aptible Intrusion Detection Reports API
+  description: >-
+    The IntrusionDetectionReports API from Aptible — 4 operation(s) for intrusiondetectionreports.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - IntrusionDetectionReports
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-intrusiondetectionreports-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-llmgatewayconfigurations-api
+  name: Aptible Llm Gateway Configurations API
+  description: >-
+    The LlmGatewayConfigurations API from Aptible — 2 operation(s) for llmgatewayconfigurations.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - LlmGatewayConfigurations
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-llmgatewayconfigurations-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-llmkeys-api
+  name: Aptible Llm Keys API
+  description: The LlmKeys API from Aptible — 5 operation(s) for llmkeys.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - LlmKeys
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-llmkeys-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-llmpolicies-api
+  name: Aptible Llm Policies API
+  description: The LlmPolicies API from Aptible — 5 operation(s) for llmpolicies.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - LlmPolicies
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-llmpolicies-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-logdrains-api
+  name: Aptible Log Drains API
+  description: The LogDrains API from Aptible — 2 operation(s) for logdrains.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - LogDrains
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-logdrains-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-maintenances-api
+  name: Aptible Maintenances API
+  description: The Maintenances API from Aptible — 2 operation(s) for maintenances.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Maintenances
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-maintenances-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-metricdrains-api
+  name: Aptible Metric Drains API
+  description: The MetricDrains API from Aptible — 2 operation(s) for metricdrains.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - MetricDrains
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-metricdrains-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-operations-api
+  name: Aptible Operations API
+  description: The operations API from Aptible — 18 operation(s) for operations.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - operations
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-operations-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-organizations-api
+  name: Aptible Organizations API
+  description: The organizations API from Aptible — 4 operation(s) for organizations.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-permissions-api
+  name: Aptible Permissions API
+  description: The Permissions API from Aptible — 3 operation(s) for permissions.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-persistentdisks-api
+  name: Aptible Persistent Disks API
+  description: The PersistentDisks API from Aptible — 2 operation(s) for persistentdisks.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - PersistentDisks
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-persistentdisks-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-plans-api
+  name: Aptible Plans API
+  description: The Plans API from Aptible — 2 operation(s) for plans.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-plans-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-releases-api
+  name: Aptible Releases API
+  description: The Releases API from Aptible — 2 operation(s) for releases.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Releases
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-releases-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-root-api
+  name: Aptible Root API
+  description: The Root API from Aptible — 1 operation(s) for root.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Root
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-root-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-services-api
+  name: Aptible Services API
+  description: The Services API from Aptible — 3 operation(s) for services.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-services-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-servicesizingpolicies-api
+  name: Aptible Service Sizing Policies API
+  description: The ServiceSizingPolicies API from Aptible — 4 operation(s) for servicesizingpolicies.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - ServiceSizingPolicies
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-servicesizingpolicies-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-settings-api
+  name: Aptible Settings API
+  description: The Settings API from Aptible — 5 operation(s) for settings.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-settings-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-sources-api
+  name: Aptible Sources API
+  description: The Sources API from Aptible — 4 operation(s) for sources.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-sources-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-sshportalconnections-api
+  name: Aptible Ssh Portal Connections API
+  description: The SshPortalConnections API from Aptible — 2 operation(s) for sshportalconnections.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - SshPortalConnections
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-sshportalconnections-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-stacks-api
+  name: Aptible Stacks API
+  description: The Stacks API from Aptible — 2 operation(s) for stacks.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Stacks
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-stacks-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-system-api
+  name: Aptible System API
+  description: The System API from Aptible — 1 operation(s) for system.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-system-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-tool-api
+  name: Aptible Tool API
+  description: The Tool API from Aptible — 1 operation(s) for tool.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Tool
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-tool-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-tools-api
+  name: Aptible Tools API
+  description: The Tools API from Aptible — 1 operation(s) for tools.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Tools
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-tools-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-utilities-api
+  name: Aptible Utilities API
+  description: The utilities API from Aptible — 2 operation(s) for utilities.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - utilities
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-utilities-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-vhosts-api
+  name: Aptible Vhosts API
+  description: The Vhosts API from Aptible — 5 operation(s) for vhosts.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - Vhosts
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-vhosts-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-vpcpeers-api
+  name: Aptible Vpc Peers API
+  description: The VpcPeers API from Aptible — 2 operation(s) for vpcpeers.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - VpcPeers
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-vpcpeers-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-vpntunnels-api
+  name: Aptible Vpn Tunnels API
+  description: The VpnTunnels API from Aptible — 2 operation(s) for vpntunnels.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - VpnTunnels
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-vpntunnels-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-worker-api
+  name: Aptible Worker API
+  description: The worker API from Aptible — 1 operation(s) for worker.
+  humanURL: https://www.aptible.com/docs/getting-started/home
+  baseURL: https://api.aptible.com
+  tags:
+  - worker
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-worker-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
   - type: SourceCode
     url: https://github.com/aptible/tool-server-openapi-spec
 common:
+- type: Overlay
+  url: overlays/aptible-cloud-overlay.yaml
+- type: IssueTracker
+  url: https://github.com/aptible/cloud-api-clients/issues
+- type: Releases
+  url: https://github.com/aptible/cloud-api-clients/releases
+- type: License
+  name: MIT
+  url: https://github.com/aptible/cloud-api-clients/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/aptible-agentic-access.yml
 - type: TrustCenter
