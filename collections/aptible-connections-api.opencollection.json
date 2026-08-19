@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloud Connections API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Connection Create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/organizations/:organization_id/environments/:environment_id/assets/:asset_id/connections/",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Connection Create"
+        },
+        {
+          "info": {
+            "name": "Connection Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/organizations/:organization_id/environments/:environment_id/assets/:asset_id/connections/:connection_id",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Connection Get"
+        },
+        {
+          "info": {
+            "name": "Connection Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/organizations/:organization_id/environments/:environment_id/assets/:asset_id/connections/:connection_id",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Connection Delete"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

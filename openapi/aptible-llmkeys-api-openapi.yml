@@ -1,0 +1,662 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Llm Keys API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: LlmKeys
+paths:
+  /accounts/{account_id}/llm_keys:
+    get:
+      description: Returns a list of LLM keys for the specified account.
+      operationId: ListLlmKeysForAccount
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListLlmKeysForAccount_200_response'
+          description: successful
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list llm_keys
+      tags:
+      - LlmKeys
+  /llm_keys/{id}:
+    delete:
+      description: Revokes and deletes the specified LLM key.
+      operationId: RevokeLlmKey
+      parameters:
+      - description: LLM Key database ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/llm_key'
+          description: successful
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        '404':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: not found
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: revoke llm_key
+      tags:
+      - LlmKeys
+    get:
+      description: Returns the details of a specific LLM key by ID.
+      operationId: GetLlmKey
+      parameters:
+      - description: LLM Key database ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/llm_key'
+          description: successful
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        '404':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: not found
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show llm_key
+      tags:
+      - LlmKeys
+  /llm_keys:
+    get:
+      description: Returns a paginated list of all LLM keys.
+      operationId: ListLlmKeys
+      parameters:
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListLlmKeys_200_response'
+          description: successful
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list all llm_keys
+      tags:
+      - LlmKeys
+  /llm_keys/{id}/usage:
+    get:
+      description: Returns aggregated usage statistics for the specified LLM key over a date range.
+      operationId: GetLlmKeyUsage
+      parameters:
+      - description: LLM Key database ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Start date for the usage period (YYYY-MM-DD)
+        explode: true
+        in: query
+        name: start_date
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: End date for the usage period (YYYY-MM-DD, exclusive)
+        explode: true
+        in: query
+        name: end_date
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/GetLlmKeyUsage_200_response'
+          description: successful
+        '400':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: bad request
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        '404':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: not found
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: get llm key usage
+      tags:
+      - LlmKeys
+  /llm_keys/{id}/requests:
+    get:
+      description: Returns a paginated list of API requests made with the specified LLM key.
+      operationId: GetLlmKeyRequests
+      parameters:
+      - description: LLM Key database ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Start date/time for filtering requests (ISO8601 format, YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS). Cannot be more than 7 days ago.
+        explode: true
+        in: query
+        name: start_time
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: End date/time for filtering requests (ISO8601 format, YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)
+        explode: true
+        in: query
+        name: end_time
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Page number for pagination
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results per page (max 50)
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Filter by specific request ID
+        explode: true
+        in: query
+        name: request_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by request status ('success' or 'failure')
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by model name
+        explode: true
+        in: query
+        name: model
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: 'Sort field: ''spend'', ''total_tokens'', ''start_time'', or ''end_time''. Default: ''start_time'''
+        explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: 'Sort order: ''asc'' or ''desc''. Default: ''desc'''
+        explode: true
+        in: query
+        name: sort_order
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/GetLlmKeyRequests_200_response'
+          description: successful
+        '422':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: validation error
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        '404':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: not found
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list llm key requests
+      tags:
+      - LlmKeys
+components:
+  schemas:
+    GetLlmKeyRequests_200_response__embedded:
+      properties:
+        requests:
+          items:
+            $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded_requests_inner'
+          type: array
+      type: object
+    GetLlmKeyRequests_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links'
+      type: object
+    ListLlmKeys_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListLlmKeysForAccount_200_response__embedded'
+        _links:
+          type: object
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListLlmKeysForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListLlmKeysForAccount_200_response__embedded'
+        _links:
+          type: object
+      type: object
+    llm_key_current_usage:
+      description: Month-to-date usage metrics for this key
+      properties:
+        spend:
+          description: Total spend in USD
+          type: number
+        input_tokens:
+          description: Total input (prompt) tokens
+          type: integer
+        output_tokens:
+          description: Total output (completion) tokens
+          type: integer
+        successful_requests:
+          description: Total successful API requests
+          type: integer
+        failed_requests:
+          description: Total failed API requests
+          type: integer
+      type: object
+      x-nullable: true
+    GetLlmKeyRequests_200_response__links:
+      properties:
+        self:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
+        next:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
+        prev:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
+      type: object
+    GetLlmKeyRequests_200_response__embedded_requests_inner:
+      properties:
+        _id:
+          type: string
+        status:
+          type: string
+        start_time:
+          type: string
+        end_time:
+          type: string
+        model:
+          type: string
+        input_tokens:
+          type: integer
+        output_tokens:
+          type: integer
+        spend:
+          type: number
+      type: object
+    ListLlmKeysForAccount_200_response__embedded:
+      properties:
+        llm_keys:
+          items:
+            $ref: '#/components/schemas/llm_key'
+          type: array
+      type: object
+    GetLlmKeyUsage_200_response:
+      properties:
+        spend:
+          description: Total spend in USD
+          type: number
+        input_tokens:
+          description: Total input (prompt) tokens
+          type: integer
+        output_tokens:
+          description: Total output (completion) tokens
+          type: integer
+        successful_requests:
+          description: Total successful API requests
+          type: integer
+        failed_requests:
+          description: Total failed API requests
+          type: integer
+      type: object
+    backup_retention_policy__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    GetLlmKeyRequests_200_response__links_self:
+      properties:
+        href:
+          type: string
+      type: object
+    llm_key:
+      properties:
+        id:
+          description: Database ID of the LLM Key
+          type: integer
+        _type:
+          type: string
+        handle:
+          description: User-provided handle for the token (unique within account)
+          type: string
+        note:
+          description: User-provided note (URL-safe base64 encoded)
+          type: string
+          x-nullable: true
+        created_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        updated_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        gateway_url:
+          description: Customer-facing LLM Gateway endpoint URL
+          type: string
+          x-nullable: true
+        created_by:
+          description: User who created the token
+          type: object
+          x-nullable: true
+        revoked_at:
+          description: Timestamp when token was revoked
+          format: dateTime
+          type: string
+          x-nullable: true
+        revoked_by:
+          description: User who revoked the token
+          type: object
+          x-nullable: true
+        status:
+          description: Token status (ACTIVE or REVOKED)
+          type: string
+        token:
+          description: Secret API key value (only present on creation)
+          type: string
+          x-nullable: true
+        current_usage:
+          $ref: '#/components/schemas/llm_key_current_usage'
+        _links:
+          $ref: '#/components/schemas/backup_retention_policy__links'
+      required:
+      - _type
+      - created_at
+      - created_by
+      - gateway_url
+      - handle
+      - id
+      - note
+      - revoked_at
+      - revoked_by
+      - status
+      - updated_at
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

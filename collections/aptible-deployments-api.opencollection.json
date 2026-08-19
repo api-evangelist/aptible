@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aptible API v1 Deployments API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deployments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list deployments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/deployments",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of paginated results"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all deployments."
+        },
+        {
+          "info": {
+            "name": "list deployments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/apps/:app_id/deployments",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path",
+                "description": "app_id"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of paginated results"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of deployments for the specified app."
+        },
+        {
+          "info": {
+            "name": "show deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/deployments/:id",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "id"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific deployment by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

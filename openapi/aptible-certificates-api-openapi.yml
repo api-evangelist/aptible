@@ -1,0 +1,483 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Certificates API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: Certificates
+paths:
+  /accounts/{account_id}/certificates:
+    get:
+      description: Returns a paginated list of certificates for the specified account.
+      operationId: ListCertificatesForAccount
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListCertificatesForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list certificates
+      tags:
+      - Certificates
+    post:
+      description: Creates a new certificate for the specified account.
+      operationId: CreateCertificate
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCertificate_request'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/certificate'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create certificate
+      tags:
+      - Certificates
+  /certificates/{id}:
+    delete:
+      description: Deletes a certificate by ID.
+      operationId: DeleteCertificate
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '204':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: delete certificate
+      tags:
+      - Certificates
+    get:
+      description: Returns the details of a specific certificate by ID.
+      operationId: GetCertificate
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/certificate'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show certificate
+      tags:
+      - Certificates
+    patch:
+      description: Partially updates a certificate's attributes.
+      operationId: PatchCertificate
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchCertificate_request'
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update certificate
+      tags:
+      - Certificates
+    put:
+      description: Updates a certificate's attributes.
+      operationId: UpdateCertificate
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update certificate
+      tags:
+      - Certificates
+components:
+  schemas:
+    certificate:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        certificate_body:
+          type: string
+        private_key:
+          type: string
+        common_name:
+          type: string
+        not_before:
+          format: dateTime
+          type: string
+        not_after:
+          format: dateTime
+          type: string
+        issuer_country:
+          type: string
+        issuer_organization:
+          type: string
+        issuer_website:
+          type: string
+          x-nullable: true
+        issuer_common_name:
+          type: string
+        subject_country:
+          type: string
+          x-nullable: true
+        subject_state:
+          type: string
+          x-nullable: true
+        subject_locale:
+          type: string
+          x-nullable: true
+        subject_organization:
+          type: string
+          x-nullable: true
+        acme:
+          type: boolean
+        leaf_certificate:
+          type: string
+        certificate_chain:
+          type: string
+        sha256_fingerprint:
+          type: string
+        trusted:
+          type: boolean
+        self_signed:
+          type: boolean
+        certificate_arn:
+          type: string
+          x-nullable: true
+        subject_alternative_names:
+          items:
+            type: string
+          type: array
+        private_key_algorithm:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        _links:
+          $ref: '#/components/schemas/certificate__links'
+      required:
+      - _type
+      - acme
+      - certificate_arn
+      - certificate_body
+      - certificate_chain
+      - common_name
+      - created_at
+      - id
+      - issuer_common_name
+      - issuer_country
+      - issuer_organization
+      - issuer_website
+      - leaf_certificate
+      - not_after
+      - not_before
+      - private_key_algorithm
+      - self_signed
+      - sha256_fingerprint
+      - subject_alternative_names
+      - subject_country
+      - subject_locale
+      - subject_organization
+      - subject_state
+      - trusted
+      - updated_at
+    ListCertificatesForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListCertificatesForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListCertificatesForAccount_200_response__embedded:
+      properties:
+        certificates:
+          items:
+            $ref: '#/components/schemas/certificate'
+          type: array
+      type: object
+    certificate__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vhosts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        apps:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    PatchCertificate_request:
+      properties:
+        certificate_arn:
+          type: string
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    CreateCertificate_request:
+      properties:
+        certificate_body:
+          type: string
+        private_key:
+          type: string
+      required:
+      - certificate_body
+      - private_key
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

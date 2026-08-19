@@ -1,0 +1,491 @@
+{
+  "item": [
+    {
+      "id": "3654e13f-eb44-4bd8-a5f1-262909a4242b",
+      "name": "VpnTunnels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8774c3ae-c969-4685-ab7b-39a17be58cb9",
+          "name": "list vpn_tunnels",
+          "request": {
+            "name": "list vpn_tunnels",
+            "description": {
+              "content": "Returns a paginated list of VPN tunnels belonging to the specified stack.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stacks",
+                ":stack_id",
+                "vpn_tunnels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "stack_id",
+                  "description": "(Required) stack_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8004e54-7d40-425b-ad28-863bdb37d576",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":stack_id",
+                    "vpn_tunnels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "stack_id",
+                      "description": "(Required) stack_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"vpn_tunnels\": [\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"handle\": \"string\",\n        \"id\": 2730,\n        \"our_gateway\": \"string\",\n        \"our_networks\": [\n          [\n            \"string\",\n            \"string\"\n          ],\n          [\n            \"string\",\n            \"string\"\n          ]\n        ],\n        \"peer_gateway\": \"string\",\n        \"peer_networks\": [\n          [\n            \"string\",\n            \"string\"\n          ],\n          [\n            \"string\",\n            \"string\"\n          ]\n        ],\n        \"perfect_forward_secrecy\": false,\n        \"phase_1_alg\": \"string\",\n        \"phase_1_dh_group\": 9129,\n        \"phase_1_lifetime\": 7326,\n        \"phase_2_alg\": \"string\",\n        \"phase_2_dh_group\": 2427,\n        \"phase_2_lifetime\": 4947,\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"stack\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"handle\": \"string\",\n        \"id\": 6084,\n        \"our_gateway\": \"string\",\n        \"our_networks\": [\n          [\n            \"string\",\n            \"string\"\n          ],\n          [\n            \"string\",\n            \"string\"\n          ]\n        ],\n        \"peer_gateway\": \"string\",\n        \"peer_networks\": [\n          [\n            \"string\",\n            \"string\"\n          ],\n          [\n            \"string\",\n            \"string\"\n          ]\n        ],\n        \"perfect_forward_secrecy\": false,\n        \"phase_1_alg\": \"string\",\n        \"phase_1_dh_group\": 2579,\n        \"phase_1_lifetime\": 9805,\n        \"phase_2_alg\": \"string\",\n        \"phase_2_dh_group\": 818,\n        \"phase_2_lifetime\": 728,\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"stack\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"stack\": {\n      \"href\": \"http://tnEXrlVBWbaiuszufikspPH.eaksMtP1AVACOCcDkVJJYfNVeyxOlVyotEKgz\"\n    },\n    \"next\": {\n      \"href\": \"https://blSmIRD.yrarPllpvaPQWwkgbXZhVAhZ\"\n    },\n    \"prev\": {\n      \"href\": \"http://OLSuiMLdVaxZRGwfWJFAKrsVZbmedKm.jqocsSKNOD28s4GTH+RJ7VcRXvkgQauhXITEiiSeSNY3KdDNMlgiaOcxw1om6I\"\n    },\n    \"self\": {\n      \"href\": \"https://eorQEIBORekpZiijveWAwKGlaDnvj.tpxl1ia5btPSj2OCz-yNLysriMnCEqQBvSPMAXdpYrdliDZ0YqUd9AG\"\n    }\n  },\n  \"current_page\": 9141,\n  \"per_page\": 5957,\n  \"total_count\": 9382\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81c8fa6a-0549-4f7c-8441-7a68b0570a31",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":stack_id",
+                    "vpn_tunnels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "stack_id",
+                      "description": "(Required) stack_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4570,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "535c33f2-5306-4d00-9f06-cee0ddff8f58",
+          "name": "show vpn_tunnel",
+          "request": {
+            "name": "show vpn_tunnel",
+            "description": {
+              "content": "Returns the details of a specific VPN tunnel by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpn_tunnels",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af83e994-1ad7-4cff-a74a-a463ab8ab791",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpn_tunnels",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"created_at\": \"string\",\n  \"handle\": \"string\",\n  \"id\": 1643,\n  \"our_gateway\": \"string\",\n  \"our_networks\": [\n    [\n      \"string\",\n      \"string\"\n    ],\n    [\n      \"string\",\n      \"string\"\n    ]\n  ],\n  \"peer_gateway\": \"string\",\n  \"peer_networks\": [\n    [\n      \"string\",\n      \"string\"\n    ],\n    [\n      \"string\",\n      \"string\"\n    ]\n  ],\n  \"perfect_forward_secrecy\": true,\n  \"phase_1_alg\": \"string\",\n  \"phase_1_dh_group\": 2157,\n  \"phase_1_lifetime\": 4950,\n  \"phase_2_alg\": \"string\",\n  \"phase_2_dh_group\": 4269,\n  \"phase_2_lifetime\": 7162,\n  \"updated_at\": \"string\",\n  \"_links\": {\n    \"stack\": {\n      \"href\": \"http://VTLvoAoYqRruUoxmx.olrtQ42keKw.Ia8a5gsod8kbYiKe8bNvI3qqe22QAThVwUfx3Y.JsT\"\n    },\n    \"self\": {\n      \"href\": \"https://NhzWPiJlnumJN.pudcVbwWhH3lsgY+Sa-VEdwb6LyFlfMRmSvHGIiHv.IHqhxyqfEjv2bPt\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e8b58ec-2887-404c-bdac-2b76418d6493",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpn_tunnels",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4570,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "33703cd6-a854-4c49-bd10-4a453bab2daf",
+    "name": "Aptible API v1 Vpn Tunnels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aptible API v1 Intrusion Detection Reports API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "IntrusionDetectionReports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list intrusion_detection_reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/stacks/:stack_id/intrusion_detection_reports",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stack_id",
+                "value": "",
+                "type": "path",
+                "description": "stack_id"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of paginated results"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of intrusion detection reports for the specified stack."
+        },
+        {
+          "info": {
+            "name": "download_csv intrusion_detection_report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/intrusion_detection_reports/:intrusion_report_id/download_csv",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "intrusion_report_id",
+                "value": "",
+                "type": "path",
+                "description": "intrusion_report_id"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns a presigned URL to download the intrusion detection report as CSV."
+        },
+        {
+          "info": {
+            "name": "download_pdf intrusion_detection_report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/intrusion_detection_reports/:intrusion_report_id/download_pdf",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "intrusion_report_id",
+                "value": "",
+                "type": "path",
+                "description": "intrusion_report_id"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns a presigned URL to download the intrusion detection report as PDF."
+        },
+        {
+          "info": {
+            "name": "show intrusion_detection_report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/intrusion_detection_reports/:id",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "id"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific intrusion detection report by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

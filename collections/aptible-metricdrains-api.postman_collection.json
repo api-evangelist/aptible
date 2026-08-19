@@ -1,0 +1,724 @@
+{
+  "item": [
+    {
+      "id": "ba129e86-db11-468f-9ec0-9b25b527fc03",
+      "name": "MetricDrains",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b271495e-0c71-4803-8b7e-8bbb13cff883",
+          "name": "list metric_drains",
+          "request": {
+            "name": "list metric_drains",
+            "description": {
+              "content": "Returns a paginated list of metric drains for the specified account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account_id",
+                "metric_drains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id",
+                  "description": "(Required) account_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62be6e0f-a694-4197-92fe-14824c1197b3",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "metric_drains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"metric_drains\": [\n      {\n        \"_type\": \"string\",\n        \"aggregator_allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aggregator_ca_certificate\": \"string\",\n        \"aggregator_ca_private_key_blob\": \"string\",\n        \"aggregator_docker_name\": \"string\",\n        \"aggregator_host\": \"string\",\n        \"aggregator_instance_id\": \"string\",\n        \"aggregator_port_mapping\": [\n          [\n            2626,\n            9474\n          ],\n          [\n            2578,\n            8918\n          ]\n        ],\n        \"created_at\": \"string\",\n        \"drain_type\": \"string\",\n        \"handle\": \"string\",\n        \"id\": 8778,\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"drain_configuration\": {\n          \"address\": \"http://fEkvPZcJqaXKuLRHQ.kdasBfNdpGH2kNSFbdkA1rQkYnyWmUy88lZVuiLPbVuTr2eklnxt8GO,sbpWujPtk\",\n          \"username\": \"string\",\n          \"password\": \"string\",\n          \"database\": \"string\",\n          \"api_key\": \"string\",\n          \"series_url\": \"http://NrmWdPqhBMdurIyDlJnGLicCOUaIobWel.cwhJvCLsweevyeW\"\n        },\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"aggregator_allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aggregator_ca_certificate\": \"string\",\n        \"aggregator_ca_private_key_blob\": \"string\",\n        \"aggregator_docker_name\": \"string\",\n        \"aggregator_host\": \"string\",\n        \"aggregator_instance_id\": \"string\",\n        \"aggregator_port_mapping\": [\n          [\n            7173,\n            772\n          ],\n          [\n            3373,\n            2685\n          ]\n        ],\n        \"created_at\": \"string\",\n        \"drain_type\": \"string\",\n        \"handle\": \"string\",\n        \"id\": 7222,\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"drain_configuration\": {\n          \"address\": \"http://pdyQfxcTIO.vsdx.iq3CefgaL\",\n          \"username\": \"string\",\n          \"password\": \"string\",\n          \"database\": \"string\",\n          \"api_key\": \"string\",\n          \"series_url\": \"http://RnJWUoPkFXTCsysbs.zen-We3eMGxIIJDV2,FQEbAvNJWO5IGQhIy9BTPO\"\n        },\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"account\": {\n      \"href\": \"https://QCRVHNknQieDZOGLwjGOsy.nkvOOD-H\"\n    },\n    \"next\": {\n      \"href\": \"http://vwcQFwZkiAHUmLYt.khkg2kqHAy0GWoRWOiN-Vv-1Bg0DnCzhNR72ApcSfBkByzwYn1bQJo4KjZDj38Eb\"\n    },\n    \"prev\": {\n      \"href\": \"http://ZNnBqnNDkiQy.sjUPkFlq.,TaJt\"\n    },\n    \"self\": {\n      \"href\": \"https://DAZslkTQyuYVFvuI.woqqyetO5dws.PBN-FT-p-AUDfye6x0FA5mRD9,8o4xIVoLKcmtbk4UGieGyd5aV5\"\n    }\n  },\n  \"current_page\": 9156,\n  \"per_page\": 27,\n  \"total_count\": 4990\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e520d5b-9ed8-473b-80c5-a995bb627a95",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "metric_drains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4718,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cf9aa42-9d9f-4739-ac40-b0bdedf04419",
+          "name": "create metric_drain",
+          "request": {
+            "name": "create metric_drain",
+            "description": {
+              "content": "Creates a new metric drain for the specified account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account_id",
+                "metric_drains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id",
+                  "description": "(Required) account_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"drain_type\": \"<string>\",\n  \"handle\": \"<string>\",\n  \"drain_configuration\": {\n    \"address\": \"<uri>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"database\": \"<string>\",\n    \"api_key\": \"<string>\",\n    \"series_url\": \"<uri>\",\n    \"authToken\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"org\": \"<string>\"\n  },\n  \"database\": \"<uri>\",\n  \"database_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "647dba0f-d4ae-4889-a50c-b96dc04b7e3c",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "metric_drains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drain_type\": \"<string>\",\n  \"handle\": \"<string>\",\n  \"drain_configuration\": {\n    \"address\": \"<uri>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"database\": \"<string>\",\n    \"api_key\": \"<string>\",\n    \"series_url\": \"<uri>\",\n    \"authToken\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"org\": \"<string>\"\n  },\n  \"database\": \"<uri>\",\n  \"database_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"aggregator_allocation\": [\n    \"string\",\n    \"string\"\n  ],\n  \"aggregator_ca_certificate\": \"string\",\n  \"aggregator_ca_private_key_blob\": \"string\",\n  \"aggregator_docker_name\": \"string\",\n  \"aggregator_host\": \"string\",\n  \"aggregator_instance_id\": \"string\",\n  \"aggregator_port_mapping\": [\n    [\n      6379,\n      6280\n    ],\n    [\n      8096,\n      4462\n    ]\n  ],\n  \"created_at\": \"string\",\n  \"drain_type\": \"string\",\n  \"handle\": \"string\",\n  \"id\": 5614,\n  \"status\": \"string\",\n  \"updated_at\": \"string\",\n  \"drain_configuration\": {\n    \"address\": \"https://kxKXxdgldNoFVRLPXGZipISs.wwmwR4JIA4BZGOYug5Rf+9.yMUtAQGNplENl4EOI4PTn5JdWUivGTy-SMf8WfC.\",\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"database\": \"string\",\n    \"api_key\": \"string\",\n    \"series_url\": \"https://DHSPTDZu.bkbuT-fEB4k5XooTsN-OuM9pv52uJKfQGyNN+8+QaQqCMOP8KcFeZ,BJZMjGpjlyr\"\n  },\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://yFbEBXiWwYAubnksQYP.lpuylZcaUYqwZfPa.u35YKVU0Ph9vpdnJiX2JOJxaNYuHU0arVbox\"\n    },\n    \"database\": {\n      \"href\": \"https://stjBipEsWphtvsVXubQjNEi.xzwGw,4FuhbVdHEkY9\"\n    },\n    \"operations\": {\n      \"href\": \"https://jtXiBnzTGY.rnZV-grYZ.eMz6ghqF6sXc3NmXq.7O5kaWNM7Krmnibn.Xjn+0FCrHUxlNk-UFQQVVGQAiSiA8by\"\n    },\n    \"containers\": {\n      \"href\": \"https://rEfMVKuGcYQU.keVrODQX4pY0ZgjPtKF8fo23qiD-l9PsV\"\n    },\n    \"self\": {\n      \"href\": \"https://tYPlqLg.zlxekwQF+v70R5goCtd5oRkylmwk+iBHShGumLs4TuhD0D.+Zf,cM3R\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3641b6e-65d1-4475-8bd9-37abc6ef7bdf",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "metric_drains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drain_type\": \"<string>\",\n  \"handle\": \"<string>\",\n  \"drain_configuration\": {\n    \"address\": \"<uri>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"database\": \"<string>\",\n    \"api_key\": \"<string>\",\n    \"series_url\": \"<uri>\",\n    \"authToken\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"org\": \"<string>\"\n  },\n  \"database\": \"<uri>\",\n  \"database_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4718,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fb82c9f-f3bf-4f5a-acdb-73edf3112aa1",
+          "name": "show metric_drain",
+          "request": {
+            "name": "show metric_drain",
+            "description": {
+              "content": "Returns the details of a specific metric drain by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metric_drains",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33069667-e031-4fc6-9a0e-f1e4b2fd5bb5",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metric_drains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"aggregator_allocation\": [\n    \"string\",\n    \"string\"\n  ],\n  \"aggregator_ca_certificate\": \"string\",\n  \"aggregator_ca_private_key_blob\": \"string\",\n  \"aggregator_docker_name\": \"string\",\n  \"aggregator_host\": \"string\",\n  \"aggregator_instance_id\": \"string\",\n  \"aggregator_port_mapping\": [\n    [\n      6379,\n      6280\n    ],\n    [\n      8096,\n      4462\n    ]\n  ],\n  \"created_at\": \"string\",\n  \"drain_type\": \"string\",\n  \"handle\": \"string\",\n  \"id\": 5614,\n  \"status\": \"string\",\n  \"updated_at\": \"string\",\n  \"drain_configuration\": {\n    \"address\": \"https://kxKXxdgldNoFVRLPXGZipISs.wwmwR4JIA4BZGOYug5Rf+9.yMUtAQGNplENl4EOI4PTn5JdWUivGTy-SMf8WfC.\",\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"database\": \"string\",\n    \"api_key\": \"string\",\n    \"series_url\": \"https://DHSPTDZu.bkbuT-fEB4k5XooTsN-OuM9pv52uJKfQGyNN+8+QaQqCMOP8KcFeZ,BJZMjGpjlyr\"\n  },\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://yFbEBXiWwYAubnksQYP.lpuylZcaUYqwZfPa.u35YKVU0Ph9vpdnJiX2JOJxaNYuHU0arVbox\"\n    },\n    \"database\": {\n      \"href\": \"https://stjBipEsWphtvsVXubQjNEi.xzwGw,4FuhbVdHEkY9\"\n    },\n    \"operations\": {\n      \"href\": \"https://jtXiBnzTGY.rnZV-grYZ.eMz6ghqF6sXc3NmXq.7O5kaWNM7Krmnibn.Xjn+0FCrHUxlNk-UFQQVVGQAiSiA8by\"\n    },\n    \"containers\": {\n      \"href\": \"https://rEfMVKuGcYQU.keVrODQX4pY0ZgjPtKF8fo23qiD-l9PsV\"\n    },\n    \"self\": {\n      \"href\": \"https://tYPlqLg.zlxekwQF+v70R5goCtd5oRkylmwk+iBHShGumLs4TuhD0D.+Zf,cM3R\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef7fdefa-d327-4646-849a-882104332b22",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metric_drains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4718,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "25aa9268-70f1-4269-9e47-1e8a76b3cccc",
+    "name": "Aptible API v1 Metric Drains API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

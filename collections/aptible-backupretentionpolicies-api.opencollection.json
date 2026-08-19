@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aptible API v1 Backup Retention Policies API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BackupRetentionPolicies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list backup retention policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/accounts/:account_id/backup_retention_policies",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of paginated results"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of backup retention policies for the specified account."
+        },
+        {
+          "info": {
+            "name": "create backup retention policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{baseUrl}/accounts/:account_id/backup_retention_policies",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new backup retention policy for the specified account."
+        },
+        {
+          "info": {
+            "name": "show backup_retention_policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/backup_retention_policies/:id",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "id"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific backup retention policy by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

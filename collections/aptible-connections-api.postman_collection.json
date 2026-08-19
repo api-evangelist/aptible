@@ -1,0 +1,760 @@
+{
+  "item": [
+    {
+      "id": "3684d5f0-de27-4765-91af-99dea586fe6b",
+      "name": "connections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5a317ec-2209-4f92-aa15-cc3c20aff017",
+          "name": "Connection Create",
+          "request": {
+            "name": "Connection Create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "organizations",
+                ":organization_id",
+                "environments",
+                ":environment_id",
+                "assets",
+                ":asset_id",
+                "connections",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "asset_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "environment_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"outgoing_asset_id\": \"<uuid>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91847804-d60f-4c31-958c-0dfdd07e3c9c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id",
+                    "environments",
+                    ":environment_id",
+                    "assets",
+                    ":asset_id",
+                    "connections",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "environment_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outgoing_asset_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n  \"description\": \"description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"aadc2da8-3d7b-565d-7dac-a4288e419e5e\",\n  \"status\": \"ACTIVE\",\n  \"incoming_connection_asset\": {\n    \"asset\": \"string\",\n    \"asset_version\": \"string\",\n    \"current_asset_parameters\": {\n      \"data\": {},\n      \"id\": \"8a9e85f9-40bc-61f9-1de6-94ebbba614d0\",\n      \"iteration\": 7641\n    },\n    \"environment\": {\n      \"id\": \"dfeab0e4-1c64-1827-450c-61dd1a5c6e23\",\n      \"name\": \"string\",\n      \"organization\": {\n        \"baa_status\": \"string\",\n        \"contact_details\": {},\n        \"id\": \"88d7c1e0-7cc9-ad48-2d95-b2cbd58623b8\",\n        \"name\": \"string\",\n        \"aws_ou\": \"string\"\n      },\n      \"description\": \"string\",\n      \"aws_account_id\": \"string\"\n    },\n    \"id\": \"527dc1eb-fb7e-020f-b288-940310736ca9\",\n    \"status\": \"FAILED\",\n    \"user_defined\": false,\n    \"outputs\": {},\n    \"operation_id\": \"df56ebec-a272-5c2f-a36b-6ecba913e48e\"\n  },\n  \"operations\": [\n    {\n      \"asset_id\": \"26afd3fa-9457-e4f0-97d2-d11384295d19\",\n      \"asset_name\": \"string\",\n      \"asset_version\": \"string\",\n      \"environment_id\": \"fe0ee461-641a-81db-e126-c9d95940a2ab\",\n      \"id\": \"6c8c8bc8-9424-0cb7-c144-e16ef5e64819\",\n      \"organization_id\": \"1f109046-49e7-ca4e-07ce-d03cfdb51e92\",\n      \"user_id\": \"a02708cb-02d4-dd1a-5212-c0974acf7e90\",\n      \"operation_type\": \"DESTROY\",\n      \"status\": \"COMPLETE\",\n      \"asset_parameters\": {},\n      \"execution_id\": \"9096d2b0-7551-7835-479a-d9c2dbff4a53\"\n    },\n    {\n      \"asset_id\": \"4035c5d5-a7e8-6cb2-b9a5-08d550e92a5e\",\n      \"asset_name\": \"string\",\n      \"asset_version\": \"string\",\n      \"environment_id\": \"d4911142-01b9-ceee-c366-abb503f2de98\",\n      \"id\": \"e3185a3e-a501-123a-436a-f7c0634532fd\",\n      \"organization_id\": \"7df7a3d0-6891-c59b-8d97-33eb93458b66\",\n      \"user_id\": \"be270d10-650e-1275-60fd-944ac18d4bba\",\n      \"operation_type\": \"CREATE\",\n      \"status\": \"PENDING\",\n      \"asset_parameters\": {},\n      \"execution_id\": \"06e473db-b0c8-b367-62af-6c3a7b2e7ba0\"\n    }\n  ],\n  \"outgoing_connection_asset\": {\n    \"asset\": \"string\",\n    \"asset_version\": \"string\",\n    \"current_asset_parameters\": {\n      \"data\": {},\n      \"id\": \"ad42e415-961c-2b84-d135-b01c7a53d937\",\n      \"iteration\": 7358\n    },\n    \"environment\": {\n      \"id\": \"23b5b54d-929b-cfb6-3026-110476833c2c\",\n      \"name\": \"string\",\n      \"organization\": {\n        \"baa_status\": \"string\",\n        \"contact_details\": {},\n        \"id\": \"872a2952-c306-cd7c-445c-ddaa7e077d70\",\n        \"name\": \"string\",\n        \"aws_ou\": \"string\"\n      },\n      \"description\": \"string\",\n      \"aws_account_id\": \"string\"\n    },\n    \"id\": \"e10d774f-ed47-d00a-dd35-08c26cadf40c\",\n    \"status\": \"DEPLOYED\",\n    \"user_defined\": true,\n    \"outputs\": {},\n    \"operation_id\": \"f521a7a9-43d9-9ffc-67cc-49a97013f6c3\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7045d025-16ff-43e8-8c46-e9bd4c43c531",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id",
+                    "environments",
+                    ":environment_id",
+                    "assets",
+                    ":asset_id",
+                    "connections",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "environment_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outgoing_asset_id\": \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\",\n  \"description\": \"description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d94440c-8643-4ee6-8be3-afe5848d1a73",
+          "name": "Connection Delete",
+          "request": {
+            "name": "Connection Delete",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "organizations",
+                ":organization_id",
+                "environments",
+                ":environment_id",
+                "assets",
+                ":asset_id",
+                "connections",
+                ":connection_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "asset_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "environment_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8bc4a6d1-f488-44dc-a983-6e497dc87b3e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id",
+                    "environments",
+                    ":environment_id",
+                    "assets",
+                    ":asset_id",
+                    "connections",
+                    ":connection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "environment_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8f92afc-484d-4a29-9ae9-aefee89085db",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id",
+                    "environments",
+                    ":environment_id",
+                    "assets",
+                    ":asset_id",
+                    "connections",
+                    ":connection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "environment_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d271223-334e-411e-b932-a756b0ffe9b6",
+          "name": "Connection Get",
+          "request": {
+            "name": "Connection Get",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "organizations",
+                ":organization_id",
+                "environments",
+                ":environment_id",
+                "assets",
+                ":asset_id",
+                "connections",
+                ":connection_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "asset_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "environment_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connection_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "98b1ac56-f704-4ba2-aa97-7e6d35a711d8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id",
+                    "environments",
+                    ":environment_id",
+                    "assets",
+                    ":asset_id",
+                    "connections",
+                    ":connection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "environment_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a597fbff-7d95-6b7a-dbf1-2dcd3bbc39c0\",\n  \"status\": \"DELETED\",\n  \"incoming_connection_asset\": {\n    \"asset\": \"string\",\n    \"asset_version\": \"string\",\n    \"current_asset_parameters\": {\n      \"data\": {},\n      \"id\": \"96a7e015-f230-ecc7-55f8-96bd19ee9d87\",\n      \"iteration\": 469\n    },\n    \"environment\": {\n      \"id\": \"2828577a-4235-c509-ea13-359f776ea8c1\",\n      \"name\": \"string\",\n      \"organization\": {\n        \"baa_status\": \"string\",\n        \"contact_details\": {},\n        \"id\": \"7477a7a1-1af4-1e52-507d-0750a5ed45ae\",\n        \"name\": \"string\",\n        \"aws_ou\": \"string\"\n      },\n      \"description\": \"string\",\n      \"aws_account_id\": \"string\"\n    },\n    \"id\": \"765316f0-1f7e-32af-7859-a66c9c09b894\",\n    \"status\": \"DEPLOYING\",\n    \"user_defined\": false,\n    \"outputs\": {},\n    \"operation_id\": \"8e4fa225-361d-de76-01f2-a4706e53b735\"\n  },\n  \"operations\": [\n    {\n      \"asset_id\": \"e81ad6be-54ed-886d-34c5-9b8941516c0f\",\n      \"asset_name\": \"string\",\n      \"asset_version\": \"string\",\n      \"environment_id\": \"38dd963d-c2ae-00da-5403-81a0f65bf617\",\n      \"id\": \"9219e1b5-4e6d-c9f0-514a-cdf1a8f4386f\",\n      \"organization_id\": \"dc62bee0-2393-54a6-417c-bc8d5989a454\",\n      \"user_id\": \"387c865c-bae6-40e6-0cbc-dc8abb7977a2\",\n      \"operation_type\": \"UPDATE\",\n      \"status\": \"FAILED\",\n      \"asset_parameters\": {},\n      \"execution_id\": \"3790c1c9-288c-966e-4736-9979de5d7442\"\n    },\n    {\n      \"asset_id\": \"f19c2773-defa-e359-54e8-40164d0347b8\",\n      \"asset_name\": \"string\",\n      \"asset_version\": \"string\",\n      \"environment_id\": \"7517b925-3eb2-574b-7e78-87d98c35b84c\",\n      \"id\": \"bd56150e-c229-998d-e130-95e8ca628c27\",\n      \"organization_id\": \"c1c8bd80-9604-cca8-fd6f-bbcf02d3d344\",\n      \"user_id\": \"0cd336d1-6e53-0ccf-bac2-482f71d8665d\",\n      \"operation_type\": \"CREATE\",\n      \"status\": \"IN_PROGRESS\",\n      \"asset_parameters\": {},\n      \"execution_id\": \"06cf2519-dfab-52a8-9d06-a2a0be2e04ac\"\n    }\n  ],\n  \"outgoing_connection_asset\": {\n    \"asset\": \"string\",\n    \"asset_version\": \"string\",\n    \"current_asset_parameters\": {\n      \"data\": {},\n      \"id\": \"5a6d26f6-a685-3c6f-c86d-32881ea27a6f\",\n      \"iteration\": 8072\n    },\n    \"environment\": {\n      \"id\": \"ca66fa72-13ba-8e47-5775-df8933a5353b\",\n      \"name\": \"string\",\n      \"organization\": {\n        \"baa_status\": \"string\",\n        \"contact_details\": {},\n        \"id\": \"de0ba0c3-c0c0-b802-f25f-2abcb6431803\",\n        \"name\": \"string\",\n        \"aws_ou\": \"string\"\n      },\n      \"description\": \"string\",\n      \"aws_account_id\": \"string\"\n    },\n    \"id\": \"083c5f4b-87ea-5ba2-36cd-d36e2e3c8908\",\n    \"status\": \"DESTROYED\",\n    \"user_defined\": false,\n    \"outputs\": {},\n    \"operation_id\": \"0063c900-83a4-07a1-dc05-2287bcf50b1d\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c4fcf09-d01e-4bc2-96ce-e82e9df5d1b2",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id",
+                    "environments",
+                    ":environment_id",
+                    "assets",
+                    ":asset_id",
+                    "connections",
+                    ":connection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "environment_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connection_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "13f3d0cd-c8a8-483d-933e-7d7e738042a4",
+    "name": "Cloud Connections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

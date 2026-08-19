@@ -1,0 +1,679 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Disk Attachments API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: DiskAttachments
+paths:
+  /accounts/{account_id}/disk_attachments:
+    get:
+      description: Returns a paginated list of disk attachments for the specified account.
+      operationId: ListDiskAttachmentsForAccount
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list disk attachments
+      tags:
+      - DiskAttachments
+  /services/{service_id}/disk_attachments:
+    get:
+      description: Returns a paginated list of disk attachments for the specified service.
+      operationId: ListDiskAttachmentsForService
+      parameters:
+      - description: service_id
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListDiskAttachmentsForService_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list disk attachments
+      tags:
+      - DiskAttachments
+  /persistent_disks/{persistent_disk_id}/disk_attachments:
+    get:
+      description: Returns a paginated list of disk attachments for the specified persistent disk.
+      operationId: ListDiskAttachmentsForPersistentDisk
+      parameters:
+      - description: persistent_disk_id
+        explode: false
+        in: path
+        name: persistent_disk_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListDiskAttachmentsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list disk attachments
+      tags:
+      - DiskAttachments
+  /disk_attachments:
+    get:
+      description: Returns a paginated list of all disk attachments.
+      operationId: ListDiskAttachments
+      parameters:
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListDiskAttachments_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list disk attachments
+      tags:
+      - DiskAttachments
+  /disk_attachments/{id}:
+    get:
+      description: Returns the details of a specific disk attachment by ID.
+      operationId: GetDiskAttachment
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: include soft-deleted records
+        explode: true
+        in: query
+        name: with_deleted
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/disk_attachment'
+          description: reports deprovisioned when soft-deleted
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show disk attachment
+      tags:
+      - DiskAttachments
+components:
+  schemas:
+    disk_attachment:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        mount_point:
+          type: string
+        status:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        deleted_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        _embedded:
+          $ref: '#/components/schemas/disk_attachment__embedded'
+        _links:
+          $ref: '#/components/schemas/disk_attachment__links'
+      required:
+      - _embedded
+      - _type
+      - created_at
+      - deleted_at
+      - id
+      - mount_point
+      - status
+      - updated_at
+    ListDiskAttachmentsForPersistentDisk_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDiskAttachmentsForPersistentDisk_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListDiskAttachmentsForAccount_200_response__embedded:
+      properties:
+        disk_attachments:
+          items:
+            $ref: '#/components/schemas/disk_attachment'
+          type: array
+      type: object
+    disk_attachment__embedded:
+      properties:
+        service:
+          $ref: '#/components/schemas/service'
+        persistent_disk:
+          $ref: '#/components/schemas/persistent_disk'
+      type: object
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    service__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_release:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        releases:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vhosts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDiskAttachmentsForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListDiskAttachments_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    service:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        handle:
+          type: string
+        docker_repo:
+          type: string
+          x-nullable: true
+        docker_ref:
+          type: string
+          x-nullable: true
+        process_type:
+          type: string
+        command:
+          type: string
+        container_count:
+          type: integer
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        container_memory_limit_mb:
+          type: integer
+          x-nullable: true
+        instance_class:
+          type: string
+        force_zero_downtime:
+          type: boolean
+        naive_health_check:
+          type: boolean
+        restart_free_scaling:
+          type: boolean
+        stop_timeout:
+          type: integer
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/service__links'
+      required:
+      - _type
+      - command
+      - container_count
+      - container_memory_limit_mb
+      - created_at
+      - docker_ref
+      - docker_repo
+      - force_zero_downtime
+      - handle
+      - id
+      - instance_class
+      - naive_health_check
+      - process_type
+      - restart_free_scaling
+      - stop_timeout
+      - updated_at
+    ListDiskAttachmentsForPersistentDisk_200_response__links:
+      properties:
+        persistent_disk:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDiskAttachmentsForService_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDiskAttachmentsForService_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    disk_attachment__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        persistent_disk:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDiskAttachmentsForService_200_response__links:
+      properties:
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    persistent_disk__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    persistent_disk:
+      properties:
+        _type:
+          type: string
+        id:
+          type: integer
+        handle:
+          type: string
+        status:
+          type: string
+        disk_type:
+          type: string
+        size:
+          type: integer
+        provisioned_iops:
+          type: integer
+        disk_status:
+          type: string
+          x-nullable: true
+        aws_resource_id:
+          type: string
+          x-nullable: true
+        kms_arn:
+          type: string
+          x-nullable: true
+        modification_progress:
+          type: integer
+          x-nullable: true
+        availability_zone:
+          type: string
+          x-nullable: true
+        formatted:
+          type: boolean
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        modified_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        deleted_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/persistent_disk__links'
+      required:
+      - _type
+      - availability_zone
+      - aws_resource_id
+      - created_at
+      - deleted_at
+      - disk_status
+      - disk_type
+      - formatted
+      - handle
+      - id
+      - kms_arn
+      - modification_progress
+      - modified_at
+      - provisioned_iops
+      - size
+      - status
+      - updated_at
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

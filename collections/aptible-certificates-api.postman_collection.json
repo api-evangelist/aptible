@@ -1,0 +1,1338 @@
+{
+  "item": [
+    {
+      "id": "6b05b59f-ee49-4f2c-9af5-d914e999d98a",
+      "name": "Certificates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9b98e64-bb54-498c-83e3-a04f38fa2f66",
+          "name": "list certificates",
+          "request": {
+            "name": "list certificates",
+            "description": {
+              "content": "Returns a paginated list of certificates for the specified account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account_id",
+                "certificates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id",
+                  "description": "(Required) account_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8459bb78-55f6-4b64-8ec2-95bb9f415eb2",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "certificates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"certificates\": [\n      {\n        \"_type\": \"string\",\n        \"acme\": true,\n        \"certificate_arn\": \"string\",\n        \"certificate_body\": \"string\",\n        \"certificate_chain\": \"string\",\n        \"common_name\": \"string\",\n        \"created_at\": \"string\",\n        \"id\": 1683,\n        \"issuer_common_name\": \"string\",\n        \"issuer_country\": \"string\",\n        \"issuer_organization\": \"string\",\n        \"issuer_website\": \"string\",\n        \"leaf_certificate\": \"string\",\n        \"not_after\": \"string\",\n        \"not_before\": \"string\",\n        \"private_key_algorithm\": \"string\",\n        \"self_signed\": false,\n        \"sha256_fingerprint\": \"string\",\n        \"subject_alternative_names\": [\n          \"string\",\n          \"string\"\n        ],\n        \"subject_country\": \"string\",\n        \"subject_locale\": \"string\",\n        \"subject_organization\": \"string\",\n        \"subject_state\": \"string\",\n        \"trusted\": true,\n        \"updated_at\": \"string\",\n        \"private_key\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhosts\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"apps\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"acme\": true,\n        \"certificate_arn\": \"string\",\n        \"certificate_body\": \"string\",\n        \"certificate_chain\": \"string\",\n        \"common_name\": \"string\",\n        \"created_at\": \"string\",\n        \"id\": 7945,\n        \"issuer_common_name\": \"string\",\n        \"issuer_country\": \"string\",\n        \"issuer_organization\": \"string\",\n        \"issuer_website\": \"string\",\n        \"leaf_certificate\": \"string\",\n        \"not_after\": \"string\",\n        \"not_before\": \"string\",\n        \"private_key_algorithm\": \"string\",\n        \"self_signed\": true,\n        \"sha256_fingerprint\": \"string\",\n        \"subject_alternative_names\": [\n          \"string\",\n          \"string\"\n        ],\n        \"subject_country\": \"string\",\n        \"subject_locale\": \"string\",\n        \"subject_organization\": \"string\",\n        \"subject_state\": \"string\",\n        \"trusted\": true,\n        \"updated_at\": \"string\",\n        \"private_key\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhosts\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"apps\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://OCxzXcDHeLA.reyKnDKVsFflExZI-Ciqm28fbr.TETRjxBvGnJzTL6kZ0Rk2bqY\"\n    },\n    \"next\": {\n      \"href\": \"http://PWUJCayznCTp.asskqECRyf3nEJfBdvojQL+crLTDY+My0-DXNV-E6yfNVdYKpAOZlWSVNo1MqpRszjoUKycH8GDa5X\"\n    },\n    \"prev\": {\n      \"href\": \"http://KUZelGBM.zgstCDvUj8wUh2MM\"\n    },\n    \"self\": {\n      \"href\": \"http://ltMEiSmsEQTmQuPLzRNzxkETmdTrldh.pxzO2S5Ed3XyBAOb07i2OGN-gexCRMKNjHZumHCkr1dyppNvkgGTnGY\"\n    }\n  },\n  \"current_page\": 7353,\n  \"per_page\": 8818,\n  \"total_count\": 3956\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "070faae2-6497-44c5-ab29-0ed1455f498d",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "certificates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4601,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6323e83e-a8eb-4771-96a8-b5ef36f4dfdf",
+          "name": "create certificate",
+          "request": {
+            "name": "create certificate",
+            "description": {
+              "content": "Creates a new certificate for the specified account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account_id",
+                "certificates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id",
+                  "description": "(Required) account_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"certificate_body\": \"<string>\",\n  \"private_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ae1506e-7fc8-4748-b830-e6cbe687a877",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "certificates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"certificate_body\": \"<string>\",\n  \"private_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"acme\": true,\n  \"certificate_arn\": \"string\",\n  \"certificate_body\": \"string\",\n  \"certificate_chain\": \"string\",\n  \"common_name\": \"string\",\n  \"created_at\": \"string\",\n  \"id\": 8913,\n  \"issuer_common_name\": \"string\",\n  \"issuer_country\": \"string\",\n  \"issuer_organization\": \"string\",\n  \"issuer_website\": \"string\",\n  \"leaf_certificate\": \"string\",\n  \"not_after\": \"string\",\n  \"not_before\": \"string\",\n  \"private_key_algorithm\": \"string\",\n  \"self_signed\": false,\n  \"sha256_fingerprint\": \"string\",\n  \"subject_alternative_names\": [\n    \"string\",\n    \"string\"\n  ],\n  \"subject_country\": \"string\",\n  \"subject_locale\": \"string\",\n  \"subject_organization\": \"string\",\n  \"subject_state\": \"string\",\n  \"trusted\": false,\n  \"updated_at\": \"string\",\n  \"private_key\": \"string\",\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://FqBHUUbN.rgekhoELnwH9BfRsLyB\"\n    },\n    \"operations\": {\n      \"href\": \"http://nBmmktQZRtMe.wghpMC6BUucgw\"\n    },\n    \"vhosts\": {\n      \"href\": \"https://OKNuHCpdY.qlsrKXr03zQOkd-+T\"\n    },\n    \"apps\": {\n      \"href\": \"https://oRJjXYmSsFVmX.ixwbqFFgM-xdH4e0cyUdzkij0ew.oGZNcm4vuae1ae\"\n    },\n    \"self\": {\n      \"href\": \"https://wuBYcwSknMADQRdQnRNYKGXZoYFsPWJe.gwduUaoIRxDpK2wrpFAGIeiPL2AqNkzTahFvYBnMNgdA\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df532437-6b4e-45ea-9b9d-e3cfdadbb2f6",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "certificates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"certificate_body\": \"<string>\",\n  \"private_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4601,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd3e023a-717c-4103-898b-66d1a60d9a9e",
+          "name": "delete certificate",
+          "request": {
+            "name": "delete certificate",
+            "description": {
+              "content": "Deletes a certificate by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "certificates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ca833fc-55bc-4374-aaa4-e44e975a6594",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1cd9f196-a43c-48f0-807f-832df9dcb48d",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4601,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b992e240-8c1e-41c2-af76-562e369d9925",
+          "name": "show certificate",
+          "request": {
+            "name": "show certificate",
+            "description": {
+              "content": "Returns the details of a specific certificate by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "certificates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "600e142d-516e-42f2-9dc0-a383f1d2a5c1",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"acme\": true,\n  \"certificate_arn\": \"string\",\n  \"certificate_body\": \"string\",\n  \"certificate_chain\": \"string\",\n  \"common_name\": \"string\",\n  \"created_at\": \"string\",\n  \"id\": 8913,\n  \"issuer_common_name\": \"string\",\n  \"issuer_country\": \"string\",\n  \"issuer_organization\": \"string\",\n  \"issuer_website\": \"string\",\n  \"leaf_certificate\": \"string\",\n  \"not_after\": \"string\",\n  \"not_before\": \"string\",\n  \"private_key_algorithm\": \"string\",\n  \"self_signed\": false,\n  \"sha256_fingerprint\": \"string\",\n  \"subject_alternative_names\": [\n    \"string\",\n    \"string\"\n  ],\n  \"subject_country\": \"string\",\n  \"subject_locale\": \"string\",\n  \"subject_organization\": \"string\",\n  \"subject_state\": \"string\",\n  \"trusted\": false,\n  \"updated_at\": \"string\",\n  \"private_key\": \"string\",\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://FqBHUUbN.rgekhoELnwH9BfRsLyB\"\n    },\n    \"operations\": {\n      \"href\": \"http://nBmmktQZRtMe.wghpMC6BUucgw\"\n    },\n    \"vhosts\": {\n      \"href\": \"https://OKNuHCpdY.qlsrKXr03zQOkd-+T\"\n    },\n    \"apps\": {\n      \"href\": \"https://oRJjXYmSsFVmX.ixwbqFFgM-xdH4e0cyUdzkij0ew.oGZNcm4vuae1ae\"\n    },\n    \"self\": {\n      \"href\": \"https://wuBYcwSknMADQRdQnRNYKGXZoYFsPWJe.gwduUaoIRxDpK2wrpFAGIeiPL2AqNkzTahFvYBnMNgdA\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "255a52a4-58f9-4e17-9d7b-171418a837d4",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4601,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aedcacfd-46cb-4416-9a27-1cc7f18600b6",
+          "name": "update certificate",
+          "request": {
+            "name": "update certificate",
+            "description": {
+              "content": "Partially updates a certificate's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "certificates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"certificate_arn\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "176d31f6-b2d9-44cd-b166-c22188f12dce",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"certificate_arn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a75b8ce5-5516-4b2f-9187-ce99c7f5929f",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"certificate_arn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4601,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6824c22-7d9a-404a-bd6a-e783e3dcd47d",
+          "name": "update certificate",
+          "request": {
+            "name": "update certificate",
+            "description": {
+              "content": "Updates a certificate's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "certificates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6396b123-c8ea-450c-8c25-a8ceb58ad41f",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b87d0266-6db1-4a67-8d24-29f9f938e990",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4601,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c9c4c5e6-cb9a-4e1c-b768-4965d31951ba",
+    "name": "Aptible API v1 Certificates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,471 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Llm Policies API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: LlmPolicies
+paths:
+  /accounts/{account_id}/llm_policies:
+    get:
+      description: Returns a list of LLM policies for the specified account.
+      operationId: ListLlmPoliciesForAccount
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListLlmPoliciesForAccount_200_response'
+          description: successful
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list llm_policies for account
+      tags:
+      - LlmPolicies
+  /accounts/{account_id}/llm_policies/create_or_update:
+    post:
+      description: Creates or updates the LLM policy for the specified account.
+      operationId: CreateOrUpdateLlmPolicy
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrUpdateLlmPolicy_request'
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/llm_policy'
+          description: successful
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create or update llm_policy
+      tags:
+      - LlmPolicies
+  /llm_policies:
+    get:
+      description: Returns a paginated list of all LLM policies.
+      operationId: ListLlmPolicies
+      parameters:
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListLlmPolicies_200_response'
+          description: successful
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list all llm_policies
+      tags:
+      - LlmPolicies
+  /llm_policies/{id}:
+    get:
+      description: Returns the details of a specific LLM policy by ID.
+      operationId: GetLlmPolicy
+      parameters:
+      - description: LLM Policy database ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/llm_policy'
+          description: successful
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        '404':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: not found
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show llm_policy
+      tags:
+      - LlmPolicies
+  /llm_policies/{id}/usage:
+    get:
+      description: Returns aggregated usage statistics for the specified LLM policy over a date range.
+      operationId: GetLlmPolicyUsage
+      parameters:
+      - description: LLM Policy database ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Start date for the usage period (YYYY-MM-DD)
+        explode: true
+        in: query
+        name: start_date
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: End date for the usage period (YYYY-MM-DD, exclusive)
+        explode: true
+        in: query
+        name: end_date
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/GetLlmKeyUsage_200_response'
+          description: successful
+        '400':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: bad request
+        '403':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: organization not enrolled
+        '404':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: not found
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: get llm policy usage
+      tags:
+      - LlmPolicies
+components:
+  schemas:
+    CreateOrUpdateLlmPolicy_request:
+      properties:
+        models:
+          description: List of allowed model identifiers
+          items:
+            type: string
+          type: array
+      type: object
+    ListLlmPoliciesForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListLlmPoliciesForAccount_200_response__embedded'
+        _links:
+          type: object
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    llm_policy:
+      properties:
+        id:
+          description: Database ID of the LLM Policy
+          type: integer
+        _type:
+          type: string
+        spend_limit:
+          description: Monthly spend limit in USD cents (nil means unlimited)
+          type: integer
+          x-nullable: true
+        models:
+          description: List of allowed model identifiers
+          items:
+            type: string
+          type: array
+        created_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        updated_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        current_usage:
+          $ref: '#/components/schemas/llm_policy_current_usage'
+        _links:
+          $ref: '#/components/schemas/backup_retention_policy__links'
+      required:
+      - _type
+      - created_at
+      - id
+      - models
+      - spend_limit
+      - updated_at
+    ListLlmPolicies_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListLlmPoliciesForAccount_200_response__embedded'
+        _links:
+          type: object
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+      type: object
+    GetLlmKeyUsage_200_response:
+      properties:
+        spend:
+          description: Total spend in USD
+          type: number
+        input_tokens:
+          description: Total input (prompt) tokens
+          type: integer
+        output_tokens:
+          description: Total output (completion) tokens
+          type: integer
+        successful_requests:
+          description: Total successful API requests
+          type: integer
+        failed_requests:
+          description: Total failed API requests
+          type: integer
+      type: object
+    ListLlmPoliciesForAccount_200_response__embedded:
+      properties:
+        llm_policies:
+          items:
+            $ref: '#/components/schemas/llm_policy'
+          type: array
+      type: object
+    llm_policy_current_usage:
+      description: Month-to-date usage metrics for this policy
+      properties:
+        spend:
+          description: Total spend in USD
+          type: number
+        input_tokens:
+          description: Total input (prompt) tokens
+          type: integer
+        output_tokens:
+          description: Total output (completion) tokens
+          type: integer
+        successful_requests:
+          description: Total successful API requests
+          type: integer
+        failed_requests:
+          description: Total failed API requests
+          type: integer
+      type: object
+      x-nullable: true
+    backup_retention_policy__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

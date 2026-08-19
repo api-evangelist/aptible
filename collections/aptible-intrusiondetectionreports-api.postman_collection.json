@@ -1,0 +1,891 @@
+{
+  "item": [
+    {
+      "id": "a73f49e4-0a1e-4d76-a3fe-6634aacf9880",
+      "name": "IntrusionDetectionReports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8730c04b-f002-46f4-a521-f53b3f9f5f4f",
+          "name": "list intrusion_detection_reports",
+          "request": {
+            "name": "list intrusion_detection_reports",
+            "description": {
+              "content": "Returns a paginated list of intrusion detection reports for the specified stack.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stacks",
+                ":stack_id",
+                "intrusion_detection_reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "stack_id",
+                  "description": "(Required) stack_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40c48d1d-770a-47b6-a993-1b39083f47f7",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":stack_id",
+                    "intrusion_detection_reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "stack_id",
+                      "description": "(Required) stack_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"intrusion_detection_reports\": [\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"ends_at\": \"string\",\n        \"id\": 55,\n        \"starts_at\": \"string\",\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"stack\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"download_csv\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"download_pdf\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"ends_at\": \"string\",\n        \"id\": 2510,\n        \"starts_at\": \"string\",\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"stack\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"download_csv\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"download_pdf\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"stack\": {\n      \"href\": \"https://JhKkQlJ.muvqN7Cm8OOQ-x0YvjVDjs0mhq\"\n    },\n    \"next\": {\n      \"href\": \"https://BNrHpTIrurvlHaAcapiFkiHUiDcJE.gqhiSxSHUnXVBBFPS72+p6VvpM37kSrvAikmnAj6-,TJu\"\n    },\n    \"prev\": {\n      \"href\": \"http://LrMpnSN.abymLu+TzQeEyj\"\n    },\n    \"self\": {\n      \"href\": \"https://gWcYgFCmmFu.eowI7AJBBlLJQ06XgVn5L+1TNxG1,x\"\n    }\n  },\n  \"current_page\": 9535,\n  \"per_page\": 2873,\n  \"total_count\": 7988\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53021959-d44a-4c60-ae01-8651acf04f1d",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":stack_id",
+                    "intrusion_detection_reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "stack_id",
+                      "description": "(Required) stack_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9436,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ac80c81-8d0c-4d56-87d8-7e44d2e70864",
+          "name": "download_csv intrusion_detection_report",
+          "request": {
+            "name": "download_csv intrusion_detection_report",
+            "description": {
+              "content": "Returns a presigned URL to download the intrusion detection report as CSV.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "intrusion_detection_reports",
+                ":intrusion_report_id",
+                "download_csv"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "intrusion_report_id",
+                  "description": "(Required) intrusion_report_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97841a9a-67c6-4d91-b27b-ac7a5d631681",
+              "name": "Presigned URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "intrusion_detection_reports",
+                    ":intrusion_report_id",
+                    "download_csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "intrusion_report_id",
+                      "description": "(Required) intrusion_report_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1e83fa8-8a3c-4bbf-9c22-d9d520b3f90c",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "intrusion_detection_reports",
+                    ":intrusion_report_id",
+                    "download_csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "intrusion_report_id",
+                      "description": "(Required) intrusion_report_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9436,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c37d518-cba8-4cbc-90e1-c38a306c7bb3",
+          "name": "download_pdf intrusion_detection_report",
+          "request": {
+            "name": "download_pdf intrusion_detection_report",
+            "description": {
+              "content": "Returns a presigned URL to download the intrusion detection report as PDF.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "intrusion_detection_reports",
+                ":intrusion_report_id",
+                "download_pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "intrusion_report_id",
+                  "description": "(Required) intrusion_report_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3c7925c-93f8-4a81-8bb1-cb6b845e98c2",
+              "name": "Presigned URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "intrusion_detection_reports",
+                    ":intrusion_report_id",
+                    "download_pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "intrusion_report_id",
+                      "description": "(Required) intrusion_report_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2596d59e-15a9-4bd0-913f-c34ad1cfb4f8",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "intrusion_detection_reports",
+                    ":intrusion_report_id",
+                    "download_pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "intrusion_report_id",
+                      "description": "(Required) intrusion_report_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9436,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09d5edfd-0126-4ef1-b34e-d109022056df",
+          "name": "show intrusion_detection_report",
+          "request": {
+            "name": "show intrusion_detection_report",
+            "description": {
+              "content": "Returns the details of a specific intrusion detection report by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "intrusion_detection_reports",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec7928b6-596f-4b10-93aa-6cc41519483e",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "intrusion_detection_reports",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"created_at\": \"string\",\n  \"ends_at\": \"string\",\n  \"id\": 4594,\n  \"starts_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"_links\": {\n    \"stack\": {\n      \"href\": \"http://PVr.acwV2eCTCR3uIeXIbJJVrZsRHdaQ00NI,PoVmY0WDPhwgcvsnyZY2..w6h0\"\n    },\n    \"download_csv\": {\n      \"href\": \"https://quTSZtRcucNeETTWrNORqWK.zaunGyoEJ+pYDNGxYCfu+7IPWSjTLCVFh9EpF0XXSjH6eQo\"\n    },\n    \"download_pdf\": {\n      \"href\": \"https://gDuVBXzEazOMqsTJkLF.midAFTvIZ9DY1-av0fTsVgYB3SDjSgi5dWkEnWokBIzCxwlNh4AJMS\"\n    },\n    \"self\": {\n      \"href\": \"http://atjMMzTfMH.fhugyM3hTNsqPpFepyEtH4gDZEQ-mgrev1NgJOzVa.\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "363c7fd6-e182-4192-a198-debd72a100d8",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "intrusion_detection_reports",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9436,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "91a572fe-6aab-4fc4-ab16-426b91a52f7b",
+    "name": "Aptible API v1 Intrusion Detection Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

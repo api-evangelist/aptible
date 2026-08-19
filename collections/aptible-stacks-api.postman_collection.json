@@ -1,0 +1,464 @@
+{
+  "item": [
+    {
+      "id": "15aa0f02-b307-4c6c-9668-cf292d9629da",
+      "name": "Stacks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4db41acd-9cb7-46ca-9f06-7c5e47e4c507",
+          "name": "list stacks",
+          "request": {
+            "name": "list stacks",
+            "description": {
+              "content": "Returns a paginated list of all stacks accessible to the current user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stacks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "873dcc87-2052-44c5-8dd0-b92d71077aeb",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"stacks\": [\n      {\n        \"_type\": \"string\",\n        \"account_id\": \"string\",\n        \"brickwall_enabled\": true,\n        \"cpu_limits\": true,\n        \"created_at\": \"string\",\n        \"default\": false,\n        \"default_domain\": \"string\",\n        \"expose_intrusion_detection_reports\": true,\n        \"id\": 8768,\n        \"internal_domain\": \"string\",\n        \"intrusion_detection\": false,\n        \"memory_limits\": true,\n        \"name\": \"string\",\n        \"outbound_ip_addresses\": [\n          \"string\",\n          \"string\"\n        ],\n        \"public\": true,\n        \"region\": \"string\",\n        \"ssh_host_dsa_public_key\": \"string\",\n        \"ssh_host_ecdsa_public_key\": \"string\",\n        \"ssh_host_rsa_public_key\": \"string\",\n        \"ssh_portal_host\": \"string\",\n        \"ssh_portal_port\": 5276,\n        \"updated_at\": \"string\",\n        \"version\": \"v1\",\n        \"vpc_cidr\": \"string\",\n        \"vpc_id\": \"string\",\n        \"_links\": {\n          \"organization\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"accounts\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"intrusion_detection_reports\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vpn_tunnels\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vpc_peers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"account_id\": \"string\",\n        \"brickwall_enabled\": false,\n        \"cpu_limits\": false,\n        \"created_at\": \"string\",\n        \"default\": true,\n        \"default_domain\": \"string\",\n        \"expose_intrusion_detection_reports\": true,\n        \"id\": 1115,\n        \"internal_domain\": \"string\",\n        \"intrusion_detection\": false,\n        \"memory_limits\": false,\n        \"name\": \"string\",\n        \"outbound_ip_addresses\": [\n          \"string\",\n          \"string\"\n        ],\n        \"public\": false,\n        \"region\": \"string\",\n        \"ssh_host_dsa_public_key\": \"string\",\n        \"ssh_host_ecdsa_public_key\": \"string\",\n        \"ssh_host_rsa_public_key\": \"string\",\n        \"ssh_portal_host\": \"string\",\n        \"ssh_portal_port\": 4328,\n        \"updated_at\": \"string\",\n        \"version\": \"v2\",\n        \"vpc_cidr\": \"string\",\n        \"vpc_id\": \"string\",\n        \"_links\": {\n          \"organization\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"accounts\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"intrusion_detection_reports\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vpn_tunnels\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vpc_peers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"next\": {\n      \"href\": \"https://PIjv.jir7uK,1CoNAai\"\n    },\n    \"prev\": {\n      \"href\": \"https://XAYYevfwOaYnnOOJcOvfJC.ygerHloCPDmVTyjq+o8jJmyiVUrXkLbA+vOPa,RqLvzmC-DIBIZPmOBvWZk81a\"\n    },\n    \"self\": {\n      \"href\": \"https://PlLNvs.fuuBA1.DUbSp8MCqvo8EzJxca5YO6.yRYsME\"\n    }\n  },\n  \"current_page\": 131,\n  \"per_page\": 7944,\n  \"total_count\": 3238\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6aa78d5d-8ba0-4822-917a-70f6355e26b6",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 6111,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a106c0fc-4a08-427c-aaea-e9824ac97b2c",
+          "name": "show stack",
+          "request": {
+            "name": "show stack",
+            "description": {
+              "content": "Returns the details of a specific stack by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stacks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "412f86d6-def9-4fd7-a1b8-c6a883c1341b",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"account_id\": \"string\",\n  \"brickwall_enabled\": false,\n  \"cpu_limits\": true,\n  \"created_at\": \"string\",\n  \"default\": true,\n  \"default_domain\": \"string\",\n  \"expose_intrusion_detection_reports\": true,\n  \"id\": 1056,\n  \"internal_domain\": \"string\",\n  \"intrusion_detection\": true,\n  \"memory_limits\": false,\n  \"name\": \"string\",\n  \"outbound_ip_addresses\": [\n    \"string\",\n    \"string\"\n  ],\n  \"public\": true,\n  \"region\": \"string\",\n  \"ssh_host_dsa_public_key\": \"string\",\n  \"ssh_host_ecdsa_public_key\": \"string\",\n  \"ssh_host_rsa_public_key\": \"string\",\n  \"ssh_portal_host\": \"string\",\n  \"ssh_portal_port\": 4793,\n  \"updated_at\": \"string\",\n  \"version\": \"v1\",\n  \"vpc_cidr\": \"string\",\n  \"vpc_id\": \"string\",\n  \"_links\": {\n    \"organization\": {\n      \"href\": \"https://ipOkkTISwiy.idB7t\"\n    },\n    \"accounts\": {\n      \"href\": \"http://gdUsilhItouCtMcIDNEwAHMLgTHYrDb.yqkDZfSlSFQDcH\"\n    },\n    \"intrusion_detection_reports\": {\n      \"href\": \"http://VMEqZl.vubyAs,xWGROA-H8eJ62UkpiwK3dc7y\"\n    },\n    \"vpn_tunnels\": {\n      \"href\": \"https://mLSNaCZZgqaMlnYEckZOaRoCTG.phT8yKRBhOr4fsg8xJdpAbrzf1UuYLuwAu8MdVAxPAJszsVxze5fzIzpk-Cs1Q5eQuPJNiJl5--\"\n    },\n    \"vpc_peers\": {\n      \"href\": \"https://yTYzmOUTc.dvjMH7uVPt+PwIs.ALllt4oT65OIwmEDBswszX.wjpRHAHZsgX066cN.6YocXq\"\n    },\n    \"self\": {\n      \"href\": \"http://nlvbaHwHqENYbLApSAkwXMsIMreGfEu.dzv6PCQaeKU6ugFR,Ze89TSPouhZK7nG5K2ExVEmZZNoPv7SifI2\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b44e30a-a02f-4fb1-83d7-e08563f0f5bb",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 6111,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "056b78fe-ed1f-4cc9-9422-0b7c6b47990b",
+    "name": "Aptible API v1 Stacks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

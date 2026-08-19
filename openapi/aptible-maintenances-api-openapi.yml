@@ -1,0 +1,208 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Maintenances API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: Maintenances
+paths:
+  /maintenances/apps:
+    get:
+      description: Returns a paginated list of apps with their maintenance deadline info.
+      operationId: GetMaintenanceApps
+      parameters:
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/GetMaintenanceApps_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list apps with maintenance info
+      tags:
+      - Maintenances
+  /maintenances/databases:
+    get:
+      description: Returns a paginated list of databases with their maintenance deadline info.
+      operationId: GetMaintenanceDatabases
+      parameters:
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/GetMaintenanceDatabases_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list databases with maintenance info
+      tags:
+      - Maintenances
+components:
+  schemas:
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    GetMaintenanceDatabases_200_response__embedded_databases_inner:
+      properties:
+        id:
+          type: integer
+        handle:
+          type: string
+        type:
+          type: string
+          x-nullable: true
+        provisioned:
+          type: boolean
+        _type:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        deleted_at:
+          type: string
+          x-nullable: true
+        status:
+          type: string
+        maintenance_deadline:
+          items:
+            format: date-time
+            type: string
+          type: array
+          x-nullable: true
+        _links:
+          type: object
+      type: object
+    GetMaintenanceApps_200_response__embedded_apps_inner:
+      properties:
+        id:
+          type: integer
+        handle:
+          type: string
+        _type:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        status:
+          type: string
+        maintenance_deadline:
+          items:
+            format: date-time
+            type: string
+          type: array
+          x-nullable: true
+        account_id:
+          type: integer
+        _links:
+          type: object
+      type: object
+    GetMaintenanceApps_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/GetMaintenanceApps_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          type: object
+      type: object
+    GetMaintenanceApps_200_response__embedded:
+      properties:
+        apps:
+          items:
+            $ref: '#/components/schemas/GetMaintenanceApps_200_response__embedded_apps_inner'
+          type: array
+      type: object
+    GetMaintenanceDatabases_200_response__embedded:
+      properties:
+        databases:
+          items:
+            $ref: '#/components/schemas/GetMaintenanceDatabases_200_response__embedded_databases_inner'
+          type: array
+      type: object
+    GetMaintenanceDatabases_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/GetMaintenanceDatabases_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          type: object
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

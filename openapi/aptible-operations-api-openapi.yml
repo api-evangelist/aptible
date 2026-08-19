@@ -1,0 +1,2444 @@
+openapi: 3.2.0
+info:
+  title: Aptible Operations API
+  version: '1.0'
+  description: 'Operations tagged operations across 2 of this provider''s published API definitions: aptible-cloud-openapi-original.yml, aptible-deploy-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: /
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+tags:
+- name: operations
+paths:
+  /api/v1/organizations/{organization_id}/operations/{operation_id}:
+    servers:
+    - url: /
+    get:
+      operationId: operation_get
+      parameters:
+      - explode: false
+        in: path
+        name: operation_id
+        required: true
+        schema:
+          format: uuid
+          title: Operation Id
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: organization_id
+        required: true
+        schema:
+          format: uuid
+          title: Organization Id
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationOutput'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - HTTPBearer: []
+      - HTTPBearer: []
+      summary: Operation Get
+      tags:
+      - operations
+  /api/v1/operations/{operation_id}:
+    servers:
+    - url: /
+    put:
+      operationId: operation_update
+      parameters:
+      - explode: false
+        in: path
+        name: operation_id
+        required: true
+        schema:
+          format: uuid
+          title: Operation Id
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperationUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - HTTPBearer: []
+      summary: Operation Update
+      tags:
+      - operations
+  /persistent_disks/{persistent_disk_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified persistent disk.
+      operationId: ListOperationsForPersistentDisk
+      parameters:
+      - description: persistent_disk_id
+        explode: false
+        in: path
+        name: persistent_disk_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified persistent disk.
+      operationId: CreateOperationForPersistentDisk
+      parameters:
+      - description: persistent_disk_id
+        explode: false
+        in: path
+        name: persistent_disk_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /operations/{id}:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns the details of a specific operation by ID.
+      operationId: GetOperation
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show operation
+      tags:
+      - operations
+      security:
+      - token: []
+    patch:
+      description: Partially updates an operation's attributes, such as cancelling it.
+      operationId: PatchOperation
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOperation_request'
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update operation
+      tags:
+      - operations
+      security:
+      - token: []
+    put:
+      description: Updates an operation's attributes, such as cancelling it.
+      operationId: UpdateOperation
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOperation_request'
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /operations/{operation_id}/logs:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a presigned URL for downloading the logs of a completed operation.
+      operationId: GetOperationLogs
+      parameters:
+      - description: operation_id
+        explode: false
+        in: path
+        name: operation_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '200':
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Presigned download URL
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: get operation logs
+      tags:
+      - operations
+      security:
+      - token: []
+  /accounts/{account_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified account.
+      operationId: ListOperationsForAccount
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+  /apps/{app_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified app.
+      operationId: ListOperationsForApp
+      parameters:
+      - description: app_id
+        explode: false
+        in: path
+        name: app_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified app.
+      operationId: CreateOperationForApp
+      parameters:
+      - description: app_id
+        explode: false
+        in: path
+        name: app_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /ephemeral_sessions/{ephemeral_session_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified ephemeral session.
+      operationId: ListOperationsForEphemeralSession
+      parameters:
+      - description: ephemeral_session_id
+        explode: false
+        in: path
+        name: ephemeral_session_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified ephemeral session.
+      operationId: CreateOperationForEphemeralSession
+      parameters:
+      - description: ephemeral_session_id
+        explode: false
+        in: path
+        name: ephemeral_session_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /databases/{database_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified database.
+      operationId: ListOperationsForDatabase
+      parameters:
+      - description: database_id
+        explode: false
+        in: path
+        name: database_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified database.
+      operationId: CreateOperationForDatabase
+      parameters:
+      - description: database_id
+        explode: false
+        in: path
+        name: database_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /database_credentials/{database_credential_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified database credential.
+      operationId: ListOperationsForDatabaseCredential
+      parameters:
+      - description: database_credential_id
+        explode: false
+        in: path
+        name: database_credential_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified database credential.
+      operationId: CreateOperationForDatabaseCredential
+      parameters:
+      - description: database_credential_id
+        explode: false
+        in: path
+        name: database_credential_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /services/{service_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified service.
+      operationId: ListOperationsForService
+      parameters:
+      - description: service_id
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified service.
+      operationId: CreateOperationForService
+      parameters:
+      - description: service_id
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /vhosts/{vhost_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified vhost.
+      operationId: ListOperationsForVhost
+      parameters:
+      - description: vhost_id
+        explode: false
+        in: path
+        name: vhost_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified vhost.
+      operationId: CreateOperationForVhost
+      parameters:
+      - description: vhost_id
+        explode: false
+        in: path
+        name: vhost_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /images/{image_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified image.
+      operationId: ListOperationsForImage
+      parameters:
+      - description: image_id
+        explode: false
+        in: path
+        name: image_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified image.
+      operationId: CreateOperationForImage
+      parameters:
+      - description: image_id
+        explode: false
+        in: path
+        name: image_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /log_drains/{log_drain_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified log drain.
+      operationId: ListOperationsForLogDrain
+      parameters:
+      - description: log_drain_id
+        explode: false
+        in: path
+        name: log_drain_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified log drain.
+      operationId: CreateOperationForLogDrain
+      parameters:
+      - description: log_drain_id
+        explode: false
+        in: path
+        name: log_drain_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /metric_drains/{metric_drain_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified metric drain.
+      operationId: ListOperationsForMetricDrain
+      parameters:
+      - description: metric_drain_id
+        explode: false
+        in: path
+        name: metric_drain_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified metric drain.
+      operationId: CreateOperationForMetricDrain
+      parameters:
+      - description: metric_drain_id
+        explode: false
+        in: path
+        name: metric_drain_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /backups/{backup_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified backup.
+      operationId: ListOperationsForBackup
+      parameters:
+      - description: backup_id
+        explode: false
+        in: path
+        name: backup_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified backup.
+      operationId: CreateOperationForBackup
+      parameters:
+      - description: backup_id
+        explode: false
+        in: path
+        name: backup_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /disk_attachments/{disk_attachment_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified disk attachment.
+      operationId: ListOperationsForDiskAttachment
+      parameters:
+      - description: disk_attachment_id
+        explode: false
+        in: path
+        name: disk_attachment_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+    post:
+      description: Creates a new operation for the specified disk attachment.
+      operationId: CreateOperationForDiskAttachment
+      parameters:
+      - description: disk_attachment_id
+        explode: false
+        in: path
+        name: disk_attachment_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationRequest'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/operation'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create operation
+      tags:
+      - operations
+      security:
+      - token: []
+  /llm_keys/{llm_key_id}/operations:
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
+    get:
+      description: Returns a paginated list of operations for the specified LLM key.
+      operationId: ListOperationsForLlmKey
+      parameters:
+      - description: llm_key_id
+        explode: false
+        in: path
+        name: llm_key_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list operations
+      tags:
+      - operations
+      security:
+      - token: []
+components:
+  schemas:
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    operation__links:
+      properties:
+        user:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        resource:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        destination_account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ssh_portal_connections:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_sessions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code_scan_result:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    UpdateOperation_request:
+      properties:
+        cancelled:
+          type: boolean
+          x-omitempty: false
+      type: object
+    OperationFailure:
+      properties:
+        error:
+          title: Error
+          type: string
+      required:
+      - error
+      title: OperationFailure
+      type: object
+    ListOperationsForPersistentDisk_200_response__embedded:
+      properties:
+        operations:
+          items:
+            $ref: '#/components/schemas/operation'
+          type: array
+      type: object
+    ListOperationsForPersistentDisk_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    OperationUpdate:
+      example:
+        data: null
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: null
+      properties:
+        id:
+          format: uuid
+          title: Id
+          type: string
+        status:
+          $ref: '#/components/schemas/OperationStatus'
+        data:
+          $ref: '#/components/schemas/Data'
+      required:
+      - id
+      - status
+      title: OperationUpdate
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    CreateOperationRequest:
+      example:
+        container_size: 1
+        certificate: certificate
+        interactive: true
+        instance_profile: instance_profile
+        type: type
+        docker_ref: docker_ref
+        container_count: 6
+        pitr_days: 3
+        keep_final: true
+        make_copy: true
+        key_arn: key_arn
+        destination_account: https://openapi-generator.tech
+        settings:
+          key: settings
+        destination_account_id: 5
+        sensitive_settings:
+          key: sensitive_settings
+        enable_pitr: true
+        destination_region: destination_region
+        disk_size: 0
+        handle: handle
+        private_key: private_key
+        env:
+          key: env
+        command: command
+        automated: true
+        provisioned_iops: 5
+        daily: 2
+        enable_backups: true
+        git_ref: git_ref
+        monthly: 7
+        yearly: 9
+      properties:
+        type:
+          type: string
+        git_ref:
+          type: string
+        disk_size:
+          type: integer
+        container_count:
+          type: integer
+          x-omitempty: false
+        container_size:
+          type: integer
+        command:
+          type: string
+        env:
+          additionalProperties:
+            type: string
+          type: object
+        handle:
+          type: string
+        certificate:
+          type: string
+        private_key:
+          type: string
+        destination_region:
+          type: string
+        interactive:
+          type: boolean
+          x-omitempty: false
+        destination_account:
+          format: uri
+          type: string
+        destination_account_id:
+          type: integer
+        docker_ref:
+          type: string
+        automated:
+          type: boolean
+          x-omitempty: false
+        key_arn:
+          type: string
+        instance_profile:
+          type: string
+        provisioned_iops:
+          type: integer
+        daily:
+          type: integer
+        monthly:
+          type: integer
+        yearly:
+          type: integer
+        pitr_days:
+          type: integer
+        make_copy:
+          type: boolean
+          x-omitempty: false
+        keep_final:
+          type: boolean
+          x-omitempty: false
+        enable_backups:
+          type: boolean
+          x-omitempty: false
+        enable_pitr:
+          type: boolean
+          x-omitempty: false
+        settings:
+          additionalProperties:
+            type: string
+          description: Non-sensitive settings for the operation
+          type: object
+        sensitive_settings:
+          additionalProperties:
+            type: string
+          description: Sensitive settings for the operation (encrypted)
+          type: object
+      required:
+      - type
+      title: CreateOperationRequest
+      type: object
+    OperationOutput:
+      example:
+        execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        operation_type: ''
+        asset_name: asset_name
+        asset_parameters: '{}'
+        user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        asset_version: asset_version
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: ''
+      properties:
+        environment_id:
+          format: uuid
+          title: Environment Id
+          type: string
+        user_id:
+          format: uuid
+          title: User Id
+          type: string
+        organization_id:
+          format: uuid
+          title: Organization Id
+          type: string
+        operation_type:
+          allOf:
+          - $ref: '#/components/schemas/OperationType'
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OperationStatus'
+        asset_name:
+          title: Asset Name
+          type: string
+        asset_id:
+          format: uuid
+          title: Asset Id
+          type: string
+        asset_version:
+          title: Asset Version
+          type: string
+        asset_parameters:
+          title: Asset Parameters
+          type: object
+        id:
+          format: uuid
+          title: Id
+          type: string
+        execution_id:
+          format: uuid
+          title: Execution Id
+          type: string
+      required:
+      - asset_id
+      - asset_name
+      - asset_version
+      - environment_id
+      - id
+      - organization_id
+      - user_id
+      title: OperationOutput
+      type: object
+    OperationTerraformRunUpdate:
+      properties:
+        terraform_stdout:
+          title: Terraform Stdout
+        terraform_stderr:
+          title: Terraform Stderr
+        terraform_return_code:
+          title: Terraform Return Code
+          type: integer
+        terraform_success:
+          title: Terraform Success
+          type: boolean
+      required:
+      - terraform_return_code
+      - terraform_success
+      title: OperationTerraformRunUpdate
+      type: object
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ValidationError:
+      properties:
+        loc:
+          items:
+            $ref: '#/components/schemas/Location_inner'
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+    Data:
+      anyOf:
+      - $ref: '#/components/schemas/OperationFailure'
+      - $ref: '#/components/schemas/OperationAssetUpdate'
+      - $ref: '#/components/schemas/OperationActionUpdate'
+      title: Data
+    OperationActionUpdate:
+      properties:
+        action_output:
+          title: Action Output
+        action_errors:
+          title: Action Errors
+          type: string
+      title: OperationActionUpdate
+      type: object
+    operation:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        cancelled:
+          type: boolean
+        aborted:
+          type: boolean
+        git_ref:
+          type: string
+          x-nullable: true
+        docker_ref:
+          type: string
+          x-nullable: true
+        env:
+          type: object
+          x-nullable: true
+        container_size:
+          type: integer
+          x-nullable: true
+        container_count:
+          type: integer
+          x-nullable: true
+        disk_size:
+          type: integer
+        command:
+          type: string
+          x-nullable: true
+        handle:
+          type: string
+          x-nullable: true
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        certificate:
+          type: string
+          x-nullable: true
+        private_key:
+          type: string
+          x-nullable: true
+        user_name:
+          type: string
+        user_email:
+          type: string
+        destination_region:
+          type: string
+          x-nullable: true
+        interactive:
+          type: boolean
+          x-nullable: true
+        instance_profile:
+          type: string
+          x-nullable: true
+        mount_point:
+          type: string
+          x-nullable: true
+        daily:
+          type: integer
+          x-nullable: true
+        monthly:
+          type: integer
+          x-nullable: true
+        yearly:
+          type: integer
+          x-nullable: true
+        pitr_days:
+          type: integer
+          x-nullable: true
+        make_copy:
+          type: boolean
+          x-nullable: true
+        keep_final:
+          type: boolean
+          x-nullable: true
+        enable_backups:
+          type: boolean
+          x-nullable: true
+        enable_pitr:
+          type: boolean
+          x-nullable: true
+        settings:
+          type: object
+        sensitive_settings:
+          type: object
+        _links:
+          $ref: '#/components/schemas/operation__links'
+      required:
+      - _type
+      - aborted
+      - cancelled
+      - certificate
+      - command
+      - container_count
+      - container_size
+      - created_at
+      - daily
+      - destination_region
+      - disk_size
+      - docker_ref
+      - enable_backups
+      - enable_pitr
+      - git_ref
+      - handle
+      - id
+      - instance_profile
+      - interactive
+      - keep_final
+      - make_copy
+      - monthly
+      - mount_point
+      - pitr_days
+      - settings
+      - status
+      - type
+      - updated_at
+      - user_email
+      - user_name
+      - yearly
+    OperationType:
+      description: An enumeration.
+      enum:
+      - CREATE
+      - UPDATE
+      - DESTROY
+      - ACTION
+      title: OperationType
+      type: string
+    OperationStatus:
+      description: An enumeration.
+      enum:
+      - FAILED
+      - REQUESTED
+      - PENDING
+      - PAUSED
+      - IN_PROGRESS
+      - CANCELED
+      - COMPLETE
+      title: OperationStatus
+      type: string
+    Location_inner:
+      anyOf:
+      - type: string
+      - type: integer
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    OperationAssetUpdate:
+      properties:
+        terraform_init:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_plan:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_apply:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_plan_failures:
+          title: Terraform Plan Failures
+          type: string
+        terraform_apply_failures:
+          title: Terraform Apply Failures
+          type: string
+      required:
+      - terraform_init
+      title: OperationAssetUpdate
+      type: object
+  securitySchemes:
+    HTTPBearer:
+      scheme: bearer
+      type: http
+    token:
+      in: header
+      name: Authorization
+      type: apiKey
+x-refined-from:
+- aptible-cloud-openapi-original.yml
+- aptible-deploy-openapi-original.yml

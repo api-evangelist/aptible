@@ -1,0 +1,240 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Plans API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: Plans
+paths:
+  /plans:
+    get:
+      description: Returns a paginated list of all available plans.
+      operationId: ListPlans
+      parameters:
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListPlans_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list plans
+      tags:
+      - Plans
+  /plans/{id}:
+    get:
+      description: Returns the details of a specific plan by ID.
+      operationId: GetPlan
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/plan'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show plan
+      tags:
+      - Plans
+components:
+  schemas:
+    llm_gateway_configuration__links:
+      properties:
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListPlans_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListPlans_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    plan:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        container_memory_limit_mb:
+          type: integer
+        cpu_allowed_profiles:
+          items:
+            type: string
+          type: array
+        disk_limit_gb:
+          type: integer
+        ephemeral_session_limit:
+          type: integer
+        environment_limit:
+          type: integer
+        vhost_limit:
+          type: integer
+        cost_cents:
+          type: integer
+        included_container_mb:
+          type: integer
+        included_disk_gb:
+          type: integer
+        included_vhosts:
+          type: integer
+        compliance_dashboard_access:
+          type: boolean
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        _links:
+          $ref: '#/components/schemas/llm_gateway_configuration__links'
+      required:
+      - _type
+      - compliance_dashboard_access
+      - container_memory_limit_mb
+      - cost_cents
+      - cpu_allowed_profiles
+      - created_at
+      - disk_limit_gb
+      - environment_limit
+      - ephemeral_session_limit
+      - id
+      - included_container_mb
+      - included_disk_gb
+      - included_vhosts
+      - updated_at
+      - vhost_limit
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListPlans_200_response__embedded:
+      properties:
+        plans:
+          items:
+            $ref: '#/components/schemas/plan'
+          type: array
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

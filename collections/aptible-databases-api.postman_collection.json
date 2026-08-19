@@ -1,0 +1,1983 @@
+{
+  "item": [
+    {
+      "id": "7a87d6f0-1f17-4661-8c2a-740fd9c38255",
+      "name": "Databases",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa7f9255-0f36-4100-b5ad-8f472fec2108",
+          "name": "list databases",
+          "request": {
+            "name": "list databases",
+            "description": {
+              "content": "Returns a paginated list of databases belonging to the specified account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account_id",
+                "databases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id",
+                  "description": "(Required) account_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "529318de-11e3-4b0c-ab8f-79799dcc34e4",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"databases\": [\n      {\n        \"_embedded\": {\n          \"last_operation\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"aborted\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cancelled\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"certificate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"command\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"daily\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"destination_region\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"disk_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"docker_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_backups\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_pitr\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"git_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance_profile\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"interactive\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"keep_final\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"make_copy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"monthly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"mount_point\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pitr_days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"yearly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"env\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"private_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sensitive_settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"attached\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability_zone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"baseline_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"current_kms_arn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ec2_instance_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filesystem\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"host\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_bytes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"provisioned_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"passphrase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"current_kms_arn\": \"string\",\n        \"docker_repo\": \"string\",\n        \"enable_backups\": true,\n        \"enable_pitr\": true,\n        \"handle\": \"string\",\n        \"id\": 5519,\n        \"initial_container_size\": 7457,\n        \"initial_disk_size\": 7996,\n        \"oldest_pitr_time\": \"string\",\n        \"pitr_bucket\": \"string\",\n        \"pitr_status\": \"unsupported\",\n        \"port_mapping\": [\n          [\n            9879,\n            7263\n          ],\n          [\n            183,\n            8882\n          ]\n        ],\n        \"provisioned\": false,\n        \"status\": \"string\",\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"passphrase\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_image\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"initialize_from\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_configuration\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"dependents\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"backups\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"configurations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_embedded\": {\n          \"last_operation\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"aborted\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cancelled\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"certificate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"command\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"daily\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"destination_region\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"disk_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"docker_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_backups\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_pitr\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"git_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance_profile\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"interactive\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"keep_final\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"make_copy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"monthly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"mount_point\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pitr_days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"yearly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"env\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"private_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sensitive_settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"attached\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability_zone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"baseline_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"current_kms_arn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ec2_instance_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filesystem\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"host\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_bytes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"provisioned_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"passphrase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"current_kms_arn\": \"string\",\n        \"docker_repo\": \"string\",\n        \"enable_backups\": false,\n        \"enable_pitr\": false,\n        \"handle\": \"string\",\n        \"id\": 9803,\n        \"initial_container_size\": 2161,\n        \"initial_disk_size\": 8859,\n        \"oldest_pitr_time\": \"string\",\n        \"pitr_bucket\": \"string\",\n        \"pitr_status\": \"unsupported\",\n        \"port_mapping\": [\n          [\n            8883,\n            7359\n          ],\n          [\n            780,\n            7156\n          ]\n        ],\n        \"provisioned\": true,\n        \"status\": \"string\",\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"passphrase\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_image\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"initialize_from\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_configuration\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"dependents\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"backups\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"configurations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"account\": {\n      \"href\": \"https://kiHHdVuHbgVLjcZjGPtXe.hrfmWZ3WRQvIY,RELypjqbTr2hawXPBvsNPuqI53ifCJIq,RMALfiz..FCLTUl1qzAjx5Int4xRYn\"\n    },\n    \"next\": {\n      \"href\": \"http://UZnAmEXunPdrU.hxblUsPygckHRD2d\"\n    },\n    \"prev\": {\n      \"href\": \"https://KFaeGr.zutwvMp0NeowEAdHu,VsbIrclALrOQadhT-Tsw8Vy9COs7hE\"\n    },\n    \"self\": {\n      \"href\": \"https://pAYtmjHKKMKxzeLyr.yuabcx+wlbO+0jM\"\n    }\n  },\n  \"current_page\": 2434,\n  \"per_page\": 8344,\n  \"total_count\": 60\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cfa5b78-2e89-4898-a864-b643c6c82928",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9862,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c223efb5-8eb8-4429-ab26-cba093b90251",
+          "name": "create database",
+          "request": {
+            "name": "create database",
+            "description": {
+              "content": "Creates a new database within the specified account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account_id",
+                "databases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id",
+                  "description": "(Required) account_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"handle\": \"<string>\",\n  \"type\": \"<string>\",\n  \"initial_disk_size\": \"<integer>\",\n  \"initial_container_size\": \"<integer>\",\n  \"initialize_from\": \"<string>\",\n  \"database_image\": \"<integer>\",\n  \"database_image_id\": \"<integer>\",\n  \"current_kms_arn\": \"<string>\",\n  \"enable_backups\": \"<boolean>\",\n  \"enable_pitr\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be01b54e-a86d-4672-8a72-819a53d3c548",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handle\": \"<string>\",\n  \"type\": \"<string>\",\n  \"initial_disk_size\": \"<integer>\",\n  \"initial_container_size\": \"<integer>\",\n  \"initialize_from\": \"<string>\",\n  \"database_image\": \"<integer>\",\n  \"database_image_id\": \"<integer>\",\n  \"current_kms_arn\": \"<string>\",\n  \"enable_backups\": \"<boolean>\",\n  \"enable_pitr\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"last_operation\": {\n      \"_type\": \"string\",\n      \"aborted\": true,\n      \"cancelled\": false,\n      \"certificate\": \"string\",\n      \"command\": \"string\",\n      \"container_count\": 6448,\n      \"container_size\": 7797,\n      \"created_at\": \"string\",\n      \"daily\": 2946,\n      \"destination_region\": \"string\",\n      \"disk_size\": 9139,\n      \"docker_ref\": \"string\",\n      \"enable_backups\": false,\n      \"enable_pitr\": false,\n      \"git_ref\": \"string\",\n      \"handle\": \"string\",\n      \"id\": 9061,\n      \"instance_profile\": \"string\",\n      \"interactive\": false,\n      \"keep_final\": false,\n      \"make_copy\": false,\n      \"monthly\": 9524,\n      \"mount_point\": \"string\",\n      \"pitr_days\": 541,\n      \"settings\": {},\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"updated_at\": \"string\",\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"yearly\": 937,\n      \"env\": {},\n      \"private_key\": \"string\",\n      \"sensitive_settings\": {},\n      \"_links\": {\n        \"user\": {\n          \"href\": \"http://OmapMvNKJvgcwvsJhUoXqbgwz.ezjvbbXQT8bI.FlPDjsxvmpuvlail8ogoH4NCttrsAHGCSDmUWwA2e9x7mPyHTrIW5v,FCrgqi\"\n        },\n        \"resource\": {\n          \"href\": \"https://RJDsTHUKTLGELODVrwNMzED.bmiwRb4oj9,I5XQ\"\n        },\n        \"account\": {\n          \"href\": \"https://ZHXDdbXYtYkplwAdFve.mrwdg1VUAe2Fz1JJ8j9AF.yp2oHDggb2OD.C8xW4.StfqRCrB\"\n        },\n        \"destination_account\": {\n          \"href\": \"http://LxrEnQnPXANdESVYCoGQEnmrSIMTX.tgbDw\"\n        },\n        \"ssh_portal_connections\": {\n          \"href\": \"http://NjItNTT.ugoOJQ71\"\n        },\n        \"ephemeral_sessions\": {\n          \"href\": \"https://iZAoEaMlKWSBDBkTjmZevYkCCNSKWUqJ.nluofYSZ4mMH87P0xxffWhO7p1D\"\n        },\n        \"code_scan_result\": {\n          \"href\": \"https://aMGHEpgJZRaJXi.lbKCN5Z0wtaRzL-F.EU++IZtnSSOlQUa2TJQpOrt4ZvDfUaI-E\"\n        },\n        \"service\": {\n          \"href\": \"http://awkljUEIrgFeZQETwBVLeacwG.bluiL.0jRcFe,HM5Ll9dSoBMrysOOcRfNde8a8VWFUHUn5vhvjzRn,M2KUnwOwtT9+M8c3\"\n        },\n        \"self\": {\n          \"href\": \"http://kwqbGYZWIXBiUlQpAgPTQvDzqVvIDez.jetgzz8c9dhHHYO65LuzdUauR5grzImNzlmVkY9RNlY2aY0r2r1ZiXeARLR3UsXReiugrxXyEb0lr4fwy\"\n        }\n      }\n    },\n    \"disk\": {\n      \"_type\": \"string\",\n      \"attached\": false,\n      \"availability_zone\": \"string\",\n      \"baseline_iops\": 222,\n      \"created_at\": \"string\",\n      \"current_kms_arn\": \"string\",\n      \"device\": \"string\",\n      \"ebs_volume_id\": \"string\",\n      \"ebs_volume_type\": \"string\",\n      \"ec2_instance_id\": \"string\",\n      \"filesystem\": \"string\",\n      \"handle\": \"string\",\n      \"host\": \"string\",\n      \"id\": 43,\n      \"key_bytes\": 640,\n      \"provisioned_iops\": 2503,\n      \"size\": 168,\n      \"updated_at\": \"string\",\n      \"passphrase\": \"string\",\n      \"_links\": {\n        \"account\": {\n          \"href\": \"https://AVDYIGTRvVfwbyJRfxySKNeourokW.ogFpCPy+jvGzvVsL6YQ4HwTvMsKHk0X\"\n        },\n        \"database\": {\n          \"href\": \"http://YZqU.urcbXQ\"\n        },\n        \"operations\": {\n          \"href\": \"http://eZpkCExJljkznJUqoY.bzwdCC\"\n        },\n        \"self\": {\n          \"href\": \"http://yyYhnfDJUIMHnC.izmzFHx5yYZZD3A.vLR9JGRBqc6NMR.c.5sH,IQNpxAvqgo02NJQW\"\n        }\n      }\n    },\n    \"database_credentials\": [\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"default\": false,\n        \"id\": 714,\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"default\": true,\n        \"id\": 864,\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_type\": \"string\",\n  \"created_at\": \"string\",\n  \"current_kms_arn\": \"string\",\n  \"docker_repo\": \"string\",\n  \"enable_backups\": false,\n  \"enable_pitr\": true,\n  \"handle\": \"string\",\n  \"id\": 5872,\n  \"initial_container_size\": 7931,\n  \"initial_disk_size\": 9483,\n  \"oldest_pitr_time\": \"string\",\n  \"pitr_bucket\": \"string\",\n  \"pitr_status\": \"unsupported\",\n  \"port_mapping\": [\n    [\n      8478,\n      6152\n    ],\n    [\n      9905,\n      3311\n    ]\n  ],\n  \"provisioned\": true,\n  \"status\": \"string\",\n  \"type\": \"string\",\n  \"updated_at\": \"string\",\n  \"passphrase\": \"string\",\n  \"connection_url\": \"string\",\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://C.hiyT6Hwfl4vyxY3hS8i+v6JI3JEwwISm1E6+iKgqEsUJXm-Jd92BHZuXI8JCHyBAOurk\"\n    },\n    \"database_image\": {\n      \"href\": \"http://zLUhUMFYRpMUssEUKewiWG.uhezmE4Fas,jCeqdEDhxNUhOa5GF8Xu8n4MthLcazVosb8nw.y-nmEtV4\"\n    },\n    \"service\": {\n      \"href\": \"http://fZIrcFqwWfXbT.xjtqDUuhZr.RdUGxibMLaqjHsjbf29iiG,.igAqB7.vbqi.Pjt+BU\"\n    },\n    \"disk\": {\n      \"href\": \"http://IEOVKnEfRMDoyMxHgkugijRLwRtdM.qgoa7x2t5NJjGoHVyu1On,Ug-dIzAAyNutm+cYtdPmVkKErThshwxe2ly+.,1aQ8Fte+GnU8p7psDNY5aNr,MuuEq\"\n    },\n    \"initialize_from\": {\n      \"href\": \"https://cjcNhzoLwidizyENrPjMwZcdPpOfoh.mboz4F85FnT\"\n    },\n    \"current_configuration\": {\n      \"href\": \"http://hzJejzLhzI.sdrKDLsOZo,ZUgLpEqWvW6hnY6ZhGov3+3Szffblro2HyUf5uTVvCnn0\"\n    },\n    \"dependents\": {\n      \"href\": \"https://lEqEgMQuiDWwHZaLv.epX9q6Xd.dlrsXnZwqJmfwM2Uxq7do,aOFlFSVWwZvJa7\"\n    },\n    \"operations\": {\n      \"href\": \"https://AwMIQZcEPsVQcURt.ftioQN+P,Ckaac+y1oy7N+PTu.IR4KWSj,CPOHL1g7ouqGoSYf.7JgfAUaI-\"\n    },\n    \"backups\": {\n      \"href\": \"https://kNKdZMsQwjbjKZYbHTtxz.rjka9uOyHB,yu-15G\"\n    },\n    \"configurations\": {\n      \"href\": \"https://qeutAjHsmnD.bbqRipqUZC2btbVMMGarWfGXDXejxxC\"\n    },\n    \"database_credentials\": {\n      \"href\": \"http://suCK.yhpAS2ithi,KYJ-eTo\"\n    },\n    \"settings\": {\n      \"href\": \"https://GUdreOexGBcgFS.bgduMq-TQ79BmFeh1,rtG4F.G.wJLiragw-XuxjHMGtWMlupFtNjTmmqnDpPnPXFhErh,EoMjGT9BNW\"\n    },\n    \"current_setting\": {\n      \"href\": \"http://zcFJeqTkTiyuhhnCZJWgDKbYEAmcsFA.sfxgHnkVIJEEHg.vlIaM.5AunIhOzrtKUgkZ3GQfVNw0JZQdDNZ70\"\n    },\n    \"self\": {\n      \"href\": \"http://BJCkqPYcuOxerpXiGrUvveFItwnwFu.kzsO5k8-cV7hwCiu.mMPYQCX1tOHSi.2tIhAEAY0MnCzFTntXpAO5\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "846c085f-5969-4e0c-90d5-7282025519bd",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handle\": \"<string>\",\n  \"type\": \"<string>\",\n  \"initial_disk_size\": \"<integer>\",\n  \"initial_container_size\": \"<integer>\",\n  \"initialize_from\": \"<string>\",\n  \"database_image\": \"<integer>\",\n  \"database_image_id\": \"<integer>\",\n  \"current_kms_arn\": \"<string>\",\n  \"enable_backups\": \"<boolean>\",\n  \"enable_pitr\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9862,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e05513a-4d38-44c4-8680-4dd4fa1fb51d",
+          "name": "list databases",
+          "request": {
+            "name": "list databases",
+            "description": {
+              "content": "Returns a paginated list of replica databases for the specified database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "databases",
+                ":database_id",
+                "dependents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "database_id",
+                  "description": "(Required) database_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4918141e-7ad0-4012-8a42-d64deafbf883",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":database_id",
+                    "dependents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "database_id",
+                      "description": "(Required) database_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"databases\": [\n      {\n        \"_embedded\": {\n          \"last_operation\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"aborted\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cancelled\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"certificate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"command\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"daily\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"destination_region\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"disk_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"docker_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_backups\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_pitr\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"git_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance_profile\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"interactive\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"keep_final\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"make_copy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"monthly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"mount_point\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pitr_days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"yearly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"env\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"private_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sensitive_settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"attached\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability_zone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"baseline_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"current_kms_arn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ec2_instance_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filesystem\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"host\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_bytes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"provisioned_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"passphrase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"current_kms_arn\": \"string\",\n        \"docker_repo\": \"string\",\n        \"enable_backups\": false,\n        \"enable_pitr\": true,\n        \"handle\": \"string\",\n        \"id\": 83,\n        \"initial_container_size\": 2655,\n        \"initial_disk_size\": 8851,\n        \"oldest_pitr_time\": \"string\",\n        \"pitr_bucket\": \"string\",\n        \"pitr_status\": \"unsupported\",\n        \"port_mapping\": [\n          [\n            8540,\n            6604\n          ],\n          [\n            1831,\n            8097\n          ]\n        ],\n        \"provisioned\": true,\n        \"status\": \"string\",\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"passphrase\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_image\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"initialize_from\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_configuration\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"dependents\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"backups\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"configurations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_embedded\": {\n          \"last_operation\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"aborted\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cancelled\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"certificate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"command\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"daily\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"destination_region\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"disk_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"docker_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_backups\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_pitr\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"git_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance_profile\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"interactive\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"keep_final\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"make_copy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"monthly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"mount_point\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pitr_days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"yearly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"env\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"private_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sensitive_settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"attached\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability_zone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"baseline_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"current_kms_arn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ec2_instance_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filesystem\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"host\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_bytes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"provisioned_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"passphrase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"current_kms_arn\": \"string\",\n        \"docker_repo\": \"string\",\n        \"enable_backups\": false,\n        \"enable_pitr\": true,\n        \"handle\": \"string\",\n        \"id\": 6654,\n        \"initial_container_size\": 5888,\n        \"initial_disk_size\": 4229,\n        \"oldest_pitr_time\": \"string\",\n        \"pitr_bucket\": \"string\",\n        \"pitr_status\": \"unsupported\",\n        \"port_mapping\": [\n          [\n            2282,\n            1966\n          ],\n          [\n            770,\n            9789\n          ]\n        ],\n        \"provisioned\": false,\n        \"status\": \"string\",\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"passphrase\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_image\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"initialize_from\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_configuration\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"dependents\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"backups\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"configurations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"account\": {\n      \"href\": \"https://lqAtFXUZxL.cgxfk5SNd91gpt.XJ\"\n    },\n    \"next\": {\n      \"href\": \"https://lKXJrCFTCsL.fucmpQLEHo9-3ZdOpEg3qP.,6zY-IQx+XFhaSB0aZ\"\n    },\n    \"prev\": {\n      \"href\": \"http://KseTXrIp.fwJ7yhoci7m6EchhoA,xTHYTScrVelcNWdPeFI5a--O0RBOQwu\"\n    },\n    \"self\": {\n      \"href\": \"http://pLIFTCiJZFmQbUjpCpIBTotPGYNP.yojHdFGX4L+8jDUEpjqbI\"\n    }\n  },\n  \"current_page\": 2618,\n  \"per_page\": 8556,\n  \"total_count\": 2945\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6aff7cc7-d63b-4b79-ac10-8ef241e2b07a",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":database_id",
+                    "dependents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "database_id",
+                      "description": "(Required) database_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9862,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69574926-703f-4db7-911a-b65812e858c2",
+          "name": "list databases",
+          "request": {
+            "name": "list databases",
+            "description": {
+              "content": "Returns a paginated list of all databases.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "databases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1b1fef7-8c38-416c-9949-ef5bea63f6ed",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"databases\": [\n      {\n        \"_embedded\": {\n          \"last_operation\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"aborted\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cancelled\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"certificate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"command\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"daily\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"destination_region\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"disk_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"docker_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_backups\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_pitr\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"git_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance_profile\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"interactive\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"keep_final\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"make_copy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"monthly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"mount_point\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pitr_days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"yearly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"env\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"private_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sensitive_settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"attached\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability_zone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"baseline_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"current_kms_arn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ec2_instance_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filesystem\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"host\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_bytes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"provisioned_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"passphrase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"current_kms_arn\": \"string\",\n        \"docker_repo\": \"string\",\n        \"enable_backups\": false,\n        \"enable_pitr\": true,\n        \"handle\": \"string\",\n        \"id\": 83,\n        \"initial_container_size\": 2655,\n        \"initial_disk_size\": 8851,\n        \"oldest_pitr_time\": \"string\",\n        \"pitr_bucket\": \"string\",\n        \"pitr_status\": \"unsupported\",\n        \"port_mapping\": [\n          [\n            8540,\n            6604\n          ],\n          [\n            1831,\n            8097\n          ]\n        ],\n        \"provisioned\": true,\n        \"status\": \"string\",\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"passphrase\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_image\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"initialize_from\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_configuration\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"dependents\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"backups\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"configurations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_embedded\": {\n          \"last_operation\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"aborted\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cancelled\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"certificate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"command\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"daily\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"destination_region\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"disk_size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"docker_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_backups\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"enable_pitr\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"git_ref\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"instance_profile\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"interactive\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"keep_final\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"make_copy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"monthly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"mount_point\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pitr_days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"yearly\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"env\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"private_key\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sensitive_settings\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"attached\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"availability_zone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"baseline_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"current_kms_arn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ebs_volume_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ec2_instance_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"filesystem\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"handle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"host\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_bytes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"provisioned_iops\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updated_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"passphrase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"current_kms_arn\": \"string\",\n        \"docker_repo\": \"string\",\n        \"enable_backups\": false,\n        \"enable_pitr\": true,\n        \"handle\": \"string\",\n        \"id\": 6654,\n        \"initial_container_size\": 5888,\n        \"initial_disk_size\": 4229,\n        \"oldest_pitr_time\": \"string\",\n        \"pitr_bucket\": \"string\",\n        \"pitr_status\": \"unsupported\",\n        \"port_mapping\": [\n          [\n            2282,\n            1966\n          ],\n          [\n            770,\n            9789\n          ]\n        ],\n        \"provisioned\": false,\n        \"status\": \"string\",\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"passphrase\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_image\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"initialize_from\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_configuration\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"dependents\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"backups\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"configurations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database_credentials\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"account\": {\n      \"href\": \"https://lqAtFXUZxL.cgxfk5SNd91gpt.XJ\"\n    },\n    \"next\": {\n      \"href\": \"https://lKXJrCFTCsL.fucmpQLEHo9-3ZdOpEg3qP.,6zY-IQx+XFhaSB0aZ\"\n    },\n    \"prev\": {\n      \"href\": \"http://KseTXrIp.fwJ7yhoci7m6EchhoA,xTHYTScrVelcNWdPeFI5a--O0RBOQwu\"\n    },\n    \"self\": {\n      \"href\": \"http://pLIFTCiJZFmQbUjpCpIBTotPGYNP.yojHdFGX4L+8jDUEpjqbI\"\n    }\n  },\n  \"current_page\": 2618,\n  \"per_page\": 8556,\n  \"total_count\": 2945\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c76ac85-e48c-4e13-835b-a343ecc5104a",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9862,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9f6d24d-814a-48dd-b2b7-221408866aac",
+          "name": "delete database",
+          "request": {
+            "name": "delete database",
+            "description": {
+              "content": "Deletes a database by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "databases",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c74a12b-c2b9-4977-990d-1bc777597c4f",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd79e7c1-0d87-4bd6-9acb-bf60c0939854",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9862,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fab04088-7012-4d63-986a-0a6a9834cf35",
+          "name": "show database",
+          "request": {
+            "name": "show database",
+            "description": {
+              "content": "Returns the details of a specific database by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "databases",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83c3d739-a4d4-4bc4-adbb-7281963797e3",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"last_operation\": {\n      \"_type\": \"string\",\n      \"aborted\": true,\n      \"cancelled\": false,\n      \"certificate\": \"string\",\n      \"command\": \"string\",\n      \"container_count\": 6448,\n      \"container_size\": 7797,\n      \"created_at\": \"string\",\n      \"daily\": 2946,\n      \"destination_region\": \"string\",\n      \"disk_size\": 9139,\n      \"docker_ref\": \"string\",\n      \"enable_backups\": false,\n      \"enable_pitr\": false,\n      \"git_ref\": \"string\",\n      \"handle\": \"string\",\n      \"id\": 9061,\n      \"instance_profile\": \"string\",\n      \"interactive\": false,\n      \"keep_final\": false,\n      \"make_copy\": false,\n      \"monthly\": 9524,\n      \"mount_point\": \"string\",\n      \"pitr_days\": 541,\n      \"settings\": {},\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"updated_at\": \"string\",\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"yearly\": 937,\n      \"env\": {},\n      \"private_key\": \"string\",\n      \"sensitive_settings\": {},\n      \"_links\": {\n        \"user\": {\n          \"href\": \"http://OmapMvNKJvgcwvsJhUoXqbgwz.ezjvbbXQT8bI.FlPDjsxvmpuvlail8ogoH4NCttrsAHGCSDmUWwA2e9x7mPyHTrIW5v,FCrgqi\"\n        },\n        \"resource\": {\n          \"href\": \"https://RJDsTHUKTLGELODVrwNMzED.bmiwRb4oj9,I5XQ\"\n        },\n        \"account\": {\n          \"href\": \"https://ZHXDdbXYtYkplwAdFve.mrwdg1VUAe2Fz1JJ8j9AF.yp2oHDggb2OD.C8xW4.StfqRCrB\"\n        },\n        \"destination_account\": {\n          \"href\": \"http://LxrEnQnPXANdESVYCoGQEnmrSIMTX.tgbDw\"\n        },\n        \"ssh_portal_connections\": {\n          \"href\": \"http://NjItNTT.ugoOJQ71\"\n        },\n        \"ephemeral_sessions\": {\n          \"href\": \"https://iZAoEaMlKWSBDBkTjmZevYkCCNSKWUqJ.nluofYSZ4mMH87P0xxffWhO7p1D\"\n        },\n        \"code_scan_result\": {\n          \"href\": \"https://aMGHEpgJZRaJXi.lbKCN5Z0wtaRzL-F.EU++IZtnSSOlQUa2TJQpOrt4ZvDfUaI-E\"\n        },\n        \"service\": {\n          \"href\": \"http://awkljUEIrgFeZQETwBVLeacwG.bluiL.0jRcFe,HM5Ll9dSoBMrysOOcRfNde8a8VWFUHUn5vhvjzRn,M2KUnwOwtT9+M8c3\"\n        },\n        \"self\": {\n          \"href\": \"http://kwqbGYZWIXBiUlQpAgPTQvDzqVvIDez.jetgzz8c9dhHHYO65LuzdUauR5grzImNzlmVkY9RNlY2aY0r2r1ZiXeARLR3UsXReiugrxXyEb0lr4fwy\"\n        }\n      }\n    },\n    \"disk\": {\n      \"_type\": \"string\",\n      \"attached\": false,\n      \"availability_zone\": \"string\",\n      \"baseline_iops\": 222,\n      \"created_at\": \"string\",\n      \"current_kms_arn\": \"string\",\n      \"device\": \"string\",\n      \"ebs_volume_id\": \"string\",\n      \"ebs_volume_type\": \"string\",\n      \"ec2_instance_id\": \"string\",\n      \"filesystem\": \"string\",\n      \"handle\": \"string\",\n      \"host\": \"string\",\n      \"id\": 43,\n      \"key_bytes\": 640,\n      \"provisioned_iops\": 2503,\n      \"size\": 168,\n      \"updated_at\": \"string\",\n      \"passphrase\": \"string\",\n      \"_links\": {\n        \"account\": {\n          \"href\": \"https://AVDYIGTRvVfwbyJRfxySKNeourokW.ogFpCPy+jvGzvVsL6YQ4HwTvMsKHk0X\"\n        },\n        \"database\": {\n          \"href\": \"http://YZqU.urcbXQ\"\n        },\n        \"operations\": {\n          \"href\": \"http://eZpkCExJljkznJUqoY.bzwdCC\"\n        },\n        \"self\": {\n          \"href\": \"http://yyYhnfDJUIMHnC.izmzFHx5yYZZD3A.vLR9JGRBqc6NMR.c.5sH,IQNpxAvqgo02NJQW\"\n        }\n      }\n    },\n    \"database_credentials\": [\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"default\": false,\n        \"id\": 714,\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"default\": true,\n        \"id\": 864,\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_type\": \"string\",\n  \"created_at\": \"string\",\n  \"current_kms_arn\": \"string\",\n  \"docker_repo\": \"string\",\n  \"enable_backups\": false,\n  \"enable_pitr\": true,\n  \"handle\": \"string\",\n  \"id\": 5872,\n  \"initial_container_size\": 7931,\n  \"initial_disk_size\": 9483,\n  \"oldest_pitr_time\": \"string\",\n  \"pitr_bucket\": \"string\",\n  \"pitr_status\": \"unsupported\",\n  \"port_mapping\": [\n    [\n      8478,\n      6152\n    ],\n    [\n      9905,\n      3311\n    ]\n  ],\n  \"provisioned\": true,\n  \"status\": \"string\",\n  \"type\": \"string\",\n  \"updated_at\": \"string\",\n  \"passphrase\": \"string\",\n  \"connection_url\": \"string\",\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://C.hiyT6Hwfl4vyxY3hS8i+v6JI3JEwwISm1E6+iKgqEsUJXm-Jd92BHZuXI8JCHyBAOurk\"\n    },\n    \"database_image\": {\n      \"href\": \"http://zLUhUMFYRpMUssEUKewiWG.uhezmE4Fas,jCeqdEDhxNUhOa5GF8Xu8n4MthLcazVosb8nw.y-nmEtV4\"\n    },\n    \"service\": {\n      \"href\": \"http://fZIrcFqwWfXbT.xjtqDUuhZr.RdUGxibMLaqjHsjbf29iiG,.igAqB7.vbqi.Pjt+BU\"\n    },\n    \"disk\": {\n      \"href\": \"http://IEOVKnEfRMDoyMxHgkugijRLwRtdM.qgoa7x2t5NJjGoHVyu1On,Ug-dIzAAyNutm+cYtdPmVkKErThshwxe2ly+.,1aQ8Fte+GnU8p7psDNY5aNr,MuuEq\"\n    },\n    \"initialize_from\": {\n      \"href\": \"https://cjcNhzoLwidizyENrPjMwZcdPpOfoh.mboz4F85FnT\"\n    },\n    \"current_configuration\": {\n      \"href\": \"http://hzJejzLhzI.sdrKDLsOZo,ZUgLpEqWvW6hnY6ZhGov3+3Szffblro2HyUf5uTVvCnn0\"\n    },\n    \"dependents\": {\n      \"href\": \"https://lEqEgMQuiDWwHZaLv.epX9q6Xd.dlrsXnZwqJmfwM2Uxq7do,aOFlFSVWwZvJa7\"\n    },\n    \"operations\": {\n      \"href\": \"https://AwMIQZcEPsVQcURt.ftioQN+P,Ckaac+y1oy7N+PTu.IR4KWSj,CPOHL1g7ouqGoSYf.7JgfAUaI-\"\n    },\n    \"backups\": {\n      \"href\": \"https://kNKdZMsQwjbjKZYbHTtxz.rjka9uOyHB,yu-15G\"\n    },\n    \"configurations\": {\n      \"href\": \"https://qeutAjHsmnD.bbqRipqUZC2btbVMMGarWfGXDXejxxC\"\n    },\n    \"database_credentials\": {\n      \"href\": \"http://suCK.yhpAS2ithi,KYJ-eTo\"\n    },\n    \"settings\": {\n      \"href\": \"https://GUdreOexGBcgFS.bgduMq-TQ79BmFeh1,rtG4F.G.wJLiragw-XuxjHMGtWMlupFtNjTmmqnDpPnPXFhErh,EoMjGT9BNW\"\n    },\n    \"current_setting\": {\n      \"href\": \"http://zcFJeqTkTiyuhhnCZJWgDKbYEAmcsFA.sfxgHnkVIJEEHg.vlIaM.5AunIhOzrtKUgkZ3GQfVNw0JZQdDNZ70\"\n    },\n    \"self\": {\n      \"href\": \"http://BJCkqPYcuOxerpXiGrUvveFItwnwFu.kzsO5k8-cV7hwCiu.mMPYQCX1tOHSi.2tIhAEAY0MnCzFTntXpAO5\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56dfb91a-dcc0-482d-8197-ed9811d5c298",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9862,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de689fbc-08c7-4908-8a4f-ba6935cab148",
+          "name": "update database",
+          "request": {
+            "name": "update database",
+            "description": {
+              "content": "Partially updates a database's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "databases",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_configuration\": \"<integer>\",\n  \"handle\": \"<string>\",\n  \"initial_disk_size\": \"<integer>\",\n  \"initial_continer_size\": \"<integer>\",\n  \"database_image_id\": \"<integer>\",\n  \"current_kms_arn\": \"<string>\",\n  \"enable_backups\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8206838d-0115-4998-90f0-709baba3695a",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"current_configuration\": \"<integer>\",\n  \"handle\": \"<string>\",\n  \"initial_disk_size\": \"<integer>\",\n  \"initial_continer_size\": \"<integer>\",\n  \"database_image_id\": \"<integer>\",\n  \"current_kms_arn\": \"<string>\",\n  \"enable_backups\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d29ce80c-ccbe-4f45-a818-bef1e993f8c3",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"current_configuration\": \"<integer>\",\n  \"handle\": \"<string>\",\n  \"initial_disk_size\": \"<integer>\",\n  \"initial_continer_size\": \"<integer>\",\n  \"database_image_id\": \"<integer>\",\n  \"current_kms_arn\": \"<string>\",\n  \"enable_backups\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9862,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f15b74da-0635-4015-8d85-16b3d0e85d25",
+          "name": "update database",
+          "request": {
+            "name": "update database",
+            "description": {
+              "content": "Updates a database's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "databases",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_configuration\": \"<integer>\",\n  \"handle\": \"<string>\",\n  \"initial_disk_size\": \"<integer>\",\n  \"initial_continer_size\": \"<integer>\",\n  \"database_image_id\": \"<integer>\",\n  \"current_kms_arn\": \"<string>\",\n  \"enable_backups\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "443fb431-e156-46aa-81c3-c23404da62b5",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"current_configuration\": \"<integer>\",\n  \"handle\": \"<string>\",\n  \"initial_disk_size\": \"<integer>\",\n  \"initial_continer_size\": \"<integer>\",\n  \"database_image_id\": \"<integer>\",\n  \"current_kms_arn\": \"<string>\",\n  \"enable_backups\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d320fc15-e564-4b9d-930f-e818c11c3499",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"current_configuration\": \"<integer>\",\n  \"handle\": \"<string>\",\n  \"initial_disk_size\": \"<integer>\",\n  \"initial_continer_size\": \"<integer>\",\n  \"database_image_id\": \"<integer>\",\n  \"current_kms_arn\": \"<string>\",\n  \"enable_backups\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9862,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dc5e5a4-393c-4545-9d9b-6beb9cfd5587",
+          "name": "find database by handle",
+          "request": {
+            "name": "find database by handle",
+            "description": {
+              "content": "Returns the database matching the specified handle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "find",
+                "database"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "handle",
+                  "value": "<string>",
+                  "description": "(Required) database handle"
+                },
+                {
+                  "disabled": false,
+                  "key": "environment",
+                  "value": "<string>",
+                  "description": "account handle to disambiguate when multiple databases share the same handle"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e70f59e-782e-4fd5-b166-57de6a993749",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find",
+                    "database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "handle",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"last_operation\": {\n      \"_type\": \"string\",\n      \"aborted\": true,\n      \"cancelled\": false,\n      \"certificate\": \"string\",\n      \"command\": \"string\",\n      \"container_count\": 6448,\n      \"container_size\": 7797,\n      \"created_at\": \"string\",\n      \"daily\": 2946,\n      \"destination_region\": \"string\",\n      \"disk_size\": 9139,\n      \"docker_ref\": \"string\",\n      \"enable_backups\": false,\n      \"enable_pitr\": false,\n      \"git_ref\": \"string\",\n      \"handle\": \"string\",\n      \"id\": 9061,\n      \"instance_profile\": \"string\",\n      \"interactive\": false,\n      \"keep_final\": false,\n      \"make_copy\": false,\n      \"monthly\": 9524,\n      \"mount_point\": \"string\",\n      \"pitr_days\": 541,\n      \"settings\": {},\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"updated_at\": \"string\",\n      \"user_email\": \"string\",\n      \"user_name\": \"string\",\n      \"yearly\": 937,\n      \"env\": {},\n      \"private_key\": \"string\",\n      \"sensitive_settings\": {},\n      \"_links\": {\n        \"user\": {\n          \"href\": \"http://OmapMvNKJvgcwvsJhUoXqbgwz.ezjvbbXQT8bI.FlPDjsxvmpuvlail8ogoH4NCttrsAHGCSDmUWwA2e9x7mPyHTrIW5v,FCrgqi\"\n        },\n        \"resource\": {\n          \"href\": \"https://RJDsTHUKTLGELODVrwNMzED.bmiwRb4oj9,I5XQ\"\n        },\n        \"account\": {\n          \"href\": \"https://ZHXDdbXYtYkplwAdFve.mrwdg1VUAe2Fz1JJ8j9AF.yp2oHDggb2OD.C8xW4.StfqRCrB\"\n        },\n        \"destination_account\": {\n          \"href\": \"http://LxrEnQnPXANdESVYCoGQEnmrSIMTX.tgbDw\"\n        },\n        \"ssh_portal_connections\": {\n          \"href\": \"http://NjItNTT.ugoOJQ71\"\n        },\n        \"ephemeral_sessions\": {\n          \"href\": \"https://iZAoEaMlKWSBDBkTjmZevYkCCNSKWUqJ.nluofYSZ4mMH87P0xxffWhO7p1D\"\n        },\n        \"code_scan_result\": {\n          \"href\": \"https://aMGHEpgJZRaJXi.lbKCN5Z0wtaRzL-F.EU++IZtnSSOlQUa2TJQpOrt4ZvDfUaI-E\"\n        },\n        \"service\": {\n          \"href\": \"http://awkljUEIrgFeZQETwBVLeacwG.bluiL.0jRcFe,HM5Ll9dSoBMrysOOcRfNde8a8VWFUHUn5vhvjzRn,M2KUnwOwtT9+M8c3\"\n        },\n        \"self\": {\n          \"href\": \"http://kwqbGYZWIXBiUlQpAgPTQvDzqVvIDez.jetgzz8c9dhHHYO65LuzdUauR5grzImNzlmVkY9RNlY2aY0r2r1ZiXeARLR3UsXReiugrxXyEb0lr4fwy\"\n        }\n      }\n    },\n    \"disk\": {\n      \"_type\": \"string\",\n      \"attached\": false,\n      \"availability_zone\": \"string\",\n      \"baseline_iops\": 222,\n      \"created_at\": \"string\",\n      \"current_kms_arn\": \"string\",\n      \"device\": \"string\",\n      \"ebs_volume_id\": \"string\",\n      \"ebs_volume_type\": \"string\",\n      \"ec2_instance_id\": \"string\",\n      \"filesystem\": \"string\",\n      \"handle\": \"string\",\n      \"host\": \"string\",\n      \"id\": 43,\n      \"key_bytes\": 640,\n      \"provisioned_iops\": 2503,\n      \"size\": 168,\n      \"updated_at\": \"string\",\n      \"passphrase\": \"string\",\n      \"_links\": {\n        \"account\": {\n          \"href\": \"https://AVDYIGTRvVfwbyJRfxySKNeourokW.ogFpCPy+jvGzvVsL6YQ4HwTvMsKHk0X\"\n        },\n        \"database\": {\n          \"href\": \"http://YZqU.urcbXQ\"\n        },\n        \"operations\": {\n          \"href\": \"http://eZpkCExJljkznJUqoY.bzwdCC\"\n        },\n        \"self\": {\n          \"href\": \"http://yyYhnfDJUIMHnC.izmzFHx5yYZZD3A.vLR9JGRBqc6NMR.c.5sH,IQNpxAvqgo02NJQW\"\n        }\n      }\n    },\n    \"database_credentials\": [\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"default\": false,\n        \"id\": 714,\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"default\": true,\n        \"id\": 864,\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"connection_url\": \"string\",\n        \"_links\": {\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_type\": \"string\",\n  \"created_at\": \"string\",\n  \"current_kms_arn\": \"string\",\n  \"docker_repo\": \"string\",\n  \"enable_backups\": false,\n  \"enable_pitr\": true,\n  \"handle\": \"string\",\n  \"id\": 5872,\n  \"initial_container_size\": 7931,\n  \"initial_disk_size\": 9483,\n  \"oldest_pitr_time\": \"string\",\n  \"pitr_bucket\": \"string\",\n  \"pitr_status\": \"unsupported\",\n  \"port_mapping\": [\n    [\n      8478,\n      6152\n    ],\n    [\n      9905,\n      3311\n    ]\n  ],\n  \"provisioned\": true,\n  \"status\": \"string\",\n  \"type\": \"string\",\n  \"updated_at\": \"string\",\n  \"passphrase\": \"string\",\n  \"connection_url\": \"string\",\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://C.hiyT6Hwfl4vyxY3hS8i+v6JI3JEwwISm1E6+iKgqEsUJXm-Jd92BHZuXI8JCHyBAOurk\"\n    },\n    \"database_image\": {\n      \"href\": \"http://zLUhUMFYRpMUssEUKewiWG.uhezmE4Fas,jCeqdEDhxNUhOa5GF8Xu8n4MthLcazVosb8nw.y-nmEtV4\"\n    },\n    \"service\": {\n      \"href\": \"http://fZIrcFqwWfXbT.xjtqDUuhZr.RdUGxibMLaqjHsjbf29iiG,.igAqB7.vbqi.Pjt+BU\"\n    },\n    \"disk\": {\n      \"href\": \"http://IEOVKnEfRMDoyMxHgkugijRLwRtdM.qgoa7x2t5NJjGoHVyu1On,Ug-dIzAAyNutm+cYtdPmVkKErThshwxe2ly+.,1aQ8Fte+GnU8p7psDNY5aNr,MuuEq\"\n    },\n    \"initialize_from\": {\n      \"href\": \"https://cjcNhzoLwidizyENrPjMwZcdPpOfoh.mboz4F85FnT\"\n    },\n    \"current_configuration\": {\n      \"href\": \"http://hzJejzLhzI.sdrKDLsOZo,ZUgLpEqWvW6hnY6ZhGov3+3Szffblro2HyUf5uTVvCnn0\"\n    },\n    \"dependents\": {\n      \"href\": \"https://lEqEgMQuiDWwHZaLv.epX9q6Xd.dlrsXnZwqJmfwM2Uxq7do,aOFlFSVWwZvJa7\"\n    },\n    \"operations\": {\n      \"href\": \"https://AwMIQZcEPsVQcURt.ftioQN+P,Ckaac+y1oy7N+PTu.IR4KWSj,CPOHL1g7ouqGoSYf.7JgfAUaI-\"\n    },\n    \"backups\": {\n      \"href\": \"https://kNKdZMsQwjbjKZYbHTtxz.rjka9uOyHB,yu-15G\"\n    },\n    \"configurations\": {\n      \"href\": \"https://qeutAjHsmnD.bbqRipqUZC2btbVMMGarWfGXDXejxxC\"\n    },\n    \"database_credentials\": {\n      \"href\": \"http://suCK.yhpAS2ithi,KYJ-eTo\"\n    },\n    \"settings\": {\n      \"href\": \"https://GUdreOexGBcgFS.bgduMq-TQ79BmFeh1,rtG4F.G.wJLiragw-XuxjHMGtWMlupFtNjTmmqnDpPnPXFhErh,EoMjGT9BNW\"\n    },\n    \"current_setting\": {\n      \"href\": \"http://zcFJeqTkTiyuhhnCZJWgDKbYEAmcsFA.sfxgHnkVIJEEHg.vlIaM.5AunIhOzrtKUgkZ3GQfVNw0JZQdDNZ70\"\n    },\n    \"self\": {\n      \"href\": \"http://BJCkqPYcuOxerpXiGrUvveFItwnwFu.kzsO5k8-cV7hwCiu.mMPYQCX1tOHSi.2tIhAEAY0MnCzFTntXpAO5\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9673d56a-5997-4cb3-85fc-c6011c5cfd58",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find",
+                    "database"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "handle",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9862,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a99941f1-4adf-4d6b-8eab-68cc9ff51600",
+    "name": "Aptible API v1 Databases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

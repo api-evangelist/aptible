@@ -1,0 +1,1338 @@
+{
+  "item": [
+    {
+      "id": "6688e201-478e-450c-a696-4f90a6521e5b",
+      "name": "LogDrains",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "15b93d52-98e4-4aa7-b114-71c09200e0ae",
+          "name": "list log_drains",
+          "request": {
+            "name": "list log_drains",
+            "description": {
+              "content": "Returns a paginated list of log drains for the specified account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account_id",
+                "log_drains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id",
+                  "description": "(Required) account_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89da4eb5-b34f-48c9-b546-477a2330ebbf",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "log_drains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"log_drains\": [\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"drain_apps\": false,\n        \"drain_databases\": true,\n        \"drain_ephemeral_sessions\": true,\n        \"drain_host\": \"string\",\n        \"drain_port\": 3939,\n        \"drain_proxies\": false,\n        \"drain_type\": \"string\",\n        \"gentlemanjerry_allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_host\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"gentlemanjerry_port_mapping\": [\n          [\n            5320,\n            9258\n          ],\n          [\n            2561,\n            9656\n          ]\n        ],\n        \"handle\": \"string\",\n        \"id\": 4864,\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"drain_username\": \"string\",\n        \"drain_password\": \"string\",\n        \"url\": \"string\",\n        \"logging_token\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ephemeral_containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"drain_apps\": false,\n        \"drain_databases\": false,\n        \"drain_ephemeral_sessions\": false,\n        \"drain_host\": \"string\",\n        \"drain_port\": 1093,\n        \"drain_proxies\": true,\n        \"drain_type\": \"string\",\n        \"gentlemanjerry_allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_host\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"gentlemanjerry_port_mapping\": [\n          [\n            8094,\n            2281\n          ],\n          [\n            2473,\n            9137\n          ]\n        ],\n        \"handle\": \"string\",\n        \"id\": 4814,\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"drain_username\": \"string\",\n        \"drain_password\": \"string\",\n        \"url\": \"string\",\n        \"logging_token\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ephemeral_containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"account\": {\n      \"href\": \"https://PhMhaYrjCDBFKISBEbOCVSfptKVgIhX.ozulnmg73G9ddRAKM\"\n    },\n    \"next\": {\n      \"href\": \"http://DmPzdTRrqIJeiOEOrfjMHayjSWx.zlcy8fqTeD91\"\n    },\n    \"prev\": {\n      \"href\": \"https://UDT.nenVxiYlGAV9u\"\n    },\n    \"self\": {\n      \"href\": \"http://HNMmInMBzDTPSbfgULnCbWO.kmuxBvQYwLBx4tBaXHSxaum5li-XexjkPzowvh\"\n    }\n  },\n  \"current_page\": 2729,\n  \"per_page\": 8790,\n  \"total_count\": 2680\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2ecd70e-94f6-48f2-8156-53c6580aae74",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "log_drains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 2479,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb8afe18-fa49-4c44-9eb6-986dc866fc6b",
+          "name": "create log_drain",
+          "request": {
+            "name": "create log_drain",
+            "description": {
+              "content": "Creates a new log drain for the specified account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account_id",
+                "log_drains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id",
+                  "description": "(Required) account_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"drain_type\": \"<string>\",\n  \"handle\": \"<string>\",\n  \"drain_host\": \"<uri>\",\n  \"drain_port\": \"<integer>\",\n  \"drain_username\": \"<string>\",\n  \"drain_password\": \"<string>\",\n  \"database\": \"<uri>\",\n  \"database_id\": \"<integer>\",\n  \"url\": \"<uri>\",\n  \"logging_token\": \"<string>\",\n  \"drain_apps\": \"<boolean>\",\n  \"drain_databases\": \"<boolean>\",\n  \"drain_ephemeral_sessions\": \"<boolean>\",\n  \"drain_proxies\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4bb0b194-a58c-4183-9f49-68d6d0f22a84",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "log_drains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drain_type\": \"<string>\",\n  \"handle\": \"<string>\",\n  \"drain_host\": \"<uri>\",\n  \"drain_port\": \"<integer>\",\n  \"drain_username\": \"<string>\",\n  \"drain_password\": \"<string>\",\n  \"database\": \"<uri>\",\n  \"database_id\": \"<integer>\",\n  \"url\": \"<uri>\",\n  \"logging_token\": \"<string>\",\n  \"drain_apps\": \"<boolean>\",\n  \"drain_databases\": \"<boolean>\",\n  \"drain_ephemeral_sessions\": \"<boolean>\",\n  \"drain_proxies\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"created_at\": \"string\",\n  \"drain_apps\": true,\n  \"drain_databases\": true,\n  \"drain_ephemeral_sessions\": true,\n  \"drain_host\": \"string\",\n  \"drain_port\": 5511,\n  \"drain_proxies\": true,\n  \"drain_type\": \"string\",\n  \"gentlemanjerry_allocation\": [\n    \"string\",\n    \"string\"\n  ],\n  \"gentlemanjerry_certificate\": \"string\",\n  \"gentlemanjerry_docker_name\": \"string\",\n  \"gentlemanjerry_host\": \"string\",\n  \"gentlemanjerry_instance_id\": \"string\",\n  \"gentlemanjerry_port_mapping\": [\n    [\n      1504,\n      3212\n    ],\n    [\n      5625,\n      3900\n    ]\n  ],\n  \"handle\": \"string\",\n  \"id\": 2834,\n  \"status\": \"string\",\n  \"updated_at\": \"string\",\n  \"drain_username\": \"string\",\n  \"drain_password\": \"string\",\n  \"url\": \"string\",\n  \"logging_token\": \"string\",\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://iowtamsbQASgranKBvLwTQBjACptBpV.xyazhahdwWcHNoHGnYbj6L2SecByqlyKFYRyrR+sLN\"\n    },\n    \"database\": {\n      \"href\": \"http://MfcwxXux.joydrUIperiX0sSHg2lNR3DrNo2KZI8QK\"\n    },\n    \"operations\": {\n      \"href\": \"https://A.yvowm4VfAJuOPz4Vn.wg00mlUjmpRKh6ESl5ELyng9k8YRTXZSbmD13O0Q\"\n    },\n    \"containers\": {\n      \"href\": \"https://whNeJAKIeHVBnFGrrKIVvOKrEbttsWFJ.nkuPJV0WQztLlivMuhGLCA56u-nNwAhr5sfA9BiOH\"\n    },\n    \"ephemeral_containers\": {\n      \"href\": \"http://hbvJpAYyXOHNcfXOeHlgu.lgzAv76GvhCscUMo5jVOmEwSWJpc0PX7c4gzFjdLWqhGJdbF9WrnTUDpJ+\"\n    },\n    \"self\": {\n      \"href\": \"http://YqEyEBSCpyAxxnmFKMujmwAreDjrMQjpF.xoICF2\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5a6f608-27da-47ee-a238-85328f070766",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "log_drains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drain_type\": \"<string>\",\n  \"handle\": \"<string>\",\n  \"drain_host\": \"<uri>\",\n  \"drain_port\": \"<integer>\",\n  \"drain_username\": \"<string>\",\n  \"drain_password\": \"<string>\",\n  \"database\": \"<uri>\",\n  \"database_id\": \"<integer>\",\n  \"url\": \"<uri>\",\n  \"logging_token\": \"<string>\",\n  \"drain_apps\": \"<boolean>\",\n  \"drain_databases\": \"<boolean>\",\n  \"drain_ephemeral_sessions\": \"<boolean>\",\n  \"drain_proxies\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 2479,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "790b6c9d-e8bd-4d4e-83cb-d50989538f11",
+          "name": "delete log_drain",
+          "request": {
+            "name": "delete log_drain",
+            "description": {
+              "content": "Deletes a log drain by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "log_drains",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f953b97d-a264-4787-890b-0580c1647fca",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1b34dec-732b-44b1-bcb4-d4cbc3feef60",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 2479,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c62b807d-98c0-4bad-a7cc-8ce1ac1a1eb6",
+          "name": "show log_drain",
+          "request": {
+            "name": "show log_drain",
+            "description": {
+              "content": "Returns the details of a specific log drain by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "log_drains",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aff76301-8ec8-4ec5-8c66-a185969acc2e",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"created_at\": \"string\",\n  \"drain_apps\": true,\n  \"drain_databases\": true,\n  \"drain_ephemeral_sessions\": true,\n  \"drain_host\": \"string\",\n  \"drain_port\": 5511,\n  \"drain_proxies\": true,\n  \"drain_type\": \"string\",\n  \"gentlemanjerry_allocation\": [\n    \"string\",\n    \"string\"\n  ],\n  \"gentlemanjerry_certificate\": \"string\",\n  \"gentlemanjerry_docker_name\": \"string\",\n  \"gentlemanjerry_host\": \"string\",\n  \"gentlemanjerry_instance_id\": \"string\",\n  \"gentlemanjerry_port_mapping\": [\n    [\n      1504,\n      3212\n    ],\n    [\n      5625,\n      3900\n    ]\n  ],\n  \"handle\": \"string\",\n  \"id\": 2834,\n  \"status\": \"string\",\n  \"updated_at\": \"string\",\n  \"drain_username\": \"string\",\n  \"drain_password\": \"string\",\n  \"url\": \"string\",\n  \"logging_token\": \"string\",\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://iowtamsbQASgranKBvLwTQBjACptBpV.xyazhahdwWcHNoHGnYbj6L2SecByqlyKFYRyrR+sLN\"\n    },\n    \"database\": {\n      \"href\": \"http://MfcwxXux.joydrUIperiX0sSHg2lNR3DrNo2KZI8QK\"\n    },\n    \"operations\": {\n      \"href\": \"https://A.yvowm4VfAJuOPz4Vn.wg00mlUjmpRKh6ESl5ELyng9k8YRTXZSbmD13O0Q\"\n    },\n    \"containers\": {\n      \"href\": \"https://whNeJAKIeHVBnFGrrKIVvOKrEbttsWFJ.nkuPJV0WQztLlivMuhGLCA56u-nNwAhr5sfA9BiOH\"\n    },\n    \"ephemeral_containers\": {\n      \"href\": \"http://hbvJpAYyXOHNcfXOeHlgu.lgzAv76GvhCscUMo5jVOmEwSWJpc0PX7c4gzFjdLWqhGJdbF9WrnTUDpJ+\"\n    },\n    \"self\": {\n      \"href\": \"http://YqEyEBSCpyAxxnmFKMujmwAreDjrMQjpF.xoICF2\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e591206-f183-424c-a2be-3c08de89187d",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 2479,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78f00b1e-2d30-4945-96c1-043387ed372e",
+          "name": "update log_drain",
+          "request": {
+            "name": "update log_drain",
+            "description": {
+              "content": "Partially updates a log drain's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "log_drains",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"drain_apps\": \"<boolean>\",\n  \"drain_databases\": \"<boolean>\",\n  \"drain_ephemeral_sessions\": \"<boolean>\",\n  \"drain_proxies\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "75b0f5c5-cd13-457d-bb70-535623e46b17",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drain_apps\": \"<boolean>\",\n  \"drain_databases\": \"<boolean>\",\n  \"drain_ephemeral_sessions\": \"<boolean>\",\n  \"drain_proxies\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea079a81-0ce1-4ac9-8200-def6483ea3f0",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drain_apps\": \"<boolean>\",\n  \"drain_databases\": \"<boolean>\",\n  \"drain_ephemeral_sessions\": \"<boolean>\",\n  \"drain_proxies\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 2479,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "167a06bf-9cf0-47aa-b81c-d13549c146ec",
+          "name": "update log_drain",
+          "request": {
+            "name": "update log_drain",
+            "description": {
+              "content": "Updates a log drain's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "log_drains",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"drain_apps\": \"<boolean>\",\n  \"drain_databases\": \"<boolean>\",\n  \"drain_ephemeral_sessions\": \"<boolean>\",\n  \"drain_proxies\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "69035131-9a9e-4b19-8d9a-e28dcfd6ffb7",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drain_apps\": \"<boolean>\",\n  \"drain_databases\": \"<boolean>\",\n  \"drain_ephemeral_sessions\": \"<boolean>\",\n  \"drain_proxies\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b95e432-fedb-4b2b-9104-3fc25f66cc58",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"drain_apps\": \"<boolean>\",\n  \"drain_databases\": \"<boolean>\",\n  \"drain_ephemeral_sessions\": \"<boolean>\",\n  \"drain_proxies\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 2479,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "873073c1-688c-48b4-bcf2-37f16e307e6e",
+    "name": "Aptible API v1 Log Drains API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

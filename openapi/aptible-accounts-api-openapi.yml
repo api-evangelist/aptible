@@ -1,0 +1,772 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Accounts API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: Accounts
+paths:
+  /stacks/{stack_id}/accounts:
+    get:
+      description: Returns a paginated list of accounts belonging to the specified stack.
+      operationId: ListAccountsForStack
+      parameters:
+      - description: stack_id
+        explode: false
+        in: path
+        name: stack_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListAccountsForStack_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list accounts
+      tags:
+      - Accounts
+  /accounts:
+    get:
+      description: Returns a paginated list of all accounts.
+      operationId: ListAccounts
+      parameters:
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListAccountsForStack_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list accounts
+      tags:
+      - Accounts
+    post:
+      description: Creates a new account within the organization.
+      operationId: CreateAccount
+      parameters:
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccount_request'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/account'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create account
+      tags:
+      - Accounts
+  /accounts/{id}:
+    delete:
+      description: Deletes an account by ID.
+      operationId: DeleteAccount
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '204':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: delete account
+      tags:
+      - Accounts
+    get:
+      description: Returns the details of a specific account by ID.
+      operationId: GetAccount
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/account'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show account
+      tags:
+      - Accounts
+    patch:
+      description: Partially updates an account's attributes.
+      operationId: PatchAccount
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchAccount_request'
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update account
+      tags:
+      - Accounts
+    put:
+      description: Updates an account's attributes.
+      operationId: UpdateAccount
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccount_request'
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update account
+      tags:
+      - Accounts
+  /find/account:
+    get:
+      description: Returns the account matching the specified handle.
+      operationId: GetAccountByHandle
+      parameters:
+      - description: account handle
+        explode: true
+        in: query
+        name: handle
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/account'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: find account by handle
+      tags:
+      - Accounts
+components:
+  schemas:
+    log_drain__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListAccountsForStack_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    CreateAccount_request:
+      properties:
+        type:
+          type: string
+        handle:
+          type: string
+        organization_id:
+          type: string
+        name:
+          type: string
+        stack_id:
+          type: integer
+      required:
+      - handle
+      - organization_id
+      - type
+      type: object
+    account__links:
+      properties:
+        organization:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        stack:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        apps:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        backups:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        databases:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        disks:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        services:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        permissions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        log_drains:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        metric_drains:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        certificates:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vhosts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        activity_reports:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        disk_attachments:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    account:
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        _type:
+          type: string
+        name:
+          type: string
+          x-nullable: true
+        handle:
+          type: string
+        onboarding_status:
+          type: string
+        number:
+          type: string
+        activated:
+          type: boolean
+        syslog_host:
+          type: string
+          x-nullable: true
+        syslog_port:
+          type: integer
+          x-nullable: true
+        bastion_host:
+          type: string
+          x-nullable: true
+        bastion_port:
+          type: integer
+        ssh_portal_port:
+          type: integer
+          x-nullable: true
+        container_count:
+          type: integer
+        domain_count:
+          type: integer
+        total_disk_size:
+          type: integer
+        total_app_count:
+          type: integer
+        app_container_count:
+          type: integer
+        database_container_count:
+          type: integer
+        total_database_count:
+          type: integer
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        sweetness_stack:
+          type: string
+          x-nullable: true
+        gentlemanjerry_endpoint:
+          type: string
+          x-nullable: true
+        gentlemanjerry_certificate:
+          type: string
+          x-nullable: true
+        gentlemanjerry_docker_name:
+          type: string
+          x-nullable: true
+        gentlemanjerry_instance_id:
+          type: string
+          x-nullable: true
+        sweetness_stack_version:
+          enum:
+          - v1
+          - v2
+          type: string
+          x-nullable: true
+        ca_body:
+          type: string
+          x-nullable: true
+        ca_private_key:
+          type: string
+          x-nullable: true
+        _embedded:
+          $ref: '#/components/schemas/account__embedded'
+        _links:
+          $ref: '#/components/schemas/account__links'
+      required:
+      - _embedded
+      - _type
+      - activated
+      - app_container_count
+      - bastion_host
+      - bastion_port
+      - ca_body
+      - container_count
+      - created_at
+      - database_container_count
+      - domain_count
+      - gentlemanjerry_certificate
+      - gentlemanjerry_docker_name
+      - gentlemanjerry_endpoint
+      - gentlemanjerry_instance_id
+      - handle
+      - id
+      - name
+      - number
+      - onboarding_status
+      - ssh_portal_port
+      - sweetness_stack
+      - sweetness_stack_version
+      - syslog_host
+      - syslog_port
+      - total_app_count
+      - total_database_count
+      - total_disk_size
+      - type
+      - updated_at
+    permission:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        scope:
+          type: string
+        _links:
+          $ref: '#/components/schemas/permission__links'
+      required:
+      - _type
+      - id
+      - scope
+    account__embedded:
+      properties:
+        log_drains:
+          items:
+            $ref: '#/components/schemas/log_drain'
+          type: array
+        permissions:
+          items:
+            $ref: '#/components/schemas/permission'
+          type: array
+      type: object
+    log_drain:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        handle:
+          type: string
+        drain_type:
+          type: string
+        drain_host:
+          type: string
+        drain_port:
+          type: integer
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        status:
+          type: string
+        drain_username:
+          type: string
+          x-nullable: true
+        drain_password:
+          type: string
+          x-nullable: true
+        drain_apps:
+          type: boolean
+        drain_databases:
+          type: boolean
+        drain_ephemeral_sessions:
+          type: boolean
+        drain_proxies:
+          type: boolean
+        gentlemanjerry_certificate:
+          type: string
+          x-nullable: true
+        gentlemanjerry_docker_name:
+          type: string
+          x-nullable: true
+        gentlemanjerry_instance_id:
+          type: string
+          x-nullable: true
+        gentlemanjerry_host:
+          type: string
+          x-nullable: true
+        gentlemanjerry_port_mapping:
+          items:
+            items:
+              type: integer
+            type: array
+          type: array
+        gentlemanjerry_allocation:
+          items:
+            type: string
+          type: array
+        url:
+          type: string
+          x-nullable: true
+        logging_token:
+          type: string
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/log_drain__links'
+      required:
+      - _type
+      - created_at
+      - drain_apps
+      - drain_databases
+      - drain_ephemeral_sessions
+      - drain_host
+      - drain_port
+      - drain_proxies
+      - drain_type
+      - gentlemanjerry_allocation
+      - gentlemanjerry_certificate
+      - gentlemanjerry_docker_name
+      - gentlemanjerry_host
+      - gentlemanjerry_instance_id
+      - gentlemanjerry_port_mapping
+      - handle
+      - id
+      - status
+      - updated_at
+    UpdateAccount_request:
+      properties:
+        handle:
+          type: string
+        name:
+          type: string
+        onboarding_status:
+          type: string
+      type: object
+    ListAccountsForStack_200_response__links:
+      properties:
+        stack:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    permission__links:
+      properties:
+        role:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__embedded:
+      properties:
+        accounts:
+          items:
+            $ref: '#/components/schemas/account'
+          type: array
+      type: object
+    PatchAccount_request:
+      properties:
+        handle:
+          type: string
+        name:
+          type: string
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

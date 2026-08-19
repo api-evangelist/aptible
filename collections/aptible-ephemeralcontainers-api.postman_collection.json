@@ -1,0 +1,723 @@
+{
+  "item": [
+    {
+      "id": "d5d92853-2b32-432c-bc09-0b7781be809f",
+      "name": "EphemeralContainers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7826e52b-97c6-4713-8c6b-49e41ad344fe",
+          "name": "list ephemeral_containers",
+          "request": {
+            "name": "list ephemeral_containers",
+            "description": {
+              "content": "Returns a paginated list of ephemeral containers for the specified ephemeral session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ephemeral_sessions",
+                ":ephemeral_session_id",
+                "ephemeral_containers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ephemeral_session_id",
+                  "description": "(Required) ephemeral_session_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26e59bc4-3af6-4c19-8d8e-6940bd8a9725",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ephemeral_sessions",
+                    ":ephemeral_session_id",
+                    "ephemeral_containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ephemeral_session_id",
+                      "description": "(Required) ephemeral_session_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"ephemeral_containers\": [\n      {\n        \"_type\": \"string\",\n        \"allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_at\": \"string\",\n        \"docker_name\": \"string\",\n        \"id\": 5645,\n        \"interactive\": true,\n        \"layer\": \"string\",\n        \"memory_limit\": 6805,\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"ephemeral_session\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_at\": \"string\",\n        \"docker_name\": \"string\",\n        \"id\": 4047,\n        \"interactive\": true,\n        \"layer\": \"string\",\n        \"memory_limit\": 8274,\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"ephemeral_session\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"ephemeral_session\": {\n      \"href\": \"http://DsOjyTjIUQhSPYJRNmTGXFGIojuzIau.ycbfttMMrLAaAtQH0oU5tLVt+7nLSDgqrIIRoul-zDD5fV.u\"\n    },\n    \"log_drain\": {\n      \"href\": \"http://NNKEJRKPYXktIVladZESa.cbrFd4kRH5FFjdtdxa6tnGCr7pLsmm74KZT.h7ccmS4o\"\n    },\n    \"next\": {\n      \"href\": \"http://nTJRsoHTEerGbRcClGwCzwE.xiguyVCk0.hEz2\"\n    },\n    \"prev\": {\n      \"href\": \"http://lkIeWmeGVLiQvPHTIBbdeqjtPAyhxWdZX.pkFVhbjY0Xl8ODC0CO,rldTeNowMRMQTYw8asCRoYjLT9+XjLp93eD\"\n    },\n    \"self\": {\n      \"href\": \"https://reLCrpEjcCHEmoEJYwayonAX.mvzI504FtmqREN3dP,rN-waG-SK\"\n    }\n  },\n  \"current_page\": 9683,\n  \"per_page\": 1524,\n  \"total_count\": 3213\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64869de0-11dd-4dc2-8708-7430daf8e8dd",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ephemeral_sessions",
+                    ":ephemeral_session_id",
+                    "ephemeral_containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ephemeral_session_id",
+                      "description": "(Required) ephemeral_session_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9938,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d51e81fc-8805-4221-8401-2914f9951a0b",
+          "name": "show ephemeral_container",
+          "request": {
+            "name": "show ephemeral_container",
+            "description": {
+              "content": "Returns the details of a specific ephemeral container by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ephemeral_containers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d32cfe7-f302-44ad-9671-ac2a59dd4f21",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ephemeral_containers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"allocation\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_at\": \"string\",\n  \"docker_name\": \"string\",\n  \"id\": 4826,\n  \"interactive\": true,\n  \"layer\": \"string\",\n  \"memory_limit\": 2134,\n  \"updated_at\": \"string\",\n  \"_links\": {\n    \"ephemeral_session\": {\n      \"href\": \"http://oUvENojNQaLccAFHnKckeGwWT.jyTdm5kZRtclof6zHv9,paonkNk.udNC54F5\"\n    },\n    \"log_drain\": {\n      \"href\": \"https://RkxrdYTEceoXsqBRXStAYol.nzjRhuzVncRXZjK8ZkCF0X2hDH0qzM7q,WrC1Xay\"\n    },\n    \"self\": {\n      \"href\": \"https://pNOvjhZQUEkr.yiRatpXoAhdfVvYI9VczGAyMM1PBEXd7ouuTe\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f3efba4-9a11-4c99-a49b-adda8428e19e",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ephemeral_containers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9938,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40a75afe-f0a4-42f4-bfae-5385848840d5",
+          "name": "list ephemeral_containers",
+          "request": {
+            "name": "list ephemeral_containers",
+            "description": {
+              "content": "Returns a paginated list of ephemeral containers for the specified log drain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "log_drains",
+                ":log_drain_id",
+                "ephemeral_containers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "log_drain_id",
+                  "description": "(Required) log_drain_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc167c41-60df-4e23-956c-64976568b895",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":log_drain_id",
+                    "ephemeral_containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "log_drain_id",
+                      "description": "(Required) log_drain_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"ephemeral_containers\": [\n      {\n        \"_type\": \"string\",\n        \"allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_at\": \"string\",\n        \"docker_name\": \"string\",\n        \"id\": 3453,\n        \"interactive\": false,\n        \"layer\": \"string\",\n        \"memory_limit\": 6335,\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"ephemeral_session\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_at\": \"string\",\n        \"docker_name\": \"string\",\n        \"id\": 4491,\n        \"interactive\": true,\n        \"layer\": \"string\",\n        \"memory_limit\": 402,\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"ephemeral_session\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"ephemeral_session\": {\n      \"href\": \"https://TeTcgO.btsVgm0NFB.Cbmi+J1J-\"\n    },\n    \"log_drain\": {\n      \"href\": \"https://aTRUJtgDjJaTzXkVwUYMZNbxkYADfqS.ajj3yGpUbm,mHt,SdGGdlLx1aIPIYI,+fHltI0w9,L\"\n    },\n    \"next\": {\n      \"href\": \"http://vObfFxKVlXAIfvlahYHCzc.oiicA-CIDl2fr76m4ElVRikHWg5ywwLXqBVHQR0HWuwtmnGqlkuf-RTr\"\n    },\n    \"prev\": {\n      \"href\": \"http://j.svvyUTNcFXm+llnrG6q\"\n    },\n    \"self\": {\n      \"href\": \"http://pRXjVBHoW.gcgoU1PhohmYXhc9jD-C+5XZwVQNmksYn9rltVx7eEwkrUT,nCxbE,Tnu\"\n    }\n  },\n  \"current_page\": 3836,\n  \"per_page\": 776,\n  \"total_count\": 7820\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce1d400f-9cbd-449f-9af4-8ddb6ebb2040",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":log_drain_id",
+                    "ephemeral_containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "log_drain_id",
+                      "description": "(Required) log_drain_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 9938,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "de0ba188-8b7c-48d8-81cb-73341aaf5aa2",
+    "name": "Aptible API v1 Ephemeral Containers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

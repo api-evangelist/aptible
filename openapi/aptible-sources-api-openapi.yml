@@ -1,0 +1,880 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Sources API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: Sources
+paths:
+  /sources:
+    get:
+      description: Returns a paginated list of all sources accessible to the current user.
+      operationId: ListSources
+      parameters:
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListSources_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list sources
+      tags:
+      - Sources
+  /sources/{id}:
+    get:
+      description: Returns the details of a specific source by ID.
+      operationId: GetSource
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/source'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show source
+      tags:
+      - Sources
+  /sources/{source_id}/apps:
+    get:
+      description: Returns a paginated list of apps associated with the specified source.
+      operationId: ListAppsForSource
+      parameters:
+      - description: source_id
+        explode: false
+        in: path
+        name: source_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListAppsForSource_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list apps
+      tags:
+      - Sources
+  /sources/{source_id}/deployments:
+    get:
+      description: Returns a paginated list of deployments associated with the specified source.
+      operationId: ListDeploymentsForSource
+      parameters:
+      - description: source_id
+        explode: false
+        in: path
+        name: source_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListDeploymentsForSource_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list deployments
+      tags:
+      - Sources
+components:
+  schemas:
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    operation__links:
+      properties:
+        user:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        resource:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        destination_account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ssh_portal_connections:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_sessions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code_scan_result:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDeployments_200_response__embedded:
+      properties:
+        deployments:
+          items:
+            $ref: '#/components/schemas/deployment'
+          type: array
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    source:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        qualified_name:
+          type: string
+        display_name:
+          type: string
+        url:
+          type: string
+        _links:
+          $ref: '#/components/schemas/source__links'
+      required:
+      - _type
+      - display_name
+      - id
+      - qualified_name
+      - url
+    app__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_configuration:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_image:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        images:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        configurations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        services:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vhosts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_sessions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service_definitions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prerelease_commands:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code_scan_results:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        last_code_scan_result:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        deployments:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_deployment:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAppsForSource_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListAppsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListAppsForSource_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    app__embedded:
+      properties:
+        services:
+          items:
+            $ref: '#/components/schemas/service'
+          type: array
+        last_operation:
+          $ref: '#/components/schemas/operation'
+        last_deploy_operation:
+          $ref: '#/components/schemas/operation'
+        current_image:
+          $ref: '#/components/schemas/image'
+      type: object
+    source__links:
+      properties:
+        organization:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        apps:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        deployments:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    service:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        handle:
+          type: string
+        docker_repo:
+          type: string
+          x-nullable: true
+        docker_ref:
+          type: string
+          x-nullable: true
+        process_type:
+          type: string
+        command:
+          type: string
+        container_count:
+          type: integer
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        container_memory_limit_mb:
+          type: integer
+          x-nullable: true
+        instance_class:
+          type: string
+        force_zero_downtime:
+          type: boolean
+        naive_health_check:
+          type: boolean
+        restart_free_scaling:
+          type: boolean
+        stop_timeout:
+          type: integer
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/service__links'
+      required:
+      - _type
+      - command
+      - container_count
+      - container_memory_limit_mb
+      - created_at
+      - docker_ref
+      - docker_repo
+      - force_zero_downtime
+      - handle
+      - id
+      - instance_class
+      - naive_health_check
+      - process_type
+      - restart_free_scaling
+      - stop_timeout
+      - updated_at
+    image:
+      properties:
+        id:
+          type: integer
+        git_repo:
+          type: string
+          x-nullable: true
+        git_ref:
+          type: string
+          x-nullable: true
+        docker_repo:
+          type: string
+          x-nullable: true
+        docker_ref:
+          type: string
+          x-nullable: true
+        dualstack_hint:
+          type: integer
+          x-nullable: true
+        platform:
+          type: string
+          x-nullable: true
+        release:
+          type: string
+          x-nullable: true
+        scan:
+          type: string
+          x-nullable: true
+        exposed_ports:
+          items:
+            type: integer
+          type: array
+        _type:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        _links:
+          $ref: '#/components/schemas/image__links'
+      required:
+      - _type
+      - created_at
+      - docker_ref
+      - docker_repo
+      - dualstack_hint
+      - exposed_ports
+      - git_ref
+      - git_repo
+      - id
+      - platform
+      - release
+      - scan
+      - updated_at
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAppsForSource_200_response__links:
+      properties:
+        source:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    operation:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        cancelled:
+          type: boolean
+        aborted:
+          type: boolean
+        git_ref:
+          type: string
+          x-nullable: true
+        docker_ref:
+          type: string
+          x-nullable: true
+        env:
+          type: object
+          x-nullable: true
+        container_size:
+          type: integer
+          x-nullable: true
+        container_count:
+          type: integer
+          x-nullable: true
+        disk_size:
+          type: integer
+        command:
+          type: string
+          x-nullable: true
+        handle:
+          type: string
+          x-nullable: true
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        certificate:
+          type: string
+          x-nullable: true
+        private_key:
+          type: string
+          x-nullable: true
+        user_name:
+          type: string
+        user_email:
+          type: string
+        destination_region:
+          type: string
+          x-nullable: true
+        interactive:
+          type: boolean
+          x-nullable: true
+        instance_profile:
+          type: string
+          x-nullable: true
+        mount_point:
+          type: string
+          x-nullable: true
+        daily:
+          type: integer
+          x-nullable: true
+        monthly:
+          type: integer
+          x-nullable: true
+        yearly:
+          type: integer
+          x-nullable: true
+        pitr_days:
+          type: integer
+          x-nullable: true
+        make_copy:
+          type: boolean
+          x-nullable: true
+        keep_final:
+          type: boolean
+          x-nullable: true
+        enable_backups:
+          type: boolean
+          x-nullable: true
+        enable_pitr:
+          type: boolean
+          x-nullable: true
+        settings:
+          type: object
+        sensitive_settings:
+          type: object
+        _links:
+          $ref: '#/components/schemas/operation__links'
+      required:
+      - _type
+      - aborted
+      - cancelled
+      - certificate
+      - command
+      - container_count
+      - container_size
+      - created_at
+      - daily
+      - destination_region
+      - disk_size
+      - docker_ref
+      - enable_backups
+      - enable_pitr
+      - git_ref
+      - handle
+      - id
+      - instance_profile
+      - interactive
+      - keep_final
+      - make_copy
+      - monthly
+      - mount_point
+      - pitr_days
+      - settings
+      - status
+      - type
+      - updated_at
+      - user_email
+      - user_name
+      - yearly
+    service__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_release:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        releases:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vhosts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    deployment__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        configuration:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        image:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        source:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDeploymentsForSource_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDeployments_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListAppsForSource_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListSources_200_response__embedded:
+      properties:
+        sources:
+          items:
+            $ref: '#/components/schemas/source'
+          type: array
+      type: object
+    deployment:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        status:
+          type: string
+        operation_id:
+          type: integer
+        app_id:
+          type: integer
+        configuration_id:
+          type: integer
+          x-nullable: true
+        image_id:
+          type: integer
+          x-nullable: true
+        source_id:
+          type: integer
+          x-nullable: true
+        setting_id:
+          type: integer
+          x-nullable: true
+        docker_image:
+          type: string
+          x-nullable: true
+        docker_repository_url:
+          type: string
+          x-nullable: true
+        git_repository_url:
+          type: string
+          x-nullable: true
+        git_ref:
+          type: string
+          x-nullable: true
+        git_commit_sha:
+          type: string
+          x-nullable: true
+        git_commit_timestamp:
+          format: dateTime
+          type: string
+          x-nullable: true
+        git_commit_url:
+          type: string
+          x-nullable: true
+        git_commit_message:
+          type: string
+          x-nullable: true
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        deleted_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/deployment__links'
+      required:
+      - _type
+      - app_id
+      - configuration_id
+      - created_at
+      - deleted_at
+      - docker_image
+      - docker_repository_url
+      - git_commit_message
+      - git_commit_sha
+      - git_commit_timestamp
+      - git_commit_url
+      - git_ref
+      - git_repository_url
+      - id
+      - image_id
+      - operation_id
+      - setting_id
+      - source_id
+      - status
+      - updated_at
+    app:
+      properties:
+        id:
+          type: integer
+        handle:
+          type: string
+        git_repo:
+          type: string
+        _type:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        status:
+          type: string
+        deployment_method:
+          type: string
+          x-nullable: true
+        _embedded:
+          $ref: '#/components/schemas/app__embedded'
+        _links:
+          $ref: '#/components/schemas/app__links'
+      required:
+      - _embedded
+      - _type
+      - created_at
+      - deployment_method
+      - git_repo
+      - handle
+      - id
+      - status
+      - updated_at
+    image__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListSources_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListSources_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListAppsForAccount_200_response__embedded:
+      properties:
+        apps:
+          items:
+            $ref: '#/components/schemas/app'
+          type: array
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

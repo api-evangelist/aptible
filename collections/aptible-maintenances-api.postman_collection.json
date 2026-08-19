@@ -1,0 +1,410 @@
+{
+  "item": [
+    {
+      "id": "b6daacd4-3739-4449-be10-1ea799ddd622",
+      "name": "Maintenances",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aaf86f2f-7a20-4907-9488-abb67d1c83ea",
+          "name": "list apps with maintenance info",
+          "request": {
+            "name": "list apps with maintenance info",
+            "description": {
+              "content": "Returns a paginated list of apps with their maintenance deadline info.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "maintenances",
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d192154e-4f26-4ffe-8796-4838c2d6ecbd",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "maintenances",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"apps\": [\n      {\n        \"id\": 6673,\n        \"handle\": \"string\",\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"updated_at\": \"string\",\n        \"status\": \"string\",\n        \"maintenance_deadline\": [\n          \"2023-04-20T01:58:13.937Z\",\n          \"2012-09-30T14:07:24.940Z\"\n        ],\n        \"account_id\": 4241,\n        \"_links\": {}\n      },\n      {\n        \"id\": 301,\n        \"handle\": \"string\",\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"updated_at\": \"string\",\n        \"status\": \"string\",\n        \"maintenance_deadline\": [\n          \"1986-08-04T19:58:29.339Z\",\n          \"1994-12-21T12:43:35.162Z\"\n        ],\n        \"account_id\": 6030,\n        \"_links\": {}\n      }\n    ]\n  },\n  \"total_count\": 4258,\n  \"per_page\": 5944,\n  \"current_page\": 5926,\n  \"_links\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89b4f6d6-81d7-4696-af7a-90126b783348",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "maintenances",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 5428,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fccb5352-899c-4af9-abac-aab4ed9ed08f",
+          "name": "list databases with maintenance info",
+          "request": {
+            "name": "list databases with maintenance info",
+            "description": {
+              "content": "Returns a paginated list of databases with their maintenance deadline info.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "maintenances",
+                "databases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6007669-a5e9-4ebd-8b3c-b46be65b5ffa",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "maintenances",
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"databases\": [\n      {\n        \"id\": 9473,\n        \"handle\": \"string\",\n        \"type\": \"string\",\n        \"provisioned\": false,\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"updated_at\": \"string\",\n        \"deleted_at\": \"string\",\n        \"status\": \"string\",\n        \"maintenance_deadline\": [\n          \"1962-05-17T07:05:19.225Z\",\n          \"2024-02-12T22:27:51.350Z\"\n        ],\n        \"_links\": {}\n      },\n      {\n        \"id\": 2214,\n        \"handle\": \"string\",\n        \"type\": \"string\",\n        \"provisioned\": false,\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"updated_at\": \"string\",\n        \"deleted_at\": \"string\",\n        \"status\": \"string\",\n        \"maintenance_deadline\": [\n          \"1950-07-14T13:13:55.802Z\",\n          \"2005-01-17T02:07:52.651Z\"\n        ],\n        \"_links\": {}\n      }\n    ]\n  },\n  \"total_count\": 544,\n  \"per_page\": 2074,\n  \"current_page\": 7023,\n  \"_links\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3277ab49-59c3-4048-8d8a-324955322871",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "maintenances",
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 5428,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0481afe5-77d4-437c-88b1-fadf75052442",
+    "name": "Aptible API v1 Maintenances API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

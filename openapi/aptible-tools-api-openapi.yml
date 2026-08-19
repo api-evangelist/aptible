@@ -1,0 +1,62 @@
+openapi: 3.2.0
+info:
+  title: Tool Tools API
+  description: An API for incident response tool servers
+  version: 1.0.0
+security:
+- bearerAuth: []
+tags:
+- name: Tools
+paths:
+  /tools:
+    get:
+      operationId: getTools
+      summary: Get a list of tools
+      responses:
+        '200':
+          description: A list of tools
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToolsList'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      tags:
+      - Tools
+components:
+  schemas:
+    ToolsList:
+      type: object
+      properties:
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tool'
+      additionalProperties: true
+    Tool:
+      type: object
+      required:
+      - tool_id
+      - description
+      - human_short_title
+      - human_description
+      properties:
+        tool_id:
+          type: string
+          description: Unique identifier for the tool.
+        description:
+          type: string
+          description: Detailed description of the tool and expected input format.
+        human_short_title:
+          type: string
+          description: A short, human-readable title for the tool.
+        human_description:
+          type: string
+          description: A human-readable description of the tool.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Token

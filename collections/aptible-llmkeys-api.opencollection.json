@@ -1,0 +1,272 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aptible API v1 Llm Keys API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LlmKeys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list llm_keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/accounts/:account_id/llm_keys",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns a list of LLM keys for the specified account."
+        },
+        {
+          "info": {
+            "name": "show llm_key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/llm_keys/:id",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "LLM Key database ID"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific LLM key by ID."
+        },
+        {
+          "info": {
+            "name": "revoke llm_key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{baseUrl}/llm_keys/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "LLM Key database ID"
+              }
+            ]
+          },
+          "docs": "Revokes and deletes the specified LLM key."
+        },
+        {
+          "info": {
+            "name": "list all llm_keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/llm_keys",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Current page of paginated results"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all LLM keys."
+        },
+        {
+          "info": {
+            "name": "get llm key usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/llm_keys/:id/usage",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "LLM Key database ID"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start date for the usage period (YYYY-MM-DD)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End date for the usage period (YYYY-MM-DD, exclusive)"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns aggregated usage statistics for the specified LLM key over a date range."
+        },
+        {
+          "info": {
+            "name": "list llm key requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/llm_keys/:id/requests",
+            "headers": [
+              {
+                "name": "Prefer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "LLM Key database ID"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Start date/time for filtering requests (ISO8601 format, YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS). Cannot be more than 7 days ago."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "End date/time for filtering requests (ISO8601 format, YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 50)"
+              },
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specific request ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by request status ('success' or 'failure')"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "Filter by model name"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort field: 'spend', 'total_tokens', 'start_time', or 'end_time'. Default: 'start_time'"
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order: 'asc' or 'desc'. Default: 'desc'"
+              },
+              {
+                "name": "no_embed",
+                "value": "",
+                "type": "query",
+                "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of API requests made with the specified LLM key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

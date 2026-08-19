@@ -1,0 +1,708 @@
+openapi: 3.2.0
+info:
+  title: Cloud Actions API
+  version: 0.1.0
+servers:
+- url: /
+tags:
+- name: actions
+paths:
+  /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/action:
+    post:
+      operationId: action_create
+      parameters:
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          format: uuid
+          title: Asset Id
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environment_id
+        required: true
+        schema:
+          format: uuid
+          title: Environment Id
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: organization_id
+        required: true
+        schema:
+          format: uuid
+          title: Organization Id
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - HTTPBearer: []
+      - HTTPBearer: []
+      summary: Action Create
+      tags:
+      - actions
+  /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/action/{action_id}:
+    get:
+      operationId: action_get
+      parameters:
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          format: uuid
+          title: Asset Id
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environment_id
+        required: true
+        schema:
+          format: uuid
+          title: Environment Id
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: action_id
+        required: true
+        schema:
+          format: uuid
+          title: Action Id
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: organization_id
+        required: true
+        schema:
+          format: uuid
+          title: Organization Id
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      security:
+      - HTTPBearer: []
+      - HTTPBearer: []
+      summary: Action Get
+      tags:
+      - actions
+components:
+  schemas:
+    ActionRequest:
+      example:
+        action_name: action_name
+        parameters: ''
+      properties:
+        action_name:
+          title: Action Name
+          type: string
+        parameters:
+          title: Parameters
+      required:
+      - action_name
+      title: ActionRequest
+      type: object
+    AssetParametersOutput:
+      example:
+        data: '{}'
+        iteration: 0
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        data:
+          title: Data
+          type: object
+        iteration:
+          title: Iteration
+          type: integer
+        id:
+          format: uuid
+          title: Id
+          type: string
+      required:
+      - data
+      - id
+      - iteration
+      title: AssetParametersOutput
+      type: object
+    OperationType:
+      description: An enumeration.
+      enum:
+      - CREATE
+      - UPDATE
+      - DESTROY
+      - ACTION
+      title: OperationType
+      type: string
+    ActionResponse:
+      example:
+        output: '{}'
+        action_name: action_name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        asset:
+          outputs:
+            key:
+              data: ''
+              name: name
+              sensitive: true
+              structure: ''
+          environment:
+            aws_account_id: aws_account_id
+            organization:
+              aws_ou: aws_ou
+              baa_status: baa_status
+              name: name
+              contact_details: '{}'
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user_defined: true
+          asset_version: asset_version
+          operation_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset: asset
+          connections:
+          - outgoing_connection_asset: null
+            operations:
+            - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              operation_type: ''
+              asset_name: asset_name
+              asset_parameters: '{}'
+              user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              asset_version: asset_version
+              organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              status: ''
+            - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              operation_type: ''
+              asset_name: asset_name
+              asset_parameters: '{}'
+              user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              asset_version: asset_version
+              organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              status: ''
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            incoming_connection_asset: null
+            status: null
+          - outgoing_connection_asset: null
+            operations:
+            - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              operation_type: ''
+              asset_name: asset_name
+              asset_parameters: '{}'
+              user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              asset_version: asset_version
+              organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              status: ''
+            - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              operation_type: ''
+              asset_name: asset_name
+              asset_parameters: '{}'
+              user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              asset_version: asset_version
+              organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              status: ''
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            incoming_connection_asset: null
+            status: null
+          connects_to:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          current_asset_parameters:
+            data: '{}'
+            iteration: 0
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: null
+        operation:
+          execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          operation_type: ''
+          asset_name: asset_name
+          asset_parameters: '{}'
+          user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset_version: asset_version
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: ''
+        parameters: '{}'
+      properties:
+        id:
+          format: uuid
+          title: Id
+          type: string
+        action_name:
+          title: Action Name
+          type: string
+        asset:
+          $ref: '#/components/schemas/AssetOutput'
+        operation:
+          $ref: '#/components/schemas/OperationOutput'
+        parameters:
+          title: Parameters
+          type: object
+        output:
+          title: Output
+          type: object
+      required:
+      - action_name
+      - asset
+      - id
+      - operation
+      title: ActionResponse
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    OperationStatus:
+      description: An enumeration.
+      enum:
+      - FAILED
+      - REQUESTED
+      - PENDING
+      - PAUSED
+      - IN_PROGRESS
+      - CANCELED
+      - COMPLETE
+      title: OperationStatus
+      type: string
+    OperationOutput:
+      example:
+        execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        operation_type: ''
+        asset_name: asset_name
+        asset_parameters: '{}'
+        user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        asset_version: asset_version
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: ''
+      properties:
+        environment_id:
+          format: uuid
+          title: Environment Id
+          type: string
+        user_id:
+          format: uuid
+          title: User Id
+          type: string
+        organization_id:
+          format: uuid
+          title: Organization Id
+          type: string
+        operation_type:
+          allOf:
+          - $ref: '#/components/schemas/OperationType'
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OperationStatus'
+        asset_name:
+          title: Asset Name
+          type: string
+        asset_id:
+          format: uuid
+          title: Asset Id
+          type: string
+        asset_version:
+          title: Asset Version
+          type: string
+        asset_parameters:
+          title: Asset Parameters
+          type: object
+        id:
+          format: uuid
+          title: Id
+          type: string
+        execution_id:
+          format: uuid
+          title: Execution Id
+          type: string
+      required:
+      - asset_id
+      - asset_name
+      - asset_version
+      - environment_id
+      - id
+      - organization_id
+      - user_id
+      title: OperationOutput
+      type: object
+    AssetTerraformOutput:
+      example:
+        data: ''
+        name: name
+        sensitive: true
+        structure: ''
+      properties:
+        name:
+          title: Name
+          type: string
+        sensitive:
+          title: Sensitive
+          type: boolean
+        structure:
+          title: Structure
+        data:
+          title: Data
+      required:
+      - sensitive
+      title: AssetTerraformOutput
+      type: object
+    AssetStatus:
+      description: An enumeration.
+      enum:
+      - FAILED
+      - PENDING
+      - REQUESTED
+      - DEPLOYING
+      - DEPLOYED
+      - DESTROYED
+      - DESTROYING
+      title: AssetStatus
+      type: string
+    ConnectionStatus:
+      description: An enumeration.
+      enum:
+      - ACTIVE
+      - DELETED
+      - FAILED
+      - PENDING
+      title: ConnectionStatus
+      type: string
+    OrganizationOutput:
+      example:
+        aws_ou: aws_ou
+        baa_status: baa_status
+        name: name
+        contact_details: '{}'
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          title: Name
+          type: string
+        baa_status:
+          title: Baa Status
+          type: string
+        aws_ou:
+          title: Aws Ou
+          type: string
+        contact_details:
+          title: Contact Details
+          type: object
+        id:
+          format: uuid
+          title: Id
+          type: string
+      required:
+      - baa_status
+      - contact_details
+      - id
+      - name
+      title: OrganizationOutput
+      type: object
+    ConnectionOutput:
+      example:
+        outgoing_connection_asset: null
+        operations:
+        - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          operation_type: ''
+          asset_name: asset_name
+          asset_parameters: '{}'
+          user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset_version: asset_version
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: ''
+        - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          operation_type: ''
+          asset_name: asset_name
+          asset_parameters: '{}'
+          user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset_version: asset_version
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: ''
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        incoming_connection_asset: null
+        status: null
+      properties:
+        id:
+          format: uuid
+          title: Id
+          type: string
+        incoming_connection_asset:
+          $ref: '#/components/schemas/AssetOutput'
+        operations:
+          items:
+            $ref: '#/components/schemas/OperationOutput'
+          title: Operations
+          type: array
+        outgoing_connection_asset:
+          $ref: '#/components/schemas/AssetOutput'
+        status:
+          $ref: '#/components/schemas/ConnectionStatus'
+      required:
+      - id
+      - status
+      title: ConnectionOutput
+      type: object
+    EnvironmentOutput:
+      example:
+        aws_account_id: aws_account_id
+        organization:
+          aws_ou: aws_ou
+          baa_status: baa_status
+          name: name
+          contact_details: '{}'
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        id:
+          format: uuid
+          title: Id
+          type: string
+        organization:
+          $ref: '#/components/schemas/OrganizationOutput'
+        aws_account_id:
+          title: Aws Account Id
+          type: string
+      required:
+      - id
+      - name
+      - organization
+      title: EnvironmentOutput
+      type: object
+    AssetOutput:
+      example:
+        outputs:
+          key:
+            data: ''
+            name: name
+            sensitive: true
+            structure: ''
+        environment:
+          aws_account_id: aws_account_id
+          organization:
+            aws_ou: aws_ou
+            baa_status: baa_status
+            name: name
+            contact_details: '{}'
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_defined: true
+        asset_version: asset_version
+        operation_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        asset: asset
+        connections:
+        - outgoing_connection_asset: null
+          operations:
+          - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            operation_type: ''
+            asset_name: asset_name
+            asset_parameters: '{}'
+            user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            asset_version: asset_version
+            organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: ''
+          - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            operation_type: ''
+            asset_name: asset_name
+            asset_parameters: '{}'
+            user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            asset_version: asset_version
+            organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: ''
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          incoming_connection_asset: null
+          status: null
+        - outgoing_connection_asset: null
+          operations:
+          - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            operation_type: ''
+            asset_name: asset_name
+            asset_parameters: '{}'
+            user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            asset_version: asset_version
+            organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: ''
+          - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            operation_type: ''
+            asset_name: asset_name
+            asset_parameters: '{}'
+            user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            asset_version: asset_version
+            organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: ''
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          incoming_connection_asset: null
+          status: null
+        connects_to:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        current_asset_parameters:
+          data: '{}'
+          iteration: 0
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: null
+      properties:
+        asset:
+          title: Asset
+          type: string
+        asset_version:
+          title: Asset Version
+          type: string
+        id:
+          format: uuid
+          title: Id
+          type: string
+        connections:
+          default: []
+          items:
+            $ref: '#/components/schemas/ConnectionOutput'
+          title: Connections
+          type: array
+        connects_to:
+          default: []
+          items:
+            format: uuid
+            type: string
+          title: Connects To
+          type: array
+        current_asset_parameters:
+          $ref: '#/components/schemas/AssetParametersOutput'
+        environment:
+          $ref: '#/components/schemas/EnvironmentOutput'
+        status:
+          $ref: '#/components/schemas/AssetStatus'
+        user_defined:
+          title: User Defined
+          type: boolean
+        outputs:
+          additionalProperties:
+            $ref: '#/components/schemas/AssetTerraformOutput'
+          default: {}
+          title: Outputs
+          type: object
+        operation_id:
+          format: uuid
+          title: Operation Id
+          type: string
+      required:
+      - asset
+      - asset_version
+      - current_asset_parameters
+      - environment
+      - id
+      - status
+      - user_defined
+      title: AssetOutput
+      type: object
+    Location_inner:
+      anyOf:
+      - type: string
+      - type: integer
+    ValidationError:
+      properties:
+        loc:
+          items:
+            $ref: '#/components/schemas/Location_inner'
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+  securitySchemes:
+    HTTPBearer:
+      scheme: bearer
+      type: http

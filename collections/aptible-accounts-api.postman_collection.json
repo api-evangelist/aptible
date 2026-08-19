@@ -1,0 +1,1710 @@
+{
+  "item": [
+    {
+      "id": "985c94aa-3109-48db-8154-bd0b97cf044c",
+      "name": "Accounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c9dd7299-c125-4a8e-a6dc-8495ce77911c",
+          "name": "list accounts",
+          "request": {
+            "name": "list accounts",
+            "description": {
+              "content": "Returns a paginated list of accounts belonging to the specified stack.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stacks",
+                ":stack_id",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "stack_id",
+                  "description": "(Required) stack_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b0be64c-5daa-487a-9ec6-a19baaf2ad99",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":stack_id",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "stack_id",
+                      "description": "(Required) stack_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"accounts\": [\n      {\n        \"_embedded\": {\n          \"log_drains\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"permissions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"_type\": \"string\",\n        \"activated\": false,\n        \"app_container_count\": 2240,\n        \"bastion_host\": \"string\",\n        \"bastion_port\": 8949,\n        \"ca_body\": \"string\",\n        \"container_count\": 9383,\n        \"created_at\": \"string\",\n        \"database_container_count\": 6026,\n        \"domain_count\": 9316,\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_endpoint\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"handle\": \"string\",\n        \"id\": 1944,\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"onboarding_status\": \"string\",\n        \"ssh_portal_port\": 6572,\n        \"sweetness_stack\": \"string\",\n        \"sweetness_stack_version\": \"v2\",\n        \"syslog_host\": \"string\",\n        \"syslog_port\": 1351,\n        \"total_app_count\": 233,\n        \"total_database_count\": 166,\n        \"total_disk_size\": 1037,\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"ca_private_key\": \"string\",\n        \"_links\": {\n          \"organization\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"stack\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"apps\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"backups\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"databases\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disks\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"services\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"permissions\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drains\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"metric_drains\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificates\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhosts\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"activity_reports\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk_attachments\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_embedded\": {\n          \"log_drains\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"permissions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"_type\": \"string\",\n        \"activated\": true,\n        \"app_container_count\": 9341,\n        \"bastion_host\": \"string\",\n        \"bastion_port\": 3000,\n        \"ca_body\": \"string\",\n        \"container_count\": 259,\n        \"created_at\": \"string\",\n        \"database_container_count\": 4121,\n        \"domain_count\": 8627,\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_endpoint\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"handle\": \"string\",\n        \"id\": 9773,\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"onboarding_status\": \"string\",\n        \"ssh_portal_port\": 3302,\n        \"sweetness_stack\": \"string\",\n        \"sweetness_stack_version\": \"v1\",\n        \"syslog_host\": \"string\",\n        \"syslog_port\": 539,\n        \"total_app_count\": 1029,\n        \"total_database_count\": 242,\n        \"total_disk_size\": 5196,\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"ca_private_key\": \"string\",\n        \"_links\": {\n          \"organization\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"stack\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"apps\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"backups\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"databases\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disks\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"services\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"permissions\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drains\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"metric_drains\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificates\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhosts\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"activity_reports\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk_attachments\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"stack\": {\n      \"href\": \"http://QAJhCtKFgsPqdzKfcXKefZWTjtg.cpgaMbLTofD\"\n    },\n    \"next\": {\n      \"href\": \"https://R.fyZDUz5vPeQ2YnZ1VR98m6nOnwN3x+H3kMY4TJ9Kv0bKi+7dZc9Xp28M3sO\"\n    },\n    \"prev\": {\n      \"href\": \"https://RCIwDPfuZ.cjn5vgyc6iAr+Jk2kszsNNEz5Bb5y1rCKRYGRE\"\n    },\n    \"self\": {\n      \"href\": \"http://JcQPzKdYCpiiQ.dzqyM9jBE+hiXH4ZxqbRHni+h7MoYLvTYvWwFquDbro,8jVUr0V.6M0I-i1PtbK04JH5+5,irMGbtnZuN\"\n    }\n  },\n  \"current_page\": 8183,\n  \"per_page\": 4061,\n  \"total_count\": 644\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e4375fd-a1f8-40db-85a5-d15a08174e5a",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stacks",
+                    ":stack_id",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "stack_id",
+                      "description": "(Required) stack_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4019,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30da1836-9f07-48ec-8b06-3717adeaf2db",
+          "name": "list accounts",
+          "request": {
+            "name": "list accounts",
+            "description": {
+              "content": "Returns a paginated list of all accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d72aff7-8a58-449f-a3fc-a0f68b985a12",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"accounts\": [\n      {\n        \"_embedded\": {\n          \"log_drains\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"permissions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"_type\": \"string\",\n        \"activated\": true,\n        \"app_container_count\": 4809,\n        \"bastion_host\": \"string\",\n        \"bastion_port\": 4751,\n        \"ca_body\": \"string\",\n        \"container_count\": 1289,\n        \"created_at\": \"string\",\n        \"database_container_count\": 7447,\n        \"domain_count\": 766,\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_endpoint\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"handle\": \"string\",\n        \"id\": 9031,\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"onboarding_status\": \"string\",\n        \"ssh_portal_port\": 3636,\n        \"sweetness_stack\": \"string\",\n        \"sweetness_stack_version\": \"v1\",\n        \"syslog_host\": \"string\",\n        \"syslog_port\": 5885,\n        \"total_app_count\": 7004,\n        \"total_database_count\": 9620,\n        \"total_disk_size\": 3686,\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"ca_private_key\": \"string\",\n        \"_links\": {\n          \"organization\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"stack\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"apps\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"backups\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"databases\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disks\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"services\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"permissions\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drains\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"metric_drains\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificates\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhosts\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"activity_reports\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk_attachments\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_embedded\": {\n          \"log_drains\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"permissions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"_type\": \"string\",\n        \"activated\": true,\n        \"app_container_count\": 3178,\n        \"bastion_host\": \"string\",\n        \"bastion_port\": 9,\n        \"ca_body\": \"string\",\n        \"container_count\": 4276,\n        \"created_at\": \"string\",\n        \"database_container_count\": 1730,\n        \"domain_count\": 2203,\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_endpoint\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"handle\": \"string\",\n        \"id\": 4260,\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"onboarding_status\": \"string\",\n        \"ssh_portal_port\": 9583,\n        \"sweetness_stack\": \"string\",\n        \"sweetness_stack_version\": \"v2\",\n        \"syslog_host\": \"string\",\n        \"syslog_port\": 3019,\n        \"total_app_count\": 2539,\n        \"total_database_count\": 3463,\n        \"total_disk_size\": 6941,\n        \"type\": \"string\",\n        \"updated_at\": \"string\",\n        \"ca_private_key\": \"string\",\n        \"_links\": {\n          \"organization\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"stack\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"apps\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"backups\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"databases\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disks\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"services\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"permissions\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drains\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"metric_drains\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificates\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhosts\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"activity_reports\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"disk_attachments\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"stack\": {\n      \"href\": \"http://dQEUtnCZ.nmadv6IZmcmnvt9B8\"\n    },\n    \"next\": {\n      \"href\": \"http://XLpxPdPhrnRHmzYv.evFKdGSMoSFMUw6LFL9ilVLSu3H6lR0JlgP,rpmGVlDT7iJtdoBpxx\"\n    },\n    \"prev\": {\n      \"href\": \"http://EdSeTYKHwo.uaZjvqV4FSN6vozs80AaOipzB10xutV2U6q3odkDeg3juL+uZAR.\"\n    },\n    \"self\": {\n      \"href\": \"http://tD.whkru8K\"\n    }\n  },\n  \"current_page\": 1405,\n  \"per_page\": 3884,\n  \"total_count\": 2141\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "062dbdda-110e-4432-aaf0-03ac71cfa9e9",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4019,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22b5a5c3-24c5-4d2f-8aca-018438c0b869",
+          "name": "create account",
+          "request": {
+            "name": "create account",
+            "description": {
+              "content": "Creates a new account within the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"handle\": \"<string>\",\n  \"organization_id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"stack_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d2bc4468-9b9c-4feb-89bd-26979bb63d4c",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handle\": \"<string>\",\n  \"organization_id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"stack_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"log_drains\": [\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"drain_apps\": true,\n        \"drain_databases\": true,\n        \"drain_ephemeral_sessions\": false,\n        \"drain_host\": \"string\",\n        \"drain_port\": 7430,\n        \"drain_proxies\": true,\n        \"drain_type\": \"string\",\n        \"gentlemanjerry_allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_host\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"gentlemanjerry_port_mapping\": [\n          [\n            2977,\n            1305\n          ],\n          [\n            4183,\n            353\n          ]\n        ],\n        \"handle\": \"string\",\n        \"id\": 1565,\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"drain_username\": \"string\",\n        \"drain_password\": \"string\",\n        \"url\": \"string\",\n        \"logging_token\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ephemeral_containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"drain_apps\": false,\n        \"drain_databases\": true,\n        \"drain_ephemeral_sessions\": true,\n        \"drain_host\": \"string\",\n        \"drain_port\": 6888,\n        \"drain_proxies\": true,\n        \"drain_type\": \"string\",\n        \"gentlemanjerry_allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_host\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"gentlemanjerry_port_mapping\": [\n          [\n            3553,\n            8527\n          ],\n          [\n            4460,\n            7840\n          ]\n        ],\n        \"handle\": \"string\",\n        \"id\": 7611,\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"drain_username\": \"string\",\n        \"drain_password\": \"string\",\n        \"url\": \"string\",\n        \"logging_token\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ephemeral_containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"permissions\": [\n      {\n        \"_type\": \"string\",\n        \"id\": 8403,\n        \"scope\": \"string\",\n        \"_links\": {\n          \"role\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"id\": 7007,\n        \"scope\": \"string\",\n        \"_links\": {\n          \"role\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_type\": \"string\",\n  \"activated\": false,\n  \"app_container_count\": 1721,\n  \"bastion_host\": \"string\",\n  \"bastion_port\": 7816,\n  \"ca_body\": \"string\",\n  \"container_count\": 4094,\n  \"created_at\": \"string\",\n  \"database_container_count\": 1912,\n  \"domain_count\": 3746,\n  \"gentlemanjerry_certificate\": \"string\",\n  \"gentlemanjerry_docker_name\": \"string\",\n  \"gentlemanjerry_endpoint\": \"string\",\n  \"gentlemanjerry_instance_id\": \"string\",\n  \"handle\": \"string\",\n  \"id\": 5042,\n  \"name\": \"string\",\n  \"number\": \"string\",\n  \"onboarding_status\": \"string\",\n  \"ssh_portal_port\": 967,\n  \"sweetness_stack\": \"string\",\n  \"sweetness_stack_version\": \"v1\",\n  \"syslog_host\": \"string\",\n  \"syslog_port\": 5190,\n  \"total_app_count\": 2326,\n  \"total_database_count\": 3549,\n  \"total_disk_size\": 7620,\n  \"type\": \"string\",\n  \"updated_at\": \"string\",\n  \"ca_private_key\": \"string\",\n  \"_links\": {\n    \"organization\": {\n      \"href\": \"https://FUCtvoTHyg.fwqhwI+T+lSSMbH4XaC8rQluBHSHqppwrecsN5EpkpPpTVpmnRJORzwxwSXEy6,y274SsZQ4f-R\"\n    },\n    \"stack\": {\n      \"href\": \"http://vhRmlQPUaAXbgNeNmYVIpAaISlEblpeg.gtbhdv5KCcQMTsTn7OU,idcHItBFDI46juvqWoIoz1X.+QvF\"\n    },\n    \"apps\": {\n      \"href\": \"https://Mwb.uawBAHgvidJkMLqBQJDYVWbCwFbuKGivKYL4cxGu\"\n    },\n    \"backups\": {\n      \"href\": \"http://TAaAjfNmuBQtqJURjEaxqLtEVjfUz.ulhyKkpe8kWYaLIfDVN\"\n    },\n    \"databases\": {\n      \"href\": \"https://zpmFPmHxmYT.riF0eR2a1YfwrzfPTLK57ZJG+tkznKqcYl4cYC4sTuJDhnrGip6LU0Qc,\"\n    },\n    \"disks\": {\n      \"href\": \"https://oSVKGNKTE.kqSOlOjBKi62-AsVlZH-G5vVsfGwe2B3VLTx9gv-2n\"\n    },\n    \"services\": {\n      \"href\": \"http://DIrRCdGGVEXGfK.hxgEgbUCYZpSViKdQSTSkGoBGiJPa8JbtgLd\"\n    },\n    \"operations\": {\n      \"href\": \"http://pYKPiTcWesqjMvZXfYfzznIz.tnraGfKyizHkCx,lFy+Gd--lXLznrOt-8kchbpEbBRxaxxd\"\n    },\n    \"permissions\": {\n      \"href\": \"https://Yuff.tgbLNNHqyT07P6nvVNiGuZ9jTZBAwtBPRd+0\"\n    },\n    \"log_drains\": {\n      \"href\": \"https://DdLJrq.ftvg41RRcBo6dyUZfY\"\n    },\n    \"metric_drains\": {\n      \"href\": \"http://dDuurszowOQBbSuOKHIg.ovF3oJpiqEDYx7FtvTrgXqdf+egvczjhmdHiaV.\"\n    },\n    \"certificates\": {\n      \"href\": \"http://HsmKFtauFQCxE.wrhuO7qe++GFi5IyhWdpt5apkTeSXv7Gy+1Vr+PX\"\n    },\n    \"vhosts\": {\n      \"href\": \"https://zixDfYqKPLF.yvlvLAXK,XHXhQBgECEL3v1Qftz9alShmKNWj2Dhhfhd6Eh,0P.6SM,MgFwUucAuYT44aOvOb6YJ\"\n    },\n    \"activity_reports\": {\n      \"href\": \"https://WZyTiserBswEJyIgPjOvlnChkI.qbhVj4hJRNTRvpT-qk+uMhcXa.xHyOL2c-C9LJujwPz7zM,9qNii1fd\"\n    },\n    \"disk_attachments\": {\n      \"href\": \"http://AaMByqHvMXjNKqlnHKTDmvbXVpDi.vuhxBnJl+wiALWa\"\n    },\n    \"self\": {\n      \"href\": \"https://MgGPmyyCZolzJYUcSSBCczB.acYfPxbBe0hW1jL54XdMpqpEU\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e16b4c3-b232-4a53-8153-637abc770f15",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handle\": \"<string>\",\n  \"organization_id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"stack_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4019,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c3643da-55bb-4db8-8ab0-f7d9938abe83",
+          "name": "delete account",
+          "request": {
+            "name": "delete account",
+            "description": {
+              "content": "Deletes an account by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a05d1bb6-2199-431d-898b-401584ad2f55",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e62ef4dc-64bc-445b-a4c8-d559af408b53",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4019,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca539ff2-9beb-45fe-89cc-ecc9e5f65250",
+          "name": "show account",
+          "request": {
+            "name": "show account",
+            "description": {
+              "content": "Returns the details of a specific account by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9be2ec0-a7b0-40cc-878b-de2940623c3c",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"log_drains\": [\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"drain_apps\": false,\n        \"drain_databases\": false,\n        \"drain_ephemeral_sessions\": true,\n        \"drain_host\": \"string\",\n        \"drain_port\": 4384,\n        \"drain_proxies\": true,\n        \"drain_type\": \"string\",\n        \"gentlemanjerry_allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_host\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"gentlemanjerry_port_mapping\": [\n          [\n            3315,\n            5828\n          ],\n          [\n            9029,\n            8511\n          ]\n        ],\n        \"handle\": \"string\",\n        \"id\": 6852,\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"drain_username\": \"string\",\n        \"drain_password\": \"string\",\n        \"url\": \"string\",\n        \"logging_token\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ephemeral_containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"drain_apps\": false,\n        \"drain_databases\": true,\n        \"drain_ephemeral_sessions\": false,\n        \"drain_host\": \"string\",\n        \"drain_port\": 7500,\n        \"drain_proxies\": true,\n        \"drain_type\": \"string\",\n        \"gentlemanjerry_allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_host\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"gentlemanjerry_port_mapping\": [\n          [\n            1450,\n            643\n          ],\n          [\n            9506,\n            8293\n          ]\n        ],\n        \"handle\": \"string\",\n        \"id\": 2300,\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"drain_username\": \"string\",\n        \"drain_password\": \"string\",\n        \"url\": \"string\",\n        \"logging_token\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ephemeral_containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"permissions\": [\n      {\n        \"_type\": \"string\",\n        \"id\": 3959,\n        \"scope\": \"string\",\n        \"_links\": {\n          \"role\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"id\": 1550,\n        \"scope\": \"string\",\n        \"_links\": {\n          \"role\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_type\": \"string\",\n  \"activated\": true,\n  \"app_container_count\": 3010,\n  \"bastion_host\": \"string\",\n  \"bastion_port\": 3639,\n  \"ca_body\": \"string\",\n  \"container_count\": 6342,\n  \"created_at\": \"string\",\n  \"database_container_count\": 8298,\n  \"domain_count\": 704,\n  \"gentlemanjerry_certificate\": \"string\",\n  \"gentlemanjerry_docker_name\": \"string\",\n  \"gentlemanjerry_endpoint\": \"string\",\n  \"gentlemanjerry_instance_id\": \"string\",\n  \"handle\": \"string\",\n  \"id\": 4932,\n  \"name\": \"string\",\n  \"number\": \"string\",\n  \"onboarding_status\": \"string\",\n  \"ssh_portal_port\": 5293,\n  \"sweetness_stack\": \"string\",\n  \"sweetness_stack_version\": \"v1\",\n  \"syslog_host\": \"string\",\n  \"syslog_port\": 6731,\n  \"total_app_count\": 4373,\n  \"total_database_count\": 4500,\n  \"total_disk_size\": 6798,\n  \"type\": \"string\",\n  \"updated_at\": \"string\",\n  \"ca_private_key\": \"string\",\n  \"_links\": {\n    \"organization\": {\n      \"href\": \"http://NruIYJKXGBjoElBVUdAa.exnfqMezXn3Y5yhHtImLF\"\n    },\n    \"stack\": {\n      \"href\": \"http://PXlLwUFhiebc.iiplfeczXA1cOHxOmPhuWzZvzpPt.G-OVnQ5GRDZT5sydJV4adJSSK66L5odDqNMK\"\n    },\n    \"apps\": {\n      \"href\": \"https://SnPNojoymzKGZQdHDYfVEYdg.tuggylzRwqDhFBcgCiH+8jL6,0vo\"\n    },\n    \"backups\": {\n      \"href\": \"https://Egr.qbcR7Ll0qzEzqELyosnXUU.QrVKm9CPqhXf65ZTnU1h\"\n    },\n    \"databases\": {\n      \"href\": \"http://BVrGOzcHHrrOfgepHrJRpHOgaiItjYfgF.mgwZOlUpS6ytq6\"\n    },\n    \"disks\": {\n      \"href\": \"http://gUcBrOzSLKNeKSnNgSNaEFsCof.oxXzXf,wm-DBurN\"\n    },\n    \"services\": {\n      \"href\": \"http://arNcQ.emueo5IL,ZrmTavjtn,gFIq2W0J31TTx3kdLPH6Dwo3pNoSDvUqY4JUVgCS\"\n    },\n    \"operations\": {\n      \"href\": \"http://nVwHZF.ehrHenBnveJsitbDx6byYf+CY2FFZ3XfKnD\"\n    },\n    \"permissions\": {\n      \"href\": \"http://bEeNDWsubqTJlGFsgpScSYcmzNzljiU.rurX09,CizLog7IGlaf8SEHmaEGa4DYNIhXqLNq524QAWjC2\"\n    },\n    \"log_drains\": {\n      \"href\": \"http://jSFgKjQASLVkgyJIrKovSC.fsgpebgz0PNWDdml\"\n    },\n    \"metric_drains\": {\n      \"href\": \"https://tjdEBRVQwyPOnvxToeelJMtGNySPHfG.bfdaH3XpEsv9gvdnmfxA5au1JgqByDEtZofsu8YZvjOWdnqq1QU\"\n    },\n    \"certificates\": {\n      \"href\": \"http://KFfxVGaKBkCxpLNqbjimgimZSSoauXwP.andlPtUyrFOXoJBs+26Ggysjl5Bh+ElV4nJu6dwN5ieVLl6DSEpP7\"\n    },\n    \"vhosts\": {\n      \"href\": \"https://xNEoPZxGzlIYxobSHwvvHZEXOXLbRVk.uybhGKAKjYnlYl0L2l9MKRG9qxLxpUbDkjb8m5.s7egg2oejU\"\n    },\n    \"activity_reports\": {\n      \"href\": \"https://ovyndnQrEWbDTYWwxyqMkbjKHOc.tcXSgiqfgMZp3n2qMa0qKaOAMGpkX6AmjqoUbJsfUYWSFRbGxDHvce\"\n    },\n    \"disk_attachments\": {\n      \"href\": \"https://lwFFxmUTibOBSZTXJGVnKxpe.khWMenTNlRPjV5q79rRdv67HxxRQqxaFK.O-XG\"\n    },\n    \"self\": {\n      \"href\": \"https://eGhLcxGgLlVhjEVAHreO.fiexOzszz8Ks9xJnwHsqZseYEODH608dXDOYamcraIYAxFKyaC\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2077986-4ac4-4b7f-83c7-3b21616a14a2",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4019,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b34c2820-a4a9-4ed0-b146-07d445249c87",
+          "name": "update account",
+          "request": {
+            "name": "update account",
+            "description": {
+              "content": "Partially updates an account's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"handle\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf636886-16cd-4065-8fc4-cbe7df6b42c7",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handle\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "80de7502-993a-4fab-8010-3e0bed87cc89",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handle\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4019,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "012a7276-b53f-4b05-8854-5094a69b1550",
+          "name": "update account",
+          "request": {
+            "name": "update account",
+            "description": {
+              "content": "Updates an account's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"handle\": \"<string>\",\n  \"name\": \"<string>\",\n  \"onboarding_status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ac26541-9cec-40b4-818a-f3639603133a",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handle\": \"<string>\",\n  \"name\": \"<string>\",\n  \"onboarding_status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "56b1622b-1a3a-4a65-85b5-a4a69449537f",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handle\": \"<string>\",\n  \"name\": \"<string>\",\n  \"onboarding_status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4019,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b5c7723-6136-49b5-8e33-c2bb8761bf6c",
+          "name": "find account by handle",
+          "request": {
+            "name": "find account by handle",
+            "description": {
+              "content": "Returns the account matching the specified handle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "find",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "handle",
+                  "value": "<string>",
+                  "description": "(Required) account handle"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f07c8788-9aca-42ba-a10b-e0ed3a153e72",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "handle",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"log_drains\": [\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"drain_apps\": false,\n        \"drain_databases\": false,\n        \"drain_ephemeral_sessions\": true,\n        \"drain_host\": \"string\",\n        \"drain_port\": 4384,\n        \"drain_proxies\": true,\n        \"drain_type\": \"string\",\n        \"gentlemanjerry_allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_host\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"gentlemanjerry_port_mapping\": [\n          [\n            3315,\n            5828\n          ],\n          [\n            9029,\n            8511\n          ]\n        ],\n        \"handle\": \"string\",\n        \"id\": 6852,\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"drain_username\": \"string\",\n        \"drain_password\": \"string\",\n        \"url\": \"string\",\n        \"logging_token\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ephemeral_containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"created_at\": \"string\",\n        \"drain_apps\": false,\n        \"drain_databases\": true,\n        \"drain_ephemeral_sessions\": false,\n        \"drain_host\": \"string\",\n        \"drain_port\": 7500,\n        \"drain_proxies\": true,\n        \"drain_type\": \"string\",\n        \"gentlemanjerry_allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"gentlemanjerry_certificate\": \"string\",\n        \"gentlemanjerry_docker_name\": \"string\",\n        \"gentlemanjerry_host\": \"string\",\n        \"gentlemanjerry_instance_id\": \"string\",\n        \"gentlemanjerry_port_mapping\": [\n          [\n            1450,\n            643\n          ],\n          [\n            9506,\n            8293\n          ]\n        ],\n        \"handle\": \"string\",\n        \"id\": 2300,\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"drain_username\": \"string\",\n        \"drain_password\": \"string\",\n        \"url\": \"string\",\n        \"logging_token\": \"string\",\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"database\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ephemeral_containers\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"permissions\": [\n      {\n        \"_type\": \"string\",\n        \"id\": 3959,\n        \"scope\": \"string\",\n        \"_links\": {\n          \"role\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"id\": 1550,\n        \"scope\": \"string\",\n        \"_links\": {\n          \"role\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_type\": \"string\",\n  \"activated\": true,\n  \"app_container_count\": 3010,\n  \"bastion_host\": \"string\",\n  \"bastion_port\": 3639,\n  \"ca_body\": \"string\",\n  \"container_count\": 6342,\n  \"created_at\": \"string\",\n  \"database_container_count\": 8298,\n  \"domain_count\": 704,\n  \"gentlemanjerry_certificate\": \"string\",\n  \"gentlemanjerry_docker_name\": \"string\",\n  \"gentlemanjerry_endpoint\": \"string\",\n  \"gentlemanjerry_instance_id\": \"string\",\n  \"handle\": \"string\",\n  \"id\": 4932,\n  \"name\": \"string\",\n  \"number\": \"string\",\n  \"onboarding_status\": \"string\",\n  \"ssh_portal_port\": 5293,\n  \"sweetness_stack\": \"string\",\n  \"sweetness_stack_version\": \"v1\",\n  \"syslog_host\": \"string\",\n  \"syslog_port\": 6731,\n  \"total_app_count\": 4373,\n  \"total_database_count\": 4500,\n  \"total_disk_size\": 6798,\n  \"type\": \"string\",\n  \"updated_at\": \"string\",\n  \"ca_private_key\": \"string\",\n  \"_links\": {\n    \"organization\": {\n      \"href\": \"http://NruIYJKXGBjoElBVUdAa.exnfqMezXn3Y5yhHtImLF\"\n    },\n    \"stack\": {\n      \"href\": \"http://PXlLwUFhiebc.iiplfeczXA1cOHxOmPhuWzZvzpPt.G-OVnQ5GRDZT5sydJV4adJSSK66L5odDqNMK\"\n    },\n    \"apps\": {\n      \"href\": \"https://SnPNojoymzKGZQdHDYfVEYdg.tuggylzRwqDhFBcgCiH+8jL6,0vo\"\n    },\n    \"backups\": {\n      \"href\": \"https://Egr.qbcR7Ll0qzEzqELyosnXUU.QrVKm9CPqhXf65ZTnU1h\"\n    },\n    \"databases\": {\n      \"href\": \"http://BVrGOzcHHrrOfgepHrJRpHOgaiItjYfgF.mgwZOlUpS6ytq6\"\n    },\n    \"disks\": {\n      \"href\": \"http://gUcBrOzSLKNeKSnNgSNaEFsCof.oxXzXf,wm-DBurN\"\n    },\n    \"services\": {\n      \"href\": \"http://arNcQ.emueo5IL,ZrmTavjtn,gFIq2W0J31TTx3kdLPH6Dwo3pNoSDvUqY4JUVgCS\"\n    },\n    \"operations\": {\n      \"href\": \"http://nVwHZF.ehrHenBnveJsitbDx6byYf+CY2FFZ3XfKnD\"\n    },\n    \"permissions\": {\n      \"href\": \"http://bEeNDWsubqTJlGFsgpScSYcmzNzljiU.rurX09,CizLog7IGlaf8SEHmaEGa4DYNIhXqLNq524QAWjC2\"\n    },\n    \"log_drains\": {\n      \"href\": \"http://jSFgKjQASLVkgyJIrKovSC.fsgpebgz0PNWDdml\"\n    },\n    \"metric_drains\": {\n      \"href\": \"https://tjdEBRVQwyPOnvxToeelJMtGNySPHfG.bfdaH3XpEsv9gvdnmfxA5au1JgqByDEtZofsu8YZvjOWdnqq1QU\"\n    },\n    \"certificates\": {\n      \"href\": \"http://KFfxVGaKBkCxpLNqbjimgimZSSoauXwP.andlPtUyrFOXoJBs+26Ggysjl5Bh+ElV4nJu6dwN5ieVLl6DSEpP7\"\n    },\n    \"vhosts\": {\n      \"href\": \"https://xNEoPZxGzlIYxobSHwvvHZEXOXLbRVk.uybhGKAKjYnlYl0L2l9MKRG9qxLxpUbDkjb8m5.s7egg2oejU\"\n    },\n    \"activity_reports\": {\n      \"href\": \"https://ovyndnQrEWbDTYWwxyqMkbjKHOc.tcXSgiqfgMZp3n2qMa0qKaOAMGpkX6AmjqoUbJsfUYWSFRbGxDHvce\"\n    },\n    \"disk_attachments\": {\n      \"href\": \"https://lwFFxmUTibOBSZTXJGVnKxpe.khWMenTNlRPjV5q79rRdv67HxxRQqxaFK.O-XG\"\n    },\n    \"self\": {\n      \"href\": \"https://eGhLcxGgLlVhjEVAHreO.fiexOzszz8Ks9xJnwHsqZseYEODH608dXDOYamcraIYAxFKyaC\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2360af2e-737b-40e2-a613-5a2cd4b3c8d7",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "handle",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 4019,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a7902d46-0ba7-4b2d-b979-f6db12bb64db",
+    "name": "Aptible API v1 Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

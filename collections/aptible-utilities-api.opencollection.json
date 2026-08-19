@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloud Utilities API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "utilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/debug/user_auth",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get User"
+        },
+        {
+          "info": {
+            "name": "Get User Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/debug/user_role_middleware_check",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get User Role"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

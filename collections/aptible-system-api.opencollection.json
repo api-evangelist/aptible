@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloud System API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Healthcheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/system/health_check"
+          },
+          "docs": "Get Healthcheck"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

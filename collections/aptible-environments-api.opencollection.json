@@ -1,0 +1,210 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloud Environments API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Environment Get Assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/organizations/:organization_id/environments/:environment_id/assets",
+            "params": [
+              {
+                "name": "environment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Environment Get Assets"
+        },
+        {
+          "info": {
+            "name": "Environment Get Allowed Asset Bundles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/organizations/:organization_id/environments/:environment_id/asset_bundles",
+            "params": [
+              {
+                "name": "environment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Environment Get Allowed Asset Bundles"
+        },
+        {
+          "info": {
+            "name": "Environment Get Connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/organizations/:organization_id/environments/:environment_id/connections",
+            "params": [
+              {
+                "name": "environment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Environment Get Connections"
+        },
+        {
+          "info": {
+            "name": "Environment Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/organizations/:organization_id/environments/:environment_id",
+            "params": [
+              {
+                "name": "environment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Environment Get"
+        },
+        {
+          "info": {
+            "name": "Environment Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/organizations/:organization_id/environments/:environment_id",
+            "params": [
+              {
+                "name": "environment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Environment Update"
+        },
+        {
+          "info": {
+            "name": "Environment Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/organizations/:organization_id/environments/:environment_id",
+            "params": [
+              {
+                "name": "environment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Environment Delete"
+        },
+        {
+          "info": {
+            "name": "Environment Create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/organizations/:organization_id/environments",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Environment Create"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

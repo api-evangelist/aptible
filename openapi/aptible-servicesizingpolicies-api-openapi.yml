@@ -1,0 +1,514 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Service Sizing Policies API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: ServiceSizingPolicies
+paths:
+  /accounts/{account_id}/service_sizing_policies:
+    get:
+      description: Returns a paginated list of service sizing policies for the specified account.
+      operationId: ListServiceSizingPoliciesForAccount
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListServiceSizingPoliciesForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list service_sizing_policies
+      tags:
+      - ServiceSizingPolicies
+  /services/{service_id}/service_sizing_policies:
+    get:
+      description: Returns a paginated list of service sizing policies for the specified service.
+      operationId: ListServiceSizingPoliciesForService
+      parameters:
+      - description: service_id
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListServiceSizingPoliciesForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list service_sizing_policies
+      tags:
+      - ServiceSizingPolicies
+    post:
+      description: Creates a new service sizing policy for the specified service.
+      operationId: CreateServiceSizingPolicy
+      parameters:
+      - description: service_id
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateServiceSizingPolicy_request'
+      responses:
+        '201':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create service_sizing_policy
+      tags:
+      - ServiceSizingPolicies
+    put:
+      description: Updates a service sizing policy's attributes.
+      operationId: UpdateServiceSizingPolicy
+      parameters:
+      - description: service_id
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateServiceSizingPolicy_request'
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update service_sizing_policy
+      tags:
+      - ServiceSizingPolicies
+  /services/{service_id}/service_sizing_policy:
+    delete:
+      description: Deletes the service sizing policy for the specified service.
+      operationId: DeleteServiceSizingPolicy
+      parameters:
+      - description: service_id
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '204':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: delete service_sizing_policy
+      tags:
+      - ServiceSizingPolicies
+  /service_sizing_policies/{id}:
+    get:
+      description: Returns the details of a specific service sizing policy by ID.
+      operationId: GetServiceSizingPolicy
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/service_sizing_policy'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show service_sizing_policy
+      tags:
+      - ServiceSizingPolicies
+components:
+  schemas:
+    UpdateServiceSizingPolicy_request:
+      properties:
+        scaling_enabled:
+          type: boolean
+        metric_lookback_seconds:
+          type: integer
+        percentile:
+          type: number
+        post_scale_up_cooldown_seconds:
+          type: integer
+        post_scale_down_cooldown_seconds:
+          type: integer
+        post_release_cooldown_seconds:
+          type: integer
+        mem_cpu_ratio_r_threshold:
+          type: number
+        mem_cpu_ratio_c_threshold:
+          type: number
+        mem_scale_up_threshold:
+          type: number
+        mem_scale_down_threshold:
+          type: number
+        minimum_memory:
+          type: integer
+        maximum_memory:
+          type: integer
+        autoscaling:
+          type: string
+        min_cpu_threshold:
+          type: number
+        max_cpu_threshold:
+          type: number
+        min_containers:
+          type: integer
+        max_containers:
+          type: integer
+        scale_up_step:
+          type: integer
+        scale_down_step:
+          type: integer
+        use_horizontal_scale:
+          type: boolean
+      type: object
+    service_sizing_policy:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        scaling_enabled:
+          type: boolean
+        default_policy:
+          type: boolean
+        metric_lookback_seconds:
+          type: integer
+        percentile:
+          type: number
+        post_scale_up_cooldown_seconds:
+          type: integer
+        post_scale_down_cooldown_seconds:
+          type: integer
+        post_release_cooldown_seconds:
+          type: integer
+        mem_cpu_ratio_r_threshold:
+          type: number
+        mem_cpu_ratio_c_threshold:
+          type: number
+        mem_scale_up_threshold:
+          type: number
+        mem_scale_down_threshold:
+          type: number
+        minimum_memory:
+          type: integer
+        account_id:
+          type: integer
+          x-nullable: true
+        maximum_memory:
+          type: integer
+          x-nullable: true
+        autoscaling:
+          type: string
+        min_cpu_threshold:
+          type: number
+          x-nullable: true
+        max_cpu_threshold:
+          type: number
+          x-nullable: true
+        min_containers:
+          type: integer
+          x-nullable: true
+        max_containers:
+          type: integer
+          x-nullable: true
+        scale_up_step:
+          type: integer
+          x-nullable: true
+        scale_down_step:
+          type: integer
+          x-nullable: true
+        use_horizontal_scale:
+          type: boolean
+        _links:
+          $ref: '#/components/schemas/backup_retention_policy__links'
+      required:
+      - _type
+      - account_id
+      - autoscaling
+      - created_at
+      - default_policy
+      - id
+      - max_containers
+      - max_cpu_threshold
+      - maximum_memory
+      - mem_cpu_ratio_c_threshold
+      - mem_cpu_ratio_r_threshold
+      - mem_scale_down_threshold
+      - mem_scale_up_threshold
+      - metric_lookback_seconds
+      - min_containers
+      - min_cpu_threshold
+      - minimum_memory
+      - percentile
+      - post_release_cooldown_seconds
+      - post_scale_down_cooldown_seconds
+      - post_scale_up_cooldown_seconds
+      - scale_down_step
+      - scale_up_step
+      - scaling_enabled
+      - updated_at
+      - use_horizontal_scale
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListServiceSizingPoliciesForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListServiceSizingPoliciesForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListServiceSizingPoliciesForAccount_200_response__embedded:
+      properties:
+        service_sizing_policies:
+          items:
+            $ref: '#/components/schemas/service_sizing_policy'
+          type: array
+      type: object
+    backup_retention_policy__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

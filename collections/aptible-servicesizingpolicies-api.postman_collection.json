@@ -1,0 +1,1346 @@
+{
+  "item": [
+    {
+      "id": "7c0bb73e-2349-47ff-8034-890e3e4d8fb9",
+      "name": "ServiceSizingPolicies",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9db7a07d-50ac-4f3c-b8a1-9723c9c21c62",
+          "name": "list service_sizing_policies",
+          "request": {
+            "name": "list service_sizing_policies",
+            "description": {
+              "content": "Returns a paginated list of service sizing policies for the specified account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account_id",
+                "service_sizing_policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id",
+                  "description": "(Required) account_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93668290-2d10-4041-a434-e52255432cae",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "service_sizing_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"service_sizing_policies\": [\n      {\n        \"_type\": \"string\",\n        \"account_id\": 2733,\n        \"autoscaling\": \"string\",\n        \"created_at\": \"string\",\n        \"default_policy\": true,\n        \"id\": 4637,\n        \"max_containers\": 4223,\n        \"max_cpu_threshold\": 5300.153398321848,\n        \"maximum_memory\": 3965,\n        \"mem_cpu_ratio_c_threshold\": 1043.6420040069738,\n        \"mem_cpu_ratio_r_threshold\": 8324.289088771562,\n        \"mem_scale_down_threshold\": 7508.831213175446,\n        \"mem_scale_up_threshold\": 429.84506498043527,\n        \"metric_lookback_seconds\": 3438,\n        \"min_containers\": 499,\n        \"min_cpu_threshold\": 1527.4327960493995,\n        \"minimum_memory\": 9141,\n        \"percentile\": 2553.2898594635412,\n        \"post_release_cooldown_seconds\": 8388,\n        \"post_scale_down_cooldown_seconds\": 2015,\n        \"post_scale_up_cooldown_seconds\": 2809,\n        \"scale_down_step\": 1371,\n        \"scale_up_step\": 8365,\n        \"scaling_enabled\": true,\n        \"updated_at\": \"string\",\n        \"use_horizontal_scale\": true,\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"account_id\": 8612,\n        \"autoscaling\": \"string\",\n        \"created_at\": \"string\",\n        \"default_policy\": false,\n        \"id\": 5959,\n        \"max_containers\": 930,\n        \"max_cpu_threshold\": 1024.311732744454,\n        \"maximum_memory\": 6383,\n        \"mem_cpu_ratio_c_threshold\": 8195.844170350232,\n        \"mem_cpu_ratio_r_threshold\": 500.5376797708017,\n        \"mem_scale_down_threshold\": 3949.348558029132,\n        \"mem_scale_up_threshold\": 8098.197883514782,\n        \"metric_lookback_seconds\": 9726,\n        \"min_containers\": 4993,\n        \"min_cpu_threshold\": 6275.830689365528,\n        \"minimum_memory\": 1385,\n        \"percentile\": 9779.297625627454,\n        \"post_release_cooldown_seconds\": 1648,\n        \"post_scale_down_cooldown_seconds\": 2249,\n        \"post_scale_up_cooldown_seconds\": 9836,\n        \"scale_down_step\": 2996,\n        \"scale_up_step\": 3791,\n        \"scaling_enabled\": true,\n        \"updated_at\": \"string\",\n        \"use_horizontal_scale\": true,\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"account\": {\n      \"href\": \"https://tFbIpbJBpfJAPBaNZpsZuTMoVL.phfz93AaPPx5e90SpfRqRq9rkZO\"\n    },\n    \"next\": {\n      \"href\": \"https://TtPgpQPSMhmdLCRyTWo.hrubXdp41JfhTXW1OekNlTwZGO\"\n    },\n    \"prev\": {\n      \"href\": \"https://wresiPHLFHHNCsRGdFToDgquvwHlpxyOr.xofjbNiO.2udl.4LM0Odj,jMFz6ODAeiyhgdtFwdhmnM\"\n    },\n    \"self\": {\n      \"href\": \"https://fBgfjyKfvNmsrHEXfLtomoxniJxKw.mulzjFqMxg3BxBPNfXXgCsWQqXtNaFyZ6HkdMVPPieQYUSi3lc,vojm..7fTwpatNTFtydhMxY\"\n    }\n  },\n  \"current_page\": 3981,\n  \"per_page\": 8501,\n  \"total_count\": 6839\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47718a88-167f-44a8-a671-ecb8012c55de",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "service_sizing_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 700,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cd26402-b3ba-492b-9953-8a95b89a5903",
+          "name": "list service_sizing_policies",
+          "request": {
+            "name": "list service_sizing_policies",
+            "description": {
+              "content": "Returns a paginated list of service sizing policies for the specified service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                ":service_id",
+                "service_sizing_policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "service_id",
+                  "description": "(Required) service_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0f99f6d-46dc-456c-b470-1029c6be1029",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "service_sizing_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"service_sizing_policies\": [\n      {\n        \"_type\": \"string\",\n        \"account_id\": 7175,\n        \"autoscaling\": \"string\",\n        \"created_at\": \"string\",\n        \"default_policy\": false,\n        \"id\": 5314,\n        \"max_containers\": 6501,\n        \"max_cpu_threshold\": 4713.4798336347,\n        \"maximum_memory\": 9558,\n        \"mem_cpu_ratio_c_threshold\": 4729.7486719783365,\n        \"mem_cpu_ratio_r_threshold\": 7659.958108736311,\n        \"mem_scale_down_threshold\": 8051.15661143967,\n        \"mem_scale_up_threshold\": 6732.421719643818,\n        \"metric_lookback_seconds\": 1092,\n        \"min_containers\": 3505,\n        \"min_cpu_threshold\": 8838.326356457608,\n        \"minimum_memory\": 2120,\n        \"percentile\": 2724.6300585488225,\n        \"post_release_cooldown_seconds\": 5325,\n        \"post_scale_down_cooldown_seconds\": 5768,\n        \"post_scale_up_cooldown_seconds\": 2840,\n        \"scale_down_step\": 3245,\n        \"scale_up_step\": 5141,\n        \"scaling_enabled\": false,\n        \"updated_at\": \"string\",\n        \"use_horizontal_scale\": false,\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"account_id\": 4252,\n        \"autoscaling\": \"string\",\n        \"created_at\": \"string\",\n        \"default_policy\": false,\n        \"id\": 4757,\n        \"max_containers\": 6593,\n        \"max_cpu_threshold\": 669.8125640778185,\n        \"maximum_memory\": 5988,\n        \"mem_cpu_ratio_c_threshold\": 2638.374701498667,\n        \"mem_cpu_ratio_r_threshold\": 3893.626297562275,\n        \"mem_scale_down_threshold\": 4957.231026014142,\n        \"mem_scale_up_threshold\": 2582.7164765477705,\n        \"metric_lookback_seconds\": 6320,\n        \"min_containers\": 96,\n        \"min_cpu_threshold\": 9911.099224138383,\n        \"minimum_memory\": 839,\n        \"percentile\": 6075.744715087429,\n        \"post_release_cooldown_seconds\": 1278,\n        \"post_scale_down_cooldown_seconds\": 9311,\n        \"post_scale_up_cooldown_seconds\": 5285,\n        \"scale_down_step\": 6884,\n        \"scale_up_step\": 9062,\n        \"scaling_enabled\": true,\n        \"updated_at\": \"string\",\n        \"use_horizontal_scale\": false,\n        \"_links\": {\n          \"account\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"account\": {\n      \"href\": \"https://utWNTkIUhJeBSUWsPNnyLyfSrTCnw.ermhl3Jpdj8NZohu3g72skoPOpKJkzUNEgvWgtfruT-QiPH3TcuD2GVb7YSJt2Aj\"\n    },\n    \"next\": {\n      \"href\": \"https://J.usgS5oMuq0ss6dji0ATX,OlELZDE.6Jfg\"\n    },\n    \"prev\": {\n      \"href\": \"http://PwBKHtvaOGZfzo.alj3dhpzcOLCWz5jWRBsIygOsE\"\n    },\n    \"self\": {\n      \"href\": \"https://izXtNIysWWaoOCRjpHzNvldyJP.yrMi.CBabVWz3j6rVBxL7L0NQ,+CG3nmLIk.25AUXlLqrWXFC.H89CUEZktdMaMbb1pNY\"\n    }\n  },\n  \"current_page\": 8218,\n  \"per_page\": 424,\n  \"total_count\": 4488\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14c49fbd-33df-4f79-a419-0d2b393017c0",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "service_sizing_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 700,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8ca37c3-084b-4d26-bec0-c5fb7c9c4dd2",
+          "name": "create service_sizing_policy",
+          "request": {
+            "name": "create service_sizing_policy",
+            "description": {
+              "content": "Creates a new service sizing policy for the specified service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                ":service_id",
+                "service_sizing_policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "service_id",
+                  "description": "(Required) service_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scaling_enabled\": \"<boolean>\",\n  \"metric_lookback_seconds\": \"<integer>\",\n  \"percentile\": \"<number>\",\n  \"post_scale_up_cooldown_seconds\": \"<integer>\",\n  \"post_scale_down_cooldown_seconds\": \"<integer>\",\n  \"post_release_cooldown_seconds\": \"<integer>\",\n  \"mem_cpu_ratio_r_threshold\": \"<number>\",\n  \"mem_cpu_ratio_c_threshold\": \"<number>\",\n  \"mem_scale_up_threshold\": \"<number>\",\n  \"mem_scale_down_threshold\": \"<number>\",\n  \"minimum_memory\": \"<integer>\",\n  \"maximum_memory\": \"<integer>\",\n  \"autoscaling\": \"<string>\",\n  \"min_cpu_threshold\": \"<number>\",\n  \"max_cpu_threshold\": \"<number>\",\n  \"min_containers\": \"<integer>\",\n  \"max_containers\": \"<integer>\",\n  \"scale_up_step\": \"<integer>\",\n  \"scale_down_step\": \"<integer>\",\n  \"use_horizontal_scale\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61cba4c7-6e3e-4d39-8ebb-d1cc458f10d5",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "service_sizing_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"scaling_enabled\": \"<boolean>\",\n  \"metric_lookback_seconds\": \"<integer>\",\n  \"percentile\": \"<number>\",\n  \"post_scale_up_cooldown_seconds\": \"<integer>\",\n  \"post_scale_down_cooldown_seconds\": \"<integer>\",\n  \"post_release_cooldown_seconds\": \"<integer>\",\n  \"mem_cpu_ratio_r_threshold\": \"<number>\",\n  \"mem_cpu_ratio_c_threshold\": \"<number>\",\n  \"mem_scale_up_threshold\": \"<number>\",\n  \"mem_scale_down_threshold\": \"<number>\",\n  \"minimum_memory\": \"<integer>\",\n  \"maximum_memory\": \"<integer>\",\n  \"autoscaling\": \"<string>\",\n  \"min_cpu_threshold\": \"<number>\",\n  \"max_cpu_threshold\": \"<number>\",\n  \"min_containers\": \"<integer>\",\n  \"max_containers\": \"<integer>\",\n  \"scale_up_step\": \"<integer>\",\n  \"scale_down_step\": \"<integer>\",\n  \"use_horizontal_scale\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "833cdd95-9b79-46c5-b7b2-27190c29fcdc",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "service_sizing_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"scaling_enabled\": \"<boolean>\",\n  \"metric_lookback_seconds\": \"<integer>\",\n  \"percentile\": \"<number>\",\n  \"post_scale_up_cooldown_seconds\": \"<integer>\",\n  \"post_scale_down_cooldown_seconds\": \"<integer>\",\n  \"post_release_cooldown_seconds\": \"<integer>\",\n  \"mem_cpu_ratio_r_threshold\": \"<number>\",\n  \"mem_cpu_ratio_c_threshold\": \"<number>\",\n  \"mem_scale_up_threshold\": \"<number>\",\n  \"mem_scale_down_threshold\": \"<number>\",\n  \"minimum_memory\": \"<integer>\",\n  \"maximum_memory\": \"<integer>\",\n  \"autoscaling\": \"<string>\",\n  \"min_cpu_threshold\": \"<number>\",\n  \"max_cpu_threshold\": \"<number>\",\n  \"min_containers\": \"<integer>\",\n  \"max_containers\": \"<integer>\",\n  \"scale_up_step\": \"<integer>\",\n  \"scale_down_step\": \"<integer>\",\n  \"use_horizontal_scale\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 700,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc0314be-0fa0-4f5e-ad7e-890fc8a0c34d",
+          "name": "update service_sizing_policy",
+          "request": {
+            "name": "update service_sizing_policy",
+            "description": {
+              "content": "Updates a service sizing policy's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                ":service_id",
+                "service_sizing_policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "service_id",
+                  "description": "(Required) service_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scaling_enabled\": \"<boolean>\",\n  \"metric_lookback_seconds\": \"<integer>\",\n  \"percentile\": \"<number>\",\n  \"post_scale_up_cooldown_seconds\": \"<integer>\",\n  \"post_scale_down_cooldown_seconds\": \"<integer>\",\n  \"post_release_cooldown_seconds\": \"<integer>\",\n  \"mem_cpu_ratio_r_threshold\": \"<number>\",\n  \"mem_cpu_ratio_c_threshold\": \"<number>\",\n  \"mem_scale_up_threshold\": \"<number>\",\n  \"mem_scale_down_threshold\": \"<number>\",\n  \"minimum_memory\": \"<integer>\",\n  \"maximum_memory\": \"<integer>\",\n  \"autoscaling\": \"<string>\",\n  \"min_cpu_threshold\": \"<number>\",\n  \"max_cpu_threshold\": \"<number>\",\n  \"min_containers\": \"<integer>\",\n  \"max_containers\": \"<integer>\",\n  \"scale_up_step\": \"<integer>\",\n  \"scale_down_step\": \"<integer>\",\n  \"use_horizontal_scale\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b131c60b-a1a5-4adc-9ddf-791260c29aad",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "service_sizing_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"scaling_enabled\": \"<boolean>\",\n  \"metric_lookback_seconds\": \"<integer>\",\n  \"percentile\": \"<number>\",\n  \"post_scale_up_cooldown_seconds\": \"<integer>\",\n  \"post_scale_down_cooldown_seconds\": \"<integer>\",\n  \"post_release_cooldown_seconds\": \"<integer>\",\n  \"mem_cpu_ratio_r_threshold\": \"<number>\",\n  \"mem_cpu_ratio_c_threshold\": \"<number>\",\n  \"mem_scale_up_threshold\": \"<number>\",\n  \"mem_scale_down_threshold\": \"<number>\",\n  \"minimum_memory\": \"<integer>\",\n  \"maximum_memory\": \"<integer>\",\n  \"autoscaling\": \"<string>\",\n  \"min_cpu_threshold\": \"<number>\",\n  \"max_cpu_threshold\": \"<number>\",\n  \"min_containers\": \"<integer>\",\n  \"max_containers\": \"<integer>\",\n  \"scale_up_step\": \"<integer>\",\n  \"scale_down_step\": \"<integer>\",\n  \"use_horizontal_scale\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bce46ae1-4515-42ad-a612-5533f913e5c5",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "service_sizing_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"scaling_enabled\": \"<boolean>\",\n  \"metric_lookback_seconds\": \"<integer>\",\n  \"percentile\": \"<number>\",\n  \"post_scale_up_cooldown_seconds\": \"<integer>\",\n  \"post_scale_down_cooldown_seconds\": \"<integer>\",\n  \"post_release_cooldown_seconds\": \"<integer>\",\n  \"mem_cpu_ratio_r_threshold\": \"<number>\",\n  \"mem_cpu_ratio_c_threshold\": \"<number>\",\n  \"mem_scale_up_threshold\": \"<number>\",\n  \"mem_scale_down_threshold\": \"<number>\",\n  \"minimum_memory\": \"<integer>\",\n  \"maximum_memory\": \"<integer>\",\n  \"autoscaling\": \"<string>\",\n  \"min_cpu_threshold\": \"<number>\",\n  \"max_cpu_threshold\": \"<number>\",\n  \"min_containers\": \"<integer>\",\n  \"max_containers\": \"<integer>\",\n  \"scale_up_step\": \"<integer>\",\n  \"scale_down_step\": \"<integer>\",\n  \"use_horizontal_scale\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 700,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab04e6ca-9530-4902-ae04-e399553bf41c",
+          "name": "delete service_sizing_policy",
+          "request": {
+            "name": "delete service_sizing_policy",
+            "description": {
+              "content": "Deletes the service sizing policy for the specified service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                ":service_id",
+                "service_sizing_policy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "service_id",
+                  "description": "(Required) service_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "012a86e3-24a5-4eb1-843f-fdeabaf31241",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "service_sizing_policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "08d8e1be-d439-47c3-bd14-13fde7c83b4e",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "service_sizing_policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 700,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd75ee7c-476c-4f0f-8159-7ad364a118e1",
+          "name": "show service_sizing_policy",
+          "request": {
+            "name": "show service_sizing_policy",
+            "description": {
+              "content": "Returns the details of a specific service sizing policy by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "service_sizing_policies",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9ca6f2d-30f1-4389-b878-fa77db5aacf8",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service_sizing_policies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"account_id\": 3465,\n  \"autoscaling\": \"string\",\n  \"created_at\": \"string\",\n  \"default_policy\": true,\n  \"id\": 5041,\n  \"max_containers\": 9198,\n  \"max_cpu_threshold\": 173.2425697174411,\n  \"maximum_memory\": 4734,\n  \"mem_cpu_ratio_c_threshold\": 3967.0575007634566,\n  \"mem_cpu_ratio_r_threshold\": 7606.261733413381,\n  \"mem_scale_down_threshold\": 8715.549223520848,\n  \"mem_scale_up_threshold\": 1935.2605154484504,\n  \"metric_lookback_seconds\": 4478,\n  \"min_containers\": 9858,\n  \"min_cpu_threshold\": 6868.870254871676,\n  \"minimum_memory\": 764,\n  \"percentile\": 7918.5237989866555,\n  \"post_release_cooldown_seconds\": 6638,\n  \"post_scale_down_cooldown_seconds\": 8777,\n  \"post_scale_up_cooldown_seconds\": 8672,\n  \"scale_down_step\": 1594,\n  \"scale_up_step\": 5518,\n  \"scaling_enabled\": false,\n  \"updated_at\": \"string\",\n  \"use_horizontal_scale\": true,\n  \"_links\": {\n    \"account\": {\n      \"href\": \"http://N.jxysVtZQSIn832ws71\"\n    },\n    \"self\": {\n      \"href\": \"https://mylUeKBUZrQxQzuiYbMgSuhxCQZyycgbe.ofpksataWYIXELxpckG8+3HWyGZQBNC6.yx+MvgNgb5c\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c39af3eb-069e-43f0-ac30-640e09d1c369",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service_sizing_policies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 700,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "34fc2dbc-7fdb-4bf5-8100-eef5ba1ece4e",
+    "name": "Aptible API v1 Service Sizing Policies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

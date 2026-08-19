@@ -1,0 +1,955 @@
+{
+  "item": [
+    {
+      "id": "2b666827-c2f7-4e11-8cc6-5633be32964e",
+      "name": "Containers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c10c3c04-8ee9-4b5a-9f16-5c2d1165341a",
+          "name": "list containers",
+          "request": {
+            "name": "list containers",
+            "description": {
+              "content": "Returns a paginated list of containers for the specified release.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "releases",
+                ":release_id",
+                "containers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "release_id",
+                  "description": "(Required) release_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c78318dc-5e61-4980-b7b8-6c7a6f406a28",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "releases",
+                    ":release_id",
+                    "containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "release_id",
+                      "description": "(Required) release_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"containers\": [\n      {\n        \"_type\": \"string\",\n        \"allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aws_instance_id\": \"string\",\n        \"created_at\": \"string\",\n        \"docker_name\": \"string\",\n        \"host\": \"string\",\n        \"id\": 3178,\n        \"instance_class\": \"string\",\n        \"layer\": \"string\",\n        \"memory_limit\": 5600,\n        \"mounts\": [\n          [\n            \"string\",\n            \"string\"\n          ],\n          [\n            \"string\",\n            \"string\"\n          ]\n        ],\n        \"port\": 6545,\n        \"port_mapping\": [\n          [\n            7863,\n            46\n          ],\n          [\n            7895,\n            6238\n          ]\n        ],\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"release\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhost\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"metric_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aws_instance_id\": \"string\",\n        \"created_at\": \"string\",\n        \"docker_name\": \"string\",\n        \"host\": \"string\",\n        \"id\": 5639,\n        \"instance_class\": \"string\",\n        \"layer\": \"string\",\n        \"memory_limit\": 3111,\n        \"mounts\": [\n          [\n            \"string\",\n            \"string\"\n          ],\n          [\n            \"string\",\n            \"string\"\n          ]\n        ],\n        \"port\": 6617,\n        \"port_mapping\": [\n          [\n            4815,\n            465\n          ],\n          [\n            3679,\n            584\n          ]\n        ],\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"release\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhost\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"metric_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"release\": {\n      \"href\": \"http://d.wpCF0X5oMj.Pbj1Q.llN8psVeM-J9BC5qaSveP.KomX76X5w,YUGr8b\"\n    },\n    \"log_drain\": {\n      \"href\": \"https://zyyVMYDEZeFttlkSbpgc.bvwTLaBAwX6.aKE\"\n    },\n    \"next\": {\n      \"href\": \"https://DwTzqOmjhCNRCVCDaoHXiPb.silciZaUgJVmZiQ3-EBNi6cyniumh1Zwux.K5D.BGpXFZcUBJOdWqBP3T\"\n    },\n    \"prev\": {\n      \"href\": \"http://PC.iisiSgqVf3vSsMZ+VBr75T\"\n    },\n    \"self\": {\n      \"href\": \"http://mxXfeb.qsFt3cECRR6oYxWu2aZG8r5,\"\n    }\n  },\n  \"current_page\": 1776,\n  \"per_page\": 9492,\n  \"total_count\": 1628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84c69f2f-7cdb-4e47-b721-76ee686652c6",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "releases",
+                    ":release_id",
+                    "containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "release_id",
+                      "description": "(Required) release_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 3394,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "590b5463-1a2d-4ba7-9649-f400b41fcc19",
+          "name": "show container",
+          "request": {
+            "name": "show container",
+            "description": {
+              "content": "Returns the details of a specific container by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "containers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e062bacc-a327-4520-b0c5-3def13ea64c4",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "containers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"allocation\": [\n    \"string\",\n    \"string\"\n  ],\n  \"aws_instance_id\": \"string\",\n  \"created_at\": \"string\",\n  \"docker_name\": \"string\",\n  \"host\": \"string\",\n  \"id\": 4528,\n  \"instance_class\": \"string\",\n  \"layer\": \"string\",\n  \"memory_limit\": 1643,\n  \"mounts\": [\n    [\n      \"string\",\n      \"string\"\n    ],\n    [\n      \"string\",\n      \"string\"\n    ]\n  ],\n  \"port\": 4030,\n  \"port_mapping\": [\n    [\n      4503,\n      203\n    ],\n    [\n      3041,\n      9026\n    ]\n  ],\n  \"status\": \"string\",\n  \"updated_at\": \"string\",\n  \"_links\": {\n    \"release\": {\n      \"href\": \"http://WpGYIhjabbYKe.ldJKqKdjUp+DUWjOc9Fbue8o3Ob+uk5MqGYkAIkaGUZ4O1ERT5kn-qcoe5fhIwq-ezjNZhgWhsA\"\n    },\n    \"vhost\": {\n      \"href\": \"http://KFj.ykwsl3UcJp30rRQfJMTlzBm3,,cVMr.9CH9izEFuX\"\n    },\n    \"log_drain\": {\n      \"href\": \"https://bVgvBJmSbU.ukhmik3t\"\n    },\n    \"metric_drain\": {\n      \"href\": \"https://DKHkopxgTvfdCZqPdPtFb.mayJqeWcuv9avuOIAsnxZt+qR7uFOSzwflr67pdzml63fdsdXVqwdWMH0X7\"\n    },\n    \"self\": {\n      \"href\": \"http://EtEeOsLYpJGajXpNU.pkgmd-3CYY2vAUEiZxTLFfVSU69zFPH6AMhQJHcIdg3eIQvXqYicDJYMs\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "041325fe-61e0-4219-99c3-780d17510fd9",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "containers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 3394,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58e5cb4d-85f4-49da-ba16-377a74bc6449",
+          "name": "list containers",
+          "request": {
+            "name": "list containers",
+            "description": {
+              "content": "Returns a paginated list of containers for the specified log drain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "log_drains",
+                ":log_drain_id",
+                "containers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "log_drain_id",
+                  "description": "(Required) log_drain_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b7ecc81-28ed-4f4b-8288-02628964a10b",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":log_drain_id",
+                    "containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "log_drain_id",
+                      "description": "(Required) log_drain_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"containers\": [\n      {\n        \"_type\": \"string\",\n        \"allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aws_instance_id\": \"string\",\n        \"created_at\": \"string\",\n        \"docker_name\": \"string\",\n        \"host\": \"string\",\n        \"id\": 7754,\n        \"instance_class\": \"string\",\n        \"layer\": \"string\",\n        \"memory_limit\": 980,\n        \"mounts\": [\n          [\n            \"string\",\n            \"string\"\n          ],\n          [\n            \"string\",\n            \"string\"\n          ]\n        ],\n        \"port\": 2794,\n        \"port_mapping\": [\n          [\n            6780,\n            4154\n          ],\n          [\n            6899,\n            4968\n          ]\n        ],\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"release\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhost\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"metric_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aws_instance_id\": \"string\",\n        \"created_at\": \"string\",\n        \"docker_name\": \"string\",\n        \"host\": \"string\",\n        \"id\": 2714,\n        \"instance_class\": \"string\",\n        \"layer\": \"string\",\n        \"memory_limit\": 1549,\n        \"mounts\": [\n          [\n            \"string\",\n            \"string\"\n          ],\n          [\n            \"string\",\n            \"string\"\n          ]\n        ],\n        \"port\": 7921,\n        \"port_mapping\": [\n          [\n            5009,\n            3692\n          ],\n          [\n            5922,\n            4300\n          ]\n        ],\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"release\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhost\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"metric_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"release\": {\n      \"href\": \"http://sJZeXBsHF.lzoqsihdIjW8FtWH3VomTTujJswf9x00fm8S3fvgO\"\n    },\n    \"log_drain\": {\n      \"href\": \"http://Mbsn.ssnuOSRvJf+VJQwPeQ,-wfJXYs8TjudgD3KleV0Ze.Tulf1Hc\"\n    },\n    \"next\": {\n      \"href\": \"https://aPhHbzTbaPAe.qilzdBWw7PAHDQF+CFlN9,ZZftys,LCh-cknlcL.v4Dc\"\n    },\n    \"prev\": {\n      \"href\": \"http://RjveZWnMTniEdfxRfaHNg.blGeLVYFHIFvXv7GsvpXFd-SnC33ySQdsoXz4lkX,EuOyPdi\"\n    },\n    \"self\": {\n      \"href\": \"https://bvmShdKrDMzdiKyQcZhrc.wfushH1ZoiOwxXks0.aAid73vhuZgalrIWi.+RoJYj7QjjG\"\n    }\n  },\n  \"current_page\": 8622,\n  \"per_page\": 2450,\n  \"total_count\": 7416\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83bae1b0-ef56-4ec2-9ced-cf46fc6ea453",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "log_drains",
+                    ":log_drain_id",
+                    "containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "log_drain_id",
+                      "description": "(Required) log_drain_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 3394,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3654868-5979-4d7b-8608-f0b5fd65771f",
+          "name": "list containers",
+          "request": {
+            "name": "list containers",
+            "description": {
+              "content": "Returns a paginated list of containers for the specified metric drain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metric_drains",
+                ":metric_drain_id",
+                "containers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "metric_drain_id",
+                  "description": "(Required) metric_drain_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f6acb77-f1a6-4436-b98e-19c3f5ee56c3",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metric_drains",
+                    ":metric_drain_id",
+                    "containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "metric_drain_id",
+                      "description": "(Required) metric_drain_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"containers\": [\n      {\n        \"_type\": \"string\",\n        \"allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aws_instance_id\": \"string\",\n        \"created_at\": \"string\",\n        \"docker_name\": \"string\",\n        \"host\": \"string\",\n        \"id\": 7754,\n        \"instance_class\": \"string\",\n        \"layer\": \"string\",\n        \"memory_limit\": 980,\n        \"mounts\": [\n          [\n            \"string\",\n            \"string\"\n          ],\n          [\n            \"string\",\n            \"string\"\n          ]\n        ],\n        \"port\": 2794,\n        \"port_mapping\": [\n          [\n            6780,\n            4154\n          ],\n          [\n            6899,\n            4968\n          ]\n        ],\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"release\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhost\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"metric_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"allocation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aws_instance_id\": \"string\",\n        \"created_at\": \"string\",\n        \"docker_name\": \"string\",\n        \"host\": \"string\",\n        \"id\": 2714,\n        \"instance_class\": \"string\",\n        \"layer\": \"string\",\n        \"memory_limit\": 1549,\n        \"mounts\": [\n          [\n            \"string\",\n            \"string\"\n          ],\n          [\n            \"string\",\n            \"string\"\n          ]\n        ],\n        \"port\": 7921,\n        \"port_mapping\": [\n          [\n            5009,\n            3692\n          ],\n          [\n            5922,\n            4300\n          ]\n        ],\n        \"status\": \"string\",\n        \"updated_at\": \"string\",\n        \"_links\": {\n          \"release\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"vhost\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"log_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"metric_drain\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"release\": {\n      \"href\": \"http://sJZeXBsHF.lzoqsihdIjW8FtWH3VomTTujJswf9x00fm8S3fvgO\"\n    },\n    \"log_drain\": {\n      \"href\": \"http://Mbsn.ssnuOSRvJf+VJQwPeQ,-wfJXYs8TjudgD3KleV0Ze.Tulf1Hc\"\n    },\n    \"next\": {\n      \"href\": \"https://aPhHbzTbaPAe.qilzdBWw7PAHDQF+CFlN9,ZZftys,LCh-cknlcL.v4Dc\"\n    },\n    \"prev\": {\n      \"href\": \"http://RjveZWnMTniEdfxRfaHNg.blGeLVYFHIFvXv7GsvpXFd-SnC33ySQdsoXz4lkX,EuOyPdi\"\n    },\n    \"self\": {\n      \"href\": \"https://bvmShdKrDMzdiKyQcZhrc.wfushH1ZoiOwxXks0.aAid73vhuZgalrIWi.+RoJYj7QjjG\"\n    }\n  },\n  \"current_page\": 8622,\n  \"per_page\": 2450,\n  \"total_count\": 7416\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6b8c422-b529-46af-8ef4-6087b2a69a5b",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metric_drains",
+                    ":metric_drain_id",
+                    "containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "metric_drain_id",
+                      "description": "(Required) metric_drain_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 3394,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "242a0432-9b6a-476f-9d82-6de8aaf25cc7",
+    "name": "Aptible API v1 Containers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

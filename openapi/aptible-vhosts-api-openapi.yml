@@ -1,0 +1,820 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Vhosts API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: Vhosts
+paths:
+  /accounts/{account_id}/vhosts:
+    get:
+      description: Returns a paginated list of vhosts belonging to the specified account.
+      operationId: ListVhostsForAccount
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListVhostsForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list vhosts
+      tags:
+      - Vhosts
+  /apps/{app_id}/vhosts:
+    get:
+      description: Returns a paginated list of vhosts belonging to the specified app.
+      operationId: ListVhostsForApp
+      parameters:
+      - description: app_id
+        explode: false
+        in: path
+        name: app_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListVhostsForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list vhosts
+      tags:
+      - Vhosts
+  /certificates/{certificate_id}/vhosts:
+    get:
+      description: Returns a paginated list of vhosts associated with the specified certificate.
+      operationId: ListVhostsForCertificate
+      parameters:
+      - description: certificate_id
+        explode: false
+        in: path
+        name: certificate_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListVhostsForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list vhosts
+      tags:
+      - Vhosts
+  /services/{service_id}/vhosts:
+    get:
+      description: Returns a paginated list of vhosts belonging to the specified service.
+      operationId: ListVhostsForService
+      parameters:
+      - description: service_id
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListVhostsForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list vhosts
+      tags:
+      - Vhosts
+    post:
+      description: Creates a new vhost for the specified service.
+      operationId: CreateVhost
+      parameters:
+      - description: service_id
+        explode: false
+        in: path
+        name: service_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVhost_request'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/vhost'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create vhost
+      tags:
+      - Vhosts
+  /vhosts/{id}:
+    delete:
+      description: Deletes the specified vhost.
+      operationId: DeleteVhost
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '204':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: delete vhost
+      tags:
+      - Vhosts
+    get:
+      description: Returns the details of a specific vhost by ID.
+      operationId: GetVhost
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/vhost'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show vhost
+      tags:
+      - Vhosts
+    patch:
+      description: Partially updates a vhost's attributes.
+      operationId: PatchVhost
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVhost_request'
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update vhost
+      tags:
+      - Vhosts
+    put:
+      description: Updates a vhost's attributes.
+      operationId: UpdateVhost
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVhost_request'
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update vhost
+      tags:
+      - Vhosts
+components:
+  schemas:
+    UpdateVhost_request:
+      properties:
+        user_domain:
+          type: string
+        certificate:
+          type: integer
+        platform:
+          type: string
+        container_port:
+          type: integer
+        container_ports:
+          items:
+            type: integer
+          type: array
+        ip_whitelist:
+          items:
+            type: string
+          type: array
+        shared_fingerprint:
+          type: string
+        shared:
+          type: boolean
+        load_balancing_algorithm_type:
+          type: string
+      type: object
+    vhost_acme_configuration_challenges_inner:
+      properties:
+        method:
+          enum:
+          - http01
+          - dns01
+          type: string
+        from:
+          $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner_from'
+        to:
+          items:
+            $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner_to_inner'
+          type: array
+      type: object
+    vhost_acme_configuration_challenges_inner_to_inner:
+      properties:
+        name:
+          type: string
+        legacy:
+          type: boolean
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListVhostsForAccount_200_response__embedded:
+      properties:
+        vhosts:
+          items:
+            $ref: '#/components/schemas/vhost'
+          type: array
+      type: object
+    vhost_acme_configuration_challenges_inner_from:
+      properties:
+        name:
+          type: string
+      type: object
+    ListVhostsForAccount_200_response__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    CreateVhost_request:
+      properties:
+        type:
+          type: string
+        default:
+          type: boolean
+          x-omitempty: false
+        internal:
+          type: boolean
+          x-omitempty: false
+        certificate:
+          type: integer
+        user_domain:
+          type: string
+        acme:
+          type: boolean
+          x-omitempty: false
+        platform:
+          type: string
+        container_port:
+          type: integer
+        container_ports:
+          items:
+            type: integer
+          type: array
+        ip_whitelist:
+          items:
+            type: string
+          type: array
+        container_exposed_ports:
+          items:
+            type: integer
+          type: array
+        shared:
+          type: boolean
+        load_balancing_algorithm_type:
+          type: string
+      required:
+      - type
+      type: object
+    ListVhostsForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListVhostsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListVhostsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    vhost:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        virtual_domain:
+          type: string
+        type:
+          enum:
+          - http
+          - http_proxy_protocol
+          - tcp
+          - tls
+          - grpc
+          type: string
+        elastic_load_balancer_name:
+          type: string
+          x-nullable: true
+        application_load_balancer_arn:
+          type: string
+          x-nullable: true
+        network_load_balancer_arn:
+          type: string
+          x-nullable: true
+        security_group_id:
+          type: string
+          x-nullable: true
+        external_host:
+          type: string
+          x-nullable: true
+        external_http_port:
+          type: integer
+          x-nullable: true
+        external_https_port:
+          type: integer
+          x-nullable: true
+        internal_host:
+          type: string
+          x-nullable: true
+        internal_http_port:
+          type: integer
+          x-nullable: true
+        internal_https_port:
+          type: integer
+          x-nullable: true
+        internal_health_port:
+          type: integer
+          x-nullable: true
+        docker_name:
+          type: string
+          x-nullable: true
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        status:
+          type: string
+        platform:
+          enum:
+          - alb
+          - elb
+          - nlb
+          type: string
+        default:
+          type: boolean
+        internal:
+          type: boolean
+        container_exposed_ports:
+          items:
+            type: integer
+          type: array
+          x-nullable: true
+        host_mapped_ports:
+          items:
+            type: integer
+          type: array
+          x-nullable: true
+        ip_whitelist:
+          items:
+            type: string
+          type: array
+        user_domain:
+          type: string
+          x-nullable: true
+        acme:
+          type: boolean
+        acme_status:
+          type: string
+          x-nullable: true
+        acme_dns_challenge_host:
+          type: string
+          x-nullable: true
+        container_port:
+          type: integer
+          x-nullable: true
+        container_ports:
+          items:
+            type: integer
+          type: array
+        acme_configuration:
+          $ref: '#/components/schemas/vhost_acme_configuration'
+        shared:
+          type: boolean
+          x-nullable: true
+        shared_fingerprint:
+          type: string
+          x-nullable: true
+        load_balancing_algorithm_type:
+          type: string
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/vhost__links'
+      required:
+      - _type
+      - acme
+      - acme_configuration
+      - acme_dns_challenge_host
+      - acme_status
+      - application_load_balancer_arn
+      - container_exposed_ports
+      - container_port
+      - container_ports
+      - created_at
+      - default
+      - docker_name
+      - elastic_load_balancer_name
+      - external_host
+      - external_http_port
+      - external_https_port
+      - host_mapped_ports
+      - id
+      - internal
+      - internal_health_port
+      - internal_host
+      - internal_http_port
+      - internal_https_port
+      - ip_whitelist
+      - load_balancing_algorithm_type
+      - network_load_balancer_arn
+      - platform
+      - security_group_id
+      - shared
+      - shared_fingerprint
+      - status
+      - type
+      - updated_at
+      - user_domain
+      - virtual_domain
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    vhost_acme_configuration:
+      properties:
+        names:
+          items:
+            type: string
+          type: array
+        challenges:
+          items:
+            $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner'
+          type: array
+      type: object
+      x-nullable: true
+    vhost__links:
+      properties:
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        certificate:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

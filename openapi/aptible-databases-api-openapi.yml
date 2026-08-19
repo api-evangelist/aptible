@@ -1,0 +1,972 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Databases API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: Databases
+paths:
+  /accounts/{account_id}/databases:
+    get:
+      description: Returns a paginated list of databases belonging to the specified account.
+      operationId: ListDatabasesForAccount
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListDatabasesForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list databases
+      tags:
+      - Databases
+    post:
+      description: Creates a new database within the specified account.
+      operationId: CreateDatabase
+      parameters:
+      - description: account_id
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDatabase_request'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/database'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: create database
+      tags:
+      - Databases
+  /databases/{database_id}/dependents:
+    get:
+      description: Returns a paginated list of replica databases for the specified database.
+      operationId: ListReplicasForDatabase
+      parameters:
+      - description: database_id
+        explode: false
+        in: path
+        name: database_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListDatabasesForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list databases
+      tags:
+      - Databases
+  /databases:
+    get:
+      description: Returns a paginated list of all databases.
+      operationId: ListDatabases
+      parameters:
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListDatabasesForAccount_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list databases
+      tags:
+      - Databases
+  /databases/{id}:
+    delete:
+      description: Deletes a database by ID.
+      operationId: DeleteDatabase
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        '204':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: delete database
+      tags:
+      - Databases
+    get:
+      description: Returns the details of a specific database by ID.
+      operationId: GetDatabase
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/database'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show database
+      tags:
+      - Databases
+    patch:
+      description: Partially updates a database's attributes.
+      operationId: PatchDatabase
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDatabase_request'
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update database
+      tags:
+      - Databases
+    put:
+      description: Updates a database's attributes.
+      operationId: UpdateDatabase
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDatabase_request'
+      responses:
+        '200':
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update database
+      tags:
+      - Databases
+  /find/database:
+    get:
+      description: Returns the database matching the specified handle.
+      operationId: GetDatabaseByHandle
+      parameters:
+      - description: database handle
+        explode: true
+        in: query
+        name: handle
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: account handle to disambiguate when multiple databases share the same handle
+        explode: true
+        in: query
+        name: environment
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/database'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: find database by handle
+      tags:
+      - Databases
+components:
+  schemas:
+    database__embedded:
+      properties:
+        last_operation:
+          $ref: '#/components/schemas/operation'
+        disk:
+          $ref: '#/components/schemas/disk'
+        database_credentials:
+          items:
+            $ref: '#/components/schemas/database_credential'
+          type: array
+      type: object
+    database_credential:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        connection_url:
+          type: string
+        type:
+          type: string
+        default:
+          type: boolean
+        _links:
+          $ref: '#/components/schemas/database_credential__links'
+      required:
+      - _type
+      - created_at
+      - default
+      - id
+      - type
+      - updated_at
+    ListDatabasesForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDatabasesForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    database:
+      properties:
+        id:
+          type: integer
+        handle:
+          type: string
+        type:
+          type: string
+          x-nullable: true
+        passphrase:
+          type: string
+          x-nullable: true
+        connection_url:
+          type: string
+          x-nullable: true
+        provisioned:
+          type: boolean
+        _type:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        status:
+          type: string
+        docker_repo:
+          type: string
+          x-nullable: true
+        port_mapping:
+          items:
+            items:
+              type: integer
+            type: array
+          type: array
+        initial_disk_size:
+          type: integer
+          x-nullable: true
+        initial_container_size:
+          type: integer
+          x-nullable: true
+        current_kms_arn:
+          type: string
+          x-nullable: true
+        enable_backups:
+          type: boolean
+        pitr_bucket:
+          type: string
+          x-nullable: true
+        oldest_pitr_time:
+          type: string
+          x-nullable: true
+        enable_pitr:
+          type: boolean
+        pitr_status:
+          default: unsupported
+          enum:
+          - unsupported
+          - supported
+          - pending_restart
+          - restricted
+          type: string
+        _embedded:
+          $ref: '#/components/schemas/database__embedded'
+        _links:
+          $ref: '#/components/schemas/database__links'
+      required:
+      - _embedded
+      - _type
+      - created_at
+      - current_kms_arn
+      - docker_repo
+      - enable_backups
+      - enable_pitr
+      - handle
+      - id
+      - initial_container_size
+      - initial_disk_size
+      - oldest_pitr_time
+      - pitr_bucket
+      - pitr_status
+      - port_mapping
+      - provisioned
+      - status
+      - type
+      - updated_at
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    disk__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    database_credential__links:
+      properties:
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    operation:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        cancelled:
+          type: boolean
+        aborted:
+          type: boolean
+        git_ref:
+          type: string
+          x-nullable: true
+        docker_ref:
+          type: string
+          x-nullable: true
+        env:
+          type: object
+          x-nullable: true
+        container_size:
+          type: integer
+          x-nullable: true
+        container_count:
+          type: integer
+          x-nullable: true
+        disk_size:
+          type: integer
+        command:
+          type: string
+          x-nullable: true
+        handle:
+          type: string
+          x-nullable: true
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        certificate:
+          type: string
+          x-nullable: true
+        private_key:
+          type: string
+          x-nullable: true
+        user_name:
+          type: string
+        user_email:
+          type: string
+        destination_region:
+          type: string
+          x-nullable: true
+        interactive:
+          type: boolean
+          x-nullable: true
+        instance_profile:
+          type: string
+          x-nullable: true
+        mount_point:
+          type: string
+          x-nullable: true
+        daily:
+          type: integer
+          x-nullable: true
+        monthly:
+          type: integer
+          x-nullable: true
+        yearly:
+          type: integer
+          x-nullable: true
+        pitr_days:
+          type: integer
+          x-nullable: true
+        make_copy:
+          type: boolean
+          x-nullable: true
+        keep_final:
+          type: boolean
+          x-nullable: true
+        enable_backups:
+          type: boolean
+          x-nullable: true
+        enable_pitr:
+          type: boolean
+          x-nullable: true
+        settings:
+          type: object
+        sensitive_settings:
+          type: object
+        _links:
+          $ref: '#/components/schemas/operation__links'
+      required:
+      - _type
+      - aborted
+      - cancelled
+      - certificate
+      - command
+      - container_count
+      - container_size
+      - created_at
+      - daily
+      - destination_region
+      - disk_size
+      - docker_ref
+      - enable_backups
+      - enable_pitr
+      - git_ref
+      - handle
+      - id
+      - instance_profile
+      - interactive
+      - keep_final
+      - make_copy
+      - monthly
+      - mount_point
+      - pitr_days
+      - settings
+      - status
+      - type
+      - updated_at
+      - user_email
+      - user_name
+      - yearly
+    operation__links:
+      properties:
+        user:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        resource:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        destination_account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ssh_portal_connections:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_sessions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code_scan_result:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDatabasesForAccount_200_response__embedded:
+      properties:
+        databases:
+          items:
+            $ref: '#/components/schemas/database'
+          type: array
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    UpdateDatabase_request:
+      properties:
+        current_configuration:
+          type: integer
+        handle:
+          type: string
+        initial_disk_size:
+          type: integer
+        initial_continer_size:
+          type: integer
+        database_image_id:
+          type: integer
+        current_kms_arn:
+          type: string
+        enable_backups:
+          type: boolean
+      type: object
+    disk:
+      properties:
+        id:
+          type: integer
+        handle:
+          type: string
+        ebs_volume_id:
+          type: string
+          x-nullable: true
+        ebs_volume_type:
+          type: string
+          x-nullable: true
+        filesystem:
+          type: string
+        passphrase:
+          type: string
+        key_bytes:
+          type: integer
+        size:
+          type: integer
+        provisioned_iops:
+          type: integer
+        host:
+          type: string
+          x-nullable: true
+        device:
+          type: string
+          x-nullable: true
+        attached:
+          type: boolean
+        _type:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        ec2_instance_id:
+          type: string
+          x-nullable: true
+        baseline_iops:
+          type: integer
+          x-nullable: true
+        availability_zone:
+          type: string
+          x-nullable: true
+        current_kms_arn:
+          type: string
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/disk__links'
+      required:
+      - _type
+      - attached
+      - availability_zone
+      - baseline_iops
+      - created_at
+      - current_kms_arn
+      - device
+      - ebs_volume_id
+      - ebs_volume_type
+      - ec2_instance_id
+      - filesystem
+      - handle
+      - host
+      - id
+      - key_bytes
+      - provisioned_iops
+      - size
+      - updated_at
+    CreateDatabase_request:
+      properties:
+        handle:
+          type: string
+        type:
+          type: string
+        initial_disk_size:
+          type: integer
+        initial_container_size:
+          type: integer
+        initialize_from:
+          type: string
+        database_image:
+          description: Alternate name for `database_image_id`
+          type: integer
+        database_image_id:
+          type: integer
+        current_kms_arn:
+          type: string
+        enable_backups:
+          type: boolean
+        enable_pitr:
+          type: boolean
+      required:
+      - handle
+      - type
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    database__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database_image:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        disk:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        initialize_from:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_configuration:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        dependents:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        backups:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        configurations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database_credentials:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

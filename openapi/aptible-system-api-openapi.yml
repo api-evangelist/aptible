@@ -1,0 +1,46 @@
+openapi: 3.2.0
+info:
+  title: Cloud System API
+  version: 0.1.0
+servers:
+- url: /
+tags:
+- name: System
+paths:
+  /api/v1/system/health_check:
+    get:
+      operationId: get_healthcheck
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TextResponse'
+          description: Successful Response
+      summary: Get Healthcheck
+      tags:
+      - System
+components:
+  schemas:
+    TextResponse:
+      description: Generic text responses on api in payload, no flair
+      example:
+        payload: payload
+        error: error
+      properties:
+        error:
+          description: error message payload to bubble up to end user
+          title: Error
+          type: string
+        payload:
+          description: simple text response payload
+          title: Payload
+          type: string
+      required:
+      - payload
+      title: TextResponse
+      type: object
+  securitySchemes:
+    HTTPBearer:
+      scheme: bearer
+      type: http

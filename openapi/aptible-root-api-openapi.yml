@@ -1,0 +1,84 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Root API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: Root
+paths:
+  /:
+    get:
+      description: Returns the root resource with links to top-level collections.
+      operationId: GetRoot
+      parameters:
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/GetRoot_200_response'
+          description: successful
+      summary: show home
+      tags:
+      - Root
+components:
+  schemas:
+    GetRoot_200_response:
+      properties:
+        _links:
+          $ref: '#/components/schemas/GetRoot_200_response__links'
+      required:
+      - _links
+      type: object
+    GetRoot_200_response__links:
+      properties:
+        accounts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        apps:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        databases:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database_images:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        stacks:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

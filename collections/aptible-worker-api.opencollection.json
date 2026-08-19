@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cloud Worker API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "worker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Worker Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/worker/health-check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Worker Health Check"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

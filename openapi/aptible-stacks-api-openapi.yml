@@ -1,0 +1,289 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Stacks API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: Stacks
+paths:
+  /stacks:
+    get:
+      description: Returns a paginated list of all stacks accessible to the current user.
+      operationId: ListStacks
+      parameters:
+      - description: Current page of paginated results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Number of results to return per page
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListStacks_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list stacks
+      tags:
+      - Stacks
+  /stacks/{id}:
+    get:
+      description: Returns the details of a specific stack by ID.
+      operationId: GetStack
+      parameters:
+      - description: id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/stack'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: show stack
+      tags:
+      - Stacks
+components:
+  schemas:
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListStacks_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListStacks_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    stack:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        name:
+          type: string
+        version:
+          enum:
+          - v1
+          - v2
+          type: string
+        region:
+          type: string
+        default:
+          type: boolean
+          x-nullable: true
+        public:
+          type: boolean
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        ssh_host_dsa_public_key:
+          type: string
+        ssh_host_rsa_public_key:
+          type: string
+        ssh_host_ecdsa_public_key:
+          type: string
+        ssh_portal_host:
+          type: string
+        ssh_portal_port:
+          type: integer
+        outbound_ip_addresses:
+          items:
+            type: string
+          type: array
+        memory_limits:
+          type: boolean
+        cpu_limits:
+          type: boolean
+        intrusion_detection:
+          type: boolean
+        expose_intrusion_detection_reports:
+          type: boolean
+        account_id:
+          type: string
+          x-nullable: true
+        vpc_id:
+          type: string
+          x-nullable: true
+        internal_domain:
+          type: string
+          x-nullable: true
+        default_domain:
+          type: string
+          x-nullable: true
+        brickwall_enabled:
+          type: boolean
+        vpc_cidr:
+          type: string
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/stack__links'
+      required:
+      - _type
+      - account_id
+      - brickwall_enabled
+      - cpu_limits
+      - created_at
+      - default
+      - default_domain
+      - expose_intrusion_detection_reports
+      - id
+      - internal_domain
+      - intrusion_detection
+      - memory_limits
+      - name
+      - outbound_ip_addresses
+      - public
+      - region
+      - ssh_host_dsa_public_key
+      - ssh_host_ecdsa_public_key
+      - ssh_host_rsa_public_key
+      - ssh_portal_host
+      - ssh_portal_port
+      - updated_at
+      - version
+      - vpc_cidr
+      - vpc_id
+    ListStacks_200_response__embedded:
+      properties:
+        stacks:
+          items:
+            $ref: '#/components/schemas/stack'
+          type: array
+      type: object
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    stack__links:
+      properties:
+        organization:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        accounts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        intrusion_detection_reports:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vpn_tunnels:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vpc_peers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

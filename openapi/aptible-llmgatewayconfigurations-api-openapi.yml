@@ -1,0 +1,275 @@
+openapi: 3.2.0
+info:
+  contact:
+    email: support@aptible.com
+  description: REST API for the core Aptible platform.
+  title: Aptible API v1 Llm Gateway Configurations API
+  version: v1
+servers:
+- url: '{baseUrl}'
+  variables:
+    baseUrl:
+      default: https://api.aptible.com
+      description: Override for local or test environments
+security:
+- token: []
+tags:
+- name: LlmGatewayConfigurations
+paths:
+  /llm_gateway_configurations:
+    get:
+      description: Returns a list of LLM Gateway configurations, optionally filtered by organization.
+      operationId: ListLlmGatewayConfigurations
+      parameters:
+      - description: Filter by organization ID
+        explode: true
+        in: query
+        name: organization_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ListLlmGatewayConfigurations_200_response'
+          description: successful
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: list llm_gateway_configurations
+      tags:
+      - LlmGatewayConfigurations
+    post:
+      description: Enrolls an organization in the AI Gateway service, creating a new LLM Gateway configuration.
+      operationId: CreateLlmGatewayConfiguration
+      parameters:
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLlmGatewayConfiguration_request'
+      responses:
+        '201':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/llm_gateway_configuration'
+          description: enrolled
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/llm_gateway_configuration'
+          description: already enrolled (idempotent)
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: enroll organization in AI Gateway
+      tags:
+      - LlmGatewayConfigurations
+  /llm_gateway_configurations/{id}:
+    patch:
+      description: Partially updates an LLM Gateway configuration's attributes.
+      operationId: UpdateLlmGatewayConfiguration
+      parameters:
+      - description: LLM Gateway Configuration database ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateLlmGatewayConfiguration_request'
+      responses:
+        '200':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/llm_gateway_configuration'
+          description: successful
+        '422':
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: spend_limit cannot be updated on a trial configuration
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: update llm_gateway_configuration
+      tags:
+      - LlmGatewayConfigurations
+components:
+  schemas:
+    llm_gateway_configuration__links:
+      properties:
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    llm_gateway_configuration:
+      properties:
+        id:
+          description: Database ID of the LLM Gateway Configuration
+          type: integer
+        _type:
+          type: string
+        organization_id:
+          description: The organization this configuration belongs to
+          type: string
+        team_id:
+          description: The LiteLLM team ID for this organization
+          type: string
+        trial:
+          description: Whether the organization is on a trial AI Gateway plan
+          type: boolean
+        spend_limit:
+          description: Monthly spend limit in USD (decimal, serialized as string)
+          type: string
+        models:
+          description: List of permitted model identifiers
+          items:
+            type: string
+          type: array
+        created_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        updated_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/llm_gateway_configuration__links'
+      required:
+      - _type
+      - created_at
+      - id
+      - models
+      - organization_id
+      - spend_limit
+      - team_id
+      - trial
+      - updated_at
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListLlmGatewayConfigurations_200_response__embedded:
+      properties:
+        llm_gateway_configurations:
+          items:
+            $ref: '#/components/schemas/llm_gateway_configuration'
+          type: array
+      type: object
+    UpdateLlmGatewayConfiguration_request:
+      properties:
+        spend_limit:
+          description: New monthly spend limit in USD
+          type: number
+      type: object
+    ListLlmGatewayConfigurations_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListLlmGatewayConfigurations_200_response__embedded'
+        _links:
+          type: object
+      type: object
+    CreateLlmGatewayConfiguration_request:
+      properties:
+        organization_id:
+          description: The organization to enroll
+          type: string
+      required:
+      - organization_id
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey

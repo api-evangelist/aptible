@@ -1,0 +1,2034 @@
+{
+  "item": [
+    {
+      "id": "b658e464-c384-455d-994e-72e200b0004c",
+      "name": "Vhosts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab7ec490-3b64-4cba-ade0-8a9efd6c3007",
+          "name": "list vhosts",
+          "request": {
+            "name": "list vhosts",
+            "description": {
+              "content": "Returns a paginated list of vhosts belonging to the specified account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                ":account_id",
+                "vhosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "account_id",
+                  "description": "(Required) account_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c73a99c4-7a30-4e18-ab23-200bb20f30db",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "vhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"vhosts\": [\n      {\n        \"_type\": \"string\",\n        \"acme\": true,\n        \"acme_configuration\": {\n          \"names\": [\n            \"string\",\n            \"string\"\n          ],\n          \"challenges\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"acme_dns_challenge_host\": \"string\",\n        \"acme_status\": \"string\",\n        \"application_load_balancer_arn\": \"string\",\n        \"container_exposed_ports\": [\n          214,\n          4571\n        ],\n        \"container_port\": 6872,\n        \"container_ports\": [\n          5419,\n          9701\n        ],\n        \"created_at\": \"string\",\n        \"default\": false,\n        \"docker_name\": \"string\",\n        \"elastic_load_balancer_name\": \"string\",\n        \"external_host\": \"string\",\n        \"external_http_port\": 4387,\n        \"external_https_port\": 767,\n        \"host_mapped_ports\": [\n          9874,\n          4789\n        ],\n        \"id\": 9333,\n        \"internal\": true,\n        \"internal_health_port\": 4676,\n        \"internal_host\": \"string\",\n        \"internal_http_port\": 1786,\n        \"internal_https_port\": 7927,\n        \"ip_whitelist\": [\n          \"string\",\n          \"string\"\n        ],\n        \"load_balancing_algorithm_type\": \"string\",\n        \"network_load_balancer_arn\": \"string\",\n        \"platform\": \"nlb\",\n        \"security_group_id\": \"string\",\n        \"shared\": true,\n        \"shared_fingerprint\": \"string\",\n        \"status\": \"string\",\n        \"type\": \"http\",\n        \"updated_at\": \"string\",\n        \"user_domain\": \"string\",\n        \"virtual_domain\": \"string\",\n        \"_links\": {\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificate\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"acme\": true,\n        \"acme_configuration\": {\n          \"names\": [\n            \"string\",\n            \"string\"\n          ],\n          \"challenges\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"acme_dns_challenge_host\": \"string\",\n        \"acme_status\": \"string\",\n        \"application_load_balancer_arn\": \"string\",\n        \"container_exposed_ports\": [\n          6258,\n          3297\n        ],\n        \"container_port\": 2944,\n        \"container_ports\": [\n          4591,\n          2241\n        ],\n        \"created_at\": \"string\",\n        \"default\": true,\n        \"docker_name\": \"string\",\n        \"elastic_load_balancer_name\": \"string\",\n        \"external_host\": \"string\",\n        \"external_http_port\": 6492,\n        \"external_https_port\": 266,\n        \"host_mapped_ports\": [\n          9213,\n          6932\n        ],\n        \"id\": 9916,\n        \"internal\": true,\n        \"internal_health_port\": 133,\n        \"internal_host\": \"string\",\n        \"internal_http_port\": 3807,\n        \"internal_https_port\": 9256,\n        \"ip_whitelist\": [\n          \"string\",\n          \"string\"\n        ],\n        \"load_balancing_algorithm_type\": \"string\",\n        \"network_load_balancer_arn\": \"string\",\n        \"platform\": \"nlb\",\n        \"security_group_id\": \"string\",\n        \"shared\": false,\n        \"shared_fingerprint\": \"string\",\n        \"status\": \"string\",\n        \"type\": \"http\",\n        \"updated_at\": \"string\",\n        \"user_domain\": \"string\",\n        \"virtual_domain\": \"string\",\n        \"_links\": {\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificate\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"app\": {\n      \"href\": \"http://hObuQfoywfsobPJfIzYYcM.fzdcMdV9YybPIHuelQ\"\n    },\n    \"service\": {\n      \"href\": \"https://xDvIu.fxGcztwIF1BfvIDfp4jBItKWb4ZatK,ztupTHX3cHSPLVV3+.PuoTxTpGgmSWZmkep3VYBZj\"\n    },\n    \"next\": {\n      \"href\": \"http://GLpAsaleyIADcHJcSIujcLSYar.fpdpSn6wBJAQaDJF+ElKfZxUx1z+78Cn8ipj6JWfjOZn8rw\"\n    },\n    \"prev\": {\n      \"href\": \"https://bmpPGTIpQpzvC.elmMLrDgjdi10mTmEs4PIcUkf-aV,AGPJeIPJA.N1Sanl4W4FE.UmM\"\n    },\n    \"self\": {\n      \"href\": \"http://mbxJEVmAQWDhXqhknDedkUsk.pvsdM\"\n    }\n  },\n  \"current_page\": 8919,\n  \"per_page\": 7744,\n  \"total_count\": 8205\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50192f1a-942a-4506-868a-b3803566813f",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    ":account_id",
+                    "vhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "account_id",
+                      "description": "(Required) account_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 1510,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ad94c30-564e-444f-80fc-dadc9bf35799",
+          "name": "list vhosts",
+          "request": {
+            "name": "list vhosts",
+            "description": {
+              "content": "Returns a paginated list of vhosts belonging to the specified app.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps",
+                ":app_id",
+                "vhosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "app_id",
+                  "description": "(Required) app_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9df38f61-8622-4964-a414-671fe43d5b30",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    "vhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "app_id",
+                      "description": "(Required) app_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"vhosts\": [\n      {\n        \"_type\": \"string\",\n        \"acme\": true,\n        \"acme_configuration\": {\n          \"names\": [\n            \"string\",\n            \"string\"\n          ],\n          \"challenges\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"acme_dns_challenge_host\": \"string\",\n        \"acme_status\": \"string\",\n        \"application_load_balancer_arn\": \"string\",\n        \"container_exposed_ports\": [\n          2987,\n          1478\n        ],\n        \"container_port\": 1602,\n        \"container_ports\": [\n          7546,\n          5932\n        ],\n        \"created_at\": \"string\",\n        \"default\": true,\n        \"docker_name\": \"string\",\n        \"elastic_load_balancer_name\": \"string\",\n        \"external_host\": \"string\",\n        \"external_http_port\": 1129,\n        \"external_https_port\": 6427,\n        \"host_mapped_ports\": [\n          1072,\n          2714\n        ],\n        \"id\": 6699,\n        \"internal\": false,\n        \"internal_health_port\": 9639,\n        \"internal_host\": \"string\",\n        \"internal_http_port\": 9153,\n        \"internal_https_port\": 806,\n        \"ip_whitelist\": [\n          \"string\",\n          \"string\"\n        ],\n        \"load_balancing_algorithm_type\": \"string\",\n        \"network_load_balancer_arn\": \"string\",\n        \"platform\": \"elb\",\n        \"security_group_id\": \"string\",\n        \"shared\": true,\n        \"shared_fingerprint\": \"string\",\n        \"status\": \"string\",\n        \"type\": \"tls\",\n        \"updated_at\": \"string\",\n        \"user_domain\": \"string\",\n        \"virtual_domain\": \"string\",\n        \"_links\": {\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificate\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"acme\": true,\n        \"acme_configuration\": {\n          \"names\": [\n            \"string\",\n            \"string\"\n          ],\n          \"challenges\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"acme_dns_challenge_host\": \"string\",\n        \"acme_status\": \"string\",\n        \"application_load_balancer_arn\": \"string\",\n        \"container_exposed_ports\": [\n          6209,\n          8718\n        ],\n        \"container_port\": 2529,\n        \"container_ports\": [\n          9768,\n          8674\n        ],\n        \"created_at\": \"string\",\n        \"default\": false,\n        \"docker_name\": \"string\",\n        \"elastic_load_balancer_name\": \"string\",\n        \"external_host\": \"string\",\n        \"external_http_port\": 946,\n        \"external_https_port\": 3127,\n        \"host_mapped_ports\": [\n          5228,\n          6856\n        ],\n        \"id\": 3985,\n        \"internal\": false,\n        \"internal_health_port\": 5482,\n        \"internal_host\": \"string\",\n        \"internal_http_port\": 2386,\n        \"internal_https_port\": 9487,\n        \"ip_whitelist\": [\n          \"string\",\n          \"string\"\n        ],\n        \"load_balancing_algorithm_type\": \"string\",\n        \"network_load_balancer_arn\": \"string\",\n        \"platform\": \"elb\",\n        \"security_group_id\": \"string\",\n        \"shared\": false,\n        \"shared_fingerprint\": \"string\",\n        \"status\": \"string\",\n        \"type\": \"http\",\n        \"updated_at\": \"string\",\n        \"user_domain\": \"string\",\n        \"virtual_domain\": \"string\",\n        \"_links\": {\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificate\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"app\": {\n      \"href\": \"https://ZGNkVONVTg.trWKt9YpJUXlOMSSMedocZ1nWqlTFCTAsnttMAH1ZIw\"\n    },\n    \"service\": {\n      \"href\": \"http://qkCXtKETTvomWlZycLuGSBtzUzifwJyB.ehevbWP1zFPg.fEeI33DkFhF0s5B3zbAzv5-72TYfZTE5KvhT8z,fNYqHkphvQ2u4xCadNH00ZGOW\"\n    },\n    \"next\": {\n      \"href\": \"https://ZW.lqlwOkDEcpr3\"\n    },\n    \"prev\": {\n      \"href\": \"https://DKTeyONUujyDYGweoAfUFe.xbe88xE3iWdR02MuEKG\"\n    },\n    \"self\": {\n      \"href\": \"http://TcPREYrTgmPOypHUpsGhKskWq.porLPGKS6uHEnSYjELBE56evHl,.k67obxGGTML\"\n    }\n  },\n  \"current_page\": 5438,\n  \"per_page\": 5640,\n  \"total_count\": 3777\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "506ad830-d5e2-4d8e-9d9f-c7ab5bd8d608",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    "vhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "app_id",
+                      "description": "(Required) app_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 1510,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59ac4d62-8c9f-4017-8c51-52005fe3b9dd",
+          "name": "list vhosts",
+          "request": {
+            "name": "list vhosts",
+            "description": {
+              "content": "Returns a paginated list of vhosts associated with the specified certificate.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "certificates",
+                ":certificate_id",
+                "vhosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "certificate_id",
+                  "description": "(Required) certificate_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "936125d7-a9c3-4cfe-ac29-7a2fe89b273e",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificates",
+                    ":certificate_id",
+                    "vhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"vhosts\": [\n      {\n        \"_type\": \"string\",\n        \"acme\": true,\n        \"acme_configuration\": {\n          \"names\": [\n            \"string\",\n            \"string\"\n          ],\n          \"challenges\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"acme_dns_challenge_host\": \"string\",\n        \"acme_status\": \"string\",\n        \"application_load_balancer_arn\": \"string\",\n        \"container_exposed_ports\": [\n          2987,\n          1478\n        ],\n        \"container_port\": 1602,\n        \"container_ports\": [\n          7546,\n          5932\n        ],\n        \"created_at\": \"string\",\n        \"default\": true,\n        \"docker_name\": \"string\",\n        \"elastic_load_balancer_name\": \"string\",\n        \"external_host\": \"string\",\n        \"external_http_port\": 1129,\n        \"external_https_port\": 6427,\n        \"host_mapped_ports\": [\n          1072,\n          2714\n        ],\n        \"id\": 6699,\n        \"internal\": false,\n        \"internal_health_port\": 9639,\n        \"internal_host\": \"string\",\n        \"internal_http_port\": 9153,\n        \"internal_https_port\": 806,\n        \"ip_whitelist\": [\n          \"string\",\n          \"string\"\n        ],\n        \"load_balancing_algorithm_type\": \"string\",\n        \"network_load_balancer_arn\": \"string\",\n        \"platform\": \"elb\",\n        \"security_group_id\": \"string\",\n        \"shared\": true,\n        \"shared_fingerprint\": \"string\",\n        \"status\": \"string\",\n        \"type\": \"tls\",\n        \"updated_at\": \"string\",\n        \"user_domain\": \"string\",\n        \"virtual_domain\": \"string\",\n        \"_links\": {\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificate\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"acme\": true,\n        \"acme_configuration\": {\n          \"names\": [\n            \"string\",\n            \"string\"\n          ],\n          \"challenges\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"acme_dns_challenge_host\": \"string\",\n        \"acme_status\": \"string\",\n        \"application_load_balancer_arn\": \"string\",\n        \"container_exposed_ports\": [\n          6209,\n          8718\n        ],\n        \"container_port\": 2529,\n        \"container_ports\": [\n          9768,\n          8674\n        ],\n        \"created_at\": \"string\",\n        \"default\": false,\n        \"docker_name\": \"string\",\n        \"elastic_load_balancer_name\": \"string\",\n        \"external_host\": \"string\",\n        \"external_http_port\": 946,\n        \"external_https_port\": 3127,\n        \"host_mapped_ports\": [\n          5228,\n          6856\n        ],\n        \"id\": 3985,\n        \"internal\": false,\n        \"internal_health_port\": 5482,\n        \"internal_host\": \"string\",\n        \"internal_http_port\": 2386,\n        \"internal_https_port\": 9487,\n        \"ip_whitelist\": [\n          \"string\",\n          \"string\"\n        ],\n        \"load_balancing_algorithm_type\": \"string\",\n        \"network_load_balancer_arn\": \"string\",\n        \"platform\": \"elb\",\n        \"security_group_id\": \"string\",\n        \"shared\": false,\n        \"shared_fingerprint\": \"string\",\n        \"status\": \"string\",\n        \"type\": \"http\",\n        \"updated_at\": \"string\",\n        \"user_domain\": \"string\",\n        \"virtual_domain\": \"string\",\n        \"_links\": {\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificate\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"app\": {\n      \"href\": \"https://ZGNkVONVTg.trWKt9YpJUXlOMSSMedocZ1nWqlTFCTAsnttMAH1ZIw\"\n    },\n    \"service\": {\n      \"href\": \"http://qkCXtKETTvomWlZycLuGSBtzUzifwJyB.ehevbWP1zFPg.fEeI33DkFhF0s5B3zbAzv5-72TYfZTE5KvhT8z,fNYqHkphvQ2u4xCadNH00ZGOW\"\n    },\n    \"next\": {\n      \"href\": \"https://ZW.lqlwOkDEcpr3\"\n    },\n    \"prev\": {\n      \"href\": \"https://DKTeyONUujyDYGweoAfUFe.xbe88xE3iWdR02MuEKG\"\n    },\n    \"self\": {\n      \"href\": \"http://TcPREYrTgmPOypHUpsGhKskWq.porLPGKS6uHEnSYjELBE56evHl,.k67obxGGTML\"\n    }\n  },\n  \"current_page\": 5438,\n  \"per_page\": 5640,\n  \"total_count\": 3777\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "410df8bd-6ee9-4b8a-8108-d306136ed76a",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificates",
+                    ":certificate_id",
+                    "vhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 1510,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6951025-2485-439c-a073-77a9a1be1ca4",
+          "name": "list vhosts",
+          "request": {
+            "name": "list vhosts",
+            "description": {
+              "content": "Returns a paginated list of vhosts belonging to the specified service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                ":service_id",
+                "vhosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Current page of paginated results"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "service_id",
+                  "description": "(Required) service_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b1533f8-2527-494f-befe-54a2b812e6c7",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "vhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"vhosts\": [\n      {\n        \"_type\": \"string\",\n        \"acme\": true,\n        \"acme_configuration\": {\n          \"names\": [\n            \"string\",\n            \"string\"\n          ],\n          \"challenges\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"acme_dns_challenge_host\": \"string\",\n        \"acme_status\": \"string\",\n        \"application_load_balancer_arn\": \"string\",\n        \"container_exposed_ports\": [\n          2987,\n          1478\n        ],\n        \"container_port\": 1602,\n        \"container_ports\": [\n          7546,\n          5932\n        ],\n        \"created_at\": \"string\",\n        \"default\": true,\n        \"docker_name\": \"string\",\n        \"elastic_load_balancer_name\": \"string\",\n        \"external_host\": \"string\",\n        \"external_http_port\": 1129,\n        \"external_https_port\": 6427,\n        \"host_mapped_ports\": [\n          1072,\n          2714\n        ],\n        \"id\": 6699,\n        \"internal\": false,\n        \"internal_health_port\": 9639,\n        \"internal_host\": \"string\",\n        \"internal_http_port\": 9153,\n        \"internal_https_port\": 806,\n        \"ip_whitelist\": [\n          \"string\",\n          \"string\"\n        ],\n        \"load_balancing_algorithm_type\": \"string\",\n        \"network_load_balancer_arn\": \"string\",\n        \"platform\": \"elb\",\n        \"security_group_id\": \"string\",\n        \"shared\": true,\n        \"shared_fingerprint\": \"string\",\n        \"status\": \"string\",\n        \"type\": \"tls\",\n        \"updated_at\": \"string\",\n        \"user_domain\": \"string\",\n        \"virtual_domain\": \"string\",\n        \"_links\": {\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificate\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"_type\": \"string\",\n        \"acme\": true,\n        \"acme_configuration\": {\n          \"names\": [\n            \"string\",\n            \"string\"\n          ],\n          \"challenges\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"acme_dns_challenge_host\": \"string\",\n        \"acme_status\": \"string\",\n        \"application_load_balancer_arn\": \"string\",\n        \"container_exposed_ports\": [\n          6209,\n          8718\n        ],\n        \"container_port\": 2529,\n        \"container_ports\": [\n          9768,\n          8674\n        ],\n        \"created_at\": \"string\",\n        \"default\": false,\n        \"docker_name\": \"string\",\n        \"elastic_load_balancer_name\": \"string\",\n        \"external_host\": \"string\",\n        \"external_http_port\": 946,\n        \"external_https_port\": 3127,\n        \"host_mapped_ports\": [\n          5228,\n          6856\n        ],\n        \"id\": 3985,\n        \"internal\": false,\n        \"internal_health_port\": 5482,\n        \"internal_host\": \"string\",\n        \"internal_http_port\": 2386,\n        \"internal_https_port\": 9487,\n        \"ip_whitelist\": [\n          \"string\",\n          \"string\"\n        ],\n        \"load_balancing_algorithm_type\": \"string\",\n        \"network_load_balancer_arn\": \"string\",\n        \"platform\": \"elb\",\n        \"security_group_id\": \"string\",\n        \"shared\": false,\n        \"shared_fingerprint\": \"string\",\n        \"status\": \"string\",\n        \"type\": \"http\",\n        \"updated_at\": \"string\",\n        \"user_domain\": \"string\",\n        \"virtual_domain\": \"string\",\n        \"_links\": {\n          \"service\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"certificate\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"operations\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settings\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"current_setting\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"self\": {\n            \"href\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"app\": {\n      \"href\": \"https://ZGNkVONVTg.trWKt9YpJUXlOMSSMedocZ1nWqlTFCTAsnttMAH1ZIw\"\n    },\n    \"service\": {\n      \"href\": \"http://qkCXtKETTvomWlZycLuGSBtzUzifwJyB.ehevbWP1zFPg.fEeI33DkFhF0s5B3zbAzv5-72TYfZTE5KvhT8z,fNYqHkphvQ2u4xCadNH00ZGOW\"\n    },\n    \"next\": {\n      \"href\": \"https://ZW.lqlwOkDEcpr3\"\n    },\n    \"prev\": {\n      \"href\": \"https://DKTeyONUujyDYGweoAfUFe.xbe88xE3iWdR02MuEKG\"\n    },\n    \"self\": {\n      \"href\": \"http://TcPREYrTgmPOypHUpsGhKskWq.porLPGKS6uHEnSYjELBE56evHl,.k67obxGGTML\"\n    }\n  },\n  \"current_page\": 5438,\n  \"per_page\": 5640,\n  \"total_count\": 3777\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4eff876-67d8-44cc-8ce5-14844daec6c1",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "vhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 1510,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "169f5ecc-f0ec-4a38-a0a7-40c037550909",
+          "name": "create vhost",
+          "request": {
+            "name": "create vhost",
+            "description": {
+              "content": "Creates a new vhost for the specified service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                ":service_id",
+                "vhosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "service_id",
+                  "description": "(Required) service_id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"internal\": \"<boolean>\",\n  \"certificate\": \"<integer>\",\n  \"user_domain\": \"<string>\",\n  \"acme\": \"<boolean>\",\n  \"platform\": \"<string>\",\n  \"container_port\": \"<integer>\",\n  \"container_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ip_whitelist\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"container_exposed_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"shared\": \"<boolean>\",\n  \"load_balancing_algorithm_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "abb4229c-1a51-4198-8692-bc44f69679b7",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "vhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"internal\": \"<boolean>\",\n  \"certificate\": \"<integer>\",\n  \"user_domain\": \"<string>\",\n  \"acme\": \"<boolean>\",\n  \"platform\": \"<string>\",\n  \"container_port\": \"<integer>\",\n  \"container_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ip_whitelist\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"container_exposed_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"shared\": \"<boolean>\",\n  \"load_balancing_algorithm_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"acme\": false,\n  \"acme_configuration\": {\n    \"names\": [\n      \"string\",\n      \"string\"\n    ],\n    \"challenges\": [\n      {\n        \"method\": \"http01\",\n        \"from\": {\n          \"name\": \"string\"\n        },\n        \"to\": [\n          {\n            \"name\": \"string\",\n            \"legacy\": true\n          },\n          {\n            \"name\": \"string\",\n            \"legacy\": true\n          }\n        ]\n      },\n      {\n        \"method\": \"http01\",\n        \"from\": {\n          \"name\": \"string\"\n        },\n        \"to\": [\n          {\n            \"name\": \"string\",\n            \"legacy\": false\n          },\n          {\n            \"name\": \"string\",\n            \"legacy\": false\n          }\n        ]\n      }\n    ]\n  },\n  \"acme_dns_challenge_host\": \"string\",\n  \"acme_status\": \"string\",\n  \"application_load_balancer_arn\": \"string\",\n  \"container_exposed_ports\": [\n    1933,\n    5177\n  ],\n  \"container_port\": 8295,\n  \"container_ports\": [\n    5229,\n    6522\n  ],\n  \"created_at\": \"string\",\n  \"default\": true,\n  \"docker_name\": \"string\",\n  \"elastic_load_balancer_name\": \"string\",\n  \"external_host\": \"string\",\n  \"external_http_port\": 3789,\n  \"external_https_port\": 3232,\n  \"host_mapped_ports\": [\n    5429,\n    4326\n  ],\n  \"id\": 8928,\n  \"internal\": true,\n  \"internal_health_port\": 2437,\n  \"internal_host\": \"string\",\n  \"internal_http_port\": 3239,\n  \"internal_https_port\": 1602,\n  \"ip_whitelist\": [\n    \"string\",\n    \"string\"\n  ],\n  \"load_balancing_algorithm_type\": \"string\",\n  \"network_load_balancer_arn\": \"string\",\n  \"platform\": \"elb\",\n  \"security_group_id\": \"string\",\n  \"shared\": false,\n  \"shared_fingerprint\": \"string\",\n  \"status\": \"string\",\n  \"type\": \"http_proxy_protocol\",\n  \"updated_at\": \"string\",\n  \"user_domain\": \"string\",\n  \"virtual_domain\": \"string\",\n  \"_links\": {\n    \"service\": {\n      \"href\": \"https://eFgRITJpNRRMTRezrNJRwBxiwjSlgDJ.guewy43ikz56ctYbK-JUhvzdiz00LXZ0+O2V+sUxqMfMr5nX2ZWcf\"\n    },\n    \"certificate\": {\n      \"href\": \"http://Kh.pjVk9DYQd1RE0otWN97bLbxIikuTNnfqjnGcQsGCHx.Sz\"\n    },\n    \"operations\": {\n      \"href\": \"http://LEXYHtGBVGVawdVKnfLdqnmreTfPHyjXy.jucJR\"\n    },\n    \"settings\": {\n      \"href\": \"http://WoMBqIPLQvH.tzjpJ\"\n    },\n    \"current_setting\": {\n      \"href\": \"https://vTFxEToORTIicfFCJyhDPEFjmGb.bmvhfsAzvV\"\n    },\n    \"self\": {\n      \"href\": \"https://dUROdqStNrFIGHcUQcFQPMjZzTJJZmprN.vpnhxF-Hm68qWHfb25xwSt-IFQXAfCwR,RUyeV6orS,qVvtVb1\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2cbad7e-096f-42c3-aa89-505fdd3e9d5c",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    ":service_id",
+                    "vhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) service_id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"internal\": \"<boolean>\",\n  \"certificate\": \"<integer>\",\n  \"user_domain\": \"<string>\",\n  \"acme\": \"<boolean>\",\n  \"platform\": \"<string>\",\n  \"container_port\": \"<integer>\",\n  \"container_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ip_whitelist\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"container_exposed_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"shared\": \"<boolean>\",\n  \"load_balancing_algorithm_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 1510,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88bd095a-ff96-47fd-a803-3794892ef502",
+          "name": "delete vhost",
+          "request": {
+            "name": "delete vhost",
+            "description": {
+              "content": "Deletes the specified vhost.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vhosts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7024fba-9cb5-4481-9233-dff69fe325c1",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vhosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "26700997-1d40-4724-bdff-99e9559faf31",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vhosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 1510,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "587a90cf-d61b-4713-a07c-08c4968b72d2",
+          "name": "show vhost",
+          "request": {
+            "name": "show vhost",
+            "description": {
+              "content": "Returns the details of a specific vhost by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vhosts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2aadab3-b0a0-4e5b-a984-a4a232406cf0",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vhosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"acme\": false,\n  \"acme_configuration\": {\n    \"names\": [\n      \"string\",\n      \"string\"\n    ],\n    \"challenges\": [\n      {\n        \"method\": \"dns01\",\n        \"from\": {\n          \"name\": \"string\"\n        },\n        \"to\": [\n          {\n            \"name\": \"string\",\n            \"legacy\": true\n          },\n          {\n            \"name\": \"string\",\n            \"legacy\": true\n          }\n        ]\n      },\n      {\n        \"method\": \"dns01\",\n        \"from\": {\n          \"name\": \"string\"\n        },\n        \"to\": [\n          {\n            \"name\": \"string\",\n            \"legacy\": false\n          },\n          {\n            \"name\": \"string\",\n            \"legacy\": true\n          }\n        ]\n      }\n    ]\n  },\n  \"acme_dns_challenge_host\": \"string\",\n  \"acme_status\": \"string\",\n  \"application_load_balancer_arn\": \"string\",\n  \"container_exposed_ports\": [\n    544,\n    6258\n  ],\n  \"container_port\": 3494,\n  \"container_ports\": [\n    3870,\n    5043\n  ],\n  \"created_at\": \"string\",\n  \"default\": false,\n  \"docker_name\": \"string\",\n  \"elastic_load_balancer_name\": \"string\",\n  \"external_host\": \"string\",\n  \"external_http_port\": 9719,\n  \"external_https_port\": 460,\n  \"host_mapped_ports\": [\n    313,\n    7245\n  ],\n  \"id\": 9118,\n  \"internal\": true,\n  \"internal_health_port\": 6233,\n  \"internal_host\": \"string\",\n  \"internal_http_port\": 1310,\n  \"internal_https_port\": 2463,\n  \"ip_whitelist\": [\n    \"string\",\n    \"string\"\n  ],\n  \"load_balancing_algorithm_type\": \"string\",\n  \"network_load_balancer_arn\": \"string\",\n  \"platform\": \"alb\",\n  \"security_group_id\": \"string\",\n  \"shared\": false,\n  \"shared_fingerprint\": \"string\",\n  \"status\": \"string\",\n  \"type\": \"tls\",\n  \"updated_at\": \"string\",\n  \"user_domain\": \"string\",\n  \"virtual_domain\": \"string\",\n  \"_links\": {\n    \"service\": {\n      \"href\": \"https://FPFqorPqnkwTeLgOvGJQ.ppvjnyLBLmYZm2SuHATprGxuUuMvXxBvL2JqWYV1FvEudEvFWbw6zrVsEpQKRrG+dXgh+HFX3adzu99Uy4A8VS\"\n    },\n    \"certificate\": {\n      \"href\": \"https://qLJpeVymCdBgrquqOlpnMZc.nemaAjr,Wa0Gyq3PzRtDyMFx2i7UYm8X9mG2l-NrqEs65k+f2I22MYbomSCx8mRoyqzT+87kd\"\n    },\n    \"operations\": {\n      \"href\": \"https://SfwBJ.opzeR5Jb7QciY-CM38OYfChpDBmVUqQ-kUbXH40c-k9pAy3ElSSEaa3foXRpDhnhTlsxL\"\n    },\n    \"settings\": {\n      \"href\": \"https://YWpRaQfHHtxJdDDpWDWEEmyg.cji0c20cL\"\n    },\n    \"current_setting\": {\n      \"href\": \"https://RVcHChIFWjQfwfwjeb.ryqwVY5Lgiu+R,xOZBW063Q2iyR7bsA41ITz.RLJ9+yXBzbTUEHryIMQPv\"\n    },\n    \"self\": {\n      \"href\": \"http://idrrAGSBMtxWTGZb.nkko2IVeJ0ca8KmXFm424pqrUO9d2chwD1J7MJrDBkUBNuFGF0MH.OQ4dPzQD..HwE\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0fe2824-7779-4c2b-bf8e-c49f03a73aa2",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vhosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 1510,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ac94195-a212-4979-99f3-c3d687672404",
+          "name": "update vhost",
+          "request": {
+            "name": "update vhost",
+            "description": {
+              "content": "Partially updates a vhost's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vhosts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_domain\": \"<string>\",\n  \"certificate\": \"<integer>\",\n  \"platform\": \"<string>\",\n  \"container_port\": \"<integer>\",\n  \"container_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ip_whitelist\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shared_fingerprint\": \"<string>\",\n  \"shared\": \"<boolean>\",\n  \"load_balancing_algorithm_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a589558d-c622-4a5c-a2e9-51bb6bcb6d8a",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vhosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_domain\": \"<string>\",\n  \"certificate\": \"<integer>\",\n  \"platform\": \"<string>\",\n  \"container_port\": \"<integer>\",\n  \"container_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ip_whitelist\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shared_fingerprint\": \"<string>\",\n  \"shared\": \"<boolean>\",\n  \"load_balancing_algorithm_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cebe54e9-06e0-4965-8bf3-1ec5b211e264",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vhosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_domain\": \"<string>\",\n  \"certificate\": \"<integer>\",\n  \"platform\": \"<string>\",\n  \"container_port\": \"<integer>\",\n  \"container_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ip_whitelist\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shared_fingerprint\": \"<string>\",\n  \"shared\": \"<boolean>\",\n  \"load_balancing_algorithm_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 1510,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd5d1c88-0613-431c-ab30-cad9a8fba814",
+          "name": "update vhost",
+          "request": {
+            "name": "update vhost",
+            "description": {
+              "content": "Updates a vhost's attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vhosts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) id"
+                },
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_domain\": \"<string>\",\n  \"certificate\": \"<integer>\",\n  \"platform\": \"<string>\",\n  \"container_port\": \"<integer>\",\n  \"container_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ip_whitelist\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shared_fingerprint\": \"<string>\",\n  \"shared\": \"<boolean>\",\n  \"load_balancing_algorithm_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8534165b-41d4-458a-acd1-6264cd0875be",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vhosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_domain\": \"<string>\",\n  \"certificate\": \"<integer>\",\n  \"platform\": \"<string>\",\n  \"container_port\": \"<integer>\",\n  \"container_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ip_whitelist\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shared_fingerprint\": \"<string>\",\n  \"shared\": \"<boolean>\",\n  \"load_balancing_algorithm_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "019b1a63-afe2-422a-a59e-fb55b0fc6cdc",
+              "name": "Error response. Often a 4xx or 5xx status code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vhosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) id"
+                    },
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_domain\": \"<string>\",\n  \"certificate\": \"<integer>\",\n  \"platform\": \"<string>\",\n  \"container_port\": \"<integer>\",\n  \"container_ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"ip_whitelist\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shared_fingerprint\": \"<string>\",\n  \"shared\": \"<boolean>\",\n  \"load_balancing_algorithm_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"code\": 1510,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0984e1ba-ff91-409a-8c50-e4419a38d6a8",
+    "name": "Aptible API v1 Vhosts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}

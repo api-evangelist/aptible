@@ -11,26 +11,15 @@ servers:
   license: MIT
   repository: https://github.com/aptible/aptible-mcp
   language: python
-  runtime: 'uv run python main.py'
+  runtime: uv run python main.py
   registry: null
-  auth: >-
-    Inherits the session created by `aptible login` in the Aptible CLI; the
-    server reads the CLI token and calls api.aptible.com with it. No separate
-    credential.
+  auth: Inherits the session created by `aptible login` in the Aptible CLI; the server reads the CLI token
+    and calls api.aptible.com with it. No separate credential.
   backing_api: aptible:deploy
-  note: >-
-    Repository README carries an explicit "still under development" notice. Not
-    published to PyPI or npm — installed by cloning and pointing an MCP client at
-    the local directory.
-  client_config: |
-    {
-      "mcpServers": {
-        "aptible": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/aptible-mcp", "run", "main.py"]
-        }
-      }
-    }
+  note: Repository README carries an explicit "still under development" notice. Not published to PyPI
+    or npm — installed by cloning and pointing an MCP client at the local directory.
+  client_config: "{\n  \"mcpServers\": {\n    \"aptible\": {\n      \"command\": \"uv\",\n      \"args\"\
+    : [\"--directory\", \"/path/to/aptible-mcp\", \"run\", \"main.py\"]\n    }\n  }\n}\n"
 - name: aptible-mcp-gateway
   kind: hosted-product
   transport: http
@@ -40,58 +29,140 @@ servers:
   connect_docs: https://www.aptible.com/docs/mcp-gateway/connect
   auth: bearer token (API key created in the Aptible dashboard under MCP > API Keys)
   tools: proxied
-  note: >-
-    This is a GOVERNANCE PROXY, not a server that exposes Aptible's own API as
-    tools. It fronts a customer's registered upstream MCP servers, enforces
-    per-tool grants (deny by default), and writes an audit log entry for every
-    tool call. Its tool list is therefore tenant-specific.
+  note: This is a GOVERNANCE PROXY, not a server that exposes Aptible's own API as tools. It fronts a
+    customer's registered upstream MCP servers, enforces per-tool grants (deny by default), and writes
+    an audit log entry for every tool call. Its tool list is therefore tenant-specific.
   probe:
     date: '2026-08-06'
     dns: NXDOMAIN
     tools_list_http_status: null
-    detail: >-
-      mcp-gateway.aptible.com did not resolve in public DNS on the probe date, so
-      no anonymous tools/list introspection was possible. The docs list it as
-      early access behind a waitlist. Recorded as documented-but-not-publicly-
+    detail: mcp-gateway.aptible.com did not resolve in public DNS on the probe date, so no anonymous tools/list
+      introspection was possible. The docs list it as early access behind a waitlist. Recorded as documented-but-not-publicly-
       resolvable rather than as a live endpoint.
 tools:
-- {name: listAccounts, category: environments, description: List all accounts/environments.}
-- {name: getAccount, category: environments, description: Get account/environment by handle.}
-- {name: getAccountsByStack, category: environments, description: Get all accounts/environments in a stack by stack name.}
-- {name: createAccount, category: environments, description: Create a new account/environment.}
-- {name: listApps, category: apps, description: List all apps.}
-- {name: getApp, category: apps, description: Get app by handle (account handle disambiguates).}
-- {name: createApp, category: apps, description: Create a new app from a Docker image.}
-- {name: configureApp, category: apps, description: Configure app environment variables.}
-- {name: deleteApp, category: apps, description: Delete (deprovision) an app.}
-- {name: listAvailableDatabaseTypes, category: databases, description: List all available database types and their image ids.}
-- {name: listDatabases, category: databases, description: List all databases.}
-- {name: getDatabase, category: databases, description: Get database by handle.}
-- {name: createDatabase, category: databases, description: Create a new database from an image id.}
-- {name: deleteDatabase, category: databases, description: Delete (deprovision) a database.}
-- {name: listStacks, category: stacks, description: List all stacks.}
-- {name: getStack, category: stacks, description: Get stack by name.}
-- {name: listVhosts, category: endpoints, description: List all vhosts/endpoints.}
-- {name: getVhost, category: endpoints, description: Get vhost by ID.}
-- {name: createVhost, category: endpoints, description: Create a new vhost/endpoint for a service.}
-- {name: deleteVhost, category: endpoints, description: Delete a vhost/endpoint.}
-- {name: listServices, category: services, description: List all services for a specific app.}
-- {name: getService, category: services, description: Get a service by handle within an app.}
-- {name: scaleService, category: services, description: Scale a service by container count or size.}
-- {name: listServiceVhosts, category: services, description: List all vhosts for a specific service.}
-- {name: getOperationsForApp, category: operations, description: Get recent operations for an app.}
-- {name: getOperationsForDatabase, category: operations, description: Get recent operations for a database.}
-- {name: getOperationsForVhost, category: operations, description: Get recent operations for a vhost/endpoint.}
-- {name: getOperationLogs, category: operations, description: Get logs for a specific operation.}
-- {name: getProcfileExample, category: templates, description: Example Procfile for defining app processes.}
-- {name: getAptibleYamlExample, category: templates, description: Example .aptible.yml for deploy hooks.}
-- {name: getEndpointProvisionExample, category: templates, description: Example GitHub Action for provisioning an endpoint.}
-- {name: getAppProvisionExample, category: templates, description: Example GitHub Action for provisioning an app.}
-- {name: getAppDeprovisionExample, category: templates, description: Example GitHub Action for deprovisioning an app.}
-- {name: getAppConfigureExample, category: templates, description: Example GitHub Action for configuring an app.}
-- {name: getDatabaseProvisionExample, category: templates, description: Example GitHub Action for provisioning a database.}
-- {name: getDatabaseDeprovisionExample, category: templates, description: Example GitHub Action for deprovisioning a database.}
-- {name: getDatabaseRestoreExample, category: templates, description: Example GitHub Action for restoring a database from backup.}
-- {name: getBuildDeployExample, category: templates, description: Example GitHub Action for build, publish and deploy.}
+- name: listAccounts
+  category: environments
+  description: List all accounts/environments.
+- name: getAccount
+  category: environments
+  description: Get account/environment by handle.
+- name: getAccountsByStack
+  category: environments
+  description: Get all accounts/environments in a stack by stack name.
+- name: createAccount
+  category: environments
+  description: Create a new account/environment.
+- name: listApps
+  category: apps
+  description: List all apps.
+- name: getApp
+  category: apps
+  description: Get app by handle (account handle disambiguates).
+- name: createApp
+  category: apps
+  description: Create a new app from a Docker image.
+- name: configureApp
+  category: apps
+  description: Configure app environment variables.
+- name: deleteApp
+  category: apps
+  description: Delete (deprovision) an app.
+- name: listAvailableDatabaseTypes
+  category: databases
+  description: List all available database types and their image ids.
+- name: listDatabases
+  category: databases
+  description: List all databases.
+- name: getDatabase
+  category: databases
+  description: Get database by handle.
+- name: createDatabase
+  category: databases
+  description: Create a new database from an image id.
+- name: deleteDatabase
+  category: databases
+  description: Delete (deprovision) a database.
+- name: listStacks
+  category: stacks
+  description: List all stacks.
+- name: getStack
+  category: stacks
+  description: Get stack by name.
+- name: listVhosts
+  category: endpoints
+  description: List all vhosts/endpoints.
+- name: getVhost
+  category: endpoints
+  description: Get vhost by ID.
+- name: createVhost
+  category: endpoints
+  description: Create a new vhost/endpoint for a service.
+- name: deleteVhost
+  category: endpoints
+  description: Delete a vhost/endpoint.
+- name: listServices
+  category: services
+  description: List all services for a specific app.
+- name: getService
+  category: services
+  description: Get a service by handle within an app.
+- name: scaleService
+  category: services
+  description: Scale a service by container count or size.
+- name: listServiceVhosts
+  category: services
+  description: List all vhosts for a specific service.
+- name: getOperationsForApp
+  category: operations
+  description: Get recent operations for an app.
+- name: getOperationsForDatabase
+  category: operations
+  description: Get recent operations for a database.
+- name: getOperationsForVhost
+  category: operations
+  description: Get recent operations for a vhost/endpoint.
+- name: getOperationLogs
+  category: operations
+  description: Get logs for a specific operation.
+- name: getProcfileExample
+  category: templates
+  description: Example Procfile for defining app processes.
+- name: getAptibleYamlExample
+  category: templates
+  description: Example .aptible.yml for deploy hooks.
+- name: getEndpointProvisionExample
+  category: templates
+  description: Example GitHub Action for provisioning an endpoint.
+- name: getAppProvisionExample
+  category: templates
+  description: Example GitHub Action for provisioning an app.
+- name: getAppDeprovisionExample
+  category: templates
+  description: Example GitHub Action for deprovisioning an app.
+- name: getAppConfigureExample
+  category: templates
+  description: Example GitHub Action for configuring an app.
+- name: getDatabaseProvisionExample
+  category: templates
+  description: Example GitHub Action for provisioning a database.
+- name: getDatabaseDeprovisionExample
+  category: templates
+  description: Example GitHub Action for deprovisioning a database.
+- name: getDatabaseRestoreExample
+  category: templates
+  description: Example GitHub Action for restoring a database from backup.
+- name: getBuildDeployExample
+  category: templates
+  description: Example GitHub Action for build
+  publish and deploy.: null
 tool_count: 38
 tools_source: https://github.com/aptible/aptible-mcp/blob/main/main.py
+deployment:
+  mode: none
+  endpoint: https://mcp-gateway.aptible.com
+  verified: probed
+  probe: dead
+  note: the endpoint this manifest claimed did not answer; recorded as none rather than deleted so the
+    claim stays auditable
+  checked: '2026-08-12'
+  source: catalog MCP census

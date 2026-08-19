@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "038bb5e2-e3ec-4b5b-9658-dc79e3a4368d",
+      "name": "Root",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "881059fa-c6f7-4908-9e4e-ef2d057ab22c",
+          "name": "show home",
+          "request": {
+            "name": "show home",
+            "description": {
+              "content": "Returns the root resource with links to top-level collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "no_embed",
+                  "value": "<boolean>",
+                  "description": "When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Override for local or test environments",
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d9d2015-e53b-47d3-9350-f7c4906f3e2e",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "no_embed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Override for local or test environments",
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"accounts\": {\n      \"href\": \"https://FLmqMmNtPGKjVyrTPDjcLppAlAV.lknRa+o0k39OUWaJLFPHokgVdazsT,vI2OXUAdW8CncYFNlDwZjuSD0TIlHHK+yJ,k6UD\"\n    },\n    \"apps\": {\n      \"href\": \"https://MdzXFXVPuAfPFasGbvUIwVwF.xynVKWJv-3dbhjTAQXTsfjRxpAfV\"\n    },\n    \"databases\": {\n      \"href\": \"http://fCA.xndRLe67VFz,QSfxd4DXk4XNeuLc+aki4r5\"\n    },\n    \"database_images\": {\n      \"href\": \"http://rKReLSUzJiIG.zemtfGRHHVFL2KDi.PItwyU19.FbAdsTrEZZHUtkMdk9.-+QGEPEA1hBR4M-H\"\n    },\n    \"stacks\": {\n      \"href\": \"http://ffWhI.bcxAY,tUujpUowP-wDfYuJczNxMRseYHqWFloYX7Z9ofXRplfCslZviY1FUEEMPy1uqWX\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Override for local or test environments",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "https://api.aptible.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c64f19a1-b396-4bec-bfc2-bca1b32a13e7",
+    "name": "Aptible API v1 Root API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the core Aptible platform.\n\nContact Support:\n Email: support@aptible.com",
+      "type": "text/plain"
+    }
+  }
+}
