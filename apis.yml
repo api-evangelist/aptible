@@ -12,6 +12,20 @@ description: 'Aptible is a Platform as a Service (PaaS) built for teams that hav
   and agents reach MCP servers. The platform is driven by a public HAL+JSON REST API
   at api.aptible.com, an auth service at auth.aptible.com, a Ruby CLI, a Terraform
   provider, and generated Go/Ruby/Python client libraries.'
+deliveryModel:
+  model: open-core
+  license: MIT
+  open_source: true
+  commercial: true
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://framerusercontent.com/assets/sM8ECTApfoCzQMGmPJrKL9qxMFo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/aptible/refs/heads/main/apis.yml
 x-type: company
