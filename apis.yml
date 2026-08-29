@@ -915,6 +915,9 @@ apis:
   - type: SourceCode
     url: https://github.com/aptible/tool-server-openapi-spec
 common:
+- type: CapabilityMap
+  url: capabilities/aptible-capability-edges.yml
+  name: Aptible Business Capability Map
 - type: Overlay
   url: overlays/aptible-cloud-overlay.yaml
 - type: IssueTracker
