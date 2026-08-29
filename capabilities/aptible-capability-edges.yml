@@ -3,7 +3,7 @@ provider: Aptible
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
-- Software & Technology
+- Healthcare Providers
 min_confidence: 0.7
 capability_model:
   source: https://github.com/vincentmakes/turbo-ea-capabilities
@@ -19,105 +19,100 @@ edges:
   capability_id_l1: BC-620
   capability_name: Threat Detection & Response Management
   confidence: 0.85
-  evidence: 'GET /stacks/{stack_id}/intrusion_detection_reports  list intrusion_detection_reports; vendor:
-    ''managed host intrusion detection'''
-  reason: Operations expose host intrusion-detection report retrieval and CSV/PDF download, which is threat
-    detection and response evidence, not generic IT ops.
-- tag: LogDrains
-  spec_file: aptible-logdrains-api-openapi.yml
-  capability_id: BC-4220.20
-  capability_id_l1: BC-4220
-  capability_name: Observability Management
-  confidence: 0.85
-  evidence: POST /accounts/{account_id}/log_drains  CreateLogDrain  create log_drain
-  reason: Log drains configure routing of production logs to observability destinations, squarely observability
-    management for the running service.
-- tag: MetricDrains
-  spec_file: aptible-metricdrains-api-openapi.yml
-  capability_id: BC-4220.20
-  capability_id_l1: BC-4220
-  capability_name: Observability Management
-  confidence: 0.85
-  evidence: POST /accounts/{account_id}/metric_drains  CreateMetricDrain  create metric_drain; schema
-    metric_drain_drain_configuration
-  reason: Metric drains ship runtime metrics to monitoring destinations, which is metrics/observability
-    management of the running service.
+  evidence: GET /stacks/{stack_id}/intrusion_detection_reports  ListIntrustionDetectionReportsForStack;
+    download_pdf intrusion_detection_report
+  reason: Host intrusion detection findings surfaced and exported as reports — threat detection and response,
+    matching the vendor's "managed host intrusion detection" claim.
 - tag: Permissions
   spec_file: aptible-permissions-api-openapi.yml
   capability_id: BC-620.20
   capability_id_l1: BC-620
   capability_name: Identity & Access Management
-  confidence: 0.8
-  evidence: POST /accounts/{account_id}/permissions  CreatePermission  create permission; DELETE /permissions/{id}
-  reason: CRUD over account-scoped permission grants is access management; the entity is authorisation,
-    not a business object.
-- tag: Configurations
-  spec_file: aptible-configurations-api-openapi.yml
-  capability_id: BC-4210.60
-  capability_id_l1: BC-4210
-  capability_name: Configuration & Secrets Management
   confidence: 0.78
-  evidence: POST /apps/{app_id}/configurations  CreateConfigurationForApp; GET /databases/{database_id}/configurations  ListConfigurationsForDatabase
-  reason: Manages per-app and per-database runtime configuration (environment variables) for deployed
-    services, which is exactly configuration & secrets management in the release/deploy chain.
-- tag: Deployments
-  spec_file: aptible-deployments-api-openapi.yml
-  capability_id: BC-4210.40
-  capability_id_l1: BC-4210
-  capability_name: Deployment Orchestration
-  confidence: 0.78
-  evidence: GET /apps/{app_id}/deployments  ListDeploymentsForApp  list deployments; schema 'deployment'
-  reason: Tracks deployments of applications to the platform, i.e. delivering software changes to running
-    production services — deployment orchestration.
-- tag: Backups
-  spec_file: aptible-backups-api-openapi.yml
-  capability_id: BC-4220.60
-  capability_id_l1: BC-4220
-  capability_name: Disaster Recovery & Resilience
-  confidence: 0.75
-  evidence: GET /databases/{database_id}/backups 'list backups'; GET /backups/{backup_id}/copies 'list
-    backups'; schema backup__embedded
-  reason: Operations enumerate database backups and their cross-region copies, which is the backup-and-restore
-    element of Disaster Recovery & Resilience for the hosted service. Read-only scope and possible overlap
-    with generic DR management keep this below 0.8.
-- tag: Databases
-  spec_file: aptible-databases-api-openapi.yml
+  evidence: POST /accounts/{account_id}/permissions  CreatePermission  create permission; DELETE /permissions/{id}  DeletePermission
+  reason: Granting and revoking access permissions on platform accounts — access control administration,
+    i.e. Identity & Access Management.
+- tag: VpcPeers
+  spec_file: aptible-vpcpeers-api-openapi.yml
   capability_id: BC-600.50
   capability_id_l1: BC-600
   capability_name: IT Infrastructure Management
-  confidence: 0.75
-  evidence: 'POST /accounts/{account_id}/databases  CreateDatabase  create database; vendor: ''managed
-    databases (PostgreSQL, MySQL, Redis...)'''
-  reason: Provisioning, resizing and deletion of managed database instances plus replicas and disks —
-    cloud/data infrastructure provisioning, not any business data domain.
-- tag: PersistentDisks
-  spec_file: aptible-persistentdisks-api-openapi.yml
-  capability_id: BC-600.50
-  capability_id_l1: BC-600
-  capability_name: IT Infrastructure Management
-  confidence: 0.75
-  evidence: GET /accounts/{account_id}/persistent_disks  ListPersistentDisksForAccount  list persistent
-    disks
-  reason: Persistent disks are storage infrastructure resources of the hosting platform, i.e. IT infrastructure
-    (compute/storage) management.
-- tag: BackupRetentionPolicies
-  spec_file: aptible-backupretentionpolicies-api-openapi.yml
-  capability_id: BC-4220.60
-  capability_id_l1: BC-4220
-  capability_name: Disaster Recovery & Resilience
-  confidence: 0.7
-  evidence: POST /accounts/{account_id}/backup_retention_policies 'create backup retention policy'; schema
-    backup_retention_policy
-  reason: Defines and reads retention policy for platform backups, which is squarely backup/restore stewardship
-    under Disaster Recovery & Resilience for the running service. Some chance the intended home is enterprise
-    Business Continuity (BC-160.20), hence 0.7.
+  confidence: 0.78
+  evidence: GET /stacks/{stack_id}/vpc_peers 'list vpc_peers'
+  reason: VPC peering resources are cloud network infrastructure objects; maps to IT Infrastructure Management
+    (compute, storage, network, cloud).
 - tag: assets
   spec_file: aptible-assets-api-openapi.yml
   capability_id: BC-600.50
   capability_id_l1: BC-600
   capability_name: IT Infrastructure Management
+  confidence: 0.78
+  evidence: POST .../environments/{environment_id}/assets 'Asset Create'; schema 'AssetTerraformOutput'
+  reason: Assets here are Terraform-provisioned cloud resources inside environments — infrastructure provisioning
+    and lifecycle, not fixed-asset accounting.
+- tag: VpnTunnels
+  spec_file: aptible-vpntunnels-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: GET /stacks/{stack_id}/vpn_tunnels 'list vpn_tunnels'
+  reason: VPN tunnel resources attached to infrastructure stacks are network infrastructure management,
+    not a security-programme or business capability.
+- tag: Vhosts
+  spec_file: aptible-vhosts-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: POST /services/{service_id}/vhosts 'create vhost'; schemas 'vhost_acme_configuration', 'ListVhostsForCertificate'
+  reason: Virtual host endpoints with TLS/ACME certificate configuration are network/compute infrastructure
+    provisioning for the PaaS, i.e. IT Infrastructure Management.
+- tag: Apps
+  spec_file: aptible-apps-api-openapi.yml
+  capability_id: BC-600.60
+  capability_id_l1: BC-600
+  capability_name: IT Application Management
   confidence: 0.7
-  evidence: POST /api/v1/organizations/{organization_id}/environments/{environment_id}/assets  asset_create;
-    schemas AssetInput, AssetTerraformOutput, AssetStatus
-  reason: CRUD over infrastructure 'assets' provisioned via Terraform in cloud environments on a PaaS
-    — this is compute/storage/cloud infrastructure provisioning, not fixed-asset accounting.
+  evidence: POST /accounts/{account_id}/apps  CreateApp  create app; GET /apps ListApps
+  reason: Aptible is a PaaS; the Apps tag creates/lists/updates deployed application instances on the
+    platform. This is IT application lifecycle/hosting management, not any industry business capability.
+    Mapped at low-moderate confidence to IT Application Management.
+- tag: Databases
+  spec_file: aptible-databases-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /accounts/{account_id}/databases  CreateDatabase  create database; GET /databases/{database_id}/dependents
+    ListReplicasForDatabase
+  reason: Provisioning and lifecycle of managed database instances and replicas on dedicated AWS infrastructure
+    — IT Infrastructure Management (compute/storage/cloud).
+- tag: Disks
+  spec_file: aptible-disks-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: GET /accounts/{account_id}/disks  ListDisksForAccount  list disks; schema "disk"
+  reason: Read-only inventory of storage volumes attached to PaaS accounts — compute/storage infrastructure
+    resources, i.e. IT Infrastructure Management. No business-domain meaning.
+- tag: LogDrains
+  spec_file: aptible-logdrains-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.7
+  evidence: POST /accounts/{account_id}/log_drains  CreateLogDrain  create log_drain
+  reason: Configuration of destinations that forward platform/application logs — log pipeline observability
+    for the running service.
+- tag: MetricDrains
+  spec_file: aptible-metricdrains-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.7
+  evidence: POST /accounts/{account_id}/metric_drains  CreateMetricDrain  create metric_drain; schema
+    metric_drain_drain_configuration
+  reason: Configuration of metric export destinations for deployed workloads — metrics side of observability
+    management.
