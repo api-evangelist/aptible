@@ -126,7 +126,7 @@ apis:
   humanURL: https://www.aptible.com/docs/getting-started/home
   baseURL: https://api.aptible.com
   tags:
-  - Activity Reports
+  - ActivityReports
   tags_raw:
   - ActivityReports
   properties:
@@ -311,7 +311,7 @@ apis:
   humanURL: https://www.aptible.com/docs/getting-started/home
   baseURL: https://api.aptible.com
   tags:
-  - Database Credentials
+  - DatabaseCredentials
   tags_raw:
   - DatabaseCredentials
   properties:
@@ -902,7 +902,7 @@ apis:
   humanURL: https://www.aptible.com/docs/getting-started/home
   baseURL: https://api.aptible.com
   tags:
-  - Worker
+  - worker
   tags_raw:
   - worker
   properties:
