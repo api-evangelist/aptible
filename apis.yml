@@ -133,24 +133,6 @@ apis:
     url: https://github.com/aptible/cloud-api-clients
   - type: SourceCode
     url: https://github.com/aptible/tool-server-openapi-spec
-- aid: aptible:aptible-activityreports-api
-  name: Aptible Activity Reports API
-  description: The ActivityReports API from Aptible — 3 operation(s) for activityreports.
-  humanURL: https://www.aptible.com/docs/getting-started/home
-  baseURL: https://api.aptible.com
-  tags:
-  - Activity Reports
-  tags_raw:
-  - ActivityReports
-  properties:
-  - type: OpenAPI
-    url: openapi/aptible-activityreports-api-openapi.yml
-  - type: Documentation
-    url: https://www.aptible.com/docs/getting-started/home
-  - type: SourceCode
-    url: https://github.com/aptible/cloud-api-clients
-  - type: SourceCode
-    url: https://github.com/aptible/tool-server-openapi-spec
 - aid: aptible:aptible-apps-api
   name: Aptible Apps API
   description: The Apps API from Aptible — 5 operation(s) for apps.
@@ -312,24 +294,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/aptible-containers-api-openapi.yml
-  - type: Documentation
-    url: https://www.aptible.com/docs/getting-started/home
-  - type: SourceCode
-    url: https://github.com/aptible/cloud-api-clients
-  - type: SourceCode
-    url: https://github.com/aptible/tool-server-openapi-spec
-- aid: aptible:aptible-databasecredentials-api
-  name: Aptible Database Credentials API
-  description: The DatabaseCredentials API from Aptible — 2 operation(s) for databasecredentials.
-  humanURL: https://www.aptible.com/docs/getting-started/home
-  baseURL: https://api.aptible.com
-  tags:
-  - Database Credentials
-  tags_raw:
-  - DatabaseCredentials
-  properties:
-  - type: OpenAPI
-    url: openapi/aptible-databasecredentials-api-openapi.yml
   - type: Documentation
     url: https://www.aptible.com/docs/getting-started/home
   - type: SourceCode
@@ -893,22 +857,6 @@ apis:
     url: https://github.com/aptible/cloud-api-clients
   - type: SourceCode
     url: https://github.com/aptible/tool-server-openapi-spec
-- aid: aptible:aptible-vpntunnels-api
-  name: Aptible Vpn Tunnels API
-  description: The VpnTunnels API from Aptible — 2 operation(s) for vpntunnels.
-  humanURL: https://www.aptible.com/docs/getting-started/home
-  baseURL: https://api.aptible.com
-  tags:
-  - VpnTunnels
-  properties:
-  - type: OpenAPI
-    url: openapi/aptible-vpntunnels-api-openapi.yml
-  - type: Documentation
-    url: https://www.aptible.com/docs/getting-started/home
-  - type: SourceCode
-    url: https://github.com/aptible/cloud-api-clients
-  - type: SourceCode
-    url: https://github.com/aptible/tool-server-openapi-spec
 - aid: aptible:aptible-worker-api
   name: Aptible Worker API
   description: The worker API from Aptible — 1 operation(s) for worker.
@@ -921,6 +869,57 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/aptible-worker-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-activity-reports-api
+  name: Aptible Activity Reports API
+  description: The Activity Reports API from Aptible — 3 operation(s) for activity reports.
+  humanURL: >-
+    https://www.aptible.com/docs/core-concepts/security-compliance/authentication/password-authentication
+  baseURL: https://auth.aptible.com
+  tags:
+  - Activity Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-activity-reports-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-database-credentials-api
+  name: Aptible Database Credentials API
+  description: The Database Credentials API from Aptible — 2 operation(s) for database credentials.
+  humanURL: >-
+    https://www.aptible.com/docs/core-concepts/security-compliance/authentication/password-authentication
+  baseURL: https://auth.aptible.com
+  tags:
+  - Database Credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-database-credentials-api-openapi.yml
+  - type: Documentation
+    url: https://www.aptible.com/docs/getting-started/home
+  - type: SourceCode
+    url: https://github.com/aptible/cloud-api-clients
+  - type: SourceCode
+    url: https://github.com/aptible/tool-server-openapi-spec
+- aid: aptible:aptible-vpn-tunnels-api
+  name: Aptible Vpn Tunnels API
+  description: The Vpn Tunnels API from Aptible — 2 operation(s) for vpn tunnels.
+  humanURL: >-
+    https://www.aptible.com/docs/core-concepts/security-compliance/authentication/password-authentication
+  baseURL: https://auth.aptible.com
+  tags:
+  - Vpn Tunnels
+  properties:
+  - type: OpenAPI
+    url: openapi/aptible-vpn-tunnels-api-openapi.yml
   - type: Documentation
     url: https://www.aptible.com/docs/getting-started/home
   - type: SourceCode
