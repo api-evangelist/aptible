@@ -51,7 +51,7 @@ tags:
 - Platform-as-a-Service
 - Cloud Infrastructure
 - Deployment
-- Managed Databases
+- Managed Database
 - Security
 - Compliance
 - HIPAA
@@ -306,6 +306,8 @@ apis:
   humanURL: https://www.aptible.com/docs/getting-started/home
   baseURL: https://api.aptible.com
   tags:
+  - Database
+  tags_raw:
   - Databases
   properties:
   - type: OpenAPI
@@ -372,7 +374,7 @@ apis:
   humanURL: https://www.aptible.com/docs/getting-started/home
   baseURL: https://api.aptible.com
   tags:
-  - Environments
+  - Environment
   tags_raw:
   - environments
   properties:
