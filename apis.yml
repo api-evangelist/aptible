@@ -929,6 +929,8 @@ apis:
   - type: SourceCode
     url: https://github.com/aptible/tool-server-openapi-spec
 common:
+- type: RateLimits
+  url: rate-limits/aptible-rate-limits.yml
 - type: Plans
   url: plans/aptible-plans-pricing.yml
 - type: CapabilityMap

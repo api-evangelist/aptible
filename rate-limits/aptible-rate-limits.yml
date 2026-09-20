@@ -1,0 +1,15 @@
+# Rate limits transcribed from the provider's own documentation — see provenance. Quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/managed-tls
+sources:
+- https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/managed-tls
+provenance:
+  tool: planning/api-economics/harvest_ratelimits.py
+  run: 20260920T133210
+  grounding: every limit_text was found verbatim in the fetched page text
+published: false
+note: Page mentions Let's Encrypt rate limits on certificate generation per domain per week but states
+  no numeric values, referring to Let's Encrypt's documentation instead.
+limit_count: 0
+limits: []
