@@ -51,7 +51,8 @@ edges:
   reason: Assets here are Terraform-provisioned cloud resources inside environments — infrastructure provisioning
     and lifecycle, not fixed-asset accounting.
 - tag: VpnTunnels
-  spec_file: aptible-vpntunnels-api-openapi.yml
+  spec_file: aptible-vpn-tunnels-api-openapi.yml
+  reanchored_from: aptible-vpntunnels-api-openapi.yml
   capability_id: BC-600.50
   capability_id_l1: BC-600
   capability_name: IT Infrastructure Management
