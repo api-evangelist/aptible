@@ -1,0 +1,85 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.aptible.com/pricing
+sources:
+- https://www.aptible.com/pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+published: true
+note: Tiered plans with base fees plus infrastructure usage rates; Enterprise is custom. Startup Program
+  offers 50% off production base fee ($250/mo in credits) and LLM Gateway ($100/mo in credits).
+plan_count: 10
+currency: USD
+plans:
+- name: Development
+  price_text: $0 /month base fee +Usage*
+  price: 0
+  currency: USD
+  period: month
+  unit: base fee
+  included_quota: Zero-downtime deployments, managed databases, CI/CD, CLI & Terraform, Log & Metric Drains,
+    RBAC, 24/7 Site Reliability & Incident Response
+  overage: All plans charge for infrastructure usage (containers, databases, endpoints, storage).
+- name: Production
+  price_text: $499 /month base fee + Usage*
+  price: 499
+  currency: USD
+  period: month
+  unit: base fee
+  included_quota: 'everything in development plan, plus: 1 Dedicated Stack, HIPAA, SOC2 Compliance Frameworks,
+    Horizontal Autoscaling, VPNs + VPC Peering, SSO/SAML, Host Intrusion Detection'
+  overage: All plans charge for infrastructure usage (containers, databases, endpoints, storage).
+- name: Enterprise
+  price_text: Custom
+  period: none
+  included_quota: 'everything in production plan, plus: HITRUST, PCI, Self-Hosting Option, 99.95% Uptime
+    SLA'
+- name: LLM Gateway
+  price_text: $200 /mo + token usage
+  price: 200
+  currency: USD
+  period: month
+  unit: gateway
+  included_quota: Start for free with a $10 credit; no credit card required.
+  overage: token usage
+- name: General Purpose Containers
+  price_text: $0.08/GB RAM/hour
+  price: 0.08
+  currency: USD
+  period: per-use
+  unit: GB RAM/hour
+- name: CPU-Optimized Containers
+  price_text: $0.10/GB RAM/hour
+  price: 0.1
+  currency: USD
+  period: per-use
+  unit: GB RAM/hour
+- name: RAM-Optimized Containers
+  price_text: $0.05/GB RAM/hour
+  price: 0.05
+  currency: USD
+  period: per-use
+  unit: GB RAM/hour
+- name: Endpoints (load balancers)
+  price_text: $0.06/endpoint/hour
+  price: 0.06
+  currency: USD
+  period: per-use
+  unit: endpoint/hour
+- name: Dedicated Stacks
+  price_text: $499/stack/month
+  price: 499
+  currency: USD
+  period: month
+  unit: stack
+- name: VPNs
+  price_text: $99/VPN peer/month
+  price: 99
+  currency: USD
+  period: month
+  unit: VPN peer

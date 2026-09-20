@@ -929,6 +929,8 @@ apis:
   - type: SourceCode
     url: https://github.com/aptible/tool-server-openapi-spec
 common:
+- type: Plans
+  url: plans/aptible-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/aptible-capability-edges.yml
   name: Aptible Business Capability Map
