@@ -5,7 +5,7 @@ info:
 servers:
 - url: /
 tags:
-- name: utilities
+- name: Utilities
 paths:
   /api/v1/debug/user_auth:
     get:
@@ -20,7 +20,7 @@ paths:
       - HTTPBearer: []
       summary: Get User
       tags:
-      - utilities
+      - Utilities
   /api/v1/debug/user_role_middleware_check:
     get:
       operationId: get_user_role
@@ -50,22 +50,9 @@ paths:
       - HTTPBearer: []
       summary: Get User Role
       tags:
-      - utilities
+      - Utilities
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          title: Detail
-          type: array
-      title: HTTPValidationError
-      type: object
-    Location_inner:
-      anyOf:
-      - type: string
-      - type: integer
     ValidationError:
       properties:
         loc:
@@ -84,6 +71,19 @@ components:
       - msg
       - type
       title: ValidationError
+      type: object
+    Location_inner:
+      anyOf:
+      - type: string
+      - type: integer
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
       type: object
   securitySchemes:
     HTTPBearer:

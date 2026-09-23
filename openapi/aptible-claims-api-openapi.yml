@@ -162,6 +162,19 @@ paths:
       - Claims
 components:
   schemas:
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
     CreateClaim_request:
       properties:
         type:
@@ -181,19 +194,6 @@ components:
           type: string
       required:
       - handle
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
     CreateClaimForType_request:
       properties:

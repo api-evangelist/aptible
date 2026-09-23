@@ -128,25 +128,11 @@ paths:
       - Releases
 components:
   schemas:
-    ListReleasesForService_200_response__embedded:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        releases:
-          items:
-            $ref: '#/components/schemas/release'
-          type: array
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
     release__links:
       properties:
@@ -156,6 +142,32 @@ components:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListReleasesForService_200_response__embedded:
+      properties:
+        releases:
+          items:
+            $ref: '#/components/schemas/release'
+          type: array
+      type: object
+    ListReleasesForService_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListReleasesForService_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDiskAttachmentsForService_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
     release:
       properties:
@@ -184,25 +196,6 @@ components:
       - docker_repo
       - id
       - updated_at
-    ListReleasesForService_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListReleasesForService_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDiskAttachmentsForService_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
     ListDiskAttachmentsForService_200_response__links:
       properties:
         service:
@@ -214,11 +207,18 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    ListAccountsForStack_200_response__links_stack:
+    error:
       properties:
-        href:
-          format: uri
+        code:
+          type: integer
+        error:
           type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

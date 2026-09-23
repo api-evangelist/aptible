@@ -1,0 +1,27 @@
+# Front Door AI Index — aptible — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: aptible
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.aptible.com
+  final_host: www.aptible.com
+  ownership: own
+  owner: aptible
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 15
+  host_score: 15
+  density: 18.89
+  words: 794
+  tiers:
+    agentic: 3
+    core: 12
+    model: 0
+  ambiguous: 0
+  top_terms:
+    AI: 6
+    LLMs: 6
+    agentic: 3

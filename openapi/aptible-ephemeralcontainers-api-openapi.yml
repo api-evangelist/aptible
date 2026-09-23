@@ -191,19 +191,6 @@ paths:
       - EphemeralContainers
 components:
   schemas:
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
     ListEphemeralContainersForEphemeralSession_200_response:
       properties:
         _embedded:
@@ -223,6 +210,12 @@ components:
       - per_page
       - total_count
       type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
     ListEphemeralContainersForEphemeralSession_200_response__links:
       properties:
         ephemeral_session:
@@ -232,15 +225,6 @@ components:
         next:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ephemeral_container__links:
-      properties:
-        ephemeral_session:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        log_drain:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -288,11 +272,27 @@ components:
       - layer
       - memory_limit
       - updated_at
-    ListAccountsForStack_200_response__links_stack:
+    ephemeral_container__links:
       properties:
-        href:
-          format: uri
+        ephemeral_session:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        log_drain:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
           type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

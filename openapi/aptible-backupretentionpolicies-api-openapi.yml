@@ -175,54 +175,11 @@ paths:
       - BackupRetentionPolicies
 components:
   schemas:
-    CreateBackupRetentionPolicy_request:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        daily:
-          type: integer
-          x-omitempty: false
-        monthly:
-          type: integer
-          x-omitempty: false
-        yearly:
-          type: integer
-          x-omitempty: false
-        keep_final:
-          type: boolean
-          x-omitempty: false
-        make_copy:
-          type: boolean
-          x-omitempty: false
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListBackupRetentionPoliciesForAccount_200_response__embedded:
-      properties:
-        backup_retention_policies:
-          items:
-            $ref: '#/components/schemas/backup_retention_policy'
-          type: array
       type: object
     ListBackupRetentionPoliciesForAccount_200_response:
       properties:
@@ -242,13 +199,6 @@ components:
       - current_page
       - per_page
       - total_count
-      type: object
-    backup_retention_policy__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     backup_retention_policy:
       properties:
@@ -283,11 +233,61 @@ components:
       - monthly
       - pitr_days
       - yearly
-    ListAccountsForStack_200_response__links_stack:
+    CreateBackupRetentionPolicy_request:
       properties:
-        href:
-          format: uri
+        daily:
+          type: integer
+          x-omitempty: false
+        monthly:
+          type: integer
+          x-omitempty: false
+        yearly:
+          type: integer
+          x-omitempty: false
+        keep_final:
+          type: boolean
+          x-omitempty: false
+        make_copy:
+          type: boolean
+          x-omitempty: false
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    backup_retention_policy__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListBackupRetentionPoliciesForAccount_200_response__embedded:
+      properties:
+        backup_retention_policies:
+          items:
+            $ref: '#/components/schemas/backup_retention_policy'
+          type: array
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
           type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

@@ -5,7 +5,7 @@ info:
 servers:
 - url: /
 tags:
-- name: organizations
+- name: Organizations
 paths:
   /api/v1/organizations/{organization_id}/environments:
     get:
@@ -40,7 +40,7 @@ paths:
       - HTTPBearer: []
       summary: Organization Get Environments
       tags:
-      - organizations
+      - Organizations
   /api/v1/organizations/{organization_id}:
     delete:
       operationId: organization_delete
@@ -70,7 +70,7 @@ paths:
       - HTTPBearer: []
       summary: Organization Delete
       tags:
-      - organizations
+      - Organizations
     get:
       operationId: organization_get
       parameters:
@@ -101,7 +101,7 @@ paths:
       - HTTPBearer: []
       summary: Organization Get
       tags:
-      - organizations
+      - Organizations
     put:
       operationId: organization_update
       parameters:
@@ -138,7 +138,7 @@ paths:
       - HTTPBearer: []
       summary: Organization Update
       tags:
-      - organizations
+      - Organizations
   /api/v1/organizations/:
     get:
       operationId: organization_list
@@ -156,7 +156,7 @@ paths:
       - HTTPBearer: []
       summary: Organization List
       tags:
-      - organizations
+      - Organizations
   /api/v1/organizations/{organization_id}/operations/:
     get:
       operationId: organization_get_operations
@@ -209,9 +209,87 @@ paths:
       - HTTPBearer: []
       summary: Organization Get Operations
       tags:
-      - organizations
+      - Organizations
 components:
   schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            $ref: '#/components/schemas/Location_inner'
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+    OrganizationInput:
+      example:
+        aws_ou: aws_ou
+        baa_status: baa_status
+        name: name
+        contact_details: '{}'
+      properties:
+        name:
+          title: Name
+          type: string
+        baa_status:
+          title: Baa Status
+          type: string
+        aws_ou:
+          title: Aws Ou
+          type: string
+        contact_details:
+          title: Contact Details
+          type: object
+      required:
+      - baa_status
+      - contact_details
+      - name
+      title: OrganizationInput
+      type: object
+    EnvironmentOutput:
+      example:
+        aws_account_id: aws_account_id
+        organization:
+          aws_ou: aws_ou
+          baa_status: baa_status
+          name: name
+          contact_details: '{}'
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        id:
+          format: uuid
+          title: Id
+          type: string
+        organization:
+          $ref: '#/components/schemas/OrganizationOutput'
+        aws_account_id:
+          title: Aws Account Id
+          type: string
+      required:
+      - id
+      - name
+      - organization
+      title: EnvironmentOutput
+      type: object
     OperationType:
       description: An enumeration.
       enum:
@@ -221,15 +299,6 @@ components:
       - ACTION
       title: OperationType
       type: string
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          title: Detail
-          type: array
-      title: HTTPValidationError
-      type: object
     OperationStatus:
       description: An enumeration.
       enum:
@@ -242,6 +311,37 @@ components:
       - COMPLETE
       title: OperationStatus
       type: string
+    OrganizationOutput:
+      example:
+        aws_ou: aws_ou
+        baa_status: baa_status
+        name: name
+        contact_details: '{}'
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          title: Name
+          type: string
+        baa_status:
+          title: Baa Status
+          type: string
+        aws_ou:
+          title: Aws Ou
+          type: string
+        contact_details:
+          title: Contact Details
+          type: object
+        id:
+          format: uuid
+          title: Id
+          type: string
+      required:
+      - baa_status
+      - contact_details
+      - id
+      - name
+      title: OrganizationOutput
+      type: object
     OperationOutput:
       example:
         execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -305,119 +405,19 @@ components:
       - user_id
       title: OperationOutput
       type: object
-    OrganizationOutput:
-      example:
-        aws_ou: aws_ou
-        baa_status: baa_status
-        name: name
-        contact_details: '{}'
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+    HTTPValidationError:
       properties:
-        name:
-          title: Name
-          type: string
-        baa_status:
-          title: Baa Status
-          type: string
-        aws_ou:
-          title: Aws Ou
-          type: string
-        contact_details:
-          title: Contact Details
-          type: object
-        id:
-          format: uuid
-          title: Id
-          type: string
-      required:
-      - baa_status
-      - contact_details
-      - id
-      - name
-      title: OrganizationOutput
-      type: object
-    EnvironmentOutput:
-      example:
-        aws_account_id: aws_account_id
-        organization:
-          aws_ou: aws_ou
-          baa_status: baa_status
-          name: name
-          contact_details: '{}'
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        description: description
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        name:
-          title: Name
-          type: string
-        description:
-          title: Description
-          type: string
-        id:
-          format: uuid
-          title: Id
-          type: string
-        organization:
-          $ref: '#/components/schemas/OrganizationOutput'
-        aws_account_id:
-          title: Aws Account Id
-          type: string
-      required:
-      - id
-      - name
-      - organization
-      title: EnvironmentOutput
-      type: object
-    OrganizationInput:
-      example:
-        aws_ou: aws_ou
-        baa_status: baa_status
-        name: name
-        contact_details: '{}'
-      properties:
-        name:
-          title: Name
-          type: string
-        baa_status:
-          title: Baa Status
-          type: string
-        aws_ou:
-          title: Aws Ou
-          type: string
-        contact_details:
-          title: Contact Details
-          type: object
-      required:
-      - baa_status
-      - contact_details
-      - name
-      title: OrganizationInput
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
       type: object
     Location_inner:
       anyOf:
       - type: string
       - type: integer
-    ValidationError:
-      properties:
-        loc:
-          items:
-            $ref: '#/components/schemas/Location_inner'
-          title: Location
-          type: array
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-      type: object
   securitySchemes:
     HTTPBearer:
       scheme: bearer

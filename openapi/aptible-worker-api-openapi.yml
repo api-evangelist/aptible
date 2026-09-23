@@ -5,7 +5,7 @@ info:
 servers:
 - url: /
 tags:
-- name: worker
+- name: Worker
 paths:
   /api/v1/worker/health-check:
     post:
@@ -30,7 +30,7 @@ paths:
           description: Validation Error
       summary: Worker Health Check
       tags:
-      - worker
+      - Worker
 components:
   schemas:
     HealthCheckFromWorker:
@@ -61,19 +61,6 @@ components:
       - message
       title: HealthCheckFromWorker
       type: object
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          title: Detail
-          type: array
-      title: HTTPValidationError
-      type: object
-    Location_inner:
-      anyOf:
-      - type: string
-      - type: integer
     ValidationError:
       properties:
         loc:
@@ -92,6 +79,19 @@ components:
       - msg
       - type
       title: ValidationError
+      type: object
+    Location_inner:
+      anyOf:
+      - type: string
+      - type: integer
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
       type: object
   securitySchemes:
     HTTPBearer:

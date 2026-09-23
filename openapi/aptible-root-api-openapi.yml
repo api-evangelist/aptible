@@ -51,12 +51,11 @@ paths:
       - Root
 components:
   schemas:
-    GetRoot_200_response:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        _links:
-          $ref: '#/components/schemas/GetRoot_200_response__links'
-      required:
-      - _links
+        href:
+          format: uri
+          type: string
       type: object
     GetRoot_200_response__links:
       properties:
@@ -71,11 +70,12 @@ components:
         stacks:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    ListAccountsForStack_200_response__links_stack:
+    GetRoot_200_response:
       properties:
-        href:
-          format: uri
-          type: string
+        _links:
+          $ref: '#/components/schemas/GetRoot_200_response__links'
+      required:
+      - _links
       type: object
   securitySchemes:
     token:

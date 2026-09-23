@@ -3,7 +3,7 @@ info:
   contact:
     email: support@aptible.com
   description: REST API for the core Aptible platform.
-  title: Aptible API v1 Vpn Tunnels API
+  title: Aptible API v1 Activity Reports API
   version: v1
 servers:
 - url: '{baseUrl}'
@@ -14,17 +14,17 @@ servers:
 security:
 - token: []
 tags:
-- name: VpnTunnels
+- name: Activity Reports
 paths:
-  /stacks/{stack_id}/vpn_tunnels:
+  /accounts/{account_id}/activity_reports:
     get:
-      description: Returns a paginated list of VPN tunnels belonging to the specified stack.
-      operationId: ListVpnTunnelsForStack
+      description: Returns a paginated list of activity reports for the specified account.
+      operationId: ListActivityReportsForAccount
       parameters:
-      - description: stack_id
+      - description: account_id
         explode: false
         in: path
-        name: stack_id
+        name: account_id
         required: true
         schema:
           type: integer
@@ -68,7 +68,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ListVpnTunnelsForStack_200_response'
+                $ref: '#/components/schemas/ListActivityReportsForAccount_200_response'
           description: successful
         default:
           content:
@@ -76,13 +76,56 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
           description: Error response. Often a 4xx or 5xx status code
-      summary: list vpn_tunnels
+      summary: list activity_reports
       tags:
-      - VpnTunnels
-  /vpn_tunnels/{id}:
+      - Activity Reports
+  /activity_reports/{activity_report_id}/download:
     get:
-      description: Returns the details of a specific VPN tunnel by ID.
-      operationId: GetVpnTunnel
+      description: Returns a presigned download URL for the specified activity report.
+      operationId: GetActivityReportDownload
+      parameters:
+      - description: activity_report_id
+        explode: false
+        in: path
+        name: activity_report_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: 'When true, omits embedded resources from the response. Also triggered when the Prefer: no_sensitive_extras=true header is present.'
+        explode: true
+        in: query
+        name: no_embed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: When set to no_sensitive_extras=true, omits sensitive fields and embedded resources from the response.
+        explode: false
+        in: header
+        name: Prefer
+        required: false
+        schema:
+          enum:
+          - no_sensitive_extras=true
+          type: string
+        style: simple
+      responses:
+        '200':
+          description: Presigned download URL
+        default:
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Error response. Often a 4xx or 5xx status code
+      summary: download activity_report
+      tags:
+      - Activity Reports
+  /activity_reports/{id}:
+    get:
+      description: Returns the details of a specific activity report by ID.
+      operationId: GetActivityReport
       parameters:
       - description: id
         explode: false
@@ -115,7 +158,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/vpn_tunnel'
+                $ref: '#/components/schemas/activity_report'
           description: successful
         default:
           content:
@@ -123,22 +166,69 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
           description: Error response. Often a 4xx or 5xx status code
-      summary: show vpn_tunnel
+      summary: show activity_report
       tags:
-      - VpnTunnels
+      - Activity Reports
 components:
   schemas:
-    vpc_peer__links:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        stack:
+        href:
+          format: uri
+          type: string
+      type: object
+    activity_report:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        starts_at:
+          format: dateTime
+          type: string
+        ends_at:
+          format: dateTime
+          type: string
+        filename:
+          type: string
+        _links:
+          $ref: '#/components/schemas/activity_report__links'
+      required:
+      - _type
+      - created_at
+      - ends_at
+      - filename
+      - id
+      - starts_at
+      - updated_at
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    ListVpnTunnelsForStack_200_response:
+    ListActivityReportsForAccount_200_response__embedded:
+      properties:
+        activity_reports:
+          items:
+            $ref: '#/components/schemas/activity_report'
+          type: array
+      type: object
+    ListActivityReportsForAccount_200_response:
       properties:
         _embedded:
-          $ref: '#/components/schemas/ListVpnTunnelsForStack_200_response__embedded'
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__embedded'
         total_count:
           type: integer
         per_page:
@@ -146,7 +236,7 @@ components:
         current_page:
           type: integer
         _links:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links'
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
       required:
       - _embedded
       - _links
@@ -167,103 +257,14 @@ components:
       - error
       - message
       type: object
-    ListVpnTunnelsForStack_200_response__embedded:
+    activity_report__links:
       properties:
-        vpn_tunnels:
-          items:
-            $ref: '#/components/schemas/vpn_tunnel'
-          type: array
-      type: object
-    ListAccountsForStack_200_response__links:
-      properties:
-        stack:
+        download:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
+        account:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    vpn_tunnel:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        created_at:
-          format: dateTime
-          type: string
-        updated_at:
-          format: dateTime
-          type: string
-        handle:
-          type: string
-        phase_1_alg:
-          type: string
-          x-nullable: true
-        phase_1_dh_group:
-          type: integer
-          x-nullable: true
-        phase_1_lifetime:
-          type: integer
-          x-nullable: true
-        phase_2_alg:
-          type: string
-          x-nullable: true
-        phase_2_dh_group:
-          type: integer
-          x-nullable: true
-        phase_2_lifetime:
-          type: integer
-          x-nullable: true
-        perfect_forward_secrecy:
-          type: boolean
-          x-nullable: true
-        our_gateway:
-          type: string
-          x-nullable: true
-        our_networks:
-          items:
-            items:
-              type: string
-            type: array
-          type: array
-          x-nullable: true
-        peer_gateway:
-          type: string
-          x-nullable: true
-        peer_networks:
-          items:
-            items:
-              type: string
-            type: array
-          type: array
-          x-nullable: true
-        _links:
-          $ref: '#/components/schemas/vpc_peer__links'
-      required:
-      - _type
-      - created_at
-      - handle
-      - id
-      - our_gateway
-      - our_networks
-      - peer_gateway
-      - peer_networks
-      - perfect_forward_secrecy
-      - phase_1_alg
-      - phase_1_dh_group
-      - phase_1_lifetime
-      - phase_2_alg
-      - phase_2_dh_group
-      - phase_2_lifetime
-      - updated_at
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
       type: object
   securitySchemes:
     token:

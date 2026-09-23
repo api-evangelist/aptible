@@ -120,42 +120,11 @@ paths:
       - Plans
 components:
   schemas:
-    llm_gateway_configuration__links:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListPlans_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListPlans_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
       type: object
     plan:
       properties:
@@ -211,6 +180,11 @@ components:
       - included_vhosts
       - updated_at
       - vhost_limit
+    llm_gateway_configuration__links:
+      properties:
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     ListDatabaseImages_200_response__links:
       properties:
         next:
@@ -220,6 +194,25 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
+    ListPlans_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListPlans_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
     ListPlans_200_response__embedded:
       properties:
         plans:
@@ -227,11 +220,18 @@ components:
             $ref: '#/components/schemas/plan'
           type: array
       type: object
-    ListAccountsForStack_200_response__links_stack:
+    error:
       properties:
-        href:
-          format: uri
+        code:
+          type: integer
+        error:
           type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

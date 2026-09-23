@@ -293,61 +293,11 @@ paths:
       - Services
 components:
   schemas:
-    error:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListServicesForAccount_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListServicesForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListServicesForAccount_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    UpdateService_request:
-      properties:
-        naive_health_check:
-          type: boolean
-        force_zero_downtime:
-          type: boolean
-        restart_free_scaling:
-          type: boolean
-        stop_timeout:
-          type: integer
-      type: object
-    ListServicesForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     service__links:
       properties:
@@ -438,11 +388,61 @@ components:
       - restart_free_scaling
       - stop_timeout
       - updated_at
-    ListAccountsForStack_200_response__links_stack:
+    ListServicesForAccount_200_response:
       properties:
-        href:
-          format: uri
+        _embedded:
+          $ref: '#/components/schemas/ListServicesForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListServicesForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
           type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    UpdateService_request:
+      properties:
+        naive_health_check:
+          type: boolean
+        force_zero_downtime:
+          type: boolean
+        restart_free_scaling:
+          type: boolean
+        stop_timeout:
+          type: integer
+      type: object
+    ListServicesForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     token:

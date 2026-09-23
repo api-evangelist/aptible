@@ -391,69 +391,11 @@ paths:
       - Accounts
 components:
   schemas:
-    log_drain__links:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ephemeral_containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListAccountsForStack_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    CreateAccount_request:
-      properties:
-        type:
-          type: string
-        handle:
-          type: string
-        organization_id:
-          type: string
-        name:
-          type: string
-        stack_id:
-          type: integer
-      required:
-      - handle
-      - organization_id
-      - type
       type: object
     account__links:
       properties:
@@ -490,6 +432,215 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
+    PatchAccount_request:
+      properties:
+        handle:
+          type: string
+        name:
+          type: string
+      type: object
+    ListAccountsForStack_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    account__embedded:
+      properties:
+        log_drains:
+          items:
+            $ref: '#/components/schemas/log_drain'
+          type: array
+        permissions:
+          items:
+            $ref: '#/components/schemas/permission'
+          type: array
+      type: object
+    log_drain__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    permission__links:
+      properties:
+        role:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    permission:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        scope:
+          type: string
+        _links:
+          $ref: '#/components/schemas/permission__links'
+      required:
+      - _type
+      - id
+      - scope
+    ListAccountsForStack_200_response__links:
+      properties:
+        stack:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    CreateAccount_request:
+      properties:
+        type:
+          type: string
+        handle:
+          type: string
+        organization_id:
+          type: string
+        name:
+          type: string
+        stack_id:
+          type: integer
+      required:
+      - handle
+      - organization_id
+      - type
+      type: object
+    ListAccountsForStack_200_response__embedded:
+      properties:
+        accounts:
+          items:
+            $ref: '#/components/schemas/account'
+          type: array
+      type: object
+    log_drain:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        handle:
+          type: string
+        drain_type:
+          type: string
+        drain_host:
+          type: string
+        drain_port:
+          type: integer
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        status:
+          type: string
+        drain_username:
+          type: string
+          x-nullable: true
+        drain_password:
+          type: string
+          x-nullable: true
+        drain_apps:
+          type: boolean
+        drain_databases:
+          type: boolean
+        drain_ephemeral_sessions:
+          type: boolean
+        drain_proxies:
+          type: boolean
+        gentlemanjerry_certificate:
+          type: string
+          x-nullable: true
+        gentlemanjerry_docker_name:
+          type: string
+          x-nullable: true
+        gentlemanjerry_instance_id:
+          type: string
+          x-nullable: true
+        gentlemanjerry_host:
+          type: string
+          x-nullable: true
+        gentlemanjerry_port_mapping:
+          items:
+            items:
+              type: integer
+            type: array
+          type: array
+        gentlemanjerry_allocation:
+          items:
+            type: string
+          type: array
+        url:
+          type: string
+          x-nullable: true
+        logging_token:
+          type: string
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/log_drain__links'
+      required:
+      - _type
+      - created_at
+      - drain_apps
+      - drain_databases
+      - drain_ephemeral_sessions
+      - drain_host
+      - drain_port
+      - drain_proxies
+      - drain_type
+      - gentlemanjerry_allocation
+      - gentlemanjerry_certificate
+      - gentlemanjerry_docker_name
+      - gentlemanjerry_host
+      - gentlemanjerry_instance_id
+      - gentlemanjerry_port_mapping
+      - handle
+      - id
+      - status
+      - updated_at
     account:
       properties:
         id:
@@ -605,117 +756,6 @@ components:
       - total_disk_size
       - type
       - updated_at
-    permission:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        scope:
-          type: string
-        _links:
-          $ref: '#/components/schemas/permission__links'
-      required:
-      - _type
-      - id
-      - scope
-    account__embedded:
-      properties:
-        log_drains:
-          items:
-            $ref: '#/components/schemas/log_drain'
-          type: array
-        permissions:
-          items:
-            $ref: '#/components/schemas/permission'
-          type: array
-      type: object
-    log_drain:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        handle:
-          type: string
-        drain_type:
-          type: string
-        drain_host:
-          type: string
-        drain_port:
-          type: integer
-        created_at:
-          format: dateTime
-          type: string
-        updated_at:
-          format: dateTime
-          type: string
-        status:
-          type: string
-        drain_username:
-          type: string
-          x-nullable: true
-        drain_password:
-          type: string
-          x-nullable: true
-        drain_apps:
-          type: boolean
-        drain_databases:
-          type: boolean
-        drain_ephemeral_sessions:
-          type: boolean
-        drain_proxies:
-          type: boolean
-        gentlemanjerry_certificate:
-          type: string
-          x-nullable: true
-        gentlemanjerry_docker_name:
-          type: string
-          x-nullable: true
-        gentlemanjerry_instance_id:
-          type: string
-          x-nullable: true
-        gentlemanjerry_host:
-          type: string
-          x-nullable: true
-        gentlemanjerry_port_mapping:
-          items:
-            items:
-              type: integer
-            type: array
-          type: array
-        gentlemanjerry_allocation:
-          items:
-            type: string
-          type: array
-        url:
-          type: string
-          x-nullable: true
-        logging_token:
-          type: string
-          x-nullable: true
-        _links:
-          $ref: '#/components/schemas/log_drain__links'
-      required:
-      - _type
-      - created_at
-      - drain_apps
-      - drain_databases
-      - drain_ephemeral_sessions
-      - drain_host
-      - drain_port
-      - drain_proxies
-      - drain_type
-      - gentlemanjerry_allocation
-      - gentlemanjerry_certificate
-      - gentlemanjerry_docker_name
-      - gentlemanjerry_host
-      - gentlemanjerry_instance_id
-      - gentlemanjerry_port_mapping
-      - handle
-      - id
-      - status
-      - updated_at
     UpdateAccount_request:
       properties:
         handle:
@@ -723,46 +763,6 @@ components:
         name:
           type: string
         onboarding_status:
-          type: string
-      type: object
-    ListAccountsForStack_200_response__links:
-      properties:
-        stack:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    permission__links:
-      properties:
-        role:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListAccountsForStack_200_response__embedded:
-      properties:
-        accounts:
-          items:
-            $ref: '#/components/schemas/account'
-          type: array
-      type: object
-    PatchAccount_request:
-      properties:
-        handle:
-          type: string
-        name:
-          type: string
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
           type: string
       type: object
   securitySchemes:

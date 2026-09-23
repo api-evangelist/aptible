@@ -470,62 +470,38 @@ paths:
       - Databases
 components:
   schemas:
-    database__embedded:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        last_operation:
-          $ref: '#/components/schemas/operation'
-        disk:
-          $ref: '#/components/schemas/disk'
-        database_credentials:
-          items:
-            $ref: '#/components/schemas/database_credential'
-          type: array
+        href:
+          format: uri
+          type: string
       type: object
-    database_credential:
+    CreateDatabase_request:
       properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        created_at:
-          format: dateTime
-          type: string
-        updated_at:
-          format: dateTime
-          type: string
-        connection_url:
+        handle:
           type: string
         type:
           type: string
-        default:
+        initial_disk_size:
+          type: integer
+        initial_container_size:
+          type: integer
+        initialize_from:
+          type: string
+        database_image:
+          description: Alternate name for `database_image_id`
+          type: integer
+        database_image_id:
+          type: integer
+        current_kms_arn:
+          type: string
+        enable_backups:
           type: boolean
-        _links:
-          $ref: '#/components/schemas/database_credential__links'
+        enable_pitr:
+          type: boolean
       required:
-      - _type
-      - created_at
-      - default
-      - id
+      - handle
       - type
-      - updated_at
-    ListDatabasesForAccount_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListDatabasesForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
       type: object
     database:
       properties:
@@ -614,39 +590,6 @@ components:
       - status
       - type
       - updated_at
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    disk__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    database_credential__links:
-      properties:
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     operation:
       properties:
         id:
@@ -774,33 +717,66 @@ components:
       - user_email
       - user_name
       - yearly
-    operation__links:
+    ListDatabasesForAccount_200_response:
       properties:
-        user:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        resource:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        _embedded:
+          $ref: '#/components/schemas/ListDatabasesForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    disk__links:
+      properties:
         account:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        destination_account:
+        database:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ssh_portal_connections:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ephemeral_sessions:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        code_scan_result:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        service:
+        operations:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    ListDatabasesForAccount_200_response__embedded:
+    database__links:
       properties:
-        databases:
-          items:
-            $ref: '#/components/schemas/database'
-          type: array
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database_image:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        disk:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        initialize_from:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_configuration:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        dependents:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        backups:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        configurations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database_credentials:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     ListActivityReportsForAccount_200_response__links:
       properties:
@@ -809,6 +785,15 @@ components:
         next:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    database_credential__links:
+      properties:
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -901,69 +886,84 @@ components:
       - provisioned_iops
       - size
       - updated_at
-    CreateDatabase_request:
+    database_credential:
       properties:
-        handle:
+        id:
+          type: integer
+        _type:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        connection_url:
           type: string
         type:
           type: string
-        initial_disk_size:
-          type: integer
-        initial_container_size:
-          type: integer
-        initialize_from:
-          type: string
-        database_image:
-          description: Alternate name for `database_image_id`
-          type: integer
-        database_image_id:
-          type: integer
-        current_kms_arn:
-          type: string
-        enable_backups:
+        default:
           type: boolean
-        enable_pitr:
-          type: boolean
+        _links:
+          $ref: '#/components/schemas/database_credential__links'
       required:
-      - handle
+      - _type
+      - created_at
+      - default
+      - id
       - type
-      type: object
-    ListAccountsForStack_200_response__links_stack:
+      - updated_at
+    ListDatabasesForAccount_200_response__embedded:
       properties:
-        href:
-          format: uri
-          type: string
+        databases:
+          items:
+            $ref: '#/components/schemas/database'
+          type: array
       type: object
-    database__links:
+    operation__links:
       properties:
+        user:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        resource:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         account:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database_image:
+        destination_account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ssh_portal_connections:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_sessions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code_scan_result:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         service:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        disk:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        initialize_from:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_configuration:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        dependents:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        backups:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        configurations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database_credentials:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        settings:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_setting:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    database__embedded:
+      properties:
+        last_operation:
+          $ref: '#/components/schemas/operation'
+        disk:
+          $ref: '#/components/schemas/disk'
+        database_credentials:
+          items:
+            $ref: '#/components/schemas/database_credential'
+          type: array
       type: object
   securitySchemes:
     token:

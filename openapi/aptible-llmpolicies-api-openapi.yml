@@ -330,33 +330,11 @@ paths:
       - LlmPolicies
 components:
   schemas:
-    CreateOrUpdateLlmPolicy_request:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        models:
-          description: List of allowed model identifiers
-          items:
-            type: string
-          type: array
-      type: object
-    ListLlmPoliciesForAccount_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListLlmPoliciesForAccount_200_response__embedded'
-        _links:
-          type: object
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
     llm_policy:
       properties:
@@ -406,6 +384,13 @@ components:
         current_page:
           type: integer
       type: object
+    ListLlmPoliciesForAccount_200_response__embedded:
+      properties:
+        llm_policies:
+          items:
+            $ref: '#/components/schemas/llm_policy'
+          type: array
+      type: object
     GetLlmKeyUsage_200_response:
       properties:
         spend:
@@ -424,12 +409,20 @@ components:
           description: Total failed API requests
           type: integer
       type: object
-    ListLlmPoliciesForAccount_200_response__embedded:
+    CreateOrUpdateLlmPolicy_request:
       properties:
-        llm_policies:
+        models:
+          description: List of allowed model identifiers
           items:
-            $ref: '#/components/schemas/llm_policy'
+            type: string
           type: array
+      type: object
+    backup_retention_policy__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     llm_policy_current_usage:
       description: Month-to-date usage metrics for this policy
@@ -451,18 +444,25 @@ components:
           type: integer
       type: object
       x-nullable: true
-    backup_retention_policy__links:
+    ListLlmPoliciesForAccount_200_response:
       properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        _embedded:
+          $ref: '#/components/schemas/ListLlmPoliciesForAccount_200_response__embedded'
+        _links:
+          type: object
       type: object
-    ListAccountsForStack_200_response__links_stack:
+    error:
       properties:
-        href:
-          format: uri
+        code:
+          type: integer
+        error:
           type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

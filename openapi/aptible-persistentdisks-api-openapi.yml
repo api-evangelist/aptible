@@ -128,45 +128,11 @@ paths:
       - PersistentDisks
 components:
   schemas:
-    error:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    persistent_disk__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListPersistentDisksForAccount_200_response__embedded:
-      properties:
-        persistent_disks:
-          items:
-            $ref: '#/components/schemas/persistent_disk'
-          type: array
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     ListPersistentDisksForAccount_200_response:
       properties:
@@ -187,11 +153,32 @@ components:
       - per_page
       - total_count
       type: object
-    ListAccountsForStack_200_response__links_stack:
+    ListActivityReportsForAccount_200_response__links:
       properties:
-        href:
-          format: uri
-          type: string
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    persistent_disk__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListPersistentDisksForAccount_200_response__embedded:
+      properties:
+        persistent_disks:
+          items:
+            $ref: '#/components/schemas/persistent_disk'
+          type: array
       type: object
     persistent_disk:
       properties:
@@ -260,6 +247,19 @@ components:
       - size
       - status
       - updated_at
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
   securitySchemes:
     token:
       in: header

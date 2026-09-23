@@ -43,6 +43,10 @@ paths:
       - Tool
 components:
   schemas:
+    ToolCallPayload:
+      type: object
+      additionalProperties: true
+      description: Arbitrary JSON blob sent to the tool.
     ToolCallResult:
       type: object
       required:
@@ -59,10 +63,6 @@ components:
               description: A summary of the tool call result.
           additionalProperties: true
       additionalProperties: true
-    ToolCallPayload:
-      type: object
-      additionalProperties: true
-      description: Arbitrary JSON blob sent to the tool.
   securitySchemes:
     bearerAuth:
       type: http

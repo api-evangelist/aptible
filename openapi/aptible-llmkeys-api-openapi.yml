@@ -449,59 +449,6 @@ paths:
       - LlmKeys
 components:
   schemas:
-    GetLlmKeyRequests_200_response__embedded:
-      properties:
-        requests:
-          items:
-            $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded_requests_inner'
-          type: array
-      type: object
-    GetLlmKeyRequests_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links'
-      type: object
-    ListLlmKeys_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListLlmKeysForAccount_200_response__embedded'
-        _links:
-          type: object
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListLlmKeysForAccount_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListLlmKeysForAccount_200_response__embedded'
-        _links:
-          type: object
-      type: object
     llm_key_current_usage:
       description: Month-to-date usage metrics for this key
       properties:
@@ -522,33 +469,11 @@ components:
           type: integer
       type: object
       x-nullable: true
-    GetLlmKeyRequests_200_response__links:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        self:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
-        next:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
-        prev:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
-      type: object
-    GetLlmKeyRequests_200_response__embedded_requests_inner:
-      properties:
-        _id:
+        href:
+          format: uri
           type: string
-        status:
-          type: string
-        start_time:
-          type: string
-        end_time:
-          type: string
-        model:
-          type: string
-        input_tokens:
-          type: integer
-        output_tokens:
-          type: integer
-        spend:
-          type: number
       type: object
     ListLlmKeysForAccount_200_response__embedded:
       properties:
@@ -557,35 +482,18 @@ components:
             $ref: '#/components/schemas/llm_key'
           type: array
       type: object
-    GetLlmKeyUsage_200_response:
+    ListLlmKeys_200_response:
       properties:
-        spend:
-          description: Total spend in USD
-          type: number
-        input_tokens:
-          description: Total input (prompt) tokens
+        _embedded:
+          $ref: '#/components/schemas/ListLlmKeysForAccount_200_response__embedded'
+        _links:
+          type: object
+        total_count:
           type: integer
-        output_tokens:
-          description: Total output (completion) tokens
+        per_page:
           type: integer
-        successful_requests:
-          description: Total successful API requests
+        current_page:
           type: integer
-        failed_requests:
-          description: Total failed API requests
-          type: integer
-      type: object
-    backup_retention_policy__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    GetLlmKeyRequests_200_response__links_self:
-      properties:
-        href:
-          type: string
       type: object
     llm_key:
       properties:
@@ -649,11 +557,103 @@ components:
       - revoked_by
       - status
       - updated_at
-    ListAccountsForStack_200_response__links_stack:
+    ListLlmKeysForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListLlmKeysForAccount_200_response__embedded'
+        _links:
+          type: object
+      type: object
+    GetLlmKeyRequests_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links'
+      type: object
+    GetLlmKeyUsage_200_response:
+      properties:
+        spend:
+          description: Total spend in USD
+          type: number
+        input_tokens:
+          description: Total input (prompt) tokens
+          type: integer
+        output_tokens:
+          description: Total output (completion) tokens
+          type: integer
+        successful_requests:
+          description: Total successful API requests
+          type: integer
+        failed_requests:
+          description: Total failed API requests
+          type: integer
+      type: object
+    GetLlmKeyRequests_200_response__embedded_requests_inner:
+      properties:
+        _id:
+          type: string
+        status:
+          type: string
+        start_time:
+          type: string
+        end_time:
+          type: string
+        model:
+          type: string
+        input_tokens:
+          type: integer
+        output_tokens:
+          type: integer
+        spend:
+          type: number
+      type: object
+    GetLlmKeyRequests_200_response__links:
+      properties:
+        self:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
+        next:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
+        prev:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
+      type: object
+    backup_retention_policy__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    GetLlmKeyRequests_200_response__links_self:
       properties:
         href:
-          format: uri
           type: string
+      type: object
+    GetLlmKeyRequests_200_response__embedded:
+      properties:
+        requests:
+          items:
+            $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded_requests_inner'
+          type: array
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

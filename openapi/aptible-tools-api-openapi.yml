@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Tool Tools API
+  title: Tools API
   description: An API for incident response tool servers
   version: 1.0.0
 security:
@@ -27,14 +27,6 @@ paths:
       - Tools
 components:
   schemas:
-    ToolsList:
-      type: object
-      properties:
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tool'
-      additionalProperties: true
     Tool:
       type: object
       required:
@@ -55,6 +47,14 @@ components:
         human_description:
           type: string
           description: A human-readable description of the tool.
+    ToolsList:
+      type: object
+      properties:
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tool'
+      additionalProperties: true
   securitySchemes:
     bearerAuth:
       type: http

@@ -179,12 +179,20 @@ paths:
       - SshPortalConnections
 components:
   schemas:
-    ssh_portal_connection__links:
+    CreateSshPortalConnection_request:
       properties:
-        operation:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ssh_public_key:
+          type: string
+        command:
+          type: string
+      required:
+      - ssh_public_key
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
       type: object
     ListSshPortalConnectionsForOperation_200_response__embedded:
       properties:
@@ -193,18 +201,14 @@ components:
             $ref: '#/components/schemas/ssh_portal_connection'
           type: array
       type: object
-    error:
+    ListDatabaseImages_200_response__links:
       properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     ssh_portal_connection:
       properties:
@@ -239,24 +243,6 @@ components:
       - ssh_pty
       - ssh_user
       - updated_at
-    CreateSshPortalConnection_request:
-      properties:
-        ssh_public_key:
-          type: string
-        command:
-          type: string
-      required:
-      - ssh_public_key
-      type: object
-    ListDatabaseImages_200_response__links:
-      properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     ListSshPortalConnectionsForOperation_200_response:
       properties:
         _embedded:
@@ -276,11 +262,25 @@ components:
       - per_page
       - total_count
       type: object
-    ListAccountsForStack_200_response__links_stack:
+    ssh_portal_connection__links:
       properties:
-        href:
-          format: uri
+        operation:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
           type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

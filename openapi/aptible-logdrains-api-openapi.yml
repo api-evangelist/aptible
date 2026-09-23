@@ -297,6 +297,45 @@ paths:
       - LogDrains
 components:
   schemas:
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    UpdateLogDrain_request:
+      properties:
+        drain_apps:
+          type: boolean
+          x-omitempty: false
+        drain_databases:
+          type: boolean
+          x-omitempty: false
+        drain_ephemeral_sessions:
+          type: boolean
+          x-omitempty: false
+        drain_proxies:
+          type: boolean
+          x-omitempty: false
+      type: object
+    ListLogDrainsForAccount_200_response__embedded:
+      properties:
+        log_drains:
+          items:
+            $ref: '#/components/schemas/log_drain'
+          type: array
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     log_drain__links:
       properties:
         account:
@@ -324,80 +363,6 @@ components:
       - code
       - error
       - message
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    CreateLogDrain_request:
-      properties:
-        handle:
-          type: string
-        drain_type:
-          type: string
-        drain_host:
-          description: For syslog-tls-tcp drains
-          format: uri
-          type: string
-        drain_port:
-          description: For syslog-tls-tcp drains
-          type: integer
-        drain_username:
-          description: 'DEPRECATED: For legacy Elasticsearch drains'
-          type: string
-        drain_password:
-          description: For Tail drains
-          type: string
-        database:
-          description: For Deploy-hosted Elasticsearch drains
-          format: uri
-          type: string
-        database_id:
-          description: For Deploy-hosted Elasticsearch drains
-          type: integer
-        url:
-          description: For HTTPs Post drains
-          format: uri
-          type: string
-        logging_token:
-          type: string
-        drain_apps:
-          type: boolean
-          x-omitempty: false
-        drain_databases:
-          type: boolean
-          x-omitempty: false
-        drain_ephemeral_sessions:
-          type: boolean
-          x-omitempty: false
-        drain_proxies:
-          type: boolean
-          x-omitempty: false
-      required:
-      - drain_type
-      - handle
-      type: object
-    UpdateLogDrain_request:
-      properties:
-        drain_apps:
-          type: boolean
-          x-omitempty: false
-        drain_databases:
-          type: boolean
-          x-omitempty: false
-        drain_ephemeral_sessions:
-          type: boolean
-          x-omitempty: false
-        drain_proxies:
-          type: boolean
-          x-omitempty: false
       type: object
     log_drain:
       properties:
@@ -485,6 +450,54 @@ components:
       - id
       - status
       - updated_at
+    CreateLogDrain_request:
+      properties:
+        handle:
+          type: string
+        drain_type:
+          type: string
+        drain_host:
+          description: For syslog-tls-tcp drains
+          format: uri
+          type: string
+        drain_port:
+          description: For syslog-tls-tcp drains
+          type: integer
+        drain_username:
+          description: 'DEPRECATED: For legacy Elasticsearch drains'
+          type: string
+        drain_password:
+          description: For Tail drains
+          type: string
+        database:
+          description: For Deploy-hosted Elasticsearch drains
+          format: uri
+          type: string
+        database_id:
+          description: For Deploy-hosted Elasticsearch drains
+          type: integer
+        url:
+          description: For HTTPs Post drains
+          format: uri
+          type: string
+        logging_token:
+          type: string
+        drain_apps:
+          type: boolean
+          x-omitempty: false
+        drain_databases:
+          type: boolean
+          x-omitempty: false
+        drain_ephemeral_sessions:
+          type: boolean
+          x-omitempty: false
+        drain_proxies:
+          type: boolean
+          x-omitempty: false
+      required:
+      - drain_type
+      - handle
+      type: object
     ListLogDrainsForAccount_200_response:
       properties:
         _embedded:
@@ -503,19 +516,6 @@ components:
       - current_page
       - per_page
       - total_count
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    ListLogDrainsForAccount_200_response__embedded:
-      properties:
-        log_drains:
-          items:
-            $ref: '#/components/schemas/log_drain'
-          type: array
       type: object
   securitySchemes:
     token:

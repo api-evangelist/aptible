@@ -3,7 +3,7 @@ info:
   contact:
     email: support@aptible.com
   description: REST API for the core Aptible platform.
-  title: Aptible API v1 Disks API
+  title: Aptible API v1 Vpn Tunnels API
   version: v1
 servers:
 - url: '{baseUrl}'
@@ -14,17 +14,17 @@ servers:
 security:
 - token: []
 tags:
-- name: Disks
+- name: Vpn Tunnels
 paths:
-  /accounts/{account_id}/disks:
+  /stacks/{stack_id}/vpn_tunnels:
     get:
-      description: Returns a paginated list of disks for the specified account.
-      operationId: ListDisksForAccount
+      description: Returns a paginated list of VPN tunnels belonging to the specified stack.
+      operationId: ListVpnTunnelsForStack
       parameters:
-      - description: account_id
+      - description: stack_id
         explode: false
         in: path
-        name: account_id
+        name: stack_id
         required: true
         schema:
           type: integer
@@ -68,7 +68,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ListDisksForAccount_200_response'
+                $ref: '#/components/schemas/ListVpnTunnelsForStack_200_response'
           description: successful
         default:
           content:
@@ -76,13 +76,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
           description: Error response. Often a 4xx or 5xx status code
-      summary: list disks
+      summary: list vpn_tunnels
       tags:
-      - Disks
-  /disks/{id}:
+      - Vpn Tunnels
+  /vpn_tunnels/{id}:
     get:
-      description: Returns the details of a specific disk by ID.
-      operationId: GetDisk
+      description: Returns the details of a specific VPN tunnel by ID.
+      operationId: GetVpnTunnel
       parameters:
       - description: id
         explode: false
@@ -115,7 +115,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/disk'
+                $ref: '#/components/schemas/vpn_tunnel'
           description: successful
         default:
           content:
@@ -123,9 +123,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
           description: Error response. Often a 4xx or 5xx status code
-      summary: show disk
+      summary: show vpn_tunnel
       tags:
-      - Disks
+      - Vpn Tunnels
 components:
   schemas:
     ListAccountsForStack_200_response__links_stack:
@@ -134,65 +134,10 @@ components:
           format: uri
           type: string
       type: object
-    ListDisksForAccount_200_response__embedded:
-      properties:
-        disks:
-          items:
-            $ref: '#/components/schemas/disk'
-          type: array
-      type: object
-    disk__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    disk:
+    vpn_tunnel:
       properties:
         id:
           type: integer
-        handle:
-          type: string
-        ebs_volume_id:
-          type: string
-          x-nullable: true
-        ebs_volume_type:
-          type: string
-          x-nullable: true
-        filesystem:
-          type: string
-        passphrase:
-          type: string
-        key_bytes:
-          type: integer
-        size:
-          type: integer
-        provisioned_iops:
-          type: integer
-        host:
-          type: string
-          x-nullable: true
-        device:
-          type: string
-          x-nullable: true
-        attached:
-          type: boolean
         _type:
           type: string
         created_at:
@@ -201,39 +146,112 @@ components:
         updated_at:
           format: dateTime
           type: string
-        ec2_instance_id:
+        handle:
+          type: string
+        phase_1_alg:
           type: string
           x-nullable: true
-        baseline_iops:
+        phase_1_dh_group:
           type: integer
           x-nullable: true
-        availability_zone:
+        phase_1_lifetime:
+          type: integer
+          x-nullable: true
+        phase_2_alg:
           type: string
           x-nullable: true
-        current_kms_arn:
+        phase_2_dh_group:
+          type: integer
+          x-nullable: true
+        phase_2_lifetime:
+          type: integer
+          x-nullable: true
+        perfect_forward_secrecy:
+          type: boolean
+          x-nullable: true
+        our_gateway:
           type: string
+          x-nullable: true
+        our_networks:
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+          x-nullable: true
+        peer_gateway:
+          type: string
+          x-nullable: true
+        peer_networks:
+          items:
+            items:
+              type: string
+            type: array
+          type: array
           x-nullable: true
         _links:
-          $ref: '#/components/schemas/disk__links'
+          $ref: '#/components/schemas/vpc_peer__links'
       required:
       - _type
-      - attached
-      - availability_zone
-      - baseline_iops
       - created_at
-      - current_kms_arn
-      - device
-      - ebs_volume_id
-      - ebs_volume_type
-      - ec2_instance_id
-      - filesystem
       - handle
-      - host
       - id
-      - key_bytes
-      - provisioned_iops
-      - size
+      - our_gateway
+      - our_networks
+      - peer_gateway
+      - peer_networks
+      - perfect_forward_secrecy
+      - phase_1_alg
+      - phase_1_dh_group
+      - phase_1_lifetime
+      - phase_2_alg
+      - phase_2_dh_group
+      - phase_2_lifetime
       - updated_at
+    ListVpnTunnelsForStack_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListVpnTunnelsForStack_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListVpnTunnelsForStack_200_response__embedded:
+      properties:
+        vpn_tunnels:
+          items:
+            $ref: '#/components/schemas/vpn_tunnel'
+          type: array
+      type: object
+    vpc_peer__links:
+      properties:
+        stack:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__links:
+      properties:
+        stack:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     error:
       properties:
         code:
@@ -246,25 +264,6 @@ components:
       - code
       - error
       - message
-      type: object
-    ListDisksForAccount_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListDisksForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
       type: object
   securitySchemes:
     token:

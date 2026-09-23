@@ -254,64 +254,6 @@ paths:
       - Containers
 components:
   schemas:
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListContainersForRelease_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListContainersForRelease_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListContainersForRelease_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListContainersForRelease_200_response__links:
-      properties:
-        release:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        log_drain:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    container__links:
-      properties:
-        release:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        vhost:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        log_drain:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        metric_drain:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     container:
       properties:
         id:
@@ -377,6 +319,57 @@ components:
       - port_mapping
       - status
       - updated_at
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    container__links:
+      properties:
+        release:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vhost:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        log_drain:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        metric_drain:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListContainersForRelease_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListContainersForRelease_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListContainersForRelease_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListContainersForRelease_200_response__links:
+      properties:
+        release:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        log_drain:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     ListContainersForRelease_200_response__embedded:
       properties:
         containers:
@@ -384,11 +377,18 @@ components:
             $ref: '#/components/schemas/container'
           type: array
       type: object
-    ListAccountsForStack_200_response__links_stack:
+    error:
       properties:
-        href:
-          format: uri
+        code:
+          type: integer
+        error:
           type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

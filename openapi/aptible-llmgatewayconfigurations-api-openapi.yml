@@ -172,10 +172,17 @@ paths:
       - LlmGatewayConfigurations
 components:
   schemas:
-    llm_gateway_configuration__links:
+    UpdateLlmGatewayConfiguration_request:
       properties:
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        spend_limit:
+          description: New monthly spend limit in USD
+          type: number
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
       type: object
     llm_gateway_configuration:
       properties:
@@ -221,6 +228,26 @@ components:
       - team_id
       - trial
       - updated_at
+    llm_gateway_configuration__links:
+      properties:
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    CreateLlmGatewayConfiguration_request:
+      properties:
+        organization_id:
+          description: The organization to enroll
+          type: string
+      required:
+      - organization_id
+      type: object
+    ListLlmGatewayConfigurations_200_response__embedded:
+      properties:
+        llm_gateway_configurations:
+          items:
+            $ref: '#/components/schemas/llm_gateway_configuration'
+          type: array
+      type: object
     error:
       properties:
         code:
@@ -234,39 +261,12 @@ components:
       - error
       - message
       type: object
-    ListLlmGatewayConfigurations_200_response__embedded:
-      properties:
-        llm_gateway_configurations:
-          items:
-            $ref: '#/components/schemas/llm_gateway_configuration'
-          type: array
-      type: object
-    UpdateLlmGatewayConfiguration_request:
-      properties:
-        spend_limit:
-          description: New monthly spend limit in USD
-          type: number
-      type: object
     ListLlmGatewayConfigurations_200_response:
       properties:
         _embedded:
           $ref: '#/components/schemas/ListLlmGatewayConfigurations_200_response__embedded'
         _links:
           type: object
-      type: object
-    CreateLlmGatewayConfiguration_request:
-      properties:
-        organization_id:
-          description: The organization to enroll
-          type: string
-      required:
-      - organization_id
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
       type: object
   securitySchemes:
     token:

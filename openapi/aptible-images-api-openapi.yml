@@ -220,11 +220,46 @@ paths:
       - Images
 components:
   schemas:
-    ListImagesForApp_200_response__embedded:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        images:
+        href:
+          format: uri
+          type: string
+      type: object
+    image__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListImagesForApp_200_response__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDatabaseImages_200_response__embedded:
+      properties:
+        database_images:
           items:
-            $ref: '#/components/schemas/image'
+            $ref: '#/components/schemas/database_image'
           type: array
       type: object
     database_image:
@@ -267,26 +302,6 @@ components:
       - updated_at
       - version
       - visible
-    ListDatabaseImages_200_response__embedded:
-      properties:
-        database_images:
-          items:
-            $ref: '#/components/schemas/database_image'
-          type: array
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
     ListImagesForApp_200_response:
       properties:
         _embedded:
@@ -306,14 +321,51 @@ components:
       - per_page
       - total_count
       type: object
-    image__links:
+    ListDatabaseImages_200_response:
       properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
+        _embedded:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListImagesForApp_200_response__embedded:
+      properties:
+        images:
+          items:
+            $ref: '#/components/schemas/image'
+          type: array
+      type: object
+    database_image__links:
+      properties:
+        database:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
     image:
       properties:
@@ -371,58 +423,6 @@ components:
       - release
       - scan
       - updated_at
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    ListDatabaseImages_200_response__links:
-      properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListImagesForApp_200_response__links:
-      properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListDatabaseImages_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListDatabaseImages_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    database_image__links:
-      properties:
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
   securitySchemes:
     token:
       in: header

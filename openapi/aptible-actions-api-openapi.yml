@@ -5,7 +5,7 @@ info:
 servers:
 - url: /
 tags:
-- name: actions
+- name: Actions
 paths:
   /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/action:
     post:
@@ -62,7 +62,7 @@ paths:
       - HTTPBearer: []
       summary: Action Create
       tags:
-      - actions
+      - Actions
   /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/action/{action_id}:
     get:
       operationId: action_get
@@ -121,23 +121,74 @@ paths:
       - HTTPBearer: []
       summary: Action Get
       tags:
-      - actions
+      - Actions
 components:
   schemas:
-    ActionRequest:
-      example:
-        action_name: action_name
-        parameters: ''
+    ValidationError:
       properties:
-        action_name:
-          title: Action Name
+        loc:
+          items:
+            $ref: '#/components/schemas/Location_inner'
+          title: Location
+          type: array
+        msg:
+          title: Message
           type: string
-        parameters:
-          title: Parameters
+        type:
+          title: Error Type
+          type: string
       required:
-      - action_name
-      title: ActionRequest
+      - loc
+      - msg
+      - type
+      title: ValidationError
       type: object
+    EnvironmentOutput:
+      example:
+        aws_account_id: aws_account_id
+        organization:
+          aws_ou: aws_ou
+          baa_status: baa_status
+          name: name
+          contact_details: '{}'
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        id:
+          format: uuid
+          title: Id
+          type: string
+        organization:
+          $ref: '#/components/schemas/OrganizationOutput'
+        aws_account_id:
+          title: Aws Account Id
+          type: string
+      required:
+      - id
+      - name
+      - organization
+      title: EnvironmentOutput
+      type: object
+    AssetStatus:
+      description: An enumeration.
+      enum:
+      - FAILED
+      - PENDING
+      - REQUESTED
+      - DEPLOYING
+      - DEPLOYED
+      - DESTROYED
+      - DESTROYING
+      title: AssetStatus
+      type: string
     AssetParametersOutput:
       example:
         data: '{}'
@@ -168,6 +219,89 @@ components:
       - DESTROY
       - ACTION
       title: OperationType
+      type: string
+    AssetTerraformOutput:
+      example:
+        data: ''
+        name: name
+        sensitive: true
+        structure: ''
+      properties:
+        name:
+          title: Name
+          type: string
+        sensitive:
+          title: Sensitive
+          type: boolean
+        structure:
+          title: Structure
+        data:
+          title: Data
+      required:
+      - sensitive
+      title: AssetTerraformOutput
+      type: object
+    ConnectionOutput:
+      example:
+        outgoing_connection_asset: null
+        operations:
+        - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          operation_type: ''
+          asset_name: asset_name
+          asset_parameters: '{}'
+          user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset_version: asset_version
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: ''
+        - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          operation_type: ''
+          asset_name: asset_name
+          asset_parameters: '{}'
+          user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset_version: asset_version
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: ''
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        incoming_connection_asset: null
+        status: null
+      properties:
+        id:
+          format: uuid
+          title: Id
+          type: string
+        incoming_connection_asset:
+          $ref: '#/components/schemas/AssetOutput'
+        operations:
+          items:
+            $ref: '#/components/schemas/OperationOutput'
+          title: Operations
+          type: array
+        outgoing_connection_asset:
+          $ref: '#/components/schemas/AssetOutput'
+        status:
+          $ref: '#/components/schemas/ConnectionStatus'
+      required:
+      - id
+      - status
+      title: ConnectionOutput
+      type: object
+    OperationStatus:
+      description: An enumeration.
+      enum:
+      - FAILED
+      - REQUESTED
+      - PENDING
+      - PAUSED
+      - IN_PROGRESS
+      - CANCELED
+      - COMPLETE
+      title: OperationStatus
       type: string
     ActionResponse:
       example:
@@ -298,27 +432,6 @@ components:
       - operation
       title: ActionResponse
       type: object
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          title: Detail
-          type: array
-      title: HTTPValidationError
-      type: object
-    OperationStatus:
-      description: An enumeration.
-      enum:
-      - FAILED
-      - REQUESTED
-      - PENDING
-      - PAUSED
-      - IN_PROGRESS
-      - CANCELED
-      - COMPLETE
-      title: OperationStatus
-      type: string
     OperationOutput:
       example:
         execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -382,48 +495,6 @@ components:
       - user_id
       title: OperationOutput
       type: object
-    AssetTerraformOutput:
-      example:
-        data: ''
-        name: name
-        sensitive: true
-        structure: ''
-      properties:
-        name:
-          title: Name
-          type: string
-        sensitive:
-          title: Sensitive
-          type: boolean
-        structure:
-          title: Structure
-        data:
-          title: Data
-      required:
-      - sensitive
-      title: AssetTerraformOutput
-      type: object
-    AssetStatus:
-      description: An enumeration.
-      enum:
-      - FAILED
-      - PENDING
-      - REQUESTED
-      - DEPLOYING
-      - DEPLOYED
-      - DESTROYED
-      - DESTROYING
-      title: AssetStatus
-      type: string
-    ConnectionStatus:
-      description: An enumeration.
-      enum:
-      - ACTIVE
-      - DELETED
-      - FAILED
-      - PENDING
-      title: ConnectionStatus
-      type: string
     OrganizationOutput:
       example:
         aws_ou: aws_ou
@@ -454,90 +525,6 @@ components:
       - id
       - name
       title: OrganizationOutput
-      type: object
-    ConnectionOutput:
-      example:
-        outgoing_connection_asset: null
-        operations:
-        - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          operation_type: ''
-          asset_name: asset_name
-          asset_parameters: '{}'
-          user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          asset_version: asset_version
-          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          status: ''
-        - execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          operation_type: ''
-          asset_name: asset_name
-          asset_parameters: '{}'
-          user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          asset_version: asset_version
-          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          status: ''
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        incoming_connection_asset: null
-        status: null
-      properties:
-        id:
-          format: uuid
-          title: Id
-          type: string
-        incoming_connection_asset:
-          $ref: '#/components/schemas/AssetOutput'
-        operations:
-          items:
-            $ref: '#/components/schemas/OperationOutput'
-          title: Operations
-          type: array
-        outgoing_connection_asset:
-          $ref: '#/components/schemas/AssetOutput'
-        status:
-          $ref: '#/components/schemas/ConnectionStatus'
-      required:
-      - id
-      - status
-      title: ConnectionOutput
-      type: object
-    EnvironmentOutput:
-      example:
-        aws_account_id: aws_account_id
-        organization:
-          aws_ou: aws_ou
-          baa_status: baa_status
-          name: name
-          contact_details: '{}'
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        description: description
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        name:
-          title: Name
-          type: string
-        description:
-          title: Description
-          type: string
-        id:
-          format: uuid
-          title: Id
-          type: string
-        organization:
-          $ref: '#/components/schemas/OrganizationOutput'
-        aws_account_id:
-          title: Aws Account Id
-          type: string
-      required:
-      - id
-      - name
-      - organization
-      title: EnvironmentOutput
       type: object
     AssetOutput:
       example:
@@ -679,29 +666,42 @@ components:
       - user_defined
       title: AssetOutput
       type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    ConnectionStatus:
+      description: An enumeration.
+      enum:
+      - ACTIVE
+      - DELETED
+      - FAILED
+      - PENDING
+      title: ConnectionStatus
+      type: string
+    ActionRequest:
+      example:
+        action_name: action_name
+        parameters: ''
+      properties:
+        action_name:
+          title: Action Name
+          type: string
+        parameters:
+          title: Parameters
+      required:
+      - action_name
+      title: ActionRequest
+      type: object
     Location_inner:
       anyOf:
       - type: string
       - type: integer
-    ValidationError:
-      properties:
-        loc:
-          items:
-            $ref: '#/components/schemas/Location_inner'
-          title: Location
-          type: array
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-      type: object
   securitySchemes:
     HTTPBearer:
       scheme: bearer

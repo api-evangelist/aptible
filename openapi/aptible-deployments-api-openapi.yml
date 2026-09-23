@@ -183,6 +183,64 @@ paths:
       - Deployments
 components:
   schemas:
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    ListDeployments_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDeployments_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDeployments_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    deployment__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        configuration:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        image:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        source:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDeployments_200_response__links:
+      properties:
+        parent:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDeployments_200_response__embedded:
+      properties:
+        deployments:
+          items:
+            $ref: '#/components/schemas/deployment'
+          type: array
+      type: object
     error:
       properties:
         code:
@@ -278,64 +336,6 @@ components:
       - source_id
       - status
       - updated_at
-    ListDeployments_200_response__embedded:
-      properties:
-        deployments:
-          items:
-            $ref: '#/components/schemas/deployment'
-          type: array
-      type: object
-    ListDeployments_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListDeployments_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDeployments_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListDeployments_200_response__links:
-      properties:
-        parent:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    deployment__links:
-      properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        configuration:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        image:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        source:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        setting:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
   securitySchemes:
     token:
       in: header

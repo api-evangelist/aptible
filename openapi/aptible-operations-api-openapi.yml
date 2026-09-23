@@ -11,11 +11,9 @@ servers:
       default: https://api.aptible.com
       description: Override for local or test environments
 tags:
-- name: operations
+- name: Operations
 paths:
   /api/v1/organizations/{organization_id}/operations/{operation_id}:
-    servers:
-    - url: /
     get:
       operationId: operation_get
       parameters:
@@ -55,10 +53,10 @@ paths:
       - HTTPBearer: []
       summary: Operation Get
       tags:
-      - operations
-  /api/v1/operations/{operation_id}:
+      - Operations
     servers:
     - url: /
+  /api/v1/operations/{operation_id}:
     put:
       operationId: operation_update
       parameters:
@@ -93,14 +91,10 @@ paths:
       - HTTPBearer: []
       summary: Operation Update
       tags:
-      - operations
-  /persistent_disks/{persistent_disk_id}/operations:
+      - Operations
     servers:
-    - url: '{baseUrl}'
-      variables:
-        baseUrl:
-          default: https://api.aptible.com
-          description: Override for local or test environments
+    - url: /
+  /persistent_disks/{persistent_disk_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified persistent disk.
       operationId: ListOperationsForPersistentDisk
@@ -162,7 +156,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -215,16 +209,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /operations/{id}:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /operations/{id}:
     get:
       description: Returns the details of a specific operation by ID.
       operationId: GetOperation
@@ -270,7 +264,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: show operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     patch:
@@ -319,7 +313,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: update operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     put:
@@ -368,16 +362,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: update operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /operations/{operation_id}/logs:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /operations/{operation_id}/logs:
     get:
       description: Returns a presigned URL for downloading the logs of a completed operation.
       operationId: GetOperationLogs
@@ -405,16 +399,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: get operation logs
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /accounts/{account_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /accounts/{account_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified account.
       operationId: ListOperationsForAccount
@@ -476,16 +470,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /apps/{app_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /apps/{app_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified app.
       operationId: ListOperationsForApp
@@ -547,7 +541,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -600,16 +594,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /ephemeral_sessions/{ephemeral_session_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /ephemeral_sessions/{ephemeral_session_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified ephemeral session.
       operationId: ListOperationsForEphemeralSession
@@ -671,7 +665,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -724,16 +718,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /databases/{database_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /databases/{database_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified database.
       operationId: ListOperationsForDatabase
@@ -795,7 +789,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -848,16 +842,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /database_credentials/{database_credential_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /database_credentials/{database_credential_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified database credential.
       operationId: ListOperationsForDatabaseCredential
@@ -919,7 +913,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -972,16 +966,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /services/{service_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /services/{service_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified service.
       operationId: ListOperationsForService
@@ -1043,7 +1037,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -1096,16 +1090,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /vhosts/{vhost_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /vhosts/{vhost_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified vhost.
       operationId: ListOperationsForVhost
@@ -1167,7 +1161,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -1220,16 +1214,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /images/{image_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /images/{image_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified image.
       operationId: ListOperationsForImage
@@ -1291,7 +1285,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -1344,16 +1338,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /log_drains/{log_drain_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /log_drains/{log_drain_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified log drain.
       operationId: ListOperationsForLogDrain
@@ -1415,7 +1409,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -1468,16 +1462,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /metric_drains/{metric_drain_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /metric_drains/{metric_drain_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified metric drain.
       operationId: ListOperationsForMetricDrain
@@ -1539,7 +1533,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -1592,16 +1586,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /backups/{backup_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /backups/{backup_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified backup.
       operationId: ListOperationsForBackup
@@ -1663,7 +1657,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -1716,16 +1710,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /disk_attachments/{disk_attachment_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /disk_attachments/{disk_attachment_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified disk attachment.
       operationId: ListOperationsForDiskAttachment
@@ -1787,7 +1781,7 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
     post:
@@ -1840,16 +1834,16 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: create operation
       tags:
-      - operations
+      - Operations
       security:
       - token: []
-  /llm_keys/{llm_key_id}/operations:
     servers:
     - url: '{baseUrl}'
       variables:
         baseUrl:
           default: https://api.aptible.com
           description: Override for local or test environments
+  /llm_keys/{llm_key_id}/operations:
     get:
       description: Returns a paginated list of operations for the specified LLM key.
       operationId: ListOperationsForLlmKey
@@ -1911,85 +1905,44 @@ paths:
           description: Error response. Often a 4xx or 5xx status code
       summary: list operations
       tags:
-      - operations
+      - Operations
       security:
       - token: []
+    servers:
+    - url: '{baseUrl}'
+      variables:
+        baseUrl:
+          default: https://api.aptible.com
+          description: Override for local or test environments
 components:
   schemas:
-    error:
+    OperationActionUpdate:
       properties:
-        code:
-          type: integer
-        error:
+        action_output:
+          title: Action Output
+        action_errors:
+          title: Action Errors
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
+      title: OperationActionUpdate
       type: object
-    operation__links:
+    ValidationError:
       properties:
-        user:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        resource:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        destination_account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ssh_portal_connections:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ephemeral_sessions:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        code_scan_result:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    UpdateOperation_request:
-      properties:
-        cancelled:
-          type: boolean
-          x-omitempty: false
-      type: object
-    OperationFailure:
-      properties:
-        error:
-          title: Error
-          type: string
-      required:
-      - error
-      title: OperationFailure
-      type: object
-    ListOperationsForPersistentDisk_200_response__embedded:
-      properties:
-        operations:
+        loc:
           items:
-            $ref: '#/components/schemas/operation'
+            $ref: '#/components/schemas/Location_inner'
+          title: Location
           type: array
-      type: object
-    ListOperationsForPersistentDisk_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
       required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
+      - loc
+      - msg
+      - type
+      title: ValidationError
       type: object
     OperationUpdate:
       example:
@@ -2009,6 +1962,160 @@ components:
       - id
       - status
       title: OperationUpdate
+      type: object
+    OperationType:
+      description: An enumeration.
+      enum:
+      - CREATE
+      - UPDATE
+      - DESTROY
+      - ACTION
+      title: OperationType
+      type: string
+    OperationStatus:
+      description: An enumeration.
+      enum:
+      - FAILED
+      - REQUESTED
+      - PENDING
+      - PAUSED
+      - IN_PROGRESS
+      - CANCELED
+      - COMPLETE
+      title: OperationStatus
+      type: string
+    OperationAssetUpdate:
+      properties:
+        terraform_init:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_plan:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_apply:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_plan_failures:
+          title: Terraform Plan Failures
+          type: string
+        terraform_apply_failures:
+          title: Terraform Apply Failures
+          type: string
+      required:
+      - terraform_init
+      title: OperationAssetUpdate
+      type: object
+    OperationOutput:
+      example:
+        execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        operation_type: ''
+        asset_name: asset_name
+        asset_parameters: '{}'
+        user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        asset_version: asset_version
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: ''
+      properties:
+        environment_id:
+          format: uuid
+          title: Environment Id
+          type: string
+        user_id:
+          format: uuid
+          title: User Id
+          type: string
+        organization_id:
+          format: uuid
+          title: Organization Id
+          type: string
+        operation_type:
+          allOf:
+          - $ref: '#/components/schemas/OperationType'
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OperationStatus'
+        asset_name:
+          title: Asset Name
+          type: string
+        asset_id:
+          format: uuid
+          title: Asset Id
+          type: string
+        asset_version:
+          title: Asset Version
+          type: string
+        asset_parameters:
+          title: Asset Parameters
+          type: object
+        id:
+          format: uuid
+          title: Id
+          type: string
+        execution_id:
+          format: uuid
+          title: Execution Id
+          type: string
+      required:
+      - asset_id
+      - asset_name
+      - asset_version
+      - environment_id
+      - id
+      - organization_id
+      - user_id
+      title: OperationOutput
+      type: object
+    OperationTerraformRunUpdate:
+      properties:
+        terraform_stdout:
+          title: Terraform Stdout
+        terraform_stderr:
+          title: Terraform Stderr
+        terraform_return_code:
+          title: Terraform Return Code
+          type: integer
+        terraform_success:
+          title: Terraform Success
+          type: boolean
+      required:
+      - terraform_return_code
+      - terraform_success
+      title: OperationTerraformRunUpdate
+      type: object
+    OperationFailure:
+      properties:
+        error:
+          title: Error
+          type: string
+      required:
+      - error
+      title: OperationFailure
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    Data:
+      anyOf:
+      - $ref: '#/components/schemas/OperationFailure'
+      - $ref: '#/components/schemas/OperationAssetUpdate'
+      - $ref: '#/components/schemas/OperationActionUpdate'
+      title: Data
+    Location_inner:
+      anyOf:
+      - type: string
+      - type: integer
+    ListOperationsForPersistentDisk_200_response__embedded:
+      properties:
+        operations:
+          items:
+            $ref: '#/components/schemas/operation'
+          type: array
       type: object
     ListAccountsForStack_200_response__links_stack:
       properties:
@@ -2129,85 +2236,11 @@ components:
       - type
       title: CreateOperationRequest
       type: object
-    OperationOutput:
-      example:
-        execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        operation_type: ''
-        asset_name: asset_name
-        asset_parameters: '{}'
-        user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        asset_version: asset_version
-        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        status: ''
+    UpdateOperation_request:
       properties:
-        environment_id:
-          format: uuid
-          title: Environment Id
-          type: string
-        user_id:
-          format: uuid
-          title: User Id
-          type: string
-        organization_id:
-          format: uuid
-          title: Organization Id
-          type: string
-        operation_type:
-          allOf:
-          - $ref: '#/components/schemas/OperationType'
-        status:
-          allOf:
-          - $ref: '#/components/schemas/OperationStatus'
-        asset_name:
-          title: Asset Name
-          type: string
-        asset_id:
-          format: uuid
-          title: Asset Id
-          type: string
-        asset_version:
-          title: Asset Version
-          type: string
-        asset_parameters:
-          title: Asset Parameters
-          type: object
-        id:
-          format: uuid
-          title: Id
-          type: string
-        execution_id:
-          format: uuid
-          title: Execution Id
-          type: string
-      required:
-      - asset_id
-      - asset_name
-      - asset_version
-      - environment_id
-      - id
-      - organization_id
-      - user_id
-      title: OperationOutput
-      type: object
-    OperationTerraformRunUpdate:
-      properties:
-        terraform_stdout:
-          title: Terraform Stdout
-        terraform_stderr:
-          title: Terraform Stderr
-        terraform_return_code:
-          title: Terraform Return Code
-          type: integer
-        terraform_success:
-          title: Terraform Success
+        cancelled:
           type: boolean
-      required:
-      - terraform_return_code
-      - terraform_success
-      title: OperationTerraformRunUpdate
+          x-omitempty: false
       type: object
     ListDatabaseImages_200_response__links:
       properties:
@@ -2217,40 +2250,6 @@ components:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ValidationError:
-      properties:
-        loc:
-          items:
-            $ref: '#/components/schemas/Location_inner'
-          title: Location
-          type: array
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-      type: object
-    Data:
-      anyOf:
-      - $ref: '#/components/schemas/OperationFailure'
-      - $ref: '#/components/schemas/OperationAssetUpdate'
-      - $ref: '#/components/schemas/OperationActionUpdate'
-      title: Data
-    OperationActionUpdate:
-      properties:
-        action_output:
-          title: Action Output
-        action_errors:
-          title: Action Errors
-          type: string
-      title: OperationActionUpdate
       type: object
     operation:
       properties:
@@ -2379,57 +2378,58 @@ components:
       - user_email
       - user_name
       - yearly
-    OperationType:
-      description: An enumeration.
-      enum:
-      - CREATE
-      - UPDATE
-      - DESTROY
-      - ACTION
-      title: OperationType
-      type: string
-    OperationStatus:
-      description: An enumeration.
-      enum:
-      - FAILED
-      - REQUESTED
-      - PENDING
-      - PAUSED
-      - IN_PROGRESS
-      - CANCELED
-      - COMPLETE
-      title: OperationStatus
-      type: string
-    Location_inner:
-      anyOf:
-      - type: string
-      - type: integer
-    HTTPValidationError:
+    ListOperationsForPersistentDisk_200_response:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          title: Detail
-          type: array
-      title: HTTPValidationError
+        _embedded:
+          $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
-    OperationAssetUpdate:
+    operation__links:
       properties:
-        terraform_init:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_plan:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_apply:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_plan_failures:
-          title: Terraform Plan Failures
+        user:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        resource:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        destination_account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ssh_portal_connections:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_sessions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code_scan_result:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
           type: string
-        terraform_apply_failures:
-          title: Terraform Apply Failures
+        message:
           type: string
       required:
-      - terraform_init
-      title: OperationAssetUpdate
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     HTTPBearer:

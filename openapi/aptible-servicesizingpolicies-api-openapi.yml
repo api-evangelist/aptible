@@ -310,6 +310,12 @@ paths:
       - ServiceSizingPolicies
 components:
   schemas:
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
     UpdateServiceSizingPolicy_request:
       properties:
         scaling_enabled:
@@ -352,6 +358,63 @@ components:
           type: integer
         use_horizontal_scale:
           type: boolean
+      type: object
+    ListServiceSizingPoliciesForAccount_200_response__embedded:
+      properties:
+        service_sizing_policies:
+          items:
+            $ref: '#/components/schemas/service_sizing_policy'
+          type: array
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    backup_retention_policy__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListServiceSizingPoliciesForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListServiceSizingPoliciesForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
     service_sizing_policy:
       properties:
@@ -444,69 +507,6 @@ components:
       - scaling_enabled
       - updated_at
       - use_horizontal_scale
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListServiceSizingPoliciesForAccount_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListServiceSizingPoliciesForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListServiceSizingPoliciesForAccount_200_response__embedded:
-      properties:
-        service_sizing_policies:
-          items:
-            $ref: '#/components/schemas/service_sizing_policy'
-          type: array
-      type: object
-    backup_retention_policy__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
   securitySchemes:
     token:
       in: header
