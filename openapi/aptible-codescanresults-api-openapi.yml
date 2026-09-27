@@ -203,20 +203,12 @@ paths:
       - CodeScanResults
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
+    ListCodeScanResultsForApp_200_response__embedded:
       properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    code_scan_result__links:
-      properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operation:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code_scan_results:
+          items:
+            $ref: '#/components/schemas/code_scan_result'
+          type: array
       type: object
     CreateCodeScanResult_request:
       properties:
@@ -239,13 +231,6 @@ components:
       - git_commit
       - git_ref
       - operation_id
-      type: object
-    ListCodeScanResultsForApp_200_response__embedded:
-      properties:
-        code_scan_results:
-          items:
-            $ref: '#/components/schemas/code_scan_result'
-          type: array
       type: object
     error:
       properties:
@@ -270,6 +255,40 @@ components:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    code_scan_result__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operation:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListCodeScanResultsForApp_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListCodeScanResultsForApp_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListCodeScanResultsForApp_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
     code_scan_result:
       properties:
@@ -299,25 +318,6 @@ components:
       - id
       - procfile_present
       - updated_at
-    ListCodeScanResultsForApp_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListCodeScanResultsForApp_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListCodeScanResultsForApp_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
   securitySchemes:
     token:
       in: header

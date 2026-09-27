@@ -486,27 +486,6 @@ paths:
       - Vhosts
 components:
   schemas:
-    vhost__links:
-      properties:
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        certificate:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        settings:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_setting:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
     vhost_acme_configuration_challenges_inner_to_inner:
       properties:
         name:
@@ -514,103 +493,10 @@ components:
         legacy:
           type: boolean
       type: object
-    ListVhostsForAccount_200_response:
+    vhost_acme_configuration_challenges_inner_from:
       properties:
-        _embedded:
-          $ref: '#/components/schemas/ListVhostsForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListVhostsForAccount_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    UpdateVhost_request:
-      properties:
-        user_domain:
+        name:
           type: string
-        certificate:
-          type: integer
-        platform:
-          type: string
-        container_port:
-          type: integer
-        container_ports:
-          items:
-            type: integer
-          type: array
-        ip_whitelist:
-          items:
-            type: string
-          type: array
-        shared_fingerprint:
-          type: string
-        shared:
-          type: boolean
-        load_balancing_algorithm_type:
-          type: string
-      type: object
-    vhost_acme_configuration_challenges_inner:
-      properties:
-        method:
-          enum:
-          - http01
-          - dns01
-          type: string
-        from:
-          $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner_from'
-        to:
-          items:
-            $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner_to_inner'
-          type: array
-      type: object
-    CreateVhost_request:
-      properties:
-        type:
-          type: string
-        default:
-          type: boolean
-          x-omitempty: false
-        internal:
-          type: boolean
-          x-omitempty: false
-        certificate:
-          type: integer
-        user_domain:
-          type: string
-        acme:
-          type: boolean
-          x-omitempty: false
-        platform:
-          type: string
-        container_port:
-          type: integer
-        container_ports:
-          items:
-            type: integer
-          type: array
-        ip_whitelist:
-          items:
-            type: string
-          type: array
-        container_exposed_ports:
-          items:
-            type: integer
-          type: array
-        shared:
-          type: boolean
-        load_balancing_algorithm_type:
-          type: string
-      required:
-      - type
       type: object
     vhost:
       properties:
@@ -763,26 +649,6 @@ components:
       - updated_at
       - user_domain
       - virtual_domain
-    ListVhostsForAccount_200_response__links:
-      properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListVhostsForAccount_200_response__embedded:
-      properties:
-        vhosts:
-          items:
-            $ref: '#/components/schemas/vhost'
-          type: array
-      type: object
     error:
       properties:
         code:
@@ -796,6 +662,34 @@ components:
       - error
       - message
       type: object
+    ListVhostsForAccount_200_response__embedded:
+      properties:
+        vhosts:
+          items:
+            $ref: '#/components/schemas/vhost'
+          type: array
+      type: object
+    vhost__links:
+      properties:
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        certificate:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
     vhost_acme_configuration:
       properties:
         names:
@@ -808,10 +702,116 @@ components:
           type: array
       type: object
       x-nullable: true
-    vhost_acme_configuration_challenges_inner_from:
+    vhost_acme_configuration_challenges_inner:
       properties:
-        name:
+        method:
+          enum:
+          - http01
+          - dns01
           type: string
+        from:
+          $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner_from'
+        to:
+          items:
+            $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner_to_inner'
+          type: array
+      type: object
+    CreateVhost_request:
+      properties:
+        type:
+          type: string
+        default:
+          type: boolean
+          x-omitempty: false
+        internal:
+          type: boolean
+          x-omitempty: false
+        certificate:
+          type: integer
+        user_domain:
+          type: string
+        acme:
+          type: boolean
+          x-omitempty: false
+        platform:
+          type: string
+        container_port:
+          type: integer
+        container_ports:
+          items:
+            type: integer
+          type: array
+        ip_whitelist:
+          items:
+            type: string
+          type: array
+        container_exposed_ports:
+          items:
+            type: integer
+          type: array
+        shared:
+          type: boolean
+        load_balancing_algorithm_type:
+          type: string
+      required:
+      - type
+      type: object
+    ListVhostsForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListVhostsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListVhostsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    UpdateVhost_request:
+      properties:
+        user_domain:
+          type: string
+        certificate:
+          type: integer
+        platform:
+          type: string
+        container_port:
+          type: integer
+        container_ports:
+          items:
+            type: integer
+          type: array
+        ip_whitelist:
+          items:
+            type: string
+          type: array
+        shared_fingerprint:
+          type: string
+        shared:
+          type: boolean
+        load_balancing_algorithm_type:
+          type: string
+      type: object
+    ListVhostsForAccount_200_response__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     token:

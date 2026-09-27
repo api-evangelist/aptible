@@ -92,6 +92,46 @@ paths:
       - Maintenances
 components:
   schemas:
+    GetMaintenanceDatabases_200_response__embedded:
+      properties:
+        databases:
+          items:
+            $ref: '#/components/schemas/GetMaintenanceDatabases_200_response__embedded_databases_inner'
+          type: array
+      type: object
+    GetMaintenanceApps_200_response__embedded:
+      properties:
+        apps:
+          items:
+            $ref: '#/components/schemas/GetMaintenanceApps_200_response__embedded_apps_inner'
+          type: array
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    GetMaintenanceDatabases_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/GetMaintenanceDatabases_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          type: object
+      type: object
     GetMaintenanceApps_200_response:
       properties:
         _embedded:
@@ -101,6 +141,31 @@ components:
         per_page:
           type: integer
         current_page:
+          type: integer
+        _links:
+          type: object
+      type: object
+    GetMaintenanceApps_200_response__embedded_apps_inner:
+      properties:
+        id:
+          type: integer
+        handle:
+          type: string
+        _type:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        status:
+          type: string
+        maintenance_deadline:
+          items:
+            format: date-time
+            type: string
+          type: array
+          x-nullable: true
+        account_id:
           type: integer
         _links:
           type: object
@@ -133,71 +198,6 @@ components:
             type: string
           type: array
           x-nullable: true
-        _links:
-          type: object
-      type: object
-    GetMaintenanceApps_200_response__embedded:
-      properties:
-        apps:
-          items:
-            $ref: '#/components/schemas/GetMaintenanceApps_200_response__embedded_apps_inner'
-          type: array
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    GetMaintenanceDatabases_200_response__embedded:
-      properties:
-        databases:
-          items:
-            $ref: '#/components/schemas/GetMaintenanceDatabases_200_response__embedded_databases_inner'
-          type: array
-      type: object
-    GetMaintenanceApps_200_response__embedded_apps_inner:
-      properties:
-        id:
-          type: integer
-        handle:
-          type: string
-        _type:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        status:
-          type: string
-        maintenance_deadline:
-          items:
-            format: date-time
-            type: string
-          type: array
-          x-nullable: true
-        account_id:
-          type: integer
-        _links:
-          type: object
-      type: object
-    GetMaintenanceDatabases_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/GetMaintenanceDatabases_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
         _links:
           type: object
       type: object

@@ -449,6 +449,76 @@ paths:
       - LlmKeys
 components:
   schemas:
+    GetLlmKeyRequests_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links'
+      type: object
+    ListLlmKeysForAccount_200_response__embedded:
+      properties:
+        llm_keys:
+          items:
+            $ref: '#/components/schemas/llm_key'
+          type: array
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    GetLlmKeyRequests_200_response__embedded_requests_inner:
+      properties:
+        _id:
+          type: string
+        status:
+          type: string
+        start_time:
+          type: string
+        end_time:
+          type: string
+        model:
+          type: string
+        input_tokens:
+          type: integer
+        output_tokens:
+          type: integer
+        spend:
+          type: number
+      type: object
+    GetLlmKeyRequests_200_response__links_self:
+      properties:
+        href:
+          type: string
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    GetLlmKeyRequests_200_response__embedded:
+      properties:
+        requests:
+          items:
+            $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded_requests_inner'
+          type: array
+      type: object
     llm_key_current_usage:
       description: Month-to-date usage metrics for this key
       properties:
@@ -469,32 +539,6 @@ components:
           type: integer
       type: object
       x-nullable: true
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    ListLlmKeysForAccount_200_response__embedded:
-      properties:
-        llm_keys:
-          items:
-            $ref: '#/components/schemas/llm_key'
-          type: array
-      type: object
-    ListLlmKeys_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListLlmKeysForAccount_200_response__embedded'
-        _links:
-          type: object
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-      type: object
     llm_key:
       properties:
         id:
@@ -557,25 +601,18 @@ components:
       - revoked_by
       - status
       - updated_at
-    ListLlmKeysForAccount_200_response:
+    ListLlmKeys_200_response:
       properties:
         _embedded:
           $ref: '#/components/schemas/ListLlmKeysForAccount_200_response__embedded'
         _links:
           type: object
-      type: object
-    GetLlmKeyRequests_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded'
         total_count:
           type: integer
         per_page:
           type: integer
         current_page:
           type: integer
-        _links:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links'
       type: object
     GetLlmKeyUsage_200_response:
       properties:
@@ -595,25 +632,6 @@ components:
           description: Total failed API requests
           type: integer
       type: object
-    GetLlmKeyRequests_200_response__embedded_requests_inner:
-      properties:
-        _id:
-          type: string
-        status:
-          type: string
-        start_time:
-          type: string
-        end_time:
-          type: string
-        model:
-          type: string
-        input_tokens:
-          type: integer
-        output_tokens:
-          type: integer
-        spend:
-          type: number
-      type: object
     GetLlmKeyRequests_200_response__links:
       properties:
         self:
@@ -630,30 +648,12 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    GetLlmKeyRequests_200_response__links_self:
+    ListLlmKeysForAccount_200_response:
       properties:
-        href:
-          type: string
-      type: object
-    GetLlmKeyRequests_200_response__embedded:
-      properties:
-        requests:
-          items:
-            $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded_requests_inner'
-          type: array
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
+        _embedded:
+          $ref: '#/components/schemas/ListLlmKeysForAccount_200_response__embedded'
+        _links:
+          type: object
       type: object
   securitySchemes:
     token:

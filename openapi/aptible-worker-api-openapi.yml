@@ -33,6 +33,25 @@ paths:
       - Worker
 components:
   schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            $ref: '#/components/schemas/Location_inner'
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
     HealthCheckFromWorker:
       example:
         execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -60,25 +79,6 @@ components:
       - execution_id
       - message
       title: HealthCheckFromWorker
-      type: object
-    ValidationError:
-      properties:
-        loc:
-          items:
-            $ref: '#/components/schemas/Location_inner'
-          title: Location
-          type: array
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
       type: object
     Location_inner:
       anyOf:

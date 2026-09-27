@@ -317,6 +317,64 @@ paths:
       - Configurations
 components:
   schemas:
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    configuration:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        env:
+          type: object
+        _links:
+          $ref: '#/components/schemas/configuration__links'
+      required:
+      - _type
+      - id
+    ListConfigurationsForApp_200_response__embedded:
+      properties:
+        configurations:
+          items:
+            $ref: '#/components/schemas/configuration'
+          type: array
+      type: object
+    ListCodeScanResultsForApp_200_response__links:
+      properties:
+        resource:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    CreateConfigurationForApp_request:
+      properties:
+        env:
+          description: Mapping of environment variables
+          type: object
+      required:
+      - env
+      type: object
     ListConfigurationsForApp_200_response:
       properties:
         _embedded:
@@ -336,67 +394,9 @@ components:
       - per_page
       - total_count
       type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    configuration:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        env:
-          type: object
-        _links:
-          $ref: '#/components/schemas/configuration__links'
-      required:
-      - _type
-      - id
-    CreateConfigurationForApp_request:
-      properties:
-        env:
-          description: Mapping of environment variables
-          type: object
-      required:
-      - env
-      type: object
-    ListConfigurationsForApp_200_response__embedded:
-      properties:
-        configurations:
-          items:
-            $ref: '#/components/schemas/configuration'
-          type: array
-      type: object
     configuration__links:
       properties:
         resource:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListCodeScanResultsForApp_200_response__links:
-      properties:
-        resource:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'

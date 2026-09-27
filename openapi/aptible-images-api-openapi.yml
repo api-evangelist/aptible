@@ -220,136 +220,11 @@ paths:
       - Images
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
     image__links:
       properties:
         app:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListDatabaseImages_200_response__links:
-      properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListImagesForApp_200_response__links:
-      properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListDatabaseImages_200_response__embedded:
-      properties:
-        database_images:
-          items:
-            $ref: '#/components/schemas/database_image'
-          type: array
-      type: object
-    database_image:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        created_at:
-          format: dateTime
-          type: string
-        updated_at:
-          format: dateTime
-          type: string
-        type:
-          type: string
-        version:
-          type: string
-        discoverable:
-          type: boolean
-        visible:
-          type: boolean
-        default:
-          type: boolean
-        description:
-          type: string
-        docker_repo:
-          type: string
-        _links:
-          $ref: '#/components/schemas/database_image__links'
-      required:
-      - _type
-      - created_at
-      - default
-      - description
-      - discoverable
-      - docker_repo
-      - id
-      - type
-      - updated_at
-      - version
-      - visible
-    ListImagesForApp_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListImagesForApp_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListImagesForApp_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListDatabaseImages_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListDatabaseImages_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListImagesForApp_200_response__embedded:
-      properties:
-        images:
-          items:
-            $ref: '#/components/schemas/image'
-          type: array
-      type: object
-    database_image__links:
-      properties:
-        database:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -366,6 +241,26 @@ components:
       - code
       - error
       - message
+      type: object
+    database_image__links:
+      properties:
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListImagesForApp_200_response__embedded:
+      properties:
+        images:
+          items:
+            $ref: '#/components/schemas/image'
+          type: array
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
       type: object
     image:
       properties:
@@ -423,6 +318,111 @@ components:
       - release
       - scan
       - updated_at
+    ListDatabaseImages_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListDatabaseImages_200_response__embedded:
+      properties:
+        database_images:
+          items:
+            $ref: '#/components/schemas/database_image'
+          type: array
+      type: object
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListImagesForApp_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListImagesForApp_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListImagesForApp_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    database_image:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        type:
+          type: string
+        version:
+          type: string
+        discoverable:
+          type: boolean
+        visible:
+          type: boolean
+        default:
+          type: boolean
+        description:
+          type: string
+        docker_repo:
+          type: string
+        _links:
+          $ref: '#/components/schemas/database_image__links'
+      required:
+      - _type
+      - created_at
+      - default
+      - description
+      - discoverable
+      - docker_repo
+      - id
+      - type
+      - updated_at
+      - version
+      - visible
+    ListImagesForApp_200_response__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
   securitySchemes:
     token:
       in: header

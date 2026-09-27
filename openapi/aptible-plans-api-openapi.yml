@@ -120,11 +120,10 @@ paths:
       - Plans
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
+    llm_gateway_configuration__links:
       properties:
-        href:
-          format: uri
-          type: string
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     plan:
       properties:
@@ -180,19 +179,18 @@ components:
       - included_vhosts
       - updated_at
       - vhost_limit
-    llm_gateway_configuration__links:
+    error:
       properties:
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListDatabaseImages_200_response__links:
-      properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
     ListPlans_200_response:
       properties:
@@ -220,18 +218,20 @@ components:
             $ref: '#/components/schemas/plan'
           type: array
       type: object
-    error:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
+      type: object
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     token:

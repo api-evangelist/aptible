@@ -521,11 +521,67 @@ paths:
       - Settings
 components:
   schemas:
+    ListSettingsForApp_200_response__embedded:
+      properties:
+        settings:
+          items:
+            $ref: '#/components/schemas/setting'
+          type: array
+      type: object
+    CreateSettingForApp_request:
+      properties:
+        settings:
+          description: Mapping of non-sensitive key-value pairs
+          type: object
+        sensitive_settings:
+          description: Mapping of sensitive key-value pairs
+          type: object
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    setting:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        settings:
+          type: object
+        sensitive_settings:
+          type: object
+        _links:
+          $ref: '#/components/schemas/configuration__links'
+      required:
+      - _type
+      - id
+      - settings
     ListAccountsForStack_200_response__links_stack:
       properties:
         href:
           format: uri
           type: string
+      type: object
+    ListCodeScanResultsForApp_200_response__links:
+      properties:
+        resource:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     ListSettingsForApp_200_response:
       properties:
@@ -546,68 +602,12 @@ components:
       - per_page
       - total_count
       type: object
-    CreateSettingForApp_request:
-      properties:
-        settings:
-          description: Mapping of non-sensitive key-value pairs
-          type: object
-        sensitive_settings:
-          description: Mapping of sensitive key-value pairs
-          type: object
-      type: object
-    setting:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        settings:
-          type: object
-        sensitive_settings:
-          type: object
-        _links:
-          $ref: '#/components/schemas/configuration__links'
-      required:
-      - _type
-      - id
-      - settings
     configuration__links:
       properties:
         resource:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListCodeScanResultsForApp_200_response__links:
-      properties:
-        resource:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListSettingsForApp_200_response__embedded:
-      properties:
-        settings:
-          items:
-            $ref: '#/components/schemas/setting'
-          type: array
       type: object
   securitySchemes:
     token:

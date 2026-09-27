@@ -298,17 +298,6 @@ paths:
       - Certificates
 components:
   schemas:
-    PatchCertificate_request:
-      properties:
-        certificate_arn:
-          type: string
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
     ListActivityReportsForAccount_200_response__links:
       properties:
         account:
@@ -320,15 +309,24 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    CreateCertificate_request:
+    error:
       properties:
-        certificate_body:
+        code:
+          type: integer
+        error:
           type: string
-        private_key:
+        message:
           type: string
       required:
-      - certificate_body
-      - private_key
+      - code
+      - error
+      - message
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
       type: object
     ListCertificatesForAccount_200_response:
       properties:
@@ -348,6 +346,36 @@ components:
       - current_page
       - per_page
       - total_count
+      type: object
+    ListCertificatesForAccount_200_response__embedded:
+      properties:
+        certificates:
+          items:
+            $ref: '#/components/schemas/certificate'
+          type: array
+      type: object
+    certificate__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vhosts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        apps:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    CreateCertificate_request:
+      properties:
+        certificate_body:
+          type: string
+        private_key:
+          type: string
+      required:
+      - certificate_body
+      - private_key
       type: object
     certificate:
       properties:
@@ -443,38 +471,10 @@ components:
       - subject_state
       - trusted
       - updated_at
-    ListCertificatesForAccount_200_response__embedded:
+    PatchCertificate_request:
       properties:
-        certificates:
-          items:
-            $ref: '#/components/schemas/certificate'
-          type: array
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
+        certificate_arn:
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    certificate__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        vhosts:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        apps:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     token:

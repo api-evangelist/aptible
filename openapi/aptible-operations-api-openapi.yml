@@ -1916,92 +1916,6 @@ paths:
           description: Override for local or test environments
 components:
   schemas:
-    OperationActionUpdate:
-      properties:
-        action_output:
-          title: Action Output
-        action_errors:
-          title: Action Errors
-          type: string
-      title: OperationActionUpdate
-      type: object
-    ValidationError:
-      properties:
-        loc:
-          items:
-            $ref: '#/components/schemas/Location_inner'
-          title: Location
-          type: array
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-      type: object
-    OperationUpdate:
-      example:
-        data: null
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        status: null
-      properties:
-        id:
-          format: uuid
-          title: Id
-          type: string
-        status:
-          $ref: '#/components/schemas/OperationStatus'
-        data:
-          $ref: '#/components/schemas/Data'
-      required:
-      - id
-      - status
-      title: OperationUpdate
-      type: object
-    OperationType:
-      description: An enumeration.
-      enum:
-      - CREATE
-      - UPDATE
-      - DESTROY
-      - ACTION
-      title: OperationType
-      type: string
-    OperationStatus:
-      description: An enumeration.
-      enum:
-      - FAILED
-      - REQUESTED
-      - PENDING
-      - PAUSED
-      - IN_PROGRESS
-      - CANCELED
-      - COMPLETE
-      title: OperationStatus
-      type: string
-    OperationAssetUpdate:
-      properties:
-        terraform_init:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_plan:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_apply:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_plan_failures:
-          title: Terraform Plan Failures
-          type: string
-        terraform_apply_failures:
-          title: Terraform Apply Failures
-          type: string
-      required:
-      - terraform_init
-      title: OperationAssetUpdate
-      type: object
     OperationOutput:
       example:
         execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -2065,6 +1979,114 @@ components:
       - user_id
       title: OperationOutput
       type: object
+    OperationUpdate:
+      example:
+        data: null
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: null
+      properties:
+        id:
+          format: uuid
+          title: Id
+          type: string
+        status:
+          $ref: '#/components/schemas/OperationStatus'
+        data:
+          $ref: '#/components/schemas/Data'
+      required:
+      - id
+      - status
+      title: OperationUpdate
+      type: object
+    OperationActionUpdate:
+      properties:
+        action_output:
+          title: Action Output
+        action_errors:
+          title: Action Errors
+          type: string
+      title: OperationActionUpdate
+      type: object
+    OperationFailure:
+      properties:
+        error:
+          title: Error
+          type: string
+      required:
+      - error
+      title: OperationFailure
+      type: object
+    OperationStatus:
+      description: An enumeration.
+      enum:
+      - FAILED
+      - REQUESTED
+      - PENDING
+      - PAUSED
+      - IN_PROGRESS
+      - CANCELED
+      - COMPLETE
+      title: OperationStatus
+      type: string
+    ValidationError:
+      properties:
+        loc:
+          items:
+            $ref: '#/components/schemas/Location_inner'
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    OperationType:
+      description: An enumeration.
+      enum:
+      - CREATE
+      - UPDATE
+      - DESTROY
+      - ACTION
+      title: OperationType
+      type: string
+    OperationAssetUpdate:
+      properties:
+        terraform_init:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_plan:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_apply:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_plan_failures:
+          title: Terraform Plan Failures
+          type: string
+        terraform_apply_failures:
+          title: Terraform Apply Failures
+          type: string
+      required:
+      - terraform_init
+      title: OperationAssetUpdate
+      type: object
+    Location_inner:
+      anyOf:
+      - type: string
+      - type: integer
     OperationTerraformRunUpdate:
       properties:
         terraform_stdout:
@@ -2082,34 +2104,12 @@ components:
       - terraform_success
       title: OperationTerraformRunUpdate
       type: object
-    OperationFailure:
-      properties:
-        error:
-          title: Error
-          type: string
-      required:
-      - error
-      title: OperationFailure
-      type: object
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          title: Detail
-          type: array
-      title: HTTPValidationError
-      type: object
     Data:
       anyOf:
       - $ref: '#/components/schemas/OperationFailure'
       - $ref: '#/components/schemas/OperationAssetUpdate'
       - $ref: '#/components/schemas/OperationActionUpdate'
       title: Data
-    Location_inner:
-      anyOf:
-      - type: string
-      - type: integer
     ListOperationsForPersistentDisk_200_response__embedded:
       properties:
         operations:
@@ -2117,139 +2117,24 @@ components:
             $ref: '#/components/schemas/operation'
           type: array
       type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    CreateOperationRequest:
-      example:
-        container_size: 1
-        certificate: certificate
-        interactive: true
-        instance_profile: instance_profile
-        type: type
-        docker_ref: docker_ref
-        container_count: 6
-        pitr_days: 3
-        keep_final: true
-        make_copy: true
-        key_arn: key_arn
-        destination_account: https://openapi-generator.tech
-        settings:
-          key: settings
-        destination_account_id: 5
-        sensitive_settings:
-          key: sensitive_settings
-        enable_pitr: true
-        destination_region: destination_region
-        disk_size: 0
-        handle: handle
-        private_key: private_key
-        env:
-          key: env
-        command: command
-        automated: true
-        provisioned_iops: 5
-        daily: 2
-        enable_backups: true
-        git_ref: git_ref
-        monthly: 7
-        yearly: 9
-      properties:
-        type:
-          type: string
-        git_ref:
-          type: string
-        disk_size:
-          type: integer
-        container_count:
-          type: integer
-          x-omitempty: false
-        container_size:
-          type: integer
-        command:
-          type: string
-        env:
-          additionalProperties:
-            type: string
-          type: object
-        handle:
-          type: string
-        certificate:
-          type: string
-        private_key:
-          type: string
-        destination_region:
-          type: string
-        interactive:
-          type: boolean
-          x-omitempty: false
-        destination_account:
-          format: uri
-          type: string
-        destination_account_id:
-          type: integer
-        docker_ref:
-          type: string
-        automated:
-          type: boolean
-          x-omitempty: false
-        key_arn:
-          type: string
-        instance_profile:
-          type: string
-        provisioned_iops:
-          type: integer
-        daily:
-          type: integer
-        monthly:
-          type: integer
-        yearly:
-          type: integer
-        pitr_days:
-          type: integer
-        make_copy:
-          type: boolean
-          x-omitempty: false
-        keep_final:
-          type: boolean
-          x-omitempty: false
-        enable_backups:
-          type: boolean
-          x-omitempty: false
-        enable_pitr:
-          type: boolean
-          x-omitempty: false
-        settings:
-          additionalProperties:
-            type: string
-          description: Non-sensitive settings for the operation
-          type: object
-        sensitive_settings:
-          additionalProperties:
-            type: string
-          description: Sensitive settings for the operation (encrypted)
-          type: object
-      required:
-      - type
-      title: CreateOperationRequest
-      type: object
     UpdateOperation_request:
       properties:
         cancelled:
           type: boolean
           x-omitempty: false
       type: object
-    ListDatabaseImages_200_response__links:
+    error:
       properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
     operation:
       properties:
@@ -2378,6 +2263,12 @@ components:
       - user_email
       - user_name
       - yearly
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
     ListOperationsForPersistentDisk_200_response:
       properties:
         _embedded:
@@ -2418,18 +2309,127 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    error:
+    ListDatabaseImages_200_response__links:
       properties:
-        code:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    CreateOperationRequest:
+      example:
+        container_size: 1
+        certificate: certificate
+        interactive: true
+        instance_profile: instance_profile
+        type: type
+        docker_ref: docker_ref
+        container_count: 6
+        pitr_days: 3
+        keep_final: true
+        make_copy: true
+        key_arn: key_arn
+        destination_account: https://openapi-generator.tech
+        settings:
+          key: settings
+        destination_account_id: 5
+        sensitive_settings:
+          key: sensitive_settings
+        enable_pitr: true
+        destination_region: destination_region
+        disk_size: 0
+        handle: handle
+        private_key: private_key
+        env:
+          key: env
+        command: command
+        automated: true
+        provisioned_iops: 5
+        daily: 2
+        enable_backups: true
+        git_ref: git_ref
+        monthly: 7
+        yearly: 9
+      properties:
+        type:
+          type: string
+        git_ref:
+          type: string
+        disk_size:
           type: integer
-        error:
+        container_count:
+          type: integer
+          x-omitempty: false
+        container_size:
+          type: integer
+        command:
           type: string
-        message:
+        env:
+          additionalProperties:
+            type: string
+          type: object
+        handle:
           type: string
+        certificate:
+          type: string
+        private_key:
+          type: string
+        destination_region:
+          type: string
+        interactive:
+          type: boolean
+          x-omitempty: false
+        destination_account:
+          format: uri
+          type: string
+        destination_account_id:
+          type: integer
+        docker_ref:
+          type: string
+        automated:
+          type: boolean
+          x-omitempty: false
+        key_arn:
+          type: string
+        instance_profile:
+          type: string
+        provisioned_iops:
+          type: integer
+        daily:
+          type: integer
+        monthly:
+          type: integer
+        yearly:
+          type: integer
+        pitr_days:
+          type: integer
+        make_copy:
+          type: boolean
+          x-omitempty: false
+        keep_final:
+          type: boolean
+          x-omitempty: false
+        enable_backups:
+          type: boolean
+          x-omitempty: false
+        enable_pitr:
+          type: boolean
+          x-omitempty: false
+        settings:
+          additionalProperties:
+            type: string
+          description: Non-sensitive settings for the operation
+          type: object
+        sensitive_settings:
+          additionalProperties:
+            type: string
+          description: Sensitive settings for the operation (encrypted)
+          type: object
       required:
-      - code
-      - error
-      - message
+      - type
+      title: CreateOperationRequest
       type: object
   securitySchemes:
     HTTPBearer:

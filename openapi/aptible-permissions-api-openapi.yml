@@ -258,49 +258,6 @@ paths:
       - Permissions
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    ListPermissionsForAccount_200_response__embedded:
-      properties:
-        permissions:
-          items:
-            $ref: '#/components/schemas/permission'
-          type: array
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    CreatePermission_request:
-      properties:
-        role:
-          format: uuid
-          type: string
-        scope:
-          enum:
-          - read
-          - admin
-          - observability
-          - deploy
-          - sensitive
-          - tunnel
-          - destroy
-          type: string
-      required:
-      - role
-      - scope
-      type: object
     ListPermissionsForAccount_200_response:
       properties:
         _embedded:
@@ -320,15 +277,6 @@ components:
       - per_page
       - total_count
       type: object
-    permission__links:
-      properties:
-        role:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     permission:
       properties:
         id:
@@ -343,6 +291,43 @@ components:
       - _type
       - id
       - scope
+    CreatePermission_request:
+      properties:
+        role:
+          format: uuid
+          type: string
+        scope:
+          enum:
+          - read
+          - admin
+          - observability
+          - deploy
+          - sensitive
+          - tunnel
+          - destroy
+          type: string
+      required:
+      - role
+      - scope
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListPermissionsForAccount_200_response__embedded:
+      properties:
+        permissions:
+          items:
+            $ref: '#/components/schemas/permission'
+          type: array
+      type: object
     error:
       properties:
         code:
@@ -355,6 +340,21 @@ components:
       - code
       - error
       - message
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    permission__links:
+      properties:
+        role:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     token:

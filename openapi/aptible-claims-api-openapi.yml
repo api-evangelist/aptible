@@ -175,6 +175,18 @@ components:
       - error
       - message
       type: object
+    CreateApp_request:
+      properties:
+        handle:
+          type: string
+      required:
+      - handle
+      type: object
+    CreateClaimForType_request:
+      properties:
+        handle:
+          type: string
+      type: object
     CreateClaim_request:
       properties:
         type:
@@ -187,18 +199,6 @@ components:
           type: string
       required:
       - type
-      type: object
-    CreateApp_request:
-      properties:
-        handle:
-          type: string
-      required:
-      - handle
-      type: object
-    CreateClaimForType_request:
-      properties:
-        handle:
-          type: string
       type: object
   securitySchemes:
     token:

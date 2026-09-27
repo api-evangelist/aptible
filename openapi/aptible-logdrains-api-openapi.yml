@@ -297,72 +297,12 @@ paths:
       - LogDrains
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    UpdateLogDrain_request:
-      properties:
-        drain_apps:
-          type: boolean
-          x-omitempty: false
-        drain_databases:
-          type: boolean
-          x-omitempty: false
-        drain_ephemeral_sessions:
-          type: boolean
-          x-omitempty: false
-        drain_proxies:
-          type: boolean
-          x-omitempty: false
-      type: object
     ListLogDrainsForAccount_200_response__embedded:
       properties:
         log_drains:
           items:
             $ref: '#/components/schemas/log_drain'
           type: array
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    log_drain__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ephemeral_containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
     log_drain:
       properties:
@@ -450,6 +390,45 @@ components:
       - id
       - status
       - updated_at
+    log_drain__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
     CreateLogDrain_request:
       properties:
         handle:
@@ -497,6 +476,27 @@ components:
       required:
       - drain_type
       - handle
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    UpdateLogDrain_request:
+      properties:
+        drain_apps:
+          type: boolean
+          x-omitempty: false
+        drain_databases:
+          type: boolean
+          x-omitempty: false
+        drain_ephemeral_sessions:
+          type: boolean
+          x-omitempty: false
+        drain_proxies:
+          type: boolean
+          x-omitempty: false
       type: object
     ListLogDrainsForAccount_200_response:
       properties:

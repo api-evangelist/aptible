@@ -128,46 +128,16 @@ paths:
       - Releases
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    release__links:
+    ListDiskAttachmentsForService_200_response__links:
       properties:
         service:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        containers:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListReleasesForService_200_response__embedded:
-      properties:
-        releases:
-          items:
-            $ref: '#/components/schemas/release'
-          type: array
-      type: object
-    ListReleasesForService_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListReleasesForService_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDiskAttachmentsForService_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
       type: object
     release:
       properties:
@@ -196,17 +166,6 @@ components:
       - docker_repo
       - id
       - updated_at
-    ListDiskAttachmentsForService_200_response__links:
-      properties:
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     error:
       properties:
         code:
@@ -219,6 +178,47 @@ components:
       - code
       - error
       - message
+      type: object
+    ListReleasesForService_200_response__embedded:
+      properties:
+        releases:
+          items:
+            $ref: '#/components/schemas/release'
+          type: array
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    release__links:
+      properties:
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListReleasesForService_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListReleasesForService_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDiskAttachmentsForService_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
   securitySchemes:
     token:

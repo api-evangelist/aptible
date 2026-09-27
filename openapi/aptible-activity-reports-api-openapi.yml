@@ -171,6 +171,30 @@ paths:
       - Activity Reports
 components:
   schemas:
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
     ListAccountsForStack_200_response__links_stack:
       properties:
         href:
@@ -207,13 +231,11 @@ components:
       - id
       - starts_at
       - updated_at
-    ListActivityReportsForAccount_200_response__links:
+    activity_report__links:
       properties:
+        download:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -243,28 +265,6 @@ components:
       - current_page
       - per_page
       - total_count
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    activity_report__links:
-      properties:
-        download:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     token:
