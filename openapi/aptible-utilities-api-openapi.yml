@@ -53,6 +53,15 @@ paths:
       - Utilities
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
     ValidationError:
       properties:
         loc:
@@ -76,15 +85,6 @@ components:
       anyOf:
       - type: string
       - type: integer
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          title: Detail
-          type: array
-      title: HTTPValidationError
-      type: object
   securitySchemes:
     HTTPBearer:
       scheme: bearer

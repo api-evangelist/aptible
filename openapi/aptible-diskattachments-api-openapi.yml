@@ -317,39 +317,90 @@ paths:
       - DiskAttachments
 components:
   schemas:
-    disk_attachment:
+    service:
       properties:
         id:
           type: integer
         _type:
           type: string
-        mount_point:
+        handle:
           type: string
-        status:
+        docker_repo:
           type: string
+          x-nullable: true
+        docker_ref:
+          type: string
+          x-nullable: true
+        process_type:
+          type: string
+        command:
+          type: string
+        container_count:
+          type: integer
         created_at:
           format: dateTime
           type: string
         updated_at:
           format: dateTime
           type: string
-        deleted_at:
-          format: dateTime
-          type: string
+        container_memory_limit_mb:
+          type: integer
           x-nullable: true
-        _embedded:
-          $ref: '#/components/schemas/disk_attachment__embedded'
+        instance_class:
+          type: string
+        force_zero_downtime:
+          type: boolean
+        naive_health_check:
+          type: boolean
+        restart_free_scaling:
+          type: boolean
+        stop_timeout:
+          type: integer
+          x-nullable: true
         _links:
-          $ref: '#/components/schemas/disk_attachment__links'
+          $ref: '#/components/schemas/service__links'
+      required:
+      - _type
+      - command
+      - container_count
+      - container_memory_limit_mb
+      - created_at
+      - docker_ref
+      - docker_repo
+      - force_zero_downtime
+      - handle
+      - id
+      - instance_class
+      - naive_health_check
+      - process_type
+      - restart_free_scaling
+      - stop_timeout
+      - updated_at
+    ListDiskAttachmentsForPersistentDisk_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDiskAttachmentsForPersistentDisk_200_response__links'
       required:
       - _embedded
-      - _type
-      - created_at
-      - deleted_at
-      - id
-      - mount_point
-      - status
-      - updated_at
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
     service__links:
       properties:
         account:
@@ -372,13 +423,6 @@ components:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListDiskAttachmentsForAccount_200_response__embedded:
-      properties:
-        disk_attachments:
-          items:
-            $ref: '#/components/schemas/disk_attachment'
-          type: array
       type: object
     persistent_disk:
       properties:
@@ -447,9 +491,13 @@ components:
       - size
       - status
       - updated_at
-    persistent_disk__links:
+    disk_attachment__links:
       properties:
         account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        persistent_disk:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         operations:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -460,6 +508,144 @@ components:
       properties:
         persistent_disk:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDiskAttachmentsForService_200_response__links:
+      properties:
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDiskAttachmentsForAccount_200_response__embedded:
+      properties:
+        disk_attachments:
+          items:
+            $ref: '#/components/schemas/disk_attachment'
+          type: array
+      type: object
+    persistent_disk__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDiskAttachments_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    disk_attachment:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        mount_point:
+          type: string
+        status:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        deleted_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        _embedded:
+          $ref: '#/components/schemas/disk_attachment__embedded'
+        _links:
+          $ref: '#/components/schemas/disk_attachment__links'
+      required:
+      - _embedded
+      - _type
+      - created_at
+      - deleted_at
+      - id
+      - mount_point
+      - status
+      - updated_at
+    disk_attachment__embedded:
+      properties:
+        service:
+          $ref: '#/components/schemas/service'
+        persistent_disk:
+          $ref: '#/components/schemas/persistent_disk'
+      type: object
+    ListDiskAttachmentsForService_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDiskAttachmentsForService_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListDatabaseImages_200_response__links:
+      properties:
         next:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         prev:
@@ -485,192 +671,6 @@ components:
       - current_page
       - per_page
       - total_count
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListDiskAttachmentsForService_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDiskAttachmentsForService_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListDiskAttachmentsForService_200_response__links:
-      properties:
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    disk_attachment__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        persistent_disk:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    service:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        handle:
-          type: string
-        docker_repo:
-          type: string
-          x-nullable: true
-        docker_ref:
-          type: string
-          x-nullable: true
-        process_type:
-          type: string
-        command:
-          type: string
-        container_count:
-          type: integer
-        created_at:
-          format: dateTime
-          type: string
-        updated_at:
-          format: dateTime
-          type: string
-        container_memory_limit_mb:
-          type: integer
-          x-nullable: true
-        instance_class:
-          type: string
-        force_zero_downtime:
-          type: boolean
-        naive_health_check:
-          type: boolean
-        restart_free_scaling:
-          type: boolean
-        stop_timeout:
-          type: integer
-          x-nullable: true
-        _links:
-          $ref: '#/components/schemas/service__links'
-      required:
-      - _type
-      - command
-      - container_count
-      - container_memory_limit_mb
-      - created_at
-      - docker_ref
-      - docker_repo
-      - force_zero_downtime
-      - handle
-      - id
-      - instance_class
-      - naive_health_check
-      - process_type
-      - restart_free_scaling
-      - stop_timeout
-      - updated_at
-    ListDiskAttachments_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListDatabaseImages_200_response__links:
-      properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListDiskAttachmentsForPersistentDisk_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListDiskAttachmentsForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDiskAttachmentsForPersistentDisk_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    disk_attachment__embedded:
-      properties:
-        service:
-          $ref: '#/components/schemas/service'
-        persistent_disk:
-          $ref: '#/components/schemas/persistent_disk'
       type: object
   securitySchemes:
     token:

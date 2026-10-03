@@ -128,6 +128,31 @@ paths:
       - VpcPeers
 components:
   schemas:
+    ListVpcPeersForStack_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListVpcPeersForStack_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
     vpc_peer:
       properties:
         id:
@@ -162,13 +187,6 @@ components:
       - peer_account_id
       - peer_vpc_id
       - updated_at
-    ListVpcPeersForStack_200_response__embedded:
-      properties:
-        vpc_peers:
-          items:
-            $ref: '#/components/schemas/vpc_peer'
-          type: array
-      type: object
     ListAccountsForStack_200_response__links:
       properties:
         stack:
@@ -179,6 +197,13 @@ components:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListVpcPeersForStack_200_response__embedded:
+      properties:
+        vpc_peers:
+          items:
+            $ref: '#/components/schemas/vpc_peer'
+          type: array
       type: object
     vpc_peer__links:
       properties:
@@ -199,31 +224,6 @@ components:
       - code
       - error
       - message
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    ListVpcPeersForStack_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListVpcPeersForStack_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
       type: object
   securitySchemes:
     token:

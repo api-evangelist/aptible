@@ -128,17 +128,6 @@ paths:
       - Releases
 components:
   schemas:
-    ListDiskAttachmentsForService_200_response__links:
-      properties:
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     release:
       properties:
         id:
@@ -166,18 +155,11 @@ components:
       - docker_repo
       - id
       - updated_at
-    error:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
     ListReleasesForService_200_response__embedded:
       properties:
@@ -185,21 +167,6 @@ components:
           items:
             $ref: '#/components/schemas/release'
           type: array
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    release__links:
-      properties:
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     ListReleasesForService_200_response:
       properties:
@@ -219,6 +186,39 @@ components:
       - current_page
       - per_page
       - total_count
+      type: object
+    ListDiskAttachmentsForService_200_response__links:
+      properties:
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    release__links:
+      properties:
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

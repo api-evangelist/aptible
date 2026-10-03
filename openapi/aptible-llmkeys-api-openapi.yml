@@ -449,19 +449,6 @@ paths:
       - LlmKeys
 components:
   schemas:
-    GetLlmKeyRequests_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links'
-      type: object
     ListLlmKeysForAccount_200_response__embedded:
       properties:
         llm_keys:
@@ -482,63 +469,6 @@ components:
       - error
       - message
       type: object
-    GetLlmKeyRequests_200_response__embedded_requests_inner:
-      properties:
-        _id:
-          type: string
-        status:
-          type: string
-        start_time:
-          type: string
-        end_time:
-          type: string
-        model:
-          type: string
-        input_tokens:
-          type: integer
-        output_tokens:
-          type: integer
-        spend:
-          type: number
-      type: object
-    GetLlmKeyRequests_200_response__links_self:
-      properties:
-        href:
-          type: string
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    GetLlmKeyRequests_200_response__embedded:
-      properties:
-        requests:
-          items:
-            $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded_requests_inner'
-          type: array
-      type: object
-    llm_key_current_usage:
-      description: Month-to-date usage metrics for this key
-      properties:
-        spend:
-          description: Total spend in USD
-          type: number
-        input_tokens:
-          description: Total input (prompt) tokens
-          type: integer
-        output_tokens:
-          description: Total output (completion) tokens
-          type: integer
-        successful_requests:
-          description: Total successful API requests
-          type: integer
-        failed_requests:
-          description: Total failed API requests
-          type: integer
-      type: object
-      x-nullable: true
     llm_key:
       properties:
         id:
@@ -601,6 +531,92 @@ components:
       - revoked_by
       - status
       - updated_at
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    GetLlmKeyRequests_200_response__links_self:
+      properties:
+        href:
+          type: string
+      type: object
+    GetLlmKeyRequests_200_response__embedded_requests_inner:
+      properties:
+        _id:
+          type: string
+        status:
+          type: string
+        start_time:
+          type: string
+        end_time:
+          type: string
+        model:
+          type: string
+        input_tokens:
+          type: integer
+        output_tokens:
+          type: integer
+        spend:
+          type: number
+      type: object
+    GetLlmKeyRequests_200_response__embedded:
+      properties:
+        requests:
+          items:
+            $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded_requests_inner'
+          type: array
+      type: object
+    GetLlmKeyRequests_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links'
+      type: object
+    llm_key_current_usage:
+      description: Month-to-date usage metrics for this key
+      properties:
+        spend:
+          description: Total spend in USD
+          type: number
+        input_tokens:
+          description: Total input (prompt) tokens
+          type: integer
+        output_tokens:
+          description: Total output (completion) tokens
+          type: integer
+        successful_requests:
+          description: Total successful API requests
+          type: integer
+        failed_requests:
+          description: Total failed API requests
+          type: integer
+      type: object
+      x-nullable: true
+    GetLlmKeyRequests_200_response__links:
+      properties:
+        self:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
+        next:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
+        prev:
+          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
+      type: object
+    backup_retention_policy__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     ListLlmKeys_200_response:
       properties:
         _embedded:
@@ -631,22 +647,6 @@ components:
         failed_requests:
           description: Total failed API requests
           type: integer
-      type: object
-    GetLlmKeyRequests_200_response__links:
-      properties:
-        self:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
-        next:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
-        prev:
-          $ref: '#/components/schemas/GetLlmKeyRequests_200_response__links_self'
-      type: object
-    backup_retention_policy__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     ListLlmKeysForAccount_200_response:
       properties:

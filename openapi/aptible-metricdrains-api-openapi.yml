@@ -179,86 +179,6 @@ paths:
       - MetricDrains
 components:
   schemas:
-    ListMetricDrainsForAccount_200_response__embedded:
-      properties:
-        metric_drains:
-          items:
-            $ref: '#/components/schemas/metric_drain'
-          type: array
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    CreateMetricDrain_request_drain_configuration:
-      description: For external metric drain hosts
-      properties:
-        address:
-          format: uri
-          type: string
-        username:
-          type: string
-        password:
-          type: string
-        database:
-          type: string
-        api_key:
-          type: string
-        series_url:
-          format: uri
-          type: string
-        authToken:
-          type: string
-        bucket:
-          type: string
-        org:
-          type: string
-      type: object
-    CreateMetricDrain_request:
-      properties:
-        handle:
-          type: string
-        drain_type:
-          type: string
-        drain_configuration:
-          $ref: '#/components/schemas/CreateMetricDrain_request_drain_configuration'
-        database:
-          description: For Deploy-hosted InfluxDB instances
-          format: uri
-          type: string
-        database_id:
-          description: For Deploy-hosted InfluxDB instances
-          type: integer
-      required:
-      - drain_type
-      - handle
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
     metric_drain:
       properties:
         id:
@@ -338,6 +258,80 @@ components:
           format: uri
           type: string
       type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    ListMetricDrainsForAccount_200_response__embedded:
+      properties:
+        metric_drains:
+          items:
+            $ref: '#/components/schemas/metric_drain'
+          type: array
+      type: object
+    metric_drain__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    CreateMetricDrain_request_drain_configuration:
+      description: For external metric drain hosts
+      properties:
+        address:
+          format: uri
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        database:
+          type: string
+        api_key:
+          type: string
+        series_url:
+          format: uri
+          type: string
+        authToken:
+          type: string
+        bucket:
+          type: string
+        org:
+          type: string
+      type: object
     ListMetricDrainsForAccount_200_response:
       properties:
         _embedded:
@@ -357,18 +351,24 @@ components:
       - per_page
       - total_count
       type: object
-    metric_drain__links:
+    CreateMetricDrain_request:
       properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        handle:
+          type: string
+        drain_type:
+          type: string
+        drain_configuration:
+          $ref: '#/components/schemas/CreateMetricDrain_request_drain_configuration'
         database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+          description: For Deploy-hosted InfluxDB instances
+          format: uri
+          type: string
+        database_id:
+          description: For Deploy-hosted InfluxDB instances
+          type: integer
+      required:
+      - drain_type
+      - handle
       type: object
   securitySchemes:
     token:

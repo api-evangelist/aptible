@@ -246,11 +246,24 @@ paths:
       - Sources
 components:
   schemas:
-    ListDeployments_200_response__embedded:
+    app__embedded:
       properties:
-        deployments:
+        services:
           items:
-            $ref: '#/components/schemas/deployment'
+            $ref: '#/components/schemas/service'
+          type: array
+        last_operation:
+          $ref: '#/components/schemas/operation'
+        last_deploy_operation:
+          $ref: '#/components/schemas/operation'
+        current_image:
+          $ref: '#/components/schemas/image'
+      type: object
+    ListSources_200_response__embedded:
+      properties:
+        sources:
+          items:
+            $ref: '#/components/schemas/source'
           type: array
       type: object
     error:
@@ -266,126 +279,6 @@ components:
       - error
       - message
       type: object
-    deployment:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        status:
-          type: string
-        operation_id:
-          type: integer
-        app_id:
-          type: integer
-        configuration_id:
-          type: integer
-          x-nullable: true
-        image_id:
-          type: integer
-          x-nullable: true
-        source_id:
-          type: integer
-          x-nullable: true
-        setting_id:
-          type: integer
-          x-nullable: true
-        docker_image:
-          type: string
-          x-nullable: true
-        docker_repository_url:
-          type: string
-          x-nullable: true
-        git_repository_url:
-          type: string
-          x-nullable: true
-        git_ref:
-          type: string
-          x-nullable: true
-        git_commit_sha:
-          type: string
-          x-nullable: true
-        git_commit_timestamp:
-          format: dateTime
-          type: string
-          x-nullable: true
-        git_commit_url:
-          type: string
-          x-nullable: true
-        git_commit_message:
-          type: string
-          x-nullable: true
-        created_at:
-          format: dateTime
-          type: string
-        updated_at:
-          format: dateTime
-          type: string
-        deleted_at:
-          format: dateTime
-          type: string
-          x-nullable: true
-        _links:
-          $ref: '#/components/schemas/deployment__links'
-      required:
-      - _type
-      - app_id
-      - configuration_id
-      - created_at
-      - deleted_at
-      - docker_image
-      - docker_repository_url
-      - git_commit_message
-      - git_commit_sha
-      - git_commit_timestamp
-      - git_commit_url
-      - git_ref
-      - git_repository_url
-      - id
-      - image_id
-      - operation_id
-      - setting_id
-      - source_id
-      - status
-      - updated_at
-    ListAppsForSource_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListAppsForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListAppsForSource_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    app__embedded:
-      properties:
-        services:
-          items:
-            $ref: '#/components/schemas/service'
-          type: array
-        last_operation:
-          $ref: '#/components/schemas/operation'
-        last_deploy_operation:
-          $ref: '#/components/schemas/operation'
-        current_image:
-          $ref: '#/components/schemas/image'
-      type: object
     ListDatabaseImages_200_response__links:
       properties:
         next:
@@ -395,13 +288,37 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    source__links:
+    source:
       properties:
-        organization:
+        id:
+          type: integer
+        _type:
+          type: string
+        qualified_name:
+          type: string
+        display_name:
+          type: string
+        url:
+          type: string
+        _links:
+          $ref: '#/components/schemas/source__links'
+      required:
+      - _type
+      - display_name
+      - id
+      - qualified_name
+      - url
+    deployment__links:
+      properties:
+        app:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        apps:
+        configuration:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        deployments:
+        image:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        source:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        setting:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -429,138 +346,12 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    ListDeploymentsForSource_200_response:
+    ListDeployments_200_response__embedded:
       properties:
-        _embedded:
-          $ref: '#/components/schemas/ListDeployments_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListAppsForSource_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListAppsForSource_200_response__links:
-      properties:
-        source:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    app:
-      properties:
-        id:
-          type: integer
-        handle:
-          type: string
-        git_repo:
-          type: string
-        _type:
-          type: string
-        created_at:
-          format: dateTime
-          type: string
-        updated_at:
-          format: dateTime
-          type: string
-        status:
-          type: string
-        deployment_method:
-          type: string
-          x-nullable: true
-        _embedded:
-          $ref: '#/components/schemas/app__embedded'
-        _links:
-          $ref: '#/components/schemas/app__links'
-      required:
-      - _embedded
-      - _type
-      - created_at
-      - deployment_method
-      - git_repo
-      - handle
-      - id
-      - status
-      - updated_at
-    service:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        handle:
-          type: string
-        docker_repo:
-          type: string
-          x-nullable: true
-        docker_ref:
-          type: string
-          x-nullable: true
-        process_type:
-          type: string
-        command:
-          type: string
-        container_count:
-          type: integer
-        created_at:
-          format: dateTime
-          type: string
-        updated_at:
-          format: dateTime
-          type: string
-        container_memory_limit_mb:
-          type: integer
-          x-nullable: true
-        instance_class:
-          type: string
-        force_zero_downtime:
-          type: boolean
-        naive_health_check:
-          type: boolean
-        restart_free_scaling:
-          type: boolean
-        stop_timeout:
-          type: integer
-          x-nullable: true
-        _links:
-          $ref: '#/components/schemas/service__links'
-      required:
-      - _type
-      - command
-      - container_count
-      - container_memory_limit_mb
-      - created_at
-      - docker_ref
-      - docker_repo
-      - force_zero_downtime
-      - handle
-      - id
-      - instance_class
-      - naive_health_check
-      - process_type
-      - restart_free_scaling
-      - stop_timeout
-      - updated_at
-    image__links:
-      properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        deployments:
+          items:
+            $ref: '#/components/schemas/deployment'
+          type: array
       type: object
     ListSources_200_response:
       properties:
@@ -581,20 +372,24 @@ components:
       - per_page
       - total_count
       type: object
-    deployment__links:
+    ListDeploymentsForSource_200_response:
       properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        configuration:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        image:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        source:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        setting:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        _embedded:
+          $ref: '#/components/schemas/ListDeployments_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListAppsForSource_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
     image:
       properties:
@@ -652,45 +447,6 @@ components:
       - release
       - scan
       - updated_at
-    app__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_configuration:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_image:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        images:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        configurations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        services:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        vhosts:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ephemeral_sessions:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        service_definitions:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prerelease_commands:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        code_scan_results:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        last_code_scan_result:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        deployments:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_deployment:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        settings:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_setting:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     ListAppsForAccount_200_response__embedded:
       properties:
         apps:
@@ -698,47 +454,6 @@ components:
             $ref: '#/components/schemas/app'
           type: array
       type: object
-    operation__links:
-      properties:
-        user:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        resource:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        destination_account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ssh_portal_connections:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ephemeral_sessions:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        code_scan_result:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    source:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        qualified_name:
-          type: string
-        display_name:
-          type: string
-        url:
-          type: string
-        _links:
-          $ref: '#/components/schemas/source__links'
-      required:
-      - _type
-      - display_name
-      - id
-      - qualified_name
-      - url
     operation:
       properties:
         id:
@@ -866,12 +581,297 @@ components:
       - user_email
       - user_name
       - yearly
-    ListSources_200_response__embedded:
+    ListAppsForSource_200_response:
       properties:
-        sources:
-          items:
-            $ref: '#/components/schemas/source'
-          type: array
+        _embedded:
+          $ref: '#/components/schemas/ListAppsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListAppsForSource_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    app__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_configuration:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_image:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        images:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        configurations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        services:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vhosts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_sessions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service_definitions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prerelease_commands:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code_scan_results:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        last_code_scan_result:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        deployments:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_deployment:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    deployment:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        status:
+          type: string
+        operation_id:
+          type: integer
+        app_id:
+          type: integer
+        configuration_id:
+          type: integer
+          x-nullable: true
+        image_id:
+          type: integer
+          x-nullable: true
+        source_id:
+          type: integer
+          x-nullable: true
+        setting_id:
+          type: integer
+          x-nullable: true
+        docker_image:
+          type: string
+          x-nullable: true
+        docker_repository_url:
+          type: string
+          x-nullable: true
+        git_repository_url:
+          type: string
+          x-nullable: true
+        git_ref:
+          type: string
+          x-nullable: true
+        git_commit_sha:
+          type: string
+          x-nullable: true
+        git_commit_timestamp:
+          format: dateTime
+          type: string
+          x-nullable: true
+        git_commit_url:
+          type: string
+          x-nullable: true
+        git_commit_message:
+          type: string
+          x-nullable: true
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        deleted_at:
+          format: dateTime
+          type: string
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/deployment__links'
+      required:
+      - _type
+      - app_id
+      - configuration_id
+      - created_at
+      - deleted_at
+      - docker_image
+      - docker_repository_url
+      - git_commit_message
+      - git_commit_sha
+      - git_commit_timestamp
+      - git_commit_url
+      - git_ref
+      - git_repository_url
+      - id
+      - image_id
+      - operation_id
+      - setting_id
+      - source_id
+      - status
+      - updated_at
+    service:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        handle:
+          type: string
+        docker_repo:
+          type: string
+          x-nullable: true
+        docker_ref:
+          type: string
+          x-nullable: true
+        process_type:
+          type: string
+        command:
+          type: string
+        container_count:
+          type: integer
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        container_memory_limit_mb:
+          type: integer
+          x-nullable: true
+        instance_class:
+          type: string
+        force_zero_downtime:
+          type: boolean
+        naive_health_check:
+          type: boolean
+        restart_free_scaling:
+          type: boolean
+        stop_timeout:
+          type: integer
+          x-nullable: true
+        _links:
+          $ref: '#/components/schemas/service__links'
+      required:
+      - _type
+      - command
+      - container_count
+      - container_memory_limit_mb
+      - created_at
+      - docker_ref
+      - docker_repo
+      - force_zero_downtime
+      - handle
+      - id
+      - instance_class
+      - naive_health_check
+      - process_type
+      - restart_free_scaling
+      - stop_timeout
+      - updated_at
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    source__links:
+      properties:
+        organization:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        apps:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        deployments:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    app:
+      properties:
+        id:
+          type: integer
+        handle:
+          type: string
+        git_repo:
+          type: string
+        _type:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        status:
+          type: string
+        deployment_method:
+          type: string
+          x-nullable: true
+        _embedded:
+          $ref: '#/components/schemas/app__embedded'
+        _links:
+          $ref: '#/components/schemas/app__links'
+      required:
+      - _embedded
+      - _type
+      - created_at
+      - deployment_method
+      - git_repo
+      - handle
+      - id
+      - status
+      - updated_at
+    ListAppsForSource_200_response__links:
+      properties:
+        source:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    image__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    operation__links:
+      properties:
+        user:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        resource:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        destination_account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ssh_portal_connections:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_sessions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code_scan_result:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     token:

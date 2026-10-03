@@ -214,6 +214,23 @@ paths:
       - IntrusionDetectionReports
 components:
   schemas:
+    intrusion_detection_report__links:
+      properties:
+        stack:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        download_csv:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        download_pdf:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
     ListIntrustionDetectionReportsForStack_200_response:
       properties:
         _embedded:
@@ -244,42 +261,12 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
     ListIntrustionDetectionReportsForStack_200_response__embedded:
       properties:
         intrusion_detection_reports:
           items:
             $ref: '#/components/schemas/intrusion_detection_report'
           type: array
-      type: object
-    intrusion_detection_report__links:
-      properties:
-        stack:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        download_csv:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        download_pdf:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     intrusion_detection_report:
       properties:
@@ -308,6 +295,19 @@ components:
       - id
       - starts_at
       - updated_at
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
   securitySchemes:
     token:
       in: header

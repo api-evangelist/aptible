@@ -486,18 +486,6 @@ paths:
       - Vhosts
 components:
   schemas:
-    vhost_acme_configuration_challenges_inner_to_inner:
-      properties:
-        name:
-          type: string
-        legacy:
-          type: boolean
-      type: object
-    vhost_acme_configuration_challenges_inner_from:
-      properties:
-        name:
-          type: string
-      type: object
     vhost:
       properties:
         id:
@@ -649,72 +637,24 @@ components:
       - updated_at
       - user_domain
       - virtual_domain
-    error:
+    ListVhostsForAccount_200_response:
       properties:
-        code:
+        _embedded:
+          $ref: '#/components/schemas/ListVhostsForAccount_200_response__embedded'
+        total_count:
           type: integer
-        error:
-          type: string
-        message:
-          type: string
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListVhostsForAccount_200_response__links'
       required:
-      - code
-      - error
-      - message
-      type: object
-    ListVhostsForAccount_200_response__embedded:
-      properties:
-        vhosts:
-          items:
-            $ref: '#/components/schemas/vhost'
-          type: array
-      type: object
-    vhost__links:
-      properties:
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        certificate:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        settings:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_setting:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    vhost_acme_configuration:
-      properties:
-        names:
-          items:
-            type: string
-          type: array
-        challenges:
-          items:
-            $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner'
-          type: array
-      type: object
-      x-nullable: true
-    vhost_acme_configuration_challenges_inner:
-      properties:
-        method:
-          enum:
-          - http01
-          - dns01
-          type: string
-        from:
-          $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner_from'
-        to:
-          items:
-            $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner_to_inner'
-          type: array
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
     CreateVhost_request:
       properties:
@@ -756,24 +696,97 @@ components:
       required:
       - type
       type: object
-    ListVhostsForAccount_200_response:
+    vhost__links:
       properties:
-        _embedded:
-          $ref: '#/components/schemas/ListVhostsForAccount_200_response__embedded'
-        total_count:
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        certificate:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListVhostsForAccount_200_response__embedded:
+      properties:
+        vhosts:
+          items:
+            $ref: '#/components/schemas/vhost'
+          type: array
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    vhost_acme_configuration_challenges_inner:
+      properties:
+        method:
+          enum:
+          - http01
+          - dns01
+          type: string
+        from:
+          $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner_from'
+        to:
+          items:
+            $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner_to_inner'
+          type: array
+      type: object
+    vhost_acme_configuration_challenges_inner_to_inner:
+      properties:
+        name:
+          type: string
+        legacy:
+          type: boolean
+      type: object
+    vhost_acme_configuration_challenges_inner_from:
+      properties:
+        name:
+          type: string
+      type: object
+    vhost_acme_configuration:
+      properties:
+        names:
+          items:
+            type: string
+          type: array
+        challenges:
+          items:
+            $ref: '#/components/schemas/vhost_acme_configuration_challenges_inner'
+          type: array
+      type: object
+      x-nullable: true
+    ListVhostsForAccount_200_response__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
           type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListVhostsForAccount_200_response__links'
+        error:
+          type: string
+        message:
+          type: string
       required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
+      - code
+      - error
+      - message
       type: object
     UpdateVhost_request:
       properties:
@@ -799,19 +812,6 @@ components:
           type: boolean
         load_balancing_algorithm_type:
           type: string
-      type: object
-    ListVhostsForAccount_200_response__links:
-      properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     token:

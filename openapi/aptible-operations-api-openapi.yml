@@ -1916,6 +1916,133 @@ paths:
           description: Override for local or test environments
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    OperationStatus:
+      description: An enumeration.
+      enum:
+      - FAILED
+      - REQUESTED
+      - PENDING
+      - PAUSED
+      - IN_PROGRESS
+      - CANCELED
+      - COMPLETE
+      title: OperationStatus
+      type: string
+    OperationAssetUpdate:
+      properties:
+        terraform_init:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_plan:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_apply:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_plan_failures:
+          title: Terraform Plan Failures
+          type: string
+        terraform_apply_failures:
+          title: Terraform Apply Failures
+          type: string
+      required:
+      - terraform_init
+      title: OperationAssetUpdate
+      type: object
+    Data:
+      anyOf:
+      - $ref: '#/components/schemas/OperationFailure'
+      - $ref: '#/components/schemas/OperationAssetUpdate'
+      - $ref: '#/components/schemas/OperationActionUpdate'
+      title: Data
+    OperationType:
+      description: An enumeration.
+      enum:
+      - CREATE
+      - UPDATE
+      - DESTROY
+      - ACTION
+      title: OperationType
+      type: string
+    OperationTerraformRunUpdate:
+      properties:
+        terraform_stdout:
+          title: Terraform Stdout
+        terraform_stderr:
+          title: Terraform Stderr
+        terraform_return_code:
+          title: Terraform Return Code
+          type: integer
+        terraform_success:
+          title: Terraform Success
+          type: boolean
+      required:
+      - terraform_return_code
+      - terraform_success
+      title: OperationTerraformRunUpdate
+      type: object
+    OperationFailure:
+      properties:
+        error:
+          title: Error
+          type: string
+      required:
+      - error
+      title: OperationFailure
+      type: object
+    OperationUpdate:
+      example:
+        data: null
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: null
+      properties:
+        id:
+          format: uuid
+          title: Id
+          type: string
+        status:
+          $ref: '#/components/schemas/OperationStatus'
+        data:
+          $ref: '#/components/schemas/Data'
+      required:
+      - id
+      - status
+      title: OperationUpdate
+      type: object
+    ValidationError:
+      properties:
+        loc:
+          items:
+            $ref: '#/components/schemas/Location_inner'
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+    OperationActionUpdate:
+      properties:
+        action_output:
+          title: Action Output
+        action_errors:
+          title: Action Errors
+          type: string
+      title: OperationActionUpdate
+      type: object
     OperationOutput:
       example:
         execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -1979,162 +2106,36 @@ components:
       - user_id
       title: OperationOutput
       type: object
-    OperationUpdate:
-      example:
-        data: null
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        status: null
-      properties:
-        id:
-          format: uuid
-          title: Id
-          type: string
-        status:
-          $ref: '#/components/schemas/OperationStatus'
-        data:
-          $ref: '#/components/schemas/Data'
-      required:
-      - id
-      - status
-      title: OperationUpdate
-      type: object
-    OperationActionUpdate:
-      properties:
-        action_output:
-          title: Action Output
-        action_errors:
-          title: Action Errors
-          type: string
-      title: OperationActionUpdate
-      type: object
-    OperationFailure:
-      properties:
-        error:
-          title: Error
-          type: string
-      required:
-      - error
-      title: OperationFailure
-      type: object
-    OperationStatus:
-      description: An enumeration.
-      enum:
-      - FAILED
-      - REQUESTED
-      - PENDING
-      - PAUSED
-      - IN_PROGRESS
-      - CANCELED
-      - COMPLETE
-      title: OperationStatus
-      type: string
-    ValidationError:
-      properties:
-        loc:
-          items:
-            $ref: '#/components/schemas/Location_inner'
-          title: Location
-          type: array
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-      type: object
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          title: Detail
-          type: array
-      title: HTTPValidationError
-      type: object
-    OperationType:
-      description: An enumeration.
-      enum:
-      - CREATE
-      - UPDATE
-      - DESTROY
-      - ACTION
-      title: OperationType
-      type: string
-    OperationAssetUpdate:
-      properties:
-        terraform_init:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_plan:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_apply:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_plan_failures:
-          title: Terraform Plan Failures
-          type: string
-        terraform_apply_failures:
-          title: Terraform Apply Failures
-          type: string
-      required:
-      - terraform_init
-      title: OperationAssetUpdate
-      type: object
     Location_inner:
       anyOf:
       - type: string
       - type: integer
-    OperationTerraformRunUpdate:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        terraform_stdout:
-          title: Terraform Stdout
-        terraform_stderr:
-          title: Terraform Stderr
-        terraform_return_code:
-          title: Terraform Return Code
-          type: integer
-        terraform_success:
-          title: Terraform Success
-          type: boolean
-      required:
-      - terraform_return_code
-      - terraform_success
-      title: OperationTerraformRunUpdate
-      type: object
-    Data:
-      anyOf:
-      - $ref: '#/components/schemas/OperationFailure'
-      - $ref: '#/components/schemas/OperationAssetUpdate'
-      - $ref: '#/components/schemas/OperationActionUpdate'
-      title: Data
-    ListOperationsForPersistentDisk_200_response__embedded:
-      properties:
-        operations:
-          items:
-            $ref: '#/components/schemas/operation'
-          type: array
-      type: object
-    UpdateOperation_request:
-      properties:
-        cancelled:
-          type: boolean
-          x-omitempty: false
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
+      type: object
+    operation__links:
+      properties:
+        user:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        resource:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        destination_account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ssh_portal_connections:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_sessions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code_scan_result:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     operation:
       properties:
@@ -2263,60 +2264,11 @@ components:
       - user_email
       - user_name
       - yearly
-    ListAccountsForStack_200_response__links_stack:
+    UpdateOperation_request:
       properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    ListOperationsForPersistentDisk_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    operation__links:
-      properties:
-        user:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        resource:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        destination_account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ssh_portal_connections:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ephemeral_sessions:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        code_scan_result:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListDatabaseImages_200_response__links:
-      properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        cancelled:
+          type: boolean
+          x-omitempty: false
       type: object
     CreateOperationRequest:
       example:
@@ -2430,6 +2382,54 @@ components:
       required:
       - type
       title: CreateOperationRequest
+      type: object
+    ListOperationsForPersistentDisk_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListOperationsForPersistentDisk_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    ListOperationsForPersistentDisk_200_response__embedded:
+      properties:
+        operations:
+          items:
+            $ref: '#/components/schemas/operation'
+          type: array
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     HTTPBearer:

@@ -120,18 +120,33 @@ paths:
       - Stacks
 components:
   schemas:
-    error:
+    ListStacks_200_response__embedded:
       properties:
-        code:
-          type: integer
-        error:
+        stacks:
+          items:
+            $ref: '#/components/schemas/stack'
+          type: array
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
+      type: object
+    stack__links:
+      properties:
+        organization:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        accounts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        intrusion_detection_reports:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vpn_tunnels:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vpc_peers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     stack:
       properties:
@@ -226,33 +241,18 @@ components:
       - version
       - vpc_cidr
       - vpc_id
-    ListAccountsForStack_200_response__links_stack:
+    error:
       properties:
-        href:
-          format: uri
+        code:
+          type: integer
+        error:
           type: string
-      type: object
-    ListStacks_200_response__embedded:
-      properties:
-        stacks:
-          items:
-            $ref: '#/components/schemas/stack'
-          type: array
-      type: object
-    stack__links:
-      properties:
-        organization:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        accounts:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        intrusion_detection_reports:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        vpn_tunnels:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        vpc_peers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
     ListDatabaseImages_200_response__links:
       properties:

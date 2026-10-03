@@ -162,30 +162,12 @@ paths:
       - Claims
 components:
   schemas:
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
     CreateApp_request:
       properties:
         handle:
           type: string
       required:
       - handle
-      type: object
-    CreateClaimForType_request:
-      properties:
-        handle:
-          type: string
       type: object
     CreateClaim_request:
       properties:
@@ -199,6 +181,24 @@ components:
           type: string
       required:
       - type
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    CreateClaimForType_request:
+      properties:
+        handle:
+          type: string
       type: object
   securitySchemes:
     token:

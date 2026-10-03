@@ -319,19 +319,6 @@ components:
       - port_mapping
       - status
       - updated_at
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
     ListContainersForRelease_200_response__embedded:
       properties:
         containers:
@@ -344,19 +331,6 @@ components:
         href:
           format: uri
           type: string
-      type: object
-    ListContainersForRelease_200_response__links:
-      properties:
-        release:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        log_drain:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     ListContainersForRelease_200_response:
       properties:
@@ -377,6 +351,19 @@ components:
       - per_page
       - total_count
       type: object
+    ListContainersForRelease_200_response__links:
+      properties:
+        release:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        log_drain:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     container__links:
       properties:
         release:
@@ -389,6 +376,19 @@ components:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

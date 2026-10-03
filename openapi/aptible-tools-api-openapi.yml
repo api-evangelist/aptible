@@ -27,6 +27,14 @@ paths:
       - Tools
 components:
   schemas:
+    ToolsList:
+      type: object
+      properties:
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tool'
+      additionalProperties: true
     Tool:
       type: object
       required:
@@ -47,14 +55,6 @@ components:
         human_description:
           type: string
           description: A human-readable description of the tool.
-    ToolsList:
-      type: object
-      properties:
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tool'
-      additionalProperties: true
   securitySchemes:
     bearerAuth:
       type: http
