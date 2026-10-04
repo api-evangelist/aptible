@@ -336,34 +336,19 @@ components:
           format: uri
           type: string
       type: object
-    CreateOrUpdateLlmPolicy_request:
+    ListLlmPolicies_200_response:
       properties:
-        models:
-          description: List of allowed model identifiers
-          items:
-            type: string
-          type: array
-      type: object
-    llm_policy_current_usage:
-      description: Month-to-date usage metrics for this policy
-      properties:
-        spend:
-          description: Total spend in USD
-          type: number
-        input_tokens:
-          description: Total input (prompt) tokens
+        _embedded:
+          $ref: '#/components/schemas/ListLlmPoliciesForAccount_200_response__embedded'
+        _links:
+          type: object
+        total_count:
           type: integer
-        output_tokens:
-          description: Total output (completion) tokens
+        per_page:
           type: integer
-        successful_requests:
-          description: Total successful API requests
-          type: integer
-        failed_requests:
-          description: Total failed API requests
+        current_page:
           type: integer
       type: object
-      x-nullable: true
     backup_retention_policy__links:
       properties:
         account:
@@ -371,11 +356,12 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    ListLlmPoliciesForAccount_200_response__embedded:
+    CreateOrUpdateLlmPolicy_request:
       properties:
-        llm_policies:
+        models:
+          description: List of allowed model identifiers
           items:
-            $ref: '#/components/schemas/llm_policy'
+            type: string
           type: array
       type: object
     GetLlmKeyUsage_200_response:
@@ -396,12 +382,18 @@ components:
           description: Total failed API requests
           type: integer
       type: object
-    ListLlmPoliciesForAccount_200_response:
+    error:
       properties:
-        _embedded:
-          $ref: '#/components/schemas/ListLlmPoliciesForAccount_200_response__embedded'
-        _links:
-          type: object
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
     llm_policy:
       properties:
@@ -438,31 +430,39 @@ components:
       - models
       - spend_limit
       - updated_at
-    error:
+    ListLlmPoliciesForAccount_200_response__embedded:
       properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
+        llm_policies:
+          items:
+            $ref: '#/components/schemas/llm_policy'
+          type: array
       type: object
-    ListLlmPolicies_200_response:
+    llm_policy_current_usage:
+      description: Month-to-date usage metrics for this policy
+      properties:
+        spend:
+          description: Total spend in USD
+          type: number
+        input_tokens:
+          description: Total input (prompt) tokens
+          type: integer
+        output_tokens:
+          description: Total output (completion) tokens
+          type: integer
+        successful_requests:
+          description: Total successful API requests
+          type: integer
+        failed_requests:
+          description: Total failed API requests
+          type: integer
+      type: object
+      x-nullable: true
+    ListLlmPoliciesForAccount_200_response:
       properties:
         _embedded:
           $ref: '#/components/schemas/ListLlmPoliciesForAccount_200_response__embedded'
         _links:
           type: object
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
       type: object
   securitySchemes:
     token:

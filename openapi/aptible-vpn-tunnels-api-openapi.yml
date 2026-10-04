@@ -134,6 +134,26 @@ components:
           format: uri
           type: string
       type: object
+    ListVpnTunnelsForStack_200_response__embedded:
+      properties:
+        vpn_tunnels:
+          items:
+            $ref: '#/components/schemas/vpn_tunnel'
+          type: array
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
     ListAccountsForStack_200_response__links:
       properties:
         stack:
@@ -144,32 +164,6 @@ components:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListVpnTunnelsForStack_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListVpnTunnelsForStack_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListVpnTunnelsForStack_200_response__embedded:
-      properties:
-        vpn_tunnels:
-          items:
-            $ref: '#/components/schemas/vpn_tunnel'
-          type: array
       type: object
     vpn_tunnel:
       properties:
@@ -252,18 +246,24 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    error:
+    ListVpnTunnelsForStack_200_response:
       properties:
-        code:
+        _embedded:
+          $ref: '#/components/schemas/ListVpnTunnelsForStack_200_response__embedded'
+        total_count:
           type: integer
-        error:
-          type: string
-        message:
-          type: string
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links'
       required:
-      - code
-      - error
-      - message
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
   securitySchemes:
     token:

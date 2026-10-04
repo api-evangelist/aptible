@@ -297,6 +297,27 @@ paths:
       - LogDrains
 components:
   schemas:
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    UpdateLogDrain_request:
+      properties:
+        drain_apps:
+          type: boolean
+          x-omitempty: false
+        drain_databases:
+          type: boolean
+          x-omitempty: false
+        drain_ephemeral_sessions:
+          type: boolean
+          x-omitempty: false
+        drain_proxies:
+          type: boolean
+          x-omitempty: false
+      type: object
     error:
       properties:
         code:
@@ -309,6 +330,21 @@ components:
       - code
       - error
       - message
+      type: object
+    log_drain__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     CreateLogDrain_request:
       properties:
@@ -358,26 +394,35 @@ components:
       - drain_type
       - handle
       type: object
-    ListAccountsForStack_200_response__links_stack:
+    ListLogDrainsForAccount_200_response:
       properties:
-        href:
-          format: uri
-          type: string
+        _embedded:
+          $ref: '#/components/schemas/ListLogDrainsForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
-    UpdateLogDrain_request:
+    ListActivityReportsForAccount_200_response__links:
       properties:
-        drain_apps:
-          type: boolean
-          x-omitempty: false
-        drain_databases:
-          type: boolean
-          x-omitempty: false
-        drain_ephemeral_sessions:
-          type: boolean
-          x-omitempty: false
-        drain_proxies:
-          type: boolean
-          x-omitempty: false
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     log_drain:
       properties:
@@ -465,51 +510,6 @@ components:
       - id
       - status
       - updated_at
-    log_drain__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ephemeral_containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListLogDrainsForAccount_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListLogDrainsForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     ListLogDrainsForAccount_200_response__embedded:
       properties:
         log_drains:

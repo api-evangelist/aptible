@@ -120,33 +120,11 @@ paths:
       - Stacks
 components:
   schemas:
-    ListStacks_200_response__embedded:
-      properties:
-        stacks:
-          items:
-            $ref: '#/components/schemas/stack'
-          type: array
-      type: object
     ListAccountsForStack_200_response__links_stack:
       properties:
         href:
           format: uri
           type: string
-      type: object
-    stack__links:
-      properties:
-        organization:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        accounts:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        intrusion_detection_reports:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        vpn_tunnels:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        vpc_peers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     stack:
       properties:
@@ -241,28 +219,6 @@ components:
       - version
       - vpc_cidr
       - vpc_id
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListDatabaseImages_200_response__links:
-      properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     ListStacks_200_response:
       properties:
         _embedded:
@@ -281,6 +237,50 @@ components:
       - current_page
       - per_page
       - total_count
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListStacks_200_response__embedded:
+      properties:
+        stacks:
+          items:
+            $ref: '#/components/schemas/stack'
+          type: array
+      type: object
+    stack__links:
+      properties:
+        organization:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        accounts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        intrusion_detection_reports:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vpn_tunnels:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vpc_peers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     token:

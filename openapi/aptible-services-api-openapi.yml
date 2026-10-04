@@ -293,6 +293,38 @@ paths:
       - Services
 components:
   schemas:
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    ListServicesForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
     service:
       properties:
         id:
@@ -352,12 +384,6 @@ components:
       - restart_free_scaling
       - stop_timeout
       - updated_at
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
     service__links:
       properties:
         account:
@@ -392,6 +418,13 @@ components:
         stop_timeout:
           type: integer
       type: object
+    ListServicesForAccount_200_response__embedded:
+      properties:
+        services:
+          items:
+            $ref: '#/components/schemas/service'
+          type: array
+      type: object
     ListServicesForAccount_200_response:
       properties:
         _embedded:
@@ -410,39 +443,6 @@ components:
       - current_page
       - per_page
       - total_count
-      type: object
-    ListServicesForAccount_200_response__embedded:
-      properties:
-        services:
-          items:
-            $ref: '#/components/schemas/service'
-          type: array
-      type: object
-    ListServicesForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
   securitySchemes:
     token:

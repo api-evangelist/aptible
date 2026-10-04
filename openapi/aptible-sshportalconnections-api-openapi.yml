@@ -185,6 +185,33 @@ components:
           format: uri
           type: string
       type: object
+    ListSshPortalConnectionsForOperation_200_response__embedded:
+      properties:
+        ssh_portal_connections:
+          items:
+            $ref: '#/components/schemas/ssh_portal_connection'
+          type: array
+      type: object
+    ssh_portal_connection__links:
+      properties:
+        operation:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
     ListSshPortalConnectionsForOperation_200_response:
       properties:
         _embedded:
@@ -203,13 +230,6 @@ components:
       - current_page
       - per_page
       - total_count
-      type: object
-    ListSshPortalConnectionsForOperation_200_response__embedded:
-      properties:
-        ssh_portal_connections:
-          items:
-            $ref: '#/components/schemas/ssh_portal_connection'
-          type: array
       type: object
     ssh_portal_connection:
       properties:
@@ -244,13 +264,6 @@ components:
       - ssh_pty
       - ssh_user
       - updated_at
-    ssh_portal_connection__links:
-      properties:
-        operation:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     CreateSshPortalConnection_request:
       properties:
         ssh_public_key:
@@ -259,19 +272,6 @@ components:
           type: string
       required:
       - ssh_public_key
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
     ListDatabaseImages_200_response__links:
       properties:

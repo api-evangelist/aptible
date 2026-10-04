@@ -171,38 +171,11 @@ paths:
       - Activity Reports
 components:
   schemas:
-    activity_report__links:
-      properties:
-        download:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     ListAccountsForStack_200_response__links_stack:
       properties:
         href:
           format: uri
           type: string
-      type: object
-    ListActivityReportsForAccount_200_response__embedded:
-      properties:
-        activity_reports:
-          items:
-            $ref: '#/components/schemas/activity_report'
-          type: array
-      type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     ListActivityReportsForAccount_200_response:
       properties:
@@ -223,6 +196,13 @@ components:
       - per_page
       - total_count
       type: object
+    ListActivityReportsForAccount_200_response__embedded:
+      properties:
+        activity_reports:
+          items:
+            $ref: '#/components/schemas/activity_report'
+          type: array
+      type: object
     error:
       properties:
         code:
@@ -235,6 +215,26 @@ components:
       - code
       - error
       - message
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    activity_report__links:
+      properties:
+        download:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     activity_report:
       properties:

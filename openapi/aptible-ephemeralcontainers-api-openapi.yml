@@ -191,33 +191,11 @@ paths:
       - EphemeralContainers
 components:
   schemas:
-    ListEphemeralContainersForEphemeralSession_200_response__links:
-      properties:
-        ephemeral_session:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        log_drain:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     ListAccountsForStack_200_response__links_stack:
       properties:
         href:
           format: uri
           type: string
-      type: object
-    ephemeral_container__links:
-      properties:
-        ephemeral_session:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        log_drain:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     ephemeral_container:
       properties:
@@ -255,12 +233,18 @@ components:
       - layer
       - memory_limit
       - updated_at
-    ListEphemeralContainersForEphemeralSession_200_response__embedded:
+    error:
       properties:
-        ephemeral_containers:
-          items:
-            $ref: '#/components/schemas/ephemeral_container'
-          type: array
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
     ListEphemeralContainersForEphemeralSession_200_response:
       properties:
@@ -281,18 +265,34 @@ components:
       - per_page
       - total_count
       type: object
-    error:
+    ListEphemeralContainersForEphemeralSession_200_response__embedded:
       properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
+        ephemeral_containers:
+          items:
+            $ref: '#/components/schemas/ephemeral_container'
+          type: array
+      type: object
+    ephemeral_container__links:
+      properties:
+        ephemeral_session:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        log_drain:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListEphemeralContainersForEphemeralSession_200_response__links:
+      properties:
+        ephemeral_session:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        log_drain:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
   securitySchemes:
     token:

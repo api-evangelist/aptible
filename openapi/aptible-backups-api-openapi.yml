@@ -347,6 +347,18 @@ components:
           format: uri
           type: string
       type: object
+    ListBackups_200_response__embedded:
+      properties:
+        backups:
+          items:
+            $ref: '#/components/schemas/backup'
+          type: array
+      type: object
+    backup__embedded:
+      properties:
+        copied_from:
+          type: object
+      type: object
     ListBackups_200_response__links:
       properties:
         account:
@@ -359,48 +371,6 @@ components:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    backup__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        copied_from:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database_image:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        copies:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    backup__embedded:
-      properties:
-        copied_from:
-          type: object
-      type: object
-    ListBackups_200_response__embedded:
-      properties:
-        backups:
-          items:
-            $ref: '#/components/schemas/backup'
-          type: array
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
     backup:
       properties:
@@ -445,6 +415,36 @@ components:
       - manual
       - size
       - updated_at
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    backup__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        copied_from:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database_image:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        copies:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     ListBackups_200_response:
       properties:
         _embedded:

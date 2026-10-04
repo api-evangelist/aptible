@@ -391,6 +391,132 @@ paths:
       - Accounts
 components:
   schemas:
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    UpdateAccount_request:
+      properties:
+        handle:
+          type: string
+        name:
+          type: string
+        onboarding_status:
+          type: string
+      type: object
+    permission:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        scope:
+          type: string
+        _links:
+          $ref: '#/components/schemas/permission__links'
+      required:
+      - _type
+      - id
+      - scope
+    permission__links:
+      properties:
+        role:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__embedded:
+      properties:
+        accounts:
+          items:
+            $ref: '#/components/schemas/account'
+          type: array
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    account__links:
+      properties:
+        organization:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        stack:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        apps:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        backups:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        databases:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        disks:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        services:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        permissions:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        log_drains:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        metric_drains:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        certificates:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vhosts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        activity_reports:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        disk_attachments:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    log_drain__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    PatchAccount_request:
+      properties:
+        handle:
+          type: string
+        name:
+          type: string
+      type: object
+    ListAccountsForStack_200_response__links:
+      properties:
+        stack:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     account:
       properties:
         id:
@@ -506,28 +632,6 @@ components:
       - total_disk_size
       - type
       - updated_at
-    ListAccountsForStack_200_response__embedded:
-      properties:
-        accounts:
-          items:
-            $ref: '#/components/schemas/account'
-          type: array
-      type: object
-    permission__links:
-      properties:
-        role:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
     log_drain:
       properties:
         id:
@@ -614,38 +718,22 @@ components:
       - id
       - status
       - updated_at
-    log_drain__links:
+    CreateAccount_request:
       properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ephemeral_containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListAccountsForStack_200_response__links:
-      properties:
-        stack:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    PatchAccount_request:
-      properties:
+        type:
+          type: string
         handle:
+          type: string
+        organization_id:
           type: string
         name:
           type: string
+        stack_id:
+          type: integer
+      required:
+      - handle
+      - organization_id
+      - type
       type: object
     ListAccountsForStack_200_response:
       properties:
@@ -666,64 +754,6 @@ components:
       - per_page
       - total_count
       type: object
-    account__links:
-      properties:
-        organization:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        stack:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        apps:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        backups:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        databases:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        disks:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        services:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        permissions:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        log_drains:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        metric_drains:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        certificates:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        vhosts:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        activity_reports:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        disk_attachments:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    permission:
-      properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        scope:
-          type: string
-        _links:
-          $ref: '#/components/schemas/permission__links'
-      required:
-      - _type
-      - id
-      - scope
-    UpdateAccount_request:
-      properties:
-        handle:
-          type: string
-        name:
-          type: string
-        onboarding_status:
-          type: string
-      type: object
     account__embedded:
       properties:
         log_drains:
@@ -734,36 +764,6 @@ components:
           items:
             $ref: '#/components/schemas/permission'
           type: array
-      type: object
-    CreateAccount_request:
-      properties:
-        type:
-          type: string
-        handle:
-          type: string
-        organization_id:
-          type: string
-        name:
-          type: string
-        stack_id:
-          type: integer
-      required:
-      - handle
-      - organization_id
-      - type
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
   securitySchemes:
     token:

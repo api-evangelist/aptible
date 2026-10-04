@@ -310,6 +310,19 @@ paths:
       - ServiceSizingPolicies
 components:
   schemas:
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    backup_retention_policy__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     error:
       properties:
         code:
@@ -322,55 +335,6 @@ components:
       - code
       - error
       - message
-      type: object
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    UpdateServiceSizingPolicy_request:
-      properties:
-        scaling_enabled:
-          type: boolean
-        metric_lookback_seconds:
-          type: integer
-        percentile:
-          type: number
-        post_scale_up_cooldown_seconds:
-          type: integer
-        post_scale_down_cooldown_seconds:
-          type: integer
-        post_release_cooldown_seconds:
-          type: integer
-        mem_cpu_ratio_r_threshold:
-          type: number
-        mem_cpu_ratio_c_threshold:
-          type: number
-        mem_scale_up_threshold:
-          type: number
-        mem_scale_down_threshold:
-          type: number
-        minimum_memory:
-          type: integer
-        maximum_memory:
-          type: integer
-        autoscaling:
-          type: string
-        min_cpu_threshold:
-          type: number
-        max_cpu_threshold:
-          type: number
-        min_containers:
-          type: integer
-        max_containers:
-          type: integer
-        scale_up_step:
-          type: integer
-        scale_down_step:
-          type: integer
-        use_horizontal_scale:
-          type: boolean
       type: object
     ListServiceSizingPoliciesForAccount_200_response__embedded:
       properties:
@@ -386,13 +350,6 @@ components:
         next:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    backup_retention_policy__links:
-      properties:
-        account:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -507,6 +464,49 @@ components:
       - scaling_enabled
       - updated_at
       - use_horizontal_scale
+    UpdateServiceSizingPolicy_request:
+      properties:
+        scaling_enabled:
+          type: boolean
+        metric_lookback_seconds:
+          type: integer
+        percentile:
+          type: number
+        post_scale_up_cooldown_seconds:
+          type: integer
+        post_scale_down_cooldown_seconds:
+          type: integer
+        post_release_cooldown_seconds:
+          type: integer
+        mem_cpu_ratio_r_threshold:
+          type: number
+        mem_cpu_ratio_c_threshold:
+          type: number
+        mem_scale_up_threshold:
+          type: number
+        mem_scale_down_threshold:
+          type: number
+        minimum_memory:
+          type: integer
+        maximum_memory:
+          type: integer
+        autoscaling:
+          type: string
+        min_cpu_threshold:
+          type: number
+        max_cpu_threshold:
+          type: number
+        min_containers:
+          type: integer
+        max_containers:
+          type: integer
+        scale_up_step:
+          type: integer
+        scale_down_step:
+          type: integer
+        use_horizontal_scale:
+          type: boolean
+      type: object
   securitySchemes:
     token:
       in: header

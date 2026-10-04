@@ -181,25 +181,6 @@ components:
           format: uri
           type: string
       type: object
-    ListBackupRetentionPoliciesForAccount_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListBackupRetentionPoliciesForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
     ListBackupRetentionPoliciesForAccount_200_response__embedded:
       properties:
         backup_retention_policies:
@@ -207,41 +188,12 @@ components:
             $ref: '#/components/schemas/backup_retention_policy'
           type: array
       type: object
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     backup_retention_policy__links:
       properties:
         account:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    CreateBackupRetentionPolicy_request:
-      properties:
-        daily:
-          type: integer
-          x-omitempty: false
-        monthly:
-          type: integer
-          x-omitempty: false
-        yearly:
-          type: integer
-          x-omitempty: false
-        keep_final:
-          type: boolean
-          x-omitempty: false
-        make_copy:
-          type: boolean
-          x-omitempty: false
       type: object
     error:
       properties:
@@ -289,6 +241,54 @@ components:
       - monthly
       - pitr_days
       - yearly
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListBackupRetentionPoliciesForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListBackupRetentionPoliciesForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    CreateBackupRetentionPolicy_request:
+      properties:
+        daily:
+          type: integer
+          x-omitempty: false
+        monthly:
+          type: integer
+          x-omitempty: false
+        yearly:
+          type: integer
+          x-omitempty: false
+        keep_final:
+          type: boolean
+          x-omitempty: false
+        make_copy:
+          type: boolean
+          x-omitempty: false
+      type: object
   securitySchemes:
     token:
       in: header

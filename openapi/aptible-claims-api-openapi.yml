@@ -162,13 +162,6 @@ paths:
       - Claims
 components:
   schemas:
-    CreateApp_request:
-      properties:
-        handle:
-          type: string
-      required:
-      - handle
-      type: object
     CreateClaim_request:
       properties:
         type:
@@ -199,6 +192,13 @@ components:
       properties:
         handle:
           type: string
+      type: object
+    CreateApp_request:
+      properties:
+        handle:
+          type: string
+      required:
+      - handle
       type: object
   securitySchemes:
     token:

@@ -183,6 +183,23 @@ paths:
       - Deployments
 components:
   schemas:
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    ListDeployments_200_response__links:
+      properties:
+        parent:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     deployment__links:
       properties:
         app:
@@ -198,11 +215,18 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    ListAccountsForStack_200_response__links_stack:
+    error:
       properties:
-        href:
-          format: uri
+        code:
+          type: integer
+        error:
           type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
     ListDeployments_200_response:
       properties:
@@ -222,24 +246,6 @@ components:
       - current_page
       - per_page
       - total_count
-      type: object
-    ListDeployments_200_response__embedded:
-      properties:
-        deployments:
-          items:
-            $ref: '#/components/schemas/deployment'
-          type: array
-      type: object
-    ListDeployments_200_response__links:
-      properties:
-        parent:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     deployment:
       properties:
@@ -323,18 +329,12 @@ components:
       - source_id
       - status
       - updated_at
-    error:
+    ListDeployments_200_response__embedded:
       properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
+        deployments:
+          items:
+            $ref: '#/components/schemas/deployment'
+          type: array
       type: object
   securitySchemes:
     token:

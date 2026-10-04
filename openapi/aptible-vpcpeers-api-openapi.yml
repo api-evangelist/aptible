@@ -128,6 +128,32 @@ paths:
       - VpcPeers
 components:
   schemas:
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    ListVpcPeersForStack_200_response__embedded:
+      properties:
+        vpc_peers:
+          items:
+            $ref: '#/components/schemas/vpc_peer'
+          type: array
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
     ListVpcPeersForStack_200_response:
       properties:
         _embedded:
@@ -147,11 +173,16 @@ components:
       - per_page
       - total_count
       type: object
-    ListAccountsForStack_200_response__links_stack:
+    ListAccountsForStack_200_response__links:
       properties:
-        href:
-          format: uri
-          type: string
+        stack:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     vpc_peer:
       properties:
@@ -187,43 +218,12 @@ components:
       - peer_account_id
       - peer_vpc_id
       - updated_at
-    ListAccountsForStack_200_response__links:
-      properties:
-        stack:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListVpcPeersForStack_200_response__embedded:
-      properties:
-        vpc_peers:
-          items:
-            $ref: '#/components/schemas/vpc_peer'
-          type: array
-      type: object
     vpc_peer__links:
       properties:
         stack:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
   securitySchemes:
     token:

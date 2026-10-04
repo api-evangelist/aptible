@@ -172,6 +172,44 @@ paths:
       - LlmGatewayConfigurations
 components:
   schemas:
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    llm_gateway_configuration__links:
+      properties:
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    CreateLlmGatewayConfiguration_request:
+      properties:
+        organization_id:
+          description: The organization to enroll
+          type: string
+      required:
+      - organization_id
+      type: object
+    UpdateLlmGatewayConfiguration_request:
+      properties:
+        spend_limit:
+          description: New monthly spend limit in USD
+          type: number
+      type: object
     llm_gateway_configuration:
       properties:
         id:
@@ -216,33 +254,6 @@ components:
       - team_id
       - trial
       - updated_at
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    UpdateLlmGatewayConfiguration_request:
-      properties:
-        spend_limit:
-          description: New monthly spend limit in USD
-          type: number
-      type: object
-    CreateLlmGatewayConfiguration_request:
-      properties:
-        organization_id:
-          description: The organization to enroll
-          type: string
-      required:
-      - organization_id
-      type: object
-    ListLlmGatewayConfigurations_200_response__embedded:
-      properties:
-        llm_gateway_configurations:
-          items:
-            $ref: '#/components/schemas/llm_gateway_configuration'
-          type: array
-      type: object
     ListLlmGatewayConfigurations_200_response:
       properties:
         _embedded:
@@ -250,23 +261,12 @@ components:
         _links:
           type: object
       type: object
-    error:
+    ListLlmGatewayConfigurations_200_response__embedded:
       properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    llm_gateway_configuration__links:
-      properties:
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        llm_gateway_configurations:
+          items:
+            $ref: '#/components/schemas/llm_gateway_configuration'
+          type: array
       type: object
   securitySchemes:
     token:

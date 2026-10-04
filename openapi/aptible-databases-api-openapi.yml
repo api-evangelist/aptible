@@ -470,49 +470,36 @@ paths:
       - Databases
 components:
   schemas:
-    disk__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    database_credential__links:
-      properties:
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     ListAccountsForStack_200_response__links_stack:
       properties:
         href:
           format: uri
           type: string
       type: object
-    database_credential:
+    ListDatabasesForAccount_200_response__embedded:
+      properties:
+        databases:
+          items:
+            $ref: '#/components/schemas/database'
+          type: array
+      type: object
+    database:
       properties:
         id:
           type: integer
+        handle:
+          type: string
+        type:
+          type: string
+          x-nullable: true
+        passphrase:
+          type: string
+          x-nullable: true
+        connection_url:
+          type: string
+          x-nullable: true
+        provisioned:
+          type: boolean
         _type:
           type: string
         created_at:
@@ -521,21 +508,129 @@ components:
         updated_at:
           format: dateTime
           type: string
-        connection_url:
+        status:
           type: string
-        type:
+        docker_repo:
           type: string
-        default:
+          x-nullable: true
+        port_mapping:
+          items:
+            items:
+              type: integer
+            type: array
+          type: array
+        initial_disk_size:
+          type: integer
+          x-nullable: true
+        initial_container_size:
+          type: integer
+          x-nullable: true
+        current_kms_arn:
+          type: string
+          x-nullable: true
+        enable_backups:
           type: boolean
+        pitr_bucket:
+          type: string
+          x-nullable: true
+        oldest_pitr_time:
+          type: string
+          x-nullable: true
+        enable_pitr:
+          type: boolean
+        pitr_status:
+          default: unsupported
+          enum:
+          - unsupported
+          - supported
+          - pending_restart
+          - restricted
+          type: string
+        _embedded:
+          $ref: '#/components/schemas/database__embedded'
         _links:
-          $ref: '#/components/schemas/database_credential__links'
+          $ref: '#/components/schemas/database__links'
       required:
+      - _embedded
       - _type
       - created_at
-      - default
+      - current_kms_arn
+      - docker_repo
+      - enable_backups
+      - enable_pitr
+      - handle
       - id
+      - initial_container_size
+      - initial_disk_size
+      - oldest_pitr_time
+      - pitr_bucket
+      - pitr_status
+      - port_mapping
+      - provisioned
+      - status
       - type
       - updated_at
+    ListDatabasesForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListDatabasesForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
+    database__embedded:
+      properties:
+        last_operation:
+          $ref: '#/components/schemas/operation'
+        disk:
+          $ref: '#/components/schemas/disk'
+        database_credentials:
+          items:
+            $ref: '#/components/schemas/database_credential'
+          type: array
+      type: object
+    database__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database_image:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        service:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        disk:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        initialize_from:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_configuration:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        dependents:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        backups:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        configurations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database_credentials:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     operation__links:
       properties:
         user:
@@ -557,95 +652,93 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    disk:
+    UpdateDatabase_request:
       properties:
-        id:
+        current_configuration:
           type: integer
         handle:
           type: string
-        ebs_volume_id:
-          type: string
-          x-nullable: true
-        ebs_volume_type:
-          type: string
-          x-nullable: true
-        filesystem:
-          type: string
-        passphrase:
-          type: string
-        key_bytes:
+        initial_disk_size:
           type: integer
-        size:
+        initial_continer_size:
           type: integer
-        provisioned_iops:
+        database_image_id:
           type: integer
-        host:
-          type: string
-          x-nullable: true
-        device:
-          type: string
-          x-nullable: true
-        attached:
-          type: boolean
-        _type:
-          type: string
-        created_at:
-          format: dateTime
-          type: string
-        updated_at:
-          format: dateTime
-          type: string
-        ec2_instance_id:
-          type: string
-          x-nullable: true
-        baseline_iops:
-          type: integer
-          x-nullable: true
-        availability_zone:
-          type: string
-          x-nullable: true
         current_kms_arn:
           type: string
-          x-nullable: true
-        _links:
-          $ref: '#/components/schemas/disk__links'
-      required:
-      - _type
-      - attached
-      - availability_zone
-      - baseline_iops
-      - created_at
-      - current_kms_arn
-      - device
-      - ebs_volume_id
-      - ebs_volume_type
-      - ec2_instance_id
-      - filesystem
-      - handle
-      - host
-      - id
-      - key_bytes
-      - provisioned_iops
-      - size
-      - updated_at
-    ListDatabasesForAccount_200_response:
+        enable_backups:
+          type: boolean
+      type: object
+    error:
       properties:
-        _embedded:
-          $ref: '#/components/schemas/ListDatabasesForAccount_200_response__embedded'
-        total_count:
+        code:
           type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
+        error:
+          type: string
+        message:
+          type: string
       required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
+      - code
+      - error
+      - message
+      type: object
+    CreateDatabase_request:
+      properties:
+        handle:
+          type: string
+        type:
+          type: string
+        initial_disk_size:
+          type: integer
+        initial_container_size:
+          type: integer
+        initialize_from:
+          type: string
+        database_image:
+          description: Alternate name for `database_image_id`
+          type: integer
+        database_image_id:
+          type: integer
+        current_kms_arn:
+          type: string
+        enable_backups:
+          type: boolean
+        enable_pitr:
+          type: boolean
+      required:
+      - handle
+      - type
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    disk__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    database_credential__links:
+      properties:
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     operation:
       properties:
@@ -774,29 +867,62 @@ components:
       - user_email
       - user_name
       - yearly
-    ListDatabasesForAccount_200_response__embedded:
+    database_credential:
       properties:
-        databases:
-          items:
-            $ref: '#/components/schemas/database'
-          type: array
-      type: object
-    database:
+        id:
+          type: integer
+        _type:
+          type: string
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        connection_url:
+          type: string
+        type:
+          type: string
+        default:
+          type: boolean
+        _links:
+          $ref: '#/components/schemas/database_credential__links'
+      required:
+      - _type
+      - created_at
+      - default
+      - id
+      - type
+      - updated_at
+    disk:
       properties:
         id:
           type: integer
         handle:
           type: string
-        type:
+        ebs_volume_id:
           type: string
           x-nullable: true
+        ebs_volume_type:
+          type: string
+          x-nullable: true
+        filesystem:
+          type: string
         passphrase:
           type: string
-          x-nullable: true
-        connection_url:
+        key_bytes:
+          type: integer
+        size:
+          type: integer
+        provisioned_iops:
+          type: integer
+        host:
           type: string
           x-nullable: true
-        provisioned:
+        device:
+          type: string
+          x-nullable: true
+        attached:
           type: boolean
         _type:
           type: string
@@ -806,165 +932,39 @@ components:
         updated_at:
           format: dateTime
           type: string
-        status:
-          type: string
-        docker_repo:
+        ec2_instance_id:
           type: string
           x-nullable: true
-        port_mapping:
-          items:
-            items:
-              type: integer
-            type: array
-          type: array
-        initial_disk_size:
+        baseline_iops:
           type: integer
           x-nullable: true
-        initial_container_size:
-          type: integer
+        availability_zone:
+          type: string
           x-nullable: true
         current_kms_arn:
           type: string
           x-nullable: true
-        enable_backups:
-          type: boolean
-        pitr_bucket:
-          type: string
-          x-nullable: true
-        oldest_pitr_time:
-          type: string
-          x-nullable: true
-        enable_pitr:
-          type: boolean
-        pitr_status:
-          default: unsupported
-          enum:
-          - unsupported
-          - supported
-          - pending_restart
-          - restricted
-          type: string
-        _embedded:
-          $ref: '#/components/schemas/database__embedded'
         _links:
-          $ref: '#/components/schemas/database__links'
+          $ref: '#/components/schemas/disk__links'
       required:
-      - _embedded
       - _type
+      - attached
+      - availability_zone
+      - baseline_iops
       - created_at
       - current_kms_arn
-      - docker_repo
-      - enable_backups
-      - enable_pitr
+      - device
+      - ebs_volume_id
+      - ebs_volume_type
+      - ec2_instance_id
+      - filesystem
       - handle
+      - host
       - id
-      - initial_container_size
-      - initial_disk_size
-      - oldest_pitr_time
-      - pitr_bucket
-      - pitr_status
-      - port_mapping
-      - provisioned
-      - status
-      - type
+      - key_bytes
+      - provisioned_iops
+      - size
       - updated_at
-    ListActivityReportsForAccount_200_response__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    database__embedded:
-      properties:
-        last_operation:
-          $ref: '#/components/schemas/operation'
-        disk:
-          $ref: '#/components/schemas/disk'
-        database_credentials:
-          items:
-            $ref: '#/components/schemas/database_credential'
-          type: array
-      type: object
-    CreateDatabase_request:
-      properties:
-        handle:
-          type: string
-        type:
-          type: string
-        initial_disk_size:
-          type: integer
-        initial_container_size:
-          type: integer
-        initialize_from:
-          type: string
-        database_image:
-          description: Alternate name for `database_image_id`
-          type: integer
-        database_image_id:
-          type: integer
-        current_kms_arn:
-          type: string
-        enable_backups:
-          type: boolean
-        enable_pitr:
-          type: boolean
-      required:
-      - handle
-      - type
-      type: object
-    database__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database_image:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        service:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        disk:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        initialize_from:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_configuration:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        dependents:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        backups:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        configurations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database_credentials:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        settings:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_setting:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    UpdateDatabase_request:
-      properties:
-        current_configuration:
-          type: integer
-        handle:
-          type: string
-        initial_disk_size:
-          type: integer
-        initial_continer_size:
-          type: integer
-        database_image_id:
-          type: integer
-        current_kms_arn:
-          type: string
-        enable_backups:
-          type: boolean
-      type: object
   securitySchemes:
     token:
       in: header

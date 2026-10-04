@@ -197,19 +197,6 @@ components:
           format: uri
           type: string
       type: object
-    ListEphemeralSessionsForApp_200_response__links:
-      properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operation:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     ListEphemeralSessionsForApp_200_response:
       properties:
         _embedded:
@@ -242,12 +229,18 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    ListEphemeralSessionsForApp_200_response__embedded:
+    ListEphemeralSessionsForApp_200_response__links:
       properties:
-        ephemeral_sessions:
-          items:
-            $ref: '#/components/schemas/ephemeral_session'
-          type: array
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operation:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     error:
       properties:
@@ -290,6 +283,13 @@ components:
       - id
       - name
       - updated_at
+    ListEphemeralSessionsForApp_200_response__embedded:
+      properties:
+        ephemeral_sessions:
+          items:
+            $ref: '#/components/schemas/ephemeral_session'
+          type: array
+      type: object
   securitySchemes:
     token:
       in: header
