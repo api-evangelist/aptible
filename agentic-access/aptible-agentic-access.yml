@@ -1,379 +1,38 @@
-generated: '2026-08-06'
+generated: '2026-09-23'
 method: generated
-source: openapi/aptible-cloud-openapi-original.yml, openapi/aptible-deploy-openapi-original.yml,
-  openapi/aptible-tool-server-openapi-original.yml
+source: openapi/aptible-accounts-api-openapi.yml, openapi/aptible-actions-api-openapi.yml, openapi/aptible-activity-reports-api-openapi.yml,
+  openapi/aptible-apps-api-openapi.yml, openapi/aptible-assets-api-openapi.yml, openapi/aptible-backupretentionpolicies-api-openapi.yml,
+  openapi/aptible-backups-api-openapi.yml, openapi/aptible-certificates-api-openapi.yml, openapi/aptible-claims-api-openapi.yml,
+  openapi/aptible-codescanresults-api-openapi.yml, openapi/aptible-configurations-api-openapi.yml,
+  openapi/aptible-connections-api-openapi.yml, openapi/aptible-containers-api-openapi.yml, openapi/aptible-database-credentials-api-openapi.yml,
+  openapi/aptible-databases-api-openapi.yml, openapi/aptible-deployments-api-openapi.yml, openapi/aptible-diskattachments-api-openapi.yml,
+  openapi/aptible-disks-api-openapi.yml, openapi/aptible-environments-api-openapi.yml, openapi/aptible-ephemeralcontainers-api-openapi.yml,
+  openapi/aptible-ephemeralsessions-api-openapi.yml, openapi/aptible-images-api-openapi.yml,
+  openapi/aptible-intrusiondetectionreports-api-openapi.yml, openapi/aptible-llmgatewayconfigurations-api-openapi.yml,
+  openapi/aptible-llmkeys-api-openapi.yml, openapi/aptible-llmpolicies-api-openapi.yml, openapi/aptible-logdrains-api-openapi.yml,
+  openapi/aptible-maintenances-api-openapi.yml, openapi/aptible-metricdrains-api-openapi.yml,
+  openapi/aptible-operations-api-openapi.yml, openapi/aptible-organizations-api-openapi.yml,
+  openapi/aptible-permissions-api-openapi.yml, openapi/aptible-persistentdisks-api-openapi.yml,
+  openapi/aptible-plans-api-openapi.yml, openapi/aptible-releases-api-openapi.yml, openapi/aptible-root-api-openapi.yml,
+  openapi/aptible-services-api-openapi.yml, openapi/aptible-servicesizingpolicies-api-openapi.yml,
+  openapi/aptible-settings-api-openapi.yml, openapi/aptible-sources-api-openapi.yml, openapi/aptible-sshportalconnections-api-openapi.yml,
+  openapi/aptible-stacks-api-openapi.yml, openapi/aptible-system-api-openapi.yml, openapi/aptible-tool-api-openapi.yml,
+  openapi/aptible-tools-api-openapi.yml, openapi/aptible-utilities-api-openapi.yml, openapi/aptible-vhosts-api-openapi.yml,
+  openapi/aptible-vpcpeers-api-openapi.yml, openapi/aptible-vpn-tunnels-api-openapi.yml, openapi/aptible-worker-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 225
   by_action_class:
-    acting: 78
-    connected: 147
+    connected: 148
+    acting: 77
   by_consequence:
-    write: 77
-    read: 147
+    read: 148
+    write: 76
     safety-critical: 1
   human_in_the_loop_required: 1
 operations:
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}
-  method: delete
-  operationId: asset_delete
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}
-  method: get
-  operationId: asset_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}
-  method: put
-  operationId: asset_update
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets
-  method: get
-  operationId: environment_get_assets
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets
-  method: post
-  operationId: asset_create
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/action
-  method: post
-  operationId: action_create
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/action/{action_id}
-  method: get
-  operationId: action_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/asset_bundles
-  method: get
-  operationId: environment_get_allowed_asset_bundles
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/connections
-  method: get
-  operationId: environment_get_connections
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}
-  method: delete
-  operationId: environment_delete
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}
-  method: get
-  operationId: environment_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}
-  method: put
-  operationId: environment_update
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}/environments
-  method: get
-  operationId: organization_get_environments
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/organizations/{organization_id}/environments
-  method: post
-  operationId: environment_create
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/worker/health-check
-  method: post
-  operationId: worker_health_check
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/connections/
-  method: post
-  operationId: connection_create
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/connections/{connection_id}
-  method: delete
-  operationId: connection_delete
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/connections/{connection_id}
-  method: get
-  operationId: connection_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/organizations/{organization_id}/operations/{operation_id}
-  method: get
-  operationId: operation_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/operations/{operation_id}
-  method: put
-  operationId: operation_update
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}
-  method: delete
-  operationId: organization_delete
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/{organization_id}
-  method: get
-  operationId: organization_get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/organizations/{organization_id}
-  method: put
-  operationId: organization_update
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v1/organizations/
-  method: get
-  operationId: organization_list
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/organizations/{organization_id}/operations/
-  method: get
-  operationId: organization_get_operations
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/system/health_check
-  method: get
-  operationId: get_healthcheck
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/debug/user_auth
-  method: get
-  operationId: get_user
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v1/debug/user_role_middleware_check
-  method: get
-  operationId: get_user_role
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /stacks/{stack_id}/accounts
   method: get
   operationId: ListAccountsForStack
@@ -471,6 +130,32 @@ operations:
 - path: /find/account
   method: get
   operationId: GetAccountByHandle
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/action
+  method: post
+  operationId: action_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/action/{action_id}
+  method: get
+  operationId: action_get
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -622,6 +307,64 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}
+  method: delete
+  operationId: asset_delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}
+  method: get
+  operationId: asset_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}
+  method: put
+  operationId: asset_update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets
+  method: post
+  operationId: asset_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /accounts/{account_id}/backup_retention_policies
   method: get
   operationId: ListBackupRetentionPoliciesForAccount
@@ -970,6 +713,48 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/connections/
+  method: post
+  operationId: connection_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/connections/{connection_id}
+  method: delete
+  operationId: connection_delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets/{asset_id}/connections/{connection_id}
+  method: get
+  operationId: connection_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /releases/{release_id}/containers
   method: get
   operationId: ListContainersForRelease
@@ -1023,26 +808,6 @@ operations:
 - path: /database_credentials/{id}
   method: get
   operationId: GetDatabaseCredential
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /database_images
-  method: get
-  operationId: ListDatabaseImages
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /database_images/{id}
-  method: get
-  operationId: GetDatabaseImage
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1264,6 +1029,94 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/assets
+  method: get
+  operationId: environment_get_assets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/asset_bundles
+  method: get
+  operationId: environment_get_allowed_asset_bundles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}/connections
+  method: get
+  operationId: environment_get_connections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}
+  method: delete
+  operationId: environment_delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}
+  method: get
+  operationId: environment_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organizations/{organization_id}/environments/{environment_id}
+  method: put
+  operationId: environment_update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/organizations/{organization_id}/environments
+  method: post
+  operationId: environment_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /ephemeral_sessions/{ephemeral_session_id}/ephemeral_containers
   method: get
   operationId: ListEphemeralContainersForEphemeralSession
@@ -1324,9 +1177,19 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /
+- path: /database_images
   method: get
-  operationId: GetRoot
+  operationId: ListDatabaseImages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /database_images/{id}
+  method: get
+  operationId: GetDatabaseImage
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1642,6 +1505,26 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /maintenances/apps
+  method: get
+  operationId: GetMaintenanceApps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /maintenances/databases
+  method: get
+  operationId: GetMaintenanceDatabases
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /accounts/{account_id}/metric_drains
   method: get
   operationId: ListMetricDrainsForAccount
@@ -1668,26 +1551,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /maintenances/apps
-  method: get
-  operationId: GetMaintenanceApps
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /maintenances/databases
-  method: get
-  operationId: GetMaintenanceDatabases
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /metric_drains/{id}
   method: get
   operationId: GetMetricDrain
@@ -1698,6 +1561,32 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /api/v1/organizations/{organization_id}/operations/{operation_id}
+  method: get
+  operationId: operation_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/operations/{operation_id}
+  method: put
+  operationId: operation_update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /persistent_disks/{persistent_disk_id}/operations
   method: get
   operationId: ListOperationsForPersistentDisk
@@ -2082,6 +1971,78 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /api/v1/organizations/{organization_id}/environments
+  method: get
+  operationId: organization_get_environments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organizations/{organization_id}
+  method: delete
+  operationId: organization_delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/organizations/{organization_id}
+  method: get
+  operationId: organization_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organizations/{organization_id}
+  method: put
+  operationId: organization_update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/organizations/
+  method: get
+  operationId: organization_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/organizations/{organization_id}/operations/
+  method: get
+  operationId: organization_get_operations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /accounts/{account_id}/permissions
   method: get
   operationId: ListPermissionsForAccount
@@ -2204,6 +2165,78 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /
+  method: get
+  operationId: GetRoot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /accounts/{account_id}/services
+  method: get
+  operationId: ListServicesForAccount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /apps/{app_id}/services
+  method: get
+  operationId: ListServicesForApp
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/{id}
+  method: get
+  operationId: GetServiceWithOperationStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/{id}
+  method: patch
+  operationId: PatchService
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/{id}
+  method: put
+  operationId: UpdateService
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /accounts/{account_id}/service_sizing_policies
   method: get
   operationId: ListServiceSizingPoliciesForAccount
@@ -2282,68 +2315,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /accounts/{account_id}/services
-  method: get
-  operationId: ListServicesForAccount
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /apps/{app_id}/services
-  method: get
-  operationId: ListServicesForApp
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /services/{id}
-  method: get
-  operationId: GetServiceWithOperationStatus
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /services/{id}
-  method: patch
-  operationId: PatchService
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /services/{id}
-  method: put
-  operationId: UpdateService
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /apps/{app_id}/settings
   method: get
   operationId: ListSettingsForApp
@@ -2554,6 +2525,56 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /api/v1/system/health_check
+  method: get
+  operationId: get_healthcheck
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tool/{tool_id}
+  method: post
+  operationId: callTool
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tools
+  method: get
+  operationId: getTools
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/debug/user_auth
+  method: get
+  operationId: get_user
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/debug/user_role_middleware_check
+  method: get
+  operationId: get_user_role
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /accounts/{account_id}/vhosts
   method: get
   operationId: ListVhostsForAccount
@@ -2708,19 +2729,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /tools
-  method: get
-  operationId: getTools
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /tool/{tool_id}
+- path: /api/v1/worker/health-check
   method: post
-  operationId: callTool
+  operationId: worker_health_check
   x-agentic-access:
     action-class: acting
     consequence: write
