@@ -52,19 +52,6 @@ components:
       - type
       title: ValidationError
       type: object
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          title: Detail
-          type: array
-      title: HTTPValidationError
-      type: object
-    Location_inner:
-      anyOf:
-      - type: string
-      - type: integer
     HealthCheckFromWorker:
       example:
         execution_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -92,6 +79,19 @@ components:
       - execution_id
       - message
       title: HealthCheckFromWorker
+      type: object
+    Location_inner:
+      anyOf:
+      - type: string
+      - type: integer
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
       type: object
   securitySchemes:
     HTTPBearer:

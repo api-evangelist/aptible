@@ -254,12 +254,6 @@ paths:
       - Containers
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
     ListContainersForRelease_200_response__embedded:
       properties:
         containers:
@@ -286,18 +280,24 @@ components:
       - per_page
       - total_count
       type: object
-    error:
+    ListContainersForRelease_200_response__links:
       properties:
-        code:
-          type: integer
-        error:
+        release:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        log_drain:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
     container:
       properties:
@@ -364,6 +364,19 @@ components:
       - port_mapping
       - status
       - updated_at
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
     container__links:
       properties:
         release:
@@ -373,19 +386,6 @@ components:
         log_drain:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         metric_drain:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListContainersForRelease_200_response__links:
-      properties:
-        release:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        log_drain:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'

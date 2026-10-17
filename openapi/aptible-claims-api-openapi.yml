@@ -162,18 +162,10 @@ paths:
       - Claims
 components:
   schemas:
-    CreateClaim_request:
+    CreateClaimForType_request:
       properties:
-        type:
-          enum:
-          - app
-          - database
-          - account
-          type: string
         handle:
           type: string
-      required:
-      - type
       type: object
     error:
       properties:
@@ -188,17 +180,25 @@ components:
       - error
       - message
       type: object
-    CreateClaimForType_request:
-      properties:
-        handle:
-          type: string
-      type: object
     CreateApp_request:
       properties:
         handle:
           type: string
       required:
       - handle
+      type: object
+    CreateClaim_request:
+      properties:
+        type:
+          enum:
+          - app
+          - database
+          - account
+          type: string
+        handle:
+          type: string
+      required:
+      - type
       type: object
   securitySchemes:
     token:

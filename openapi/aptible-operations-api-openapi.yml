@@ -1916,25 +1916,24 @@ paths:
           description: Override for local or test environments
 components:
   schemas:
-    OperationUpdate:
-      example:
-        data: null
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        status: null
+    OperationFailure:
       properties:
-        id:
-          format: uuid
-          title: Id
+        error:
+          title: Error
           type: string
-        status:
-          $ref: '#/components/schemas/OperationStatus'
-        data:
-          $ref: '#/components/schemas/Data'
       required:
-      - id
-      - status
-      title: OperationUpdate
+      - error
+      title: OperationFailure
       type: object
+    OperationType:
+      description: An enumeration.
+      enum:
+      - CREATE
+      - UPDATE
+      - DESTROY
+      - ACTION
+      title: OperationType
+      type: string
     OperationStatus:
       description: An enumeration.
       enum:
@@ -1947,74 +1946,6 @@ components:
       - COMPLETE
       title: OperationStatus
       type: string
-    OperationType:
-      description: An enumeration.
-      enum:
-      - CREATE
-      - UPDATE
-      - DESTROY
-      - ACTION
-      title: OperationType
-      type: string
-    Data:
-      anyOf:
-      - $ref: '#/components/schemas/OperationFailure'
-      - $ref: '#/components/schemas/OperationAssetUpdate'
-      - $ref: '#/components/schemas/OperationActionUpdate'
-      title: Data
-    OperationActionUpdate:
-      properties:
-        action_output:
-          title: Action Output
-        action_errors:
-          title: Action Errors
-          type: string
-      title: OperationActionUpdate
-      type: object
-    OperationAssetUpdate:
-      properties:
-        terraform_init:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_plan:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_apply:
-          $ref: '#/components/schemas/OperationTerraformRunUpdate'
-        terraform_plan_failures:
-          title: Terraform Plan Failures
-          type: string
-        terraform_apply_failures:
-          title: Terraform Apply Failures
-          type: string
-      required:
-      - terraform_init
-      title: OperationAssetUpdate
-      type: object
-    OperationTerraformRunUpdate:
-      properties:
-        terraform_stdout:
-          title: Terraform Stdout
-        terraform_stderr:
-          title: Terraform Stderr
-        terraform_return_code:
-          title: Terraform Return Code
-          type: integer
-        terraform_success:
-          title: Terraform Success
-          type: boolean
-      required:
-      - terraform_return_code
-      - terraform_success
-      title: OperationTerraformRunUpdate
-      type: object
-    OperationFailure:
-      properties:
-        error:
-          title: Error
-          type: string
-      required:
-      - error
-      title: OperationFailure
-      type: object
     ValidationError:
       properties:
         loc:
@@ -2101,6 +2032,49 @@ components:
       anyOf:
       - type: string
       - type: integer
+    OperationUpdate:
+      example:
+        data: null
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: null
+      properties:
+        id:
+          format: uuid
+          title: Id
+          type: string
+        status:
+          $ref: '#/components/schemas/OperationStatus'
+        data:
+          $ref: '#/components/schemas/Data'
+      required:
+      - id
+      - status
+      title: OperationUpdate
+      type: object
+    Data:
+      anyOf:
+      - $ref: '#/components/schemas/OperationFailure'
+      - $ref: '#/components/schemas/OperationAssetUpdate'
+      - $ref: '#/components/schemas/OperationActionUpdate'
+      title: Data
+    OperationAssetUpdate:
+      properties:
+        terraform_init:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_plan:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_apply:
+          $ref: '#/components/schemas/OperationTerraformRunUpdate'
+        terraform_plan_failures:
+          title: Terraform Plan Failures
+          type: string
+        terraform_apply_failures:
+          title: Terraform Apply Failures
+          type: string
+      required:
+      - terraform_init
+      title: OperationAssetUpdate
+      type: object
     HTTPValidationError:
       properties:
         detail:
@@ -2110,17 +2084,173 @@ components:
           type: array
       title: HTTPValidationError
       type: object
+    OperationActionUpdate:
+      properties:
+        action_output:
+          title: Action Output
+        action_errors:
+          title: Action Errors
+          type: string
+      title: OperationActionUpdate
+      type: object
+    OperationTerraformRunUpdate:
+      properties:
+        terraform_stdout:
+          title: Terraform Stdout
+        terraform_stderr:
+          title: Terraform Stderr
+        terraform_return_code:
+          title: Terraform Return Code
+          type: integer
+        terraform_success:
+          title: Terraform Success
+          type: boolean
+      required:
+      - terraform_return_code
+      - terraform_success
+      title: OperationTerraformRunUpdate
+      type: object
+    operation:
+      properties:
+        id:
+          type: integer
+        _type:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        cancelled:
+          type: boolean
+        aborted:
+          type: boolean
+        git_ref:
+          type: string
+          x-nullable: true
+        docker_ref:
+          type: string
+          x-nullable: true
+        env:
+          type: object
+          x-nullable: true
+        container_size:
+          type: integer
+          x-nullable: true
+        container_count:
+          type: integer
+          x-nullable: true
+        disk_size:
+          type: integer
+        command:
+          type: string
+          x-nullable: true
+        handle:
+          type: string
+          x-nullable: true
+        created_at:
+          format: dateTime
+          type: string
+        updated_at:
+          format: dateTime
+          type: string
+        certificate:
+          type: string
+          x-nullable: true
+        private_key:
+          type: string
+          x-nullable: true
+        user_name:
+          type: string
+        user_email:
+          type: string
+        destination_region:
+          type: string
+          x-nullable: true
+        interactive:
+          type: boolean
+          x-nullable: true
+        instance_profile:
+          type: string
+          x-nullable: true
+        mount_point:
+          type: string
+          x-nullable: true
+        daily:
+          type: integer
+          x-nullable: true
+        monthly:
+          type: integer
+          x-nullable: true
+        yearly:
+          type: integer
+          x-nullable: true
+        pitr_days:
+          type: integer
+          x-nullable: true
+        make_copy:
+          type: boolean
+          x-nullable: true
+        keep_final:
+          type: boolean
+          x-nullable: true
+        enable_backups:
+          type: boolean
+          x-nullable: true
+        enable_pitr:
+          type: boolean
+          x-nullable: true
+        settings:
+          type: object
+        sensitive_settings:
+          type: object
+        _links:
+          $ref: '#/components/schemas/operation__links'
+      required:
+      - _type
+      - aborted
+      - cancelled
+      - certificate
+      - command
+      - container_count
+      - container_size
+      - created_at
+      - daily
+      - destination_region
+      - disk_size
+      - docker_ref
+      - enable_backups
+      - enable_pitr
+      - git_ref
+      - handle
+      - id
+      - instance_profile
+      - interactive
+      - keep_final
+      - make_copy
+      - monthly
+      - mount_point
+      - pitr_days
+      - settings
+      - status
+      - type
+      - updated_at
+      - user_email
+      - user_name
+      - yearly
     ListAccountsForStack_200_response__links_stack:
       properties:
         href:
           format: uri
           type: string
       type: object
-    UpdateOperation_request:
+    ListDatabaseImages_200_response__links:
       properties:
-        cancelled:
-          type: boolean
-          x-omitempty: false
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     operation__links:
       properties:
@@ -2142,26 +2272,6 @@ components:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
-    ListOperationsForPersistentDisk_200_response__embedded:
-      properties:
-        operations:
-          items:
-            $ref: '#/components/schemas/operation'
-          type: array
       type: object
     CreateOperationRequest:
       example:
@@ -2295,141 +2405,31 @@ components:
       - per_page
       - total_count
       type: object
-    operation:
+    UpdateOperation_request:
       properties:
-        id:
-          type: integer
-        _type:
-          type: string
-        type:
-          type: string
-        status:
-          type: string
         cancelled:
           type: boolean
-        aborted:
-          type: boolean
-        git_ref:
-          type: string
-          x-nullable: true
-        docker_ref:
-          type: string
-          x-nullable: true
-        env:
-          type: object
-          x-nullable: true
-        container_size:
-          type: integer
-          x-nullable: true
-        container_count:
-          type: integer
-          x-nullable: true
-        disk_size:
-          type: integer
-        command:
-          type: string
-          x-nullable: true
-        handle:
-          type: string
-          x-nullable: true
-        created_at:
-          format: dateTime
-          type: string
-        updated_at:
-          format: dateTime
-          type: string
-        certificate:
-          type: string
-          x-nullable: true
-        private_key:
-          type: string
-          x-nullable: true
-        user_name:
-          type: string
-        user_email:
-          type: string
-        destination_region:
-          type: string
-          x-nullable: true
-        interactive:
-          type: boolean
-          x-nullable: true
-        instance_profile:
-          type: string
-          x-nullable: true
-        mount_point:
-          type: string
-          x-nullable: true
-        daily:
-          type: integer
-          x-nullable: true
-        monthly:
-          type: integer
-          x-nullable: true
-        yearly:
-          type: integer
-          x-nullable: true
-        pitr_days:
-          type: integer
-          x-nullable: true
-        make_copy:
-          type: boolean
-          x-nullable: true
-        keep_final:
-          type: boolean
-          x-nullable: true
-        enable_backups:
-          type: boolean
-          x-nullable: true
-        enable_pitr:
-          type: boolean
-          x-nullable: true
-        settings:
-          type: object
-        sensitive_settings:
-          type: object
-        _links:
-          $ref: '#/components/schemas/operation__links'
-      required:
-      - _type
-      - aborted
-      - cancelled
-      - certificate
-      - command
-      - container_count
-      - container_size
-      - created_at
-      - daily
-      - destination_region
-      - disk_size
-      - docker_ref
-      - enable_backups
-      - enable_pitr
-      - git_ref
-      - handle
-      - id
-      - instance_profile
-      - interactive
-      - keep_final
-      - make_copy
-      - monthly
-      - mount_point
-      - pitr_days
-      - settings
-      - status
-      - type
-      - updated_at
-      - user_email
-      - user_name
-      - yearly
-    ListDatabaseImages_200_response__links:
+          x-omitempty: false
+      type: object
+    error:
       properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
+    ListOperationsForPersistentDisk_200_response__embedded:
+      properties:
+        operations:
+          items:
+            $ref: '#/components/schemas/operation'
+          type: array
       type: object
   securitySchemes:
     HTTPBearer:

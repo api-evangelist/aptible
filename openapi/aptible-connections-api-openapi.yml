@@ -183,114 +183,15 @@ paths:
       - Connections
 components:
   schemas:
-    AssetParametersOutput:
-      example:
-        data: '{}'
-        iteration: 0
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        data:
-          title: Data
-          type: object
-        iteration:
-          title: Iteration
-          type: integer
-        id:
-          format: uuid
-          title: Id
-          type: string
-      required:
-      - data
-      - id
-      - iteration
-      title: AssetParametersOutput
-      type: object
-    OperationStatus:
+    ConnectionStatus:
       description: An enumeration.
       enum:
+      - ACTIVE
+      - DELETED
       - FAILED
-      - REQUESTED
       - PENDING
-      - PAUSED
-      - IN_PROGRESS
-      - CANCELED
-      - COMPLETE
-      title: OperationStatus
+      title: ConnectionStatus
       type: string
-    OperationType:
-      description: An enumeration.
-      enum:
-      - CREATE
-      - UPDATE
-      - DESTROY
-      - ACTION
-      title: OperationType
-      type: string
-    OrganizationOutput:
-      example:
-        aws_ou: aws_ou
-        baa_status: baa_status
-        name: name
-        contact_details: '{}'
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        name:
-          title: Name
-          type: string
-        baa_status:
-          title: Baa Status
-          type: string
-        aws_ou:
-          title: Aws Ou
-          type: string
-        contact_details:
-          title: Contact Details
-          type: object
-        id:
-          format: uuid
-          title: Id
-          type: string
-      required:
-      - baa_status
-      - contact_details
-      - id
-      - name
-      title: OrganizationOutput
-      type: object
-    EnvironmentOutput:
-      example:
-        aws_account_id: aws_account_id
-        organization:
-          aws_ou: aws_ou
-          baa_status: baa_status
-          name: name
-          contact_details: '{}'
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        description: description
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        name:
-          title: Name
-          type: string
-        description:
-          title: Description
-          type: string
-        id:
-          format: uuid
-          title: Id
-          type: string
-        organization:
-          $ref: '#/components/schemas/OrganizationOutput'
-        aws_account_id:
-          title: Aws Account Id
-          type: string
-      required:
-      - id
-      - name
-      - organization
-      title: EnvironmentOutput
-      type: object
     ConnectionOutput:
       example:
         outgoing_connection_asset: null
@@ -340,6 +241,53 @@ components:
       - id
       - status
       title: ConnectionOutput
+      type: object
+    ConnectionInput:
+      example:
+        outgoing_asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        description: description
+      properties:
+        description:
+          title: Description
+          type: string
+        outgoing_asset_id:
+          format: uuid
+          title: Outgoing Asset Id
+          type: string
+      required:
+      - outgoing_asset_id
+      title: ConnectionInput
+      type: object
+    OrganizationOutput:
+      example:
+        aws_ou: aws_ou
+        baa_status: baa_status
+        name: name
+        contact_details: '{}'
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          title: Name
+          type: string
+        baa_status:
+          title: Baa Status
+          type: string
+        aws_ou:
+          title: Aws Ou
+          type: string
+        contact_details:
+          title: Contact Details
+          type: object
+        id:
+          format: uuid
+          title: Id
+          type: string
+      required:
+      - baa_status
+      - contact_details
+      - id
+      - name
+      title: OrganizationOutput
       type: object
     AssetOutput:
       example:
@@ -481,36 +429,6 @@ components:
       - user_defined
       title: AssetOutput
       type: object
-    ConnectionStatus:
-      description: An enumeration.
-      enum:
-      - ACTIVE
-      - DELETED
-      - FAILED
-      - PENDING
-      title: ConnectionStatus
-      type: string
-    AssetTerraformOutput:
-      example:
-        data: ''
-        name: name
-        sensitive: true
-        structure: ''
-      properties:
-        name:
-          title: Name
-          type: string
-        sensitive:
-          title: Sensitive
-          type: boolean
-        structure:
-          title: Structure
-        data:
-          title: Data
-      required:
-      - sensitive
-      title: AssetTerraformOutput
-      type: object
     AssetStatus:
       description: An enumeration.
       enum:
@@ -522,6 +440,15 @@ components:
       - DESTROYED
       - DESTROYING
       title: AssetStatus
+      type: string
+    OperationType:
+      description: An enumeration.
+      enum:
+      - CREATE
+      - UPDATE
+      - DESTROY
+      - ACTION
+      title: OperationType
       type: string
     ValidationError:
       properties:
@@ -605,26 +532,78 @@ components:
       - user_id
       title: OperationOutput
       type: object
-    ConnectionInput:
+    AssetParametersOutput:
       example:
-        outgoing_asset_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        description: description
+        data: '{}'
+        iteration: 0
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        description:
-          title: Description
-          type: string
-        outgoing_asset_id:
+        data:
+          title: Data
+          type: object
+        iteration:
+          title: Iteration
+          type: integer
+        id:
           format: uuid
-          title: Outgoing Asset Id
+          title: Id
           type: string
       required:
-      - outgoing_asset_id
-      title: ConnectionInput
+      - data
+      - id
+      - iteration
+      title: AssetParametersOutput
       type: object
     Location_inner:
       anyOf:
       - type: string
       - type: integer
+    OperationStatus:
+      description: An enumeration.
+      enum:
+      - FAILED
+      - REQUESTED
+      - PENDING
+      - PAUSED
+      - IN_PROGRESS
+      - CANCELED
+      - COMPLETE
+      title: OperationStatus
+      type: string
+    EnvironmentOutput:
+      example:
+        aws_account_id: aws_account_id
+        organization:
+          aws_ou: aws_ou
+          baa_status: baa_status
+          name: name
+          contact_details: '{}'
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        id:
+          format: uuid
+          title: Id
+          type: string
+        organization:
+          $ref: '#/components/schemas/OrganizationOutput'
+        aws_account_id:
+          title: Aws Account Id
+          type: string
+      required:
+      - id
+      - name
+      - organization
+      title: EnvironmentOutput
+      type: object
     HTTPValidationError:
       properties:
         detail:
@@ -633,6 +612,27 @@ components:
           title: Detail
           type: array
       title: HTTPValidationError
+      type: object
+    AssetTerraformOutput:
+      example:
+        data: ''
+        name: name
+        sensitive: true
+        structure: ''
+      properties:
+        name:
+          title: Name
+          type: string
+        sensitive:
+          title: Sensitive
+          type: boolean
+        structure:
+          title: Structure
+        data:
+          title: Data
+      required:
+      - sensitive
+      title: AssetTerraformOutput
       type: object
   securitySchemes:
     HTTPBearer:

@@ -128,12 +128,6 @@ paths:
       - Vpn Tunnels
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
     ListVpnTunnelsForStack_200_response__embedded:
       properties:
         vpn_tunnels:
@@ -141,26 +135,15 @@ components:
             $ref: '#/components/schemas/vpn_tunnel'
           type: array
       type: object
-    error:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        code:
-          type: integer
-        error:
+        href:
+          format: uri
           type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
       type: object
-    ListAccountsForStack_200_response__links:
+    vpc_peer__links:
       properties:
         stack:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -239,13 +222,6 @@ components:
       - phase_2_dh_group
       - phase_2_lifetime
       - updated_at
-    vpc_peer__links:
-      properties:
-        stack:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
     ListVpnTunnelsForStack_200_response:
       properties:
         _embedded:
@@ -264,6 +240,30 @@ components:
       - current_page
       - per_page
       - total_count
+      type: object
+    ListAccountsForStack_200_response__links:
+      properties:
+        stack:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

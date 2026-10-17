@@ -212,27 +212,6 @@ paths:
       - Organizations
 components:
   schemas:
-    OperationStatus:
-      description: An enumeration.
-      enum:
-      - FAILED
-      - REQUESTED
-      - PENDING
-      - PAUSED
-      - IN_PROGRESS
-      - CANCELED
-      - COMPLETE
-      title: OperationStatus
-      type: string
-    OperationType:
-      description: An enumeration.
-      enum:
-      - CREATE
-      - UPDATE
-      - DESTROY
-      - ACTION
-      title: OperationType
-      type: string
     OrganizationOutput:
       example:
         aws_ou: aws_ou
@@ -264,65 +243,27 @@ components:
       - name
       title: OrganizationOutput
       type: object
-    EnvironmentOutput:
-      example:
-        aws_account_id: aws_account_id
-        organization:
-          aws_ou: aws_ou
-          baa_status: baa_status
-          name: name
-          contact_details: '{}'
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        description: description
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        name:
-          title: Name
-          type: string
-        description:
-          title: Description
-          type: string
-        id:
-          format: uuid
-          title: Id
-          type: string
-        organization:
-          $ref: '#/components/schemas/OrganizationOutput'
-        aws_account_id:
-          title: Aws Account Id
-          type: string
-      required:
-      - id
-      - name
-      - organization
-      title: EnvironmentOutput
-      type: object
-    OrganizationInput:
-      example:
-        aws_ou: aws_ou
-        baa_status: baa_status
-        name: name
-        contact_details: '{}'
-      properties:
-        name:
-          title: Name
-          type: string
-        baa_status:
-          title: Baa Status
-          type: string
-        aws_ou:
-          title: Aws Ou
-          type: string
-        contact_details:
-          title: Contact Details
-          type: object
-      required:
-      - baa_status
-      - contact_details
-      - name
-      title: OrganizationInput
-      type: object
+    OperationType:
+      description: An enumeration.
+      enum:
+      - CREATE
+      - UPDATE
+      - DESTROY
+      - ACTION
+      title: OperationType
+      type: string
+    OperationStatus:
+      description: An enumeration.
+      enum:
+      - FAILED
+      - REQUESTED
+      - PENDING
+      - PAUSED
+      - IN_PROGRESS
+      - CANCELED
+      - COMPLETE
+      title: OperationStatus
+      type: string
     ValidationError:
       properties:
         loc:
@@ -409,6 +350,40 @@ components:
       anyOf:
       - type: string
       - type: integer
+    EnvironmentOutput:
+      example:
+        aws_account_id: aws_account_id
+        organization:
+          aws_ou: aws_ou
+          baa_status: baa_status
+          name: name
+          contact_details: '{}'
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        id:
+          format: uuid
+          title: Id
+          type: string
+        organization:
+          $ref: '#/components/schemas/OrganizationOutput'
+        aws_account_id:
+          title: Aws Account Id
+          type: string
+      required:
+      - id
+      - name
+      - organization
+      title: EnvironmentOutput
+      type: object
     HTTPValidationError:
       properties:
         detail:
@@ -417,6 +392,31 @@ components:
           title: Detail
           type: array
       title: HTTPValidationError
+      type: object
+    OrganizationInput:
+      example:
+        aws_ou: aws_ou
+        baa_status: baa_status
+        name: name
+        contact_details: '{}'
+      properties:
+        name:
+          title: Name
+          type: string
+        baa_status:
+          title: Baa Status
+          type: string
+        aws_ou:
+          title: Aws Ou
+          type: string
+        contact_details:
+          title: Contact Details
+          type: object
+      required:
+      - baa_status
+      - contact_details
+      - name
+      title: OrganizationInput
       type: object
   securitySchemes:
     HTTPBearer:

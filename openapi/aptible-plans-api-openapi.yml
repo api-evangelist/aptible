@@ -126,23 +126,38 @@ components:
           format: uri
           type: string
       type: object
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
     llm_gateway_configuration__links:
       properties:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    error:
+    ListPlans_200_response:
       properties:
-        code:
+        _embedded:
+          $ref: '#/components/schemas/ListPlans_200_response__embedded'
+        total_count:
           type: integer
-        error:
-          type: string
-        message:
-          type: string
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
       required:
-      - code
-      - error
-      - message
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
     ListPlans_200_response__embedded:
       properties:
@@ -205,33 +220,18 @@ components:
       - included_vhosts
       - updated_at
       - vhost_limit
-    ListPlans_200_response:
+    error:
       properties:
-        _embedded:
-          $ref: '#/components/schemas/ListPlans_200_response__embedded'
-        total_count:
+        code:
           type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListDatabaseImages_200_response__links'
+        error:
+          type: string
+        message:
+          type: string
       required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListDatabaseImages_200_response__links:
-      properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

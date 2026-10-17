@@ -341,12 +341,6 @@ paths:
       - Backups
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
     ListBackups_200_response__embedded:
       properties:
         backups:
@@ -354,10 +348,30 @@ components:
             $ref: '#/components/schemas/backup'
           type: array
       type: object
-    backup__embedded:
+    ListAccountsForStack_200_response__links_stack:
       properties:
-        copied_from:
-          type: object
+        href:
+          format: uri
+          type: string
+      type: object
+    ListBackups_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListBackups_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListBackups_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
     ListBackups_200_response__links:
       properties:
@@ -368,6 +382,23 @@ components:
         next:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    backup__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        copied_from:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database_image:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        copies:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -415,6 +446,11 @@ components:
       - manual
       - size
       - updated_at
+    backup__embedded:
+      properties:
+        copied_from:
+          type: object
+      type: object
     error:
       properties:
         code:
@@ -427,42 +463,6 @@ components:
       - code
       - error
       - message
-      type: object
-    backup__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        copied_from:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database_image:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        copies:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListBackups_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListBackups_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListBackups_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
       type: object
   securitySchemes:
     token:

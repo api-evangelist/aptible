@@ -203,11 +203,50 @@ paths:
       - CodeScanResults
 components:
   schemas:
+    ListCodeScanResultsForApp_200_response__links:
+      properties:
+        resource:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListCodeScanResultsForApp_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListCodeScanResultsForApp_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListCodeScanResultsForApp_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
     ListAccountsForStack_200_response__links_stack:
       properties:
         href:
           format: uri
           type: string
+      type: object
+    code_scan_result__links:
+      properties:
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operation:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
     CreateCodeScanResult_request:
       properties:
@@ -238,19 +277,6 @@ components:
             $ref: '#/components/schemas/code_scan_result'
           type: array
       type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
     code_scan_result:
       properties:
         id:
@@ -279,44 +305,18 @@ components:
       - id
       - procfile_present
       - updated_at
-    ListCodeScanResultsForApp_200_response:
+    error:
       properties:
-        _embedded:
-          $ref: '#/components/schemas/ListCodeScanResultsForApp_200_response__embedded'
-        total_count:
+        code:
           type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListCodeScanResultsForApp_200_response__links'
+        error:
+          type: string
+        message:
+          type: string
       required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListCodeScanResultsForApp_200_response__links:
-      properties:
-        resource:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    code_scan_result__links:
-      properties:
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operation:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:

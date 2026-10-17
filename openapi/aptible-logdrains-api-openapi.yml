@@ -297,54 +297,24 @@ paths:
       - LogDrains
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
+    ListLogDrainsForAccount_200_response:
       properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    UpdateLogDrain_request:
-      properties:
-        drain_apps:
-          type: boolean
-          x-omitempty: false
-        drain_databases:
-          type: boolean
-          x-omitempty: false
-        drain_ephemeral_sessions:
-          type: boolean
-          x-omitempty: false
-        drain_proxies:
-          type: boolean
-          x-omitempty: false
-      type: object
-    error:
-      properties:
-        code:
+        _embedded:
+          $ref: '#/components/schemas/ListLogDrainsForAccount_200_response__embedded'
+        total_count:
           type: integer
-        error:
-          type: string
-        message:
-          type: string
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
       required:
-      - code
-      - error
-      - message
-      type: object
-    log_drain__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        ephemeral_containers:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
       type: object
     CreateLogDrain_request:
       properties:
@@ -394,32 +364,17 @@ components:
       - drain_type
       - handle
       type: object
-    ListLogDrainsForAccount_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListLogDrainsForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListActivityReportsForAccount_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
-    ListActivityReportsForAccount_200_response__links:
+    log_drain__links:
       properties:
         account:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        next:
+        database:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        containers:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        ephemeral_containers:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -510,6 +465,51 @@ components:
       - id
       - status
       - updated_at
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
+      type: object
+    ListActivityReportsForAccount_200_response__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    UpdateLogDrain_request:
+      properties:
+        drain_apps:
+          type: boolean
+          x-omitempty: false
+        drain_databases:
+          type: boolean
+          x-omitempty: false
+        drain_ephemeral_sessions:
+          type: boolean
+          x-omitempty: false
+        drain_proxies:
+          type: boolean
+          x-omitempty: false
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
     ListLogDrainsForAccount_200_response__embedded:
       properties:
         log_drains:

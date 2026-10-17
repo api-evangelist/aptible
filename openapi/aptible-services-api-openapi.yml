@@ -293,6 +293,48 @@ paths:
       - Services
 components:
   schemas:
+    service__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_release:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        app:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        database:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        releases:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        vhosts:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        settings:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        current_setting:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListServicesForAccount_200_response:
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ListServicesForAccount_200_response__embedded'
+        total_count:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/ListServicesForAccount_200_response__links'
+      required:
+      - _embedded
+      - _links
+      - current_page
+      - per_page
+      - total_count
+      type: object
     ListAccountsForStack_200_response__links_stack:
       properties:
         href:
@@ -311,6 +353,24 @@ components:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListServicesForAccount_200_response__embedded:
+      properties:
+        services:
+          items:
+            $ref: '#/components/schemas/service'
+          type: array
+      type: object
+    UpdateService_request:
+      properties:
+        naive_health_check:
+          type: boolean
+        force_zero_downtime:
+          type: boolean
+        restart_free_scaling:
+          type: boolean
+        stop_timeout:
+          type: integer
       type: object
     error:
       properties:
@@ -384,66 +444,6 @@ components:
       - restart_free_scaling
       - stop_timeout
       - updated_at
-    service__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_release:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        app:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        database:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        releases:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        vhosts:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        settings:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        current_setting:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    UpdateService_request:
-      properties:
-        naive_health_check:
-          type: boolean
-        force_zero_downtime:
-          type: boolean
-        restart_free_scaling:
-          type: boolean
-        stop_timeout:
-          type: integer
-      type: object
-    ListServicesForAccount_200_response__embedded:
-      properties:
-        services:
-          items:
-            $ref: '#/components/schemas/service'
-          type: array
-      type: object
-    ListServicesForAccount_200_response:
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ListServicesForAccount_200_response__embedded'
-        total_count:
-          type: integer
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/ListServicesForAccount_200_response__links'
-      required:
-      - _embedded
-      - _links
-      - current_page
-      - per_page
-      - total_count
-      type: object
   securitySchemes:
     token:
       in: header

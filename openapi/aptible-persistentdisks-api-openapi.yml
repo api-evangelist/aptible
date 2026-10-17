@@ -134,19 +134,6 @@ components:
           format: uri
           type: string
       type: object
-    error:
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - error
-      - message
-      type: object
     ListActivityReportsForAccount_200_response__links:
       properties:
         account:
@@ -154,6 +141,15 @@ components:
         next:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    persistent_disk__links:
+      properties:
+        account:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        operations:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
@@ -176,22 +172,6 @@ components:
       - current_page
       - per_page
       - total_count
-      type: object
-    persistent_disk__links:
-      properties:
-        account:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        operations:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-      type: object
-    ListPersistentDisksForAccount_200_response__embedded:
-      properties:
-        persistent_disks:
-          items:
-            $ref: '#/components/schemas/persistent_disk'
-          type: array
       type: object
     persistent_disk:
       properties:
@@ -260,6 +240,26 @@ components:
       - size
       - status
       - updated_at
+    ListPersistentDisksForAccount_200_response__embedded:
+      properties:
+        persistent_disks:
+          items:
+            $ref: '#/components/schemas/persistent_disk'
+          type: array
+      type: object
+    error:
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - error
+      - message
+      type: object
   securitySchemes:
     token:
       in: header

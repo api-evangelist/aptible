@@ -179,19 +179,6 @@ paths:
       - SshPortalConnections
 components:
   schemas:
-    ListAccountsForStack_200_response__links_stack:
-      properties:
-        href:
-          format: uri
-          type: string
-      type: object
-    ListSshPortalConnectionsForOperation_200_response__embedded:
-      properties:
-        ssh_portal_connections:
-          items:
-            $ref: '#/components/schemas/ssh_portal_connection'
-          type: array
-      type: object
     ssh_portal_connection__links:
       properties:
         operation:
@@ -199,18 +186,20 @@ components:
         self:
           $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
       type: object
-    error:
+    CreateSshPortalConnection_request:
       properties:
-        code:
-          type: integer
-        error:
+        ssh_public_key:
           type: string
-        message:
+        command:
           type: string
       required:
-      - code
-      - error
-      - message
+      - ssh_public_key
+      type: object
+    ListAccountsForStack_200_response__links_stack:
+      properties:
+        href:
+          format: uri
+          type: string
       type: object
     ListSshPortalConnectionsForOperation_200_response:
       properties:
@@ -230,6 +219,22 @@ components:
       - current_page
       - per_page
       - total_count
+      type: object
+    ListDatabaseImages_200_response__links:
+      properties:
+        next:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        prev:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+        self:
+          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      type: object
+    ListSshPortalConnectionsForOperation_200_response__embedded:
+      properties:
+        ssh_portal_connections:
+          items:
+            $ref: '#/components/schemas/ssh_portal_connection'
+          type: array
       type: object
     ssh_portal_connection:
       properties:
@@ -264,23 +269,18 @@ components:
       - ssh_pty
       - ssh_user
       - updated_at
-    CreateSshPortalConnection_request:
+    error:
       properties:
-        ssh_public_key:
+        code:
+          type: integer
+        error:
           type: string
-        command:
+        message:
           type: string
       required:
-      - ssh_public_key
-      type: object
-    ListDatabaseImages_200_response__links:
-      properties:
-        next:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        prev:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
-        self:
-          $ref: '#/components/schemas/ListAccountsForStack_200_response__links_stack'
+      - code
+      - error
+      - message
       type: object
   securitySchemes:
     token:
