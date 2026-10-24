@@ -508,6 +508,8 @@ apis:
   humanURL: https://www.aptible.com/docs/getting-started/home
   baseURL: https://api.aptible.com
   tags:
+  - Log drains
+  tags_raw:
   - LogDrains
   properties:
   - type: OpenAPI
